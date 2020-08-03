@@ -1,2 +1,2 @@
-# ElBlog_GCBasic_New
+# ElBlog_GCBasic_New (beta)
 Gestor de contenidos básico
