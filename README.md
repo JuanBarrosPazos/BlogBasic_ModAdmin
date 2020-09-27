@@ -1,4 +1,4 @@
-# ElBlog_GCBasic_New (beta)
+# ElBlog_GCBasic_New Versión Estable.
 
 ## GESTOR DE CONTENIDOS BÁSICO
 
