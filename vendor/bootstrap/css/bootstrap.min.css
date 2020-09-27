@@ -434,8 +434,11 @@ mark {
 }
 .img-fluid {
 /*  max-width: 100%;
-  height: auto;*/
-  width: 100%;
+    height: auto;
+    min-width: 170px;
+*/
+  width: auto;
+  min-width: 80px;
   height: 100%;
 }
 .img-thumbnail {
@@ -493,10 +496,10 @@ pre code {
 }
 .container {
   width: 100%;
-  /*
+  /*  */
   padding-right: 15px;
   padding-left: 15px;
-  */
+
   margin-right: auto;
   margin-left: auto;
 }
@@ -6120,7 +6123,7 @@ button.bg-dark:hover {
   border-radius: 0.3rem !important;
 }
 .rounded-circle {
-  border-radius: 50% !important;
+  border-radius: 30% !important;
 }
 .rounded-pill {
   border-radius: 50rem !important;

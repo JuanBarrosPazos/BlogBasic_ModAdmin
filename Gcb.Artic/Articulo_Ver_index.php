@@ -116,10 +116,12 @@ function ver_todo(){
 
 	require 'Gcb.Artic/Inc_Artic_Index_Form.php';
 
+	require 'Gcb.Artic/Inc_Centra_Index_Img.php';
+
 	print ("
 	<li class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
-			<img class='rounded-circle img-fluid' src='Gcb.Img.Art/".$rowb['myimg']."' alt=''>
+	<img class='<!--rounded-circle--> img-fluid' ".$centra." src='Gcb.Img.Art/".$rowb['myimg']."' alt=''>
 			</div>
 			<div class='timeline-panel'>
 				<div class='timeline-heading'>

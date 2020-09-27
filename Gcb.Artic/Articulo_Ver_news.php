@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -179,10 +179,11 @@ function process_form(){
 
 	require '../Gcb.Artic/Inc_Artic_News_Form.php';
 
-		print ("
-			<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
+	require 'Inc_Centra_News_Img.php';
+
+	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
-			<img class='rounded-circle img-fluid' src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
+	<img class='<!--rounded-circle--> img-fluid' ".$centra." src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
 			</div>
 			<div class='timeline-panel'>
 			<div class='timeline-heading'>

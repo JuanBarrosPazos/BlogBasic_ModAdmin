@@ -15,13 +15,15 @@ p {
   line-height: 1.75;
 }
 a {
-  color: #fed136;
+  /*color: #fed136;*/
+  color: #8ea5a0;
 }
 a:hover {
   color: #fec503;
 }
 .text-primary {
-  color: #fed136 !important;
+  /*color: #fed136 !important;*/
+  color: #8ea5a0;
 }
 h1,
 h2,
@@ -59,11 +61,13 @@ h6 {
   }
 }
 ::-moz-selection {
-  background: #fed136;
+  /*background: #fed136;*/
+  background: #8ea5a0;
   text-shadow: none;
 }
 ::selection {
-  background: #fed136;
+  /*background: #fed136;*/
+  background: #8ea5a0;
   text-shadow: none;
 }
 img::-moz-selection {
@@ -86,8 +90,10 @@ img::-moz-selection {
   padding: 20px 40px;
 }
 .btn-primary {
-  background-color: #fed136;
-  border-color: #fed136;
+  /*background-color: #fed136;
+  border-color: #fed136;*/
+  background-color: #8ea5a0;
+  border-color: #8ea5a0;
 }
 .btn-primary:active,
 .btn-primary:focus,
@@ -110,13 +116,15 @@ img::-moz-selection {
   text-transform: uppercase;
   color: #fff;
   border: 0;
-  background-color: #fed136;
+  /*background-color: #fed136;*/
+  background-color: #8ea5a0;
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
 #mainNav .navbar-brand {
-  color: #fed136;
+  /*color: #fed136;*/
+  color: #8ea5a0;
   font-family: "Kaushan Script", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -130,7 +138,8 @@ img::-moz-selection {
 #mainNav .navbar-nav .nav-item .nav-link {
   font-size: 90%;
   font-weight: 400;
-  padding: 0.75em 0;
+  /* padding: 0.75em 0; */
+  padding: 0.2em 0.0em 0.2em 0.0em;
   letter-spacing: 1px;
   color: #fff;
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -139,7 +148,8 @@ img::-moz-selection {
 }
 #mainNav .navbar-nav .nav-item .nav-link.active,
 #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #fed136;
+  /*color: #fed136;*/
+  color: #8ea5a0;
 }
 @media (min-width: 992px) {
   #mainNav {
@@ -154,7 +164,8 @@ img::-moz-selection {
     transition: all 0.3s;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
-    padding: 1.1em 1em !important;
+    /* padding: 1.1em 1em !important; */
+    padding: 0.5em 0.8em 0.0em 0.8em !important;
   }
   #mainNav.navbar-shrink {
     padding-top: 0;
@@ -178,8 +189,8 @@ header.masthead {
 header.masthead .intro-text {
   /*padding-top: 150px;
   padding-bottom: 100px;*/
-  padding-top: 70px;
-  padding-bottom: 20px;
+  padding-top: 80px;
+  padding-bottom: 10px;
 }
 header.masthead .intro-text .intro-lead-in {
   font-size: 22px;
@@ -194,8 +205,10 @@ header.masthead .intro-text .intro-heading {
   /* font-size: 50px; */
   font-size: 40px;
   font-weight: 700;
-  line-height: 50px;
-  margin-bottom: 25px;
+  /* line-height: 50px; */
+  line-height: 80px;
+  /* margin-bottom: 25px; */
+  margin-bottom: 5px;
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
@@ -433,9 +446,11 @@ header.masthead .intro-text .intro-heading {
   margin-left: 0;
   text-align: center;
   color: #fff;
-  border: 7px solid #e9ecef;
-  border-radius: 100%;
-  background-color: #fed136;
+  /* border: 5px solid #4a9988; */
+  border: 3px solid #4a9988;
+  border-radius: 30%;
+  background-color: #fff;
+  overflow: hidden; /* */
 }
 .timeline > li .timeline-image h4 {
   font-size: 10px;
@@ -493,6 +508,7 @@ header.masthead .intro-text .intro-heading {
     width: 100px;
     height: 100px;
     margin-left: -50px;
+    overflow: hidden;
   }
   .timeline > li .timeline-image h4 {
     font-size: 13px;
@@ -532,7 +548,7 @@ header.masthead .intro-text .intro-heading {
   }
   .timeline > li .timeline-panel {
     /*padding: 0 20px 20px 100px;*/
-    padding: 0 4px 20px 60px;
+    padding: 0 4px 20px 34px;
   }
   .timeline > li .timeline-image {
     width: 170px;
@@ -543,7 +559,8 @@ header.masthead .intro-text .intro-heading {
     margin-top: 40px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
-    padding: 0 100px 20px 20px;
+    /* padding: 0 100px 20px 20px; */
+    padding: 0 34px 20px 4px;
   }
 }
 .team-member {
@@ -586,7 +603,8 @@ section#contact .form-group textarea.form-control {
   height: 248px;
 }
 section#contact .form-control:focus {
-  border-color: #fed136;
+  /*border-color: #fed136;*/
+  border-color: #8ea5a0;
   box-shadow: none;
 }
 section#contact ::-webkit-input-placeholder {
