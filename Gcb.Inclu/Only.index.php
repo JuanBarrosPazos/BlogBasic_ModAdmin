@@ -2,7 +2,7 @@
 <?php
 
 if((isset($_POST['Usuario'])&&(isset($_POST['Password'])))){
-	$sql =  "SELECT * FROM `admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
+	$sql =  "SELECT * FROM `gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
 	$q = mysqli_query($db, $sql);
 	global $row;
 	$row = mysqli_fetch_assoc($q);

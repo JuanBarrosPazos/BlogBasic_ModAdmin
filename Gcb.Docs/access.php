@@ -179,7 +179,7 @@ function validate_form(){
 	global $db;
 	global $db_name;
 	/*
-	$sqlp =  "SELECT * FROM `admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
+	$sqlp =  "SELECT * FROM `gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
 	$qp = mysqli_query($db, $sqlp);
 	$rn = mysqli_fetch_assoc($qp);
 	*/
@@ -256,18 +256,18 @@ function desbloqueo(){
 	*/
 
 	// BORRO LAS ENTRADAS DEL DÍA ANTERIOR.
-	$sdip =  "SELECT * FROM `$db_name`.`ipcontrol` WHERE `date` <> '$date' ";
+	$sdip =  "SELECT * FROM `$db_name`.`gcb_ipcontrol` WHERE `date` <> '$date' ";
 	$qdip = mysqli_query($db, $sdip);
 	$cdip = mysqli_num_rows($qdip);
 	if($cdip > 0){
-	$sqlxd = "DELETE FROM `$db_name`.`ipcontrol` WHERE `date` <> '$date' ";
+	$sqlxd = "DELETE FROM `$db_name`.`gcb_ipcontrol` WHERE `date` <> '$date' ";
 	if(mysqli_query($db, $sqlxd)){
 			// SI SE CUMPLE EL QUERY Y NO HAY DATOS EN LA TABLA LE PASO EL ID 1.
-			$sx =  "SELECT * FROM `ipcontrol` ";
+			$sx =  "SELECT * FROM `gcb_ipcontrol` ";
 			$qx = mysqli_query($db, $sx);
 			$cx = mysqli_num_rows($qx);
 				if($cx < 1){
-				$sx1 = "ALTER TABLE `$db_name`.`ipcontrol` AUTO_INCREMENT=1";
+				$sx1 = "ALTER TABLE `$db_name`.`gcb_ipcontrol` AUTO_INCREMENT=1";
 						if(mysqli_query($db, $sx1)){ }
 						else { print("* MODIFIQUE LA ENTRADA L.1565: ".mysqli_error($db));}
 							}
@@ -278,7 +278,7 @@ function desbloqueo(){
 	global $uip;
 	$uip = $_SERVER['REMOTE_ADDR'];
 
-	$sqlx =  "SELECT * FROM `ipcontrol` WHERE `ipn` = '$uip' AND `acceso` = 'x' ORDER BY `id` ASC ";
+	$sqlx =  "SELECT * FROM `gcb_ipcontrol` WHERE `ipn` = '$uip' AND `acceso` = 'x' ORDER BY `id` ASC ";
 	$qx = mysqli_query($db, $sqlx);
 	$cx = mysqli_num_rows($qx);
 	$rowx = mysqli_fetch_assoc($qx);
@@ -289,7 +289,7 @@ function desbloqueo(){
 	if(($cx >= 1)&&($rowx['error'] > $timex)){ $_SESSION['showf'] = 69;}
 	elseif((($cx >= 1)&&($rowx['error'] <= $timex))||((strlen(trim($rowx['error'] >= 3)))&&($rowx['error'] <= $timex))){ 
 	// DESBLOQUEO TODAS LAS IPs IGUALES A LA MIA
-	$desb = "UPDATE `$db_name`.`ipcontrol` SET `error` = 'des', `acceso` = 'des' WHERE `ipcontrol`.`ipn` = '$uip' ";
+	$desb = "UPDATE `$db_name`.`gcb_ipcontrol` SET `error` = 'des', `acceso` = 'des' WHERE `gcb_ipcontrol`.`ipn` = '$uip' ";
 	$_SESSION['showf'] = 0;	
 	if(mysqli_query($db, $desb)){ } else { print("* ERROR ENTRADA 1626: ".mysqli_error($db))."."; }
 	} elseif($cx < 1) { $_SESSION['showf'] = 0; }	
@@ -329,7 +329,7 @@ function bloqueo(){
 	global $uip;
 	$uip = $_SERVER['REMOTE_ADDR'];
 
-	$sqlip =  "SELECT * FROM `ipcontrol` WHERE `ipn` = '$uip' AND `error` = '1' AND `acceso` = '0' AND `date` = '$date' ORDER BY `id` DESC ";
+	$sqlip =  "SELECT * FROM `gcb_ipcontrol` WHERE `ipn` = '$uip' AND `error` = '1' AND `acceso` = '0' AND `date` = '$date' ORDER BY `id` DESC ";
 	$qip = mysqli_query($db, $sqlip);
 	global $cip;
 	$cip = mysqli_num_rows($qip);
@@ -373,7 +373,7 @@ function bloqueo(){
 	
 	// MARCO LA ULTIMA ENTRADA ERROR CON "ERROR HORA BBDD+1" Y "ACCESO x" PARA BLOQUEAR LA IP
 	if($_SESSION['cip'] >= 3){
-	$emarc = "UPDATE `$db_name`.`ipcontrol` SET `error` = '$_SESSION[bloqh]', `acceso` = 'x' WHERE `ipcontrol`.`id` = '$_SESSION[ipid]' LIMIT 1 ";
+	$emarc = "UPDATE `$db_name`.`gcb_ipcontrol` SET `error` = '$_SESSION[bloqh]', `acceso` = 'x' WHERE `gcb_ipcontrol`.`id` = '$_SESSION[ipid]' LIMIT 1 ";
 			$_SESSION['showf'] = 69;
 			global $bloqh;
 			global $bloqm;
@@ -497,7 +497,7 @@ function admin_entrada(){
 	global $datein;
 	$datein = date('Y-m-d/H:i:s');
 
-	$sqladin = "UPDATE `$db_name`.`admin` SET `lastin` = '$datein', `visitadmin` = '$total' WHERE `admin`.`id` = '$userid' LIMIT 1 ";
+	$sqladin = "UPDATE `$db_name`.`gcb_admin` SET `lastin` = '$datein', `visitadmin` = '$total' WHERE `gcb_admin`.`id` = '$userid' LIMIT 1 ";
 		
 	if(mysqli_query($db, $sqladin)){
 			// print("* ");
@@ -545,7 +545,7 @@ function suma_acces(){
 	global $sumaacces;
 	
 
-	$sqla =  "SELECT * FROM `visitasadmin`";
+	$sqla =  "SELECT * FROM `gcb_visitasadmin`";
 	$qa = mysqli_query($db, $sqla);
 	$rowa = mysqli_fetch_assoc($qa);
 	
@@ -558,7 +558,7 @@ function suma_acces(){
 
 	$idv = 69;
 	
-	$sqla = "UPDATE `$db_name`.`visitasadmin` SET `acceso` = '$sumaacces' WHERE `visitasadmin`.`idv` = '$idv' LIMIT 1 ";
+	$sqla = "UPDATE `$db_name`.`gcb_visitasadmin` SET `acceso` = '$sumaacces' WHERE `gcb_visitasadmin`.`idv` = '$idv' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqla)){ print ('</br>');
 													} 
@@ -579,7 +579,7 @@ function suma_acces(){
 	global $uip;
 	$uip = $_SERVER['REMOTE_ADDR'];
 
-	$sqlip = "INSERT INTO `$db_name`.`ipcontrol` (`ref`, `nivel`, `ipn`, `error`, `acceso`, `date`, `time`) VALUES ('$_SESSION[ref]', '$_SESSION[Nivel]', '$uip', '0', '1', '$date', '$time')";
+	$sqlip = "INSERT INTO `$db_name`.`gcb_ipcontrol` (`ref`, `nivel`, `ipn`, `error`, `acceso`, `date`, `time`) VALUES ('$_SESSION[ref]', '$_SESSION[Nivel]', '$uip', '0', '1', '$date', '$time')";
 	if(mysqli_query($db, $sqlip)){ } else { print("* MODIFIQUE LA ENTRADA L.457: ".mysqli_error($db));}
 
 }
@@ -595,7 +595,7 @@ function suma_denegado(){
 	global $rowd;
 	global $sumadeneg;
 	
-	$sqld =  "SELECT * FROM `visitasadmin`";
+	$sqld =  "SELECT * FROM `gcb_visitasadmin`";
 	$qd = mysqli_query($db, $sqld);
 	$rowd = mysqli_fetch_assoc($qd);
 	
@@ -608,7 +608,7 @@ function suma_denegado(){
 
 	$idd = 69;
 	
-	$sqld = "UPDATE `$db_name`.`visitasadmin` SET `deneg` = '$sumadeneg' WHERE `visitasadmin`.`idv` = '$idd' LIMIT 1 ";
+	$sqld = "UPDATE `$db_name`.`gcb_visitasadmin` SET `deneg` = '$sumadeneg' WHERE `gcb_visitasadmin`.`idv` = '$idd' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqld)){/*	print("	</br>");*/
 		
@@ -625,7 +625,7 @@ function suma_denegado(){
 	global $uip;
 	$uip = $_SERVER['REMOTE_ADDR'];
 
-	$sqlip = "INSERT INTO `$db_name`.`ipcontrol` (`ref`, `nivel`, `ipn`, `error`, `acceso`, `date`, `time`) VALUES ('anonimo', 'anonimo', '$uip', '1', '0', '$date', '$time')";
+	$sqlip = "INSERT INTO `$db_name`.`gcb_ipcontrol` (`ref`, `nivel`, `ipn`, `error`, `acceso`, `date`, `time`) VALUES ('anonimo', 'anonimo', '$uip', '1', '0', '$date', '$time')";
 	if(mysqli_query($db, $sqlip)){ } else { print("* MODIFIQUE LA ENTRADA L.600: ".mysqli_error($db));}
 
 	bloqueo();
@@ -643,7 +643,7 @@ function show_visit(){
 	global $rowv;
 	global $sumavisit;
 	
-	$sqlv =  "SELECT * FROM `visitasadmin`";
+	$sqlv =  "SELECT * FROM `gcb_visitasadmin`";
 	$qv = mysqli_query($db, $sqlv);
 	
 	$rowv = mysqli_fetch_assoc($qv);
@@ -725,7 +725,7 @@ function suma_visit(){
 	global $sumavisit;
 	
 
-	$sqlv =  "SELECT * FROM `visitasadmin`";
+	$sqlv =  "SELECT * FROM `gcb_visitasadmin`";
 	$qv = mysqli_query($db, $sqlv);
 	$rowv = mysqli_fetch_assoc($qv);
 	
@@ -738,11 +738,11 @@ function suma_visit(){
 
 	$idv = 69;
 	
-	$sqlv = "UPDATE `$db_name`.`visitasadmin` SET `admin` = '$sumavisit' WHERE `visitasadmin`.`idv` = '$idv' LIMIT 1 ";
+	$sqlv = "UPDATE `$db_name`.`gcb_visitasadmin` SET `admin` = '$sumavisit' WHERE `gcb_visitasadmin`.`idv` = '$idv' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlv)){
 		/**/	print(" </br>");
-										} 
+						} 
 				
 				 else {
 				print("<font color='#FF0000'>
@@ -805,7 +805,7 @@ function ver_todo(){
 	$sqlb =  "SELECT * FROM `$db_name`.$vname  ORDER BY `refart` ASC $limit";
 
 	/*
-	$sqlb =  "SELECT * FROM `admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
@@ -823,81 +823,21 @@ function ver_todo(){
 										</tr>
 									</table>");
 									
-				} else { 	print ("<table align='center'>
-									<tr>
-										<th colspan=4 class='BorderInf'>
-									Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').".
-										</th>
-									</tr>
-									
-									<tr>
-										<th class='BorderInfDch'>
-											Fecha In
-										</th>
-										
-										<th class='BorderInfDch'>
-											Titulo
-										</th>
-										
-										<th class='BorderInfDch'>
-											Contenido
-										</th>
-																				
-										<th class='BorderInfDch'>
-											Imagen
-										</th>
-									</tr>");
+				} else { 
+					
+		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
+				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').".<br>");
 			
 			while($rowb = mysqli_fetch_assoc($qb)){
-				global $conte;
-				$conte = substr($rowb['conte'],0,56);
-				$conte = $conte." ...";		
-	print (	"<tr align='center'>
-									
-	<form name='ver' action='../Gcb.Artic/Articulo_Ver_02.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=520px,height=auto')\">
 
-	<input name='id' type='hidden' value='".$rowb['id']."' />
-	<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
-	<input name='refart' type='hidden' value='".$rowb['refart']."' />
-							
-						<td class='BorderInfDch'>
-	<input name='datein' type='hidden' value='".$rowb['datein']."' />".$rowb['datein']."
-						</td>
+				global $rectifurl;
+				$rectifurl = 1;
+				
+				require '../Gcb.Artic/Inc_Artic_While_Total.php';
 
-						<td class='BorderInfDch'>
-	<input name='tit' type='hidden' value='".$rowb['tit']."' />".$rowb['tit']."
-						</td>
-
-	<input name='titsub' type='hidden' value='".$rowb['titsub']."' />
-	<input name='timein' type='hidden' value='".$rowb['timein']."' />
-	<input name='datemod' type='hidden' value='".$rowb['datemod']."' />
-	<input name='timemod' type='hidden' value='".$rowb['timemod']."' />
-
-						<td class='BorderInfDch' width='200px'align='left'>
-	<input name='conte' type='hidden' value='".$rowb['conte']."' />".$conte."
-						</td>
-
-						<td class='BorderInf' width='50px'>
-	<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
-	<img src='../Gcb.Img.Art/".$rowb['myimg']."'  width='99%' height='auto' />
-						</td>
-												
-						</tr>
-						<tr>
-							<td colspan=2 class='BorderInf'>
-												&nbsp;
-							</td>
-							<td colspan=2 align='right' class='BorderInf'>
-									<input type='submit' value='VER DETALLES' />
-									<input type='hidden' name='oculto2' value=1 />
-							</td>
-										
-					</form>
-										
-				</tr>");
 					} // FIN WHILE
 
-				print("</table>");
+				print("</div>");
 			} 
 		} 
 

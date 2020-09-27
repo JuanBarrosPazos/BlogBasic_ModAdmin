@@ -341,7 +341,7 @@ function show_form($errors=''){
 	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	
 			
 	global $db;
-	$sqlb =  "SELECT * FROM `admin` ORDER BY `Apellidos` ASC ";
+	$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY `Apellidos` ASC ";
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
 			print("* ".mysqli_error($db)."</br>");
@@ -450,7 +450,7 @@ function ver_todo(){
 	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
 
 	/*
-	$sqlb =  "SELECT * FROM `admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){

@@ -94,12 +94,12 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 
 	global $db_name;
 
-	$sql = "INSERT INTO `$db_name`.`admin` (`ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Direccion`, `Tlf1`, `Tlf2`) VALUES ('$rf', '$_POST[Nivel]', '$_POST[Nombre]', '$_POST[Apellidos]', '$new_name', '$_POST[doc]', '$_POST[dni]', '$_POST[ldni]', '$_POST[Email]', '$_POST[Usuario]', '$_POST[Password]', '$_POST[Direccion]', '$_POST[Tlf1]', '$_POST[Tlf2]')";
+	$sql = "INSERT INTO `$db_name`.`gcb_admin` (`ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Direccion`, `Tlf1`, `Tlf2`) VALUES ('$rf', '$_POST[Nivel]', '$_POST[Nombre]', '$_POST[Apellidos]', '$new_name', '$_POST[doc]', '$_POST[dni]', '$_POST[ldni]', '$_POST[Email]', '$_POST[Usuario]', '$_POST[Password]', '$_POST[Direccion]', '$_POST[Tlf1]', '$_POST[Tlf2]')";
 		
 	if(mysqli_query($db, $sql)){
 		
 	/*	$fil = "%".$rf."%";
-		$pimg =  "SELECT * FROM `$db_name`.`admin` WHERE `ref` = '$rf' ";
+		$pimg =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `ref` = '$rf' ";
 		$qpimg = mysqli_query($db, $pimg);
 		$rowpimg = mysqli_fetch_assoc($qpimg);
 		$_SESSION['dudas'] = $rowpimg['myimg'];
@@ -341,7 +341,7 @@ function show_form($errors=''){
 
 	global $db;
 	global $db_name;
-	$nu =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]'";
+	$nu =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]'";
 		$user = mysqli_query($db, $nu);
 		//$ruser = mysqli_fetch_assoc($user);
 		$nuser = mysqli_num_rows($user);

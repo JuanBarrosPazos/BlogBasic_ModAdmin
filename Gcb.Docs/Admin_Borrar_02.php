@@ -214,7 +214,7 @@ function process_form(){
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 	// BORRAMOS EL USUARIO
-	$sql = "DELETE FROM `$db_name`.`admin` WHERE `admin`.`id` = '$_POST[id]' LIMIT 1 ";
+	$sql = "DELETE FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 	// SI SE CUMPLE EL QUERY
 	if(mysqli_query($db, $sql)){
 	

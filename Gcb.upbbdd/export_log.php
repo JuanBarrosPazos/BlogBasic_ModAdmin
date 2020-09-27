@@ -74,7 +74,7 @@ function show_form(){
 
 	global $db;
 	global $tablau;
-	$tablau = "admin";
+	$tablau = "gcb_admin";
 	$tablau = "`".$tablau."`";
 
 	$sqlu =  "SELECT * FROM $tablau ORDER BY `ref` ASC ";

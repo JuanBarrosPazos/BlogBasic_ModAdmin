@@ -41,7 +41,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 		global $db;
 		global $db_name;
 		
-		$admin =  "SELECT * FROM `$db_name`.`admin` WHERE `ref` = '$rf'";
+		$admin =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `ref` = '$rf'";
 		$qadmin = mysqli_query($db, $admin);
 		$cadmin = mysqli_num_rows($qadmin);
 		
@@ -90,7 +90,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	global $qdni;
 	global $db_name;
 
-	$sqldni =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`dni` = '$_POST[dni]'";
+	$sqldni =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`dni` = '$_POST[dni]'";
 	$qdni = mysqli_query($db, $sqldni);
 	$rowdni = mysqli_fetch_assoc($qdni);
 	
@@ -506,7 +506,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	global $qml;
 	global $db_name;
 
-	$sqlml =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`Email` = '$_POST[Email]'";
+	$sqlml =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`Email` = '$_POST[Email]'";
 	$qml = mysqli_query($db, $sqlml);
 	$rowml = mysqli_fetch_assoc($qml);
 
@@ -551,7 +551,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	global $qus;
 	global $db_name;
 
-	$sqlus =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`Usuario` = '$_POST[Usuario]'";
+	$sqlus =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`Usuario` = '$_POST[Usuario]'";
 	$qus = mysqli_query($db, $sqlus);
 	$rowus = mysqli_fetch_assoc($qus);
 
@@ -628,7 +628,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	global $db;
 	global $db_name;
 
-	$sqltlf1 =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`Tlf1` = '$_POST[Tlf1]' OR `admin`.`Tlf2` = '$_POST[Tlf1]' ";
+	$sqltlf1 =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`Tlf1` = '$_POST[Tlf1]' OR `gcb_admin`.`Tlf2` = '$_POST[Tlf1]' ";
 	$qtlf1 = mysqli_query($db, $sqltlf1);
 	$rowtlf1 = mysqli_fetch_assoc($qtlf1);
 	$countlf1 = mysqli_num_rows($qtlf1);
@@ -662,7 +662,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	
 	if(strlen(trim($_POST['Tlf2'])) > 0){
 
-			$sqltlf2 =  "SELECT * FROM `$db_name`.`admin` WHERE `admin`.`Tlf1` = '$_POST[Tlf2]' OR `admin`.`Tlf2` = '$_POST[Tlf2]'";
+			$sqltlf2 =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`Tlf1` = '$_POST[Tlf2]' OR `gcb_admin`.`Tlf2` = '$_POST[Tlf2]'";
 			$qtlf2 = mysqli_query($db, $sqltlf2);
 			$rowtlf2 = mysqli_fetch_assoc($qtlf2);
 			$countlf2 = mysqli_num_rows($qtlf2);

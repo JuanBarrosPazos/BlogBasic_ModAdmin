@@ -38,7 +38,7 @@
 
 // EXPORTA LA TABLA ADMIN DEL SISTEMA //
 
-if (trim($_POST['tabla']) == "admin" ){
+if (trim($_POST['tabla']) == "gcb_admin" ){
 $campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
 $texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
 $id = "`id`";

@@ -167,7 +167,7 @@
 	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	
 			
 	global $db;
-	$sqlb =  "SELECT * FROM `admin` ORDER BY `Apellidos` ASC ";
+	$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY `Apellidos` ASC ";
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
 			print("* ".mysqli_error($db)."</br>");

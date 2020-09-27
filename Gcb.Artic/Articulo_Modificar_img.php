@@ -98,7 +98,7 @@ function process_form(){
 
 	global $secc;	
 	$secc = $_SESSION['refuser'];
-	$sqlx =  "SELECT * FROM `admin` WHERE `ref` = '$_SESSION[refuser]'";
+	$sqlx =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_SESSION[refuser]'";
 	$q = mysqli_query($db, $sqlx);
 	$rowautor = mysqli_fetch_assoc($q);
 	global $_sec;

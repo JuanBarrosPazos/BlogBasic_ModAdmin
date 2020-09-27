@@ -61,14 +61,14 @@ function process_form(){
 	//$orden = $_POST['Orden'];
 		
 	if (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] == $_SESSION['mydni'])) { 
-	$sqlb =  "SELECT * FROM `admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape'  ORDER BY `Nombre` ASC  ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape'  ORDER BY `Nombre` ASC  ";
 	$qb = mysqli_query($db, $sqlb);
 				}
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] != $_SESSION['mydni'])){ 
-	$sqlb =  "SELECT * FROM `admin` WHERE  `dni` <> '$_SESSION[mydni]' AND  `Nombre` LIKE '$nom' OR `dni` <> '$_SESSION[mydni]' AND `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC  ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE  `dni` <> '$_SESSION[mydni]' AND  `Nombre` LIKE '$nom' OR `dni` <> '$_SESSION[mydni]' AND `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC  ";
 	$qb = mysqli_query($db, $sqlb);
 				}
-//	$sqlc =  "SELECT * FROM `admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC ";
+//	$sqlc =  "SELECT * FROM `gcb_admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC ";
 //	$qc = mysqli_query($db, $sqlc);
 	
 			////////////////////		**********  		////////////////////
@@ -123,18 +123,18 @@ function ver_todo(){
 
 	if (($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
 			$ref = $_SESSION['ref'];
-			$sqlb =  "SELECT * FROM `admin` WHERE `ref` = '$ref'";
+			$sqlb =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$ref'";
 			$qb = mysqli_query($db, $sqlb);
 		}
 	
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] == $_SESSION['mydni'])) { 
 				$orden = $_POST['Orden'];
-				$sqlb =  "SELECT * FROM `admin` ORDER BY $orden ";
+				$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY $orden ";
 				$qb = mysqli_query($db, $sqlb);
 			}
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] != $_SESSION['mydni'])){ 
 				$orden = $_POST['Orden'];
-				$sqlb =  "SELECT * FROM `admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
+				$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 				$qb = mysqli_query($db, $sqlb);
 			}
 

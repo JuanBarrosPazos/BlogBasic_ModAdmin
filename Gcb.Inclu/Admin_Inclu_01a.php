@@ -5,7 +5,8 @@ require 'misdatos.php';
 <!DOCTYPE html >
 	
 <head>
-	
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
 <meta http-equiv="content-type" content="text/html" charset="<?php print($meta_type_charset);?>" />
 <meta http-equiv="Content-Language" content="<?php print($meta_lang_cotent2);?>">
 <meta name="Language" content="<?php print($meta_lang_cotent);?>">

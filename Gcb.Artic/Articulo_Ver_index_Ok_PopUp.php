@@ -57,7 +57,7 @@ function ver_todo(){
 	$sqlb =  "SELECT * FROM `$db_name`.$vname ORDER BY `id` DESC $limit";
 
 	/*
-	$sqlb =  "SELECT * FROM `admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
 	$qb = mysqli_query($db, $sqlb);
 

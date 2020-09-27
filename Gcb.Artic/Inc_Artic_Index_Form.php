@@ -8,7 +8,7 @@
 			}
 
 	global $db;
-	$sqlra =  "SELECT * FROM `admin` WHERE `ref`='$rowb[refuser]' LIMIT 1 ";
+	$sqlra =  "SELECT * FROM `gcb_admin` WHERE `ref`='$rowb[refuser]' LIMIT 1 ";
 	$qra = mysqli_query($db, $sqlra);
 	
 	if(!$qra){ print("* ".mysqli_error($db)."</br>");

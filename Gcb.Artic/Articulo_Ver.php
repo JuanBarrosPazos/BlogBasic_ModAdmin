@@ -88,95 +88,18 @@ function process_form(){
 										</tr>
 									</table>");
 									
-				} else { 	print ("<table align='center'>
-									<tr>
-										<th colspan=6 class='BorderInf'>
-									Nº Articulos: ".mysqli_num_rows($qc).".
-										</th>
-									</tr>
-									
-									<tr>
-										<th class='BorderInfDch'>
-											Autor
-										</th>
+				} else { 
 
-										<th class='BorderInfDch'>
-											Referencia
-										</th>
-										
-										<th class='BorderInfDch'>
-											Titulo
-										</th>
-										
-										<th class='BorderInfDch'>
-											Fecha In
-										</th>
-										
-										<th class='BorderInfDch'>
-											Contenido
-										</th>
-																				
-										<th class='BorderInfDch'>
-											Imagen
-										</th>
-									</tr>");
-			
-			while($rowc = mysqli_fetch_assoc($qc)){
-				global $conte;
-				$conte = substr($rowc['conte'],0,56);
-				$conte = $conte." ...";		
-	print (	"<tr align='center'>
-									
-	<form name='ver' action='Articulo_Ver_02.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=520px, height=auto')\">
+		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
+					Nº Articulos: ".mysqli_num_rows($qc)." YEAR ".date('Y').".<br>");
+				
+			while($rowb = mysqli_fetch_assoc($qc)){
+				
+			require 'Inc_Artic_While_Total.php';
 
-	<input name='id' type='hidden' value='".$rowc['id']."' />
-							
-						<td class='BorderInfDch'>
-	<input name='refuser' type='hidden' value='".$rowc['refuser']."' />".$rowc['refuser']."
-						</td>
-							
-						<td class='BorderInfDch'>
-	<input name='refart' type='hidden' value='".$rowc['refart']."' />".$rowc['refart']."
-						</td>
-							
-						<td class='BorderInfDch'>
-	<input name='tit' type='hidden' value='".$rowc['tit']."' />".$rowc['tit']."
-						</td>
-	<input name='titsub' type='hidden' value='".$rowc['titsub']."' />
-						
-						<td class='BorderInfDch'>
-	<input name='datein' type='hidden' value='".$rowc['datein']."' />".$rowc['datein']."
-						</td>
-	<input name='timein' type='hidden' value='".$rowc['timein']."' />
+		}
 
-	<input name='datemod' type='hidden' value='".$rowc['datemod']."' />
-	<input name='timemod' type='hidden' value='".$rowc['timemod']."' />
-
-						<td class='BorderInfDch' width='240px'align='left'>
-	<input name='conte' type='hidden' value='".$rowc['conte']."' />".$conte."
-						</td>
-
-						<td class='BorderInf' width='50px'>
-	<input name='myimg' type='hidden' value='".$rowc['myimg']."' />
-	<img src='../Gcb.Img.Art/".$rowc['myimg']."'  width='99%' height='auto' />
-						</td>
-												
-						</tr>
-						<tr>
-							<td colspan=4 class='BorderInf'>
-												&nbsp;
-							</td>
-							<td colspan=2 align='right' class='BorderInf'>
-									<input type='submit' value='VER DETALLES' />
-									<input type='hidden' name='oculto2' value=1 />
-							</td>
-										
-					</form>
-										
-				</tr>");
-					}
-
-		print("</table>");
+		print("</div>");
 			
 						} 
 			} 
@@ -231,7 +154,7 @@ function ver_todo(){
 	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil'  ORDER BY $orden  ";
 
 	/*
-	$sqlb =  "SELECT * FROM `admin` WHERE `admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
+	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
@@ -249,95 +172,18 @@ function ver_todo(){
 										</tr>
 									</table>");
 									
-				} else { 	print ("<table align='center'>
-									<tr>
-										<th colspan=6 class='BorderInf'>
-									Nº Articulos: ".mysqli_num_rows($qb).".
-										</th>
-									</tr>
-									
-									<tr>
-										<th class='BorderInfDch'>
-											Autor
-										</th>
+				} else { 
 
-										<th class='BorderInfDch'>
-											Referencia
-										</th>
-										
-										<th class='BorderInfDch'>
-											Titulo
-										</th>
-										
-										<th class='BorderInfDch'>
-											Fecha In
-										</th>
-										
-										<th class='BorderInfDch'>
-											Contenido
-										</th>
-																				
-										<th class='BorderInfDch'>
-											Imagen
-										</th>
-									</tr>");
-			
+		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
+				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').".<br>");
+
 			while($rowb = mysqli_fetch_assoc($qb)){
-				global $conte;
-				$conte = substr($rowb['conte'],0,56);
-				$conte = $conte." ...";		
-	print (	"<tr align='center'>
-									
-	<form name='ver' action='Articulo_Ver_02.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=520px,height=auto')\">
+				
+				require 'Inc_Artic_While_Total.php';
 
-	<input name='id' type='hidden' value='".$rowb['id']."' />
-							
-						<td class='BorderInfDch'>
-	<input name='refuser' type='hidden' value='".$rowb['refuser']."' />".$rowb['refuser']."
-						</td>
-							
-						<td class='BorderInfDch'>
-	<input name='refart' type='hidden' value='".$rowb['refart']."' />".$rowb['refart']."
-						</td>
-							
-						<td class='BorderInfDch'>
-	<input name='tit' type='hidden' value='".$rowb['tit']."' />".$rowb['tit']."
-						</td>
-	<input name='titsub' type='hidden' value='".$rowb['titsub']."' />
-						
-						<td class='BorderInfDch'>
-	<input name='datein' type='hidden' value='".$rowb['datein']."' />".$rowb['datein']."
-						</td>
-	<input name='timein' type='hidden' value='".$rowb['timein']."' />
+			} // FIN WHILE
 
-	<input name='datemod' type='hidden' value='".$rowb['datemod']."' />
-	<input name='timemod' type='hidden' value='".$rowb['timemod']."' />
-
-						<td class='BorderInfDch' width='240px'align='left'>
-	<input name='conte' type='hidden' value='".$rowb['conte']."' />".$conte."
-						</td>
-
-						<td class='BorderInf' width='50px'>
-	<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
-	<img src='../Gcb.Img.Art/".$rowb['myimg']."'  width='99%' height='auto' />
-						</td>
-												
-						</tr>
-						<tr>
-							<td colspan=4 class='BorderInf'>
-												&nbsp;
-							</td>
-							<td colspan=2 align='right' class='BorderInf'>
-									<input type='submit' value='VER DETALLES' />
-									<input type='hidden' name='oculto2' value=1 />
-							</td>
-										
-					</form>
-										
-				</tr>");
-					}
-
-	print("</table>");
+	print("</div>");
 			
 						} 
 

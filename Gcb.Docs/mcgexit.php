@@ -46,7 +46,7 @@ function info(){
 	global $dateadout;
 	$dateadout = date('Y-m-d/H:i:s');
 
-	$sqladout = "UPDATE `$db_name`.`admin` SET `lastout` = '$dateadout' WHERE `admin`.`id` = '$userid' LIMIT 1 ";
+	$sqladout = "UPDATE `$db_name`.`gcb_admin` SET `lastout` = '$dateadout' WHERE `gcb_admin`.`id` = '$userid' LIMIT 1 ";
 		
 	if(mysqli_query($db, $sqladout)){
 				} else {

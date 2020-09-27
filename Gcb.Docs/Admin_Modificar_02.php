@@ -7,7 +7,7 @@ session_start();
 	require '../Gcb.Connet/conect.php';
 
 /* OJO SOLO PARA VALIDATE.PHP
-$sqld =  "SELECT * FROM `admin` WHERE `ref` = '$_SESSION[ref]' AND `Usuario` = '$_SESSION[Usuario]'";
+$sqld =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_SESSION[ref]' AND `Usuario` = '$_SESSION[Usuario]'";
 $qd = mysqli_query($db, $sqld);
 $rowd = mysqli_fetch_assoc($qd);
 */
@@ -206,7 +206,7 @@ function process_form(){
 
 	if ($_SESSION['Nivel'] == 'admin') {
 		
-	$sqlc = "UPDATE `$db_name`.`admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `doc` = '$_POST[doc]', `dni` = '$_POST[dni]', `ldni` = '$_POST[ldni]', `Email` = '$_POST[Email]', `Usuario` = '$_POST[Usuario]', `Password` = '$_POST[Password]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `admin`.`id` = '$_POST[id]' LIMIT 1 ";
+	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `doc` = '$_POST[doc]', `dni` = '$_POST[dni]', `ldni` = '$_POST[ldni]', `Email` = '$_POST[Email]', `Usuario` = '$_POST[Usuario]', `Password` = '$_POST[Password]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){ 	
 		
@@ -242,7 +242,7 @@ function process_form(){
 	
 	elseif (($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 		
-			$sqlc = "UPDATE `$db_name`.`admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `Email` = '$_POST[Email]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `admin`.`id` = '$_POST[id]' LIMIT 1 ";
+			$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `Email` = '$_POST[Email]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){ global $tabla;
 								  print( $tabla );

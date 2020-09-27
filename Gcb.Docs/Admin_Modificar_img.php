@@ -7,7 +7,7 @@ session_start();
 	require '../Gcb.Connet/conect.php';
 
 /*
-$sqld =  "SELECT * FROM `admin` WHERE `ref` = '$_SESSION[ref]' AND `Usuario` = '$_SESSION[Usuario]'";
+$sqld =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_SESSION[ref]' AND `Usuario` = '$_SESSION[Usuario]'";
 $qd = mysqli_query($db, $sqld);
 $rowd = mysqli_fetch_assoc($qd);
 */
@@ -146,7 +146,7 @@ function process_form(){
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 	
-	$sqlc = "UPDATE `$db_name`.`admin` SET `myimg` = '$new_name' WHERE `admin`.`id` = '$_POST[id]' LIMIT 1 ";
+	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `myimg` = '$new_name' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){
 			print( "<table align='center' style=\"margin-top:20px\">

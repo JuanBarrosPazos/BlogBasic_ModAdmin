@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-	require '../Gcb.Inclu/error_hidden.php';
+	//require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_01b.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -14,20 +14,20 @@ if ($_SESSION['Nivel'] == 'admin'){
 
 		master_index();
 
-		if(isset($_POST['delete'])){	delete();
-								show_form();
-							  	listfiles();
-							}
+		if(isset($_POST['delete'])){ delete();
+									 show_form();
+								 	 listfiles();
+										}
 	
-		elseif(isset($_POST['oculto2'])){	show_form();
-								  	ver_todo();
-							  		listfiles();
+		elseif(isset($_POST['oculto2'])){ show_form();
+								  		  ver_todo();
+							  			  listfiles();
 
-				} else {	show_form();
-							listfiles();
-						}
+				} else {  show_form();
+						  listfiles();
+							}
 								
-			} else { require '../Gcb.Inclu/table_permisos.php'; }
+			} else { require '../gcb.Inclu/table_permisos.php'; }
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -38,7 +38,7 @@ function show_form(){
 	global $db;
 	global $db_name;
 	
-	if((isset($_POST['oculto1']))||(isset($_POST['oculto2']))||(isset($_POST['delete']))){
+	if((isset($_POST['oculto2']))||(isset($_POST['delete']))){
 					$_SESSION['tablas'] = strtolower($_POST['tablas']);
 					$defaults = array ('Orden' => isset($ordenar),
 								   	   'tablas' => strtolower($_POST['tablas']),
@@ -47,66 +47,11 @@ function show_form(){
 										}
 	else{unset($_SESSION['tablas']);}
 	
-	$tablas = array (	'' => 'TABLAS',
-						'admin' => 'ADMIN SYS',
-						'gcb_' => 'ARTICULOS',);														
-		
-
-	if($_SESSION['Nivel'] == 'admin'){
-		
-	print("<table align='center' style='border:1; margin-top:2px' width='auto'>
-				
-		<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
-			
-			<input type='hidden' name='Orden' value='".@$defaults['Orden']."' />
-				<tr>
-					<td align='center'>
-							EXPORTE TABLAS BBDD.
-					</td>
-				</tr>		
-				<tr>
-					<td>
-					<div style='float:left; margin-right:6px''>
-						<input type='submit' value='SELECCIONE USUARIO / TABLA' />
-						<input type='hidden' name='oculto1' value=1 />
-					</div>
-					<div style='float:left'>
-
-			<select name='tablas'>");
-				foreach($tablas as $option => $label){
-							print ("<option value='".$option."' ");
-							if($option == $defaults['tablas']){print ("selected = 'selected'");}
-															print ("> $label </option>");
-														}	
-		print ("</select>
-					</div>
-				</td>
-			</tr>
-		</form>	
-			</table>"); 
-	}
-	
 			////////////////////		**********  		////////////////////
 
-	if ((isset($_POST['oculto1'])) || (isset($_POST['todo'])) ) {
-			
-	if ($_SESSION['tablas'] == '') { 
-			print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
-						<tr align='center'>
-							<td>
-								<font color='red'>
-							SELECCIONE UNA TABLA O NOMBRE DE USUARIO
-								</font>
-							</td>
-						</tr>
-					</table>");
-				}	
-					
-	if ($_SESSION['tablas'] != '') {
-
 	global $nom;
-	$nom = strtolower($_SESSION['tablas']);
-	if (strtolower($_SESSION['tablas']) == 'admin'){$nom = $nom;}
+	$nom = strtolower(@$_SESSION['tablas']);
+	if (strtolower(@$_SESSION['tablas']) == 'admin'){$nom = $nom;}
 	else{$nom = $nom."%";}
 	$nom = "LIKE '$nom'";
 	
@@ -121,18 +66,20 @@ function show_form(){
 	} else {print( "<table align='center'>
 						<tr>
 							<th colspan=2 class='BorderInf'>
-								NUMERO DE TABLAS ".mysqli_num_rows($respuesta).".
+								NUMERO DE TABLAS ".(mysqli_num_rows($respuesta)-2).".
 							</th>
 						</tr>");
+
 			while ($fila = mysqli_fetch_row($respuesta)) {
-				if($fila[0]){
-				print(	"<tr>
+
+				if(($fila[0] != "gcb_visitasadmin")&&($fila[0] != "gcb_ipcontrol")){
+					print(	"<tr>
 							<td class='BorderInfDch'>
 											".$fila[0]."
 							</td>
 							<td class='BorderInf'>
 				<form name='exporta' action='$_SERVER[PHP_SELF]' method='POST'>
-					<input type='hidden' name='tablas' value='".$defaults['tablas']."' />
+					<input type='hidden' name='tablas' value='".@$defaults['tablas']."' />
 					<input name='tabla' type='hidden' value='".$fila[0]."' />
 					<input type='submit' value='EXPORTA TABLA ".strtoupper($fila[0])."' />
 					<input type='hidden' name='oculto2' value=1 />
@@ -140,11 +87,10 @@ function show_form(){
 							</td>
 						<tr>");
 				}
-					}
+					}	// FIN WHILE
+
 			print("</table>");		
 				}
-			}
-		}
 	
 	}	
 
@@ -181,7 +127,7 @@ function listfiles(){
 			print("<tr>
 			<td class='BorderInfDch'>
 			<form name='delete' action='$_SERVER[PHP_SELF]' method='post'>
-			<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
+			<input type='hidden' name='tablas' value='".@$_SESSION['tablas']."' />
 			<input type='hidden' name='ruta' value='".$ruta.$archivo."'>
 			<input type='submit' value='ELIMINAR' >
 			<input type='hidden' name='delete' value='1' >
@@ -189,7 +135,7 @@ function listfiles(){
 			</td>
 			<td class='BorderInfDch'>
 			<form name='archivos' action='".$ruta.$archivo."' target='_blank' method='post'>
-			<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
+			<input type='hidden' name='tablas' value='".@$_SESSION['tablas']."' />
 			<input type='submit' value='DESCARGAR'>
 			</form>
 			</td>
@@ -210,15 +156,15 @@ function delete(){unlink($_POST['ruta']);}
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu/Master_Index_bbdd.php';
-		
-				} /* Fin funcion master_index.*/
+		require '../Gcb.Inclu/Master_Index_bbdd.php';
+
+		}
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../gcb.Inclu/Admin_Inclu_02.php';
 		
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

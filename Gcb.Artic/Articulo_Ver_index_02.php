@@ -20,7 +20,7 @@ function process_form(){
 	global $db;
 	global $db_name;
 
-	$sqlx =  "SELECT * FROM `admin` WHERE `ref` = '$_POST[refuser]'";
+	$sqlx =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_POST[refuser]'";
 	$q = mysqli_query($db, $sqlx);
 	$rowautor = mysqli_fetch_assoc($q);
 	global $_sec;
