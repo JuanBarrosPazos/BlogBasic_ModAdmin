@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-  	//require '../Gch.Inclu/error_hidden.php';
-	require '../Gch.Inclu/Admin_Inclu_popup.php';
+  	//require '../Gcb.Inclu/error_hidden.php';
+	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 
-	require '../Gch.Connet/conection.php';
-	require '../Gch.Connet/conect.php';
+	require '../Gcb.Connet/conection.php';
+	require '../Gcb.Connet/conect.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -18,7 +18,7 @@ if (($_SESSION['Nivel'] == 'admin')||($_SESSION['Nivel'] == 'plus')){
 	elseif(isset($_POST['oculto'])){ process_form(); } 
 	else { show_form(); }
 								
-} else { require '../Gch.Inclu/table_permisos.php'; }
+} else { require '../Gcb.Inclu/table_permisos.php'; }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ function process_form(){
 	global $db_name;
 
 	global $tablename;
-	$tablename = "gch_art";
+	$tablename = "gcb_art";
 	$tablename = "`".$tablename."`";
 
 	$sqla = "UPDATE `$db_name`.$tablename SET `myvdo` = '' WHERE $tablename.`myvdo` = '$_SESSION[myvdo]' LIMIT 1 ";
@@ -36,7 +36,7 @@ function process_form(){
 	if(mysqli_query($db, $sqla)){
 
 		global $rutav;
-		$rutav = "../Gch.Vdo.Art/".$_SESSION['myvdo'];
+		$rutav = "../Gcb.Vdo.Art/".$_SESSION['myvdo'];
 		if(file_exists($rutav)){unlink($rutav);}
 		else {}
 
@@ -90,7 +90,6 @@ function process_form(){
 			</script>";
 	print ($redir);
 
-			
 	} 	else {print("* MODIFIQUE LA ENTRADA L.33: ".mysqli_error($db));
 						show_form ();
 					}
@@ -111,7 +110,7 @@ function show_form(){
 	global $db;
 	global $db_name;
 
-	$sqlx =  "SELECT * FROM `gch_admin` WHERE `ref` = '$_POST[refuser]'";
+	$sqlx =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_POST[refuser]'";
 	$q = mysqli_query($db, $sqlx);
 	$rowautor = mysqli_fetch_assoc($q);
 	if($rowautor['Nombre'] == ''){
@@ -132,7 +131,7 @@ function show_form(){
 			<tr>	
 				<td colspan=2 style=\"text-align:center;\">
 					<video controls width='98%' height='auto'>
-						<source src='../Gch.Vdo.Art/".$_SESSION['myvdo']."' />
+						<source src='../Gcb.Vdo.Art/".$_SESSION['myvdo']."' />
 					</video>					
 				</td>
 			</tr>
@@ -200,7 +199,7 @@ function info(){
 	$ActionTime = date('H:i:s');
 	
 	global $dir;
-	$dir = "../Gch.Log";
+	$dir = "../Gcb.Log";
 	
 	global $text;
 	$text = PHP_EOL."- ADMIN VER DETALLES ".$ActionTime.PHP_EOL."\t Nombre: ".$nombre." ".$apellido;
@@ -217,7 +216,7 @@ function info(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Gch.Inclu/Admin_Inclu_02.php';
+	require '../Gcb.Inclu/Admin_Inclu_02.php';
 		
 /* Creado por Juan Barros Pazos 2020 */
 

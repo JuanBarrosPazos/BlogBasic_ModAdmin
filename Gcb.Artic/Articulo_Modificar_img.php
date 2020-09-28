@@ -24,11 +24,25 @@ if (($_SESSION['Nivel'] == 'admin')||($_SESSION['Nivel'] == 'user') || ($_SESSIO
 											} else {
 												process_form();
 												//info_02();
+					 $ctemp = "../Gcb.Temp";
+					 if(file_exists($ctemp)){$dir1 = $ctemp."/";
+											 $handle1 = opendir($dir1);
+											 while ($file1 = readdir($handle1))
+													 {if (is_file($dir1.$file1))
+														 {unlink($dir1.$file1);}
+														 }	
+												 } else {}
+					global $redir;
+					$redir = "<script type='text/javascript'>
+								function redir(){
+									window.close();
+										}
+								setTimeout('redir()',8000);
+							</script>";
+					print ($redir);
 												}
 								
-								} else {
-											show_form();
-									}
+	} else { show_form(); }
 
 } else { require '../Gcb.Inclu/table_permisos.php'; }
 
@@ -38,15 +52,19 @@ function validate_form(){
 	
 	$errors = array();
 
-	$limite = 500 * 1024;
+	$limite = 1400 * 1024;
 	
-	$ext_permitidas = array('jpg','JPG','gif','GIF','png','PNG','bmp','BMP');
-	$extension = substr($_FILES['myimg']['name'],-3);
+
+	$ext_permitidas = array('.jpg','.JPG','.gif','.GIF','.png','.PNG', 'jpeg', 'JPEG');
+	$extension = substr($_FILES['myimg']['name'],-4);
 	// print($extension);
-	// $extension = end(explode('.', $_FILES['myimg']['name']) );
 	$ext_correcta = in_array($extension, $ext_permitidas);
 
-	// $tipo_correcto = preg_match('/^image\/(gif|png|jpg|bmp)$/', $_FILES['myimg']['type']);
+	global $extension1;
+	$extension1 = strtolower($extension);
+	$extension1 = str_replace(".","",$extension1);
+	global $ctemp;
+	$ctemp = "../Gcb.Temp";
 
 		if($_FILES['myimg']['size'] == 0){
 			$errors [] = "Ha de seleccionar una fotograf&iacute;a.";
@@ -68,22 +86,32 @@ function validate_form(){
 	*/
 		elseif ($_FILES['myimg']['size'] > $limite){
 		$tamanho = $_FILES['myimg']['size'] / 1024;
-		$errors [] = "El archivo".$_FILES['myimg']['name']." es mayor de 500 KBytes. ".$tamanho." KB";
+		$errors [] = "El archivo".$_FILES['myimg']['name']." es mayor de 140 KBytes. ".$tamanho." KB";
 		global $img2;
 		$img2 = 'untitled.png';
 			}
-		
+
+		elseif ($_FILES['myimg']['size'] <= $limite){
+			copy($_FILES['myimg']['tmp_name'], $ctemp."/ini1v.".$extension1); 
+			global $ancho;
+			global $alto;
+			list($ancho, $alto, $tipo, $atributos) = getimagesize($ctemp."/ini1v.".$extension1);
+
+			if($ancho < 400){
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ANCHURA MENOR DE 400 ".$ancho;
+			}
+			elseif(($ancho > 400)&&($alto < 400)){
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ALTURA MENOR DE 400 ".$alto;
+			}
+		}
+
 			elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_PARTIAL){
-				$errors [] = "La carga del archivo se ha interrumpido.";
-				global $img2;
-				$img2 = 'untitled.png';
+				$errors [] = "LA CARGA DEL ARCHIVO SE HA INTERRUMPIDO";
 				}
 				
 				elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_NO_FILE){
-					$errors [] = "Es archivo no se ha cargado.";
-					global $img2;
-					$img2 = 'untitled.png';
-					}
+					$errors [] = "EL ARCHIVO NO SE HA CARGADO";
+                    }
 					
 		return $errors;
 
@@ -105,40 +133,18 @@ function process_form(){
 	$_sec = $rowautor['Nombre']." ".$rowautor['Apellidos'];
 	//echo $rowautor['Nombre']." ".$rowautor['Apellidos']."</br>";
 
-	$_SESSION['dt'] = date('is');
-	$extension = substr($_FILES['myimg']['name'],-3);
-	// print($extension);
-	global $new_name;
-	$new_name = $_SESSION['srefart']."_".$_SESSION['dt'].".".$extension;
-
-	global $safe_filename;
-	$safe_filename = trim(str_replace('/', '', $_FILES['myimg']['name']));
-	$safe_filename = trim(str_replace('..', '', $safe_filename));
-
-	$nombre = $_FILES['myimg']['name'];
-	$nombre_tmp = $_FILES['myimg']['tmp_name'];
-	$tipo = $_FILES['myimg']['type'];
-	$tamano = $_FILES['myimg']['size'];
-		  
-	global $destination_file;
-	$destination_file = '../Gcb.Img.Art/'.$safe_filename;
-	
-
-	if( file_exists( '../Gcb.Img.Art/'.$safe_filename) ){
-		unlink('../Gcb.Img.Art/'.$safe_filename);
-			}
-			
-	elseif (move_uploaded_file($_FILES['myimg']['tmp_name'], $destination_file)){
-		
-		unlink('../Gcb.Img.Art/'.$_SESSION['smyimg']);
-		
-		// Renombrar el archivo:
-		$extension = substr($_FILES['myimg']['name'],-3);
+		// RENOMBRAR ARCHIVO
+		global $extension;
+		$extension = substr($_FILES['myimg']['name'],-4);
+		$extension = strtolower($extension);
+		global $extension;
+		$extension = str_replace(".","",$extension);
+		// print($extension);
+		date('H:i:s');
+		date('Y_m_d');
+		$dt = date('is');
 		global $new_name;
-		global $rename_filename;
-		$rename_filename = "../Gcb.Img.Art/".$new_name;	
-		rename($destination_file, $rename_filename);
-		$_SESSION['new_name'] = $new_name;
+		$new_name = $_SESSION['srefnews']."_".$dt.".".$extension;
 
 	global $db;
 	global $db_name;
@@ -152,7 +158,13 @@ function process_form(){
 	$sqlc = "UPDATE `$db_name`.$tablename SET `myimg` = '$new_name' WHERE $tablename.`refart` = '$_SESSION[srefart]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){
+		
 			global $new_name;
+			global $redir;
+			$redir = "";
+	
+			require 'Inc_Modificar_Img.php';
+	
 			print("</br>
 					MODIFICADO CORRECTAMENT");
 	print( "<table align='center' style=\"margin-top:20px; text-align:left; width:96%; max-width:500px\" >
@@ -255,15 +267,6 @@ function process_form(){
 						show_form ();
 						
 							} // FIN ELSE SI NO SE CUMPLE EL QUERY
-
-					// print("El archivo se ha guardado en: ".$destination_file);
-
-
-			} 
-			
-			else {
-					print("No se ha podido guardar el archivo en el direcctorio Gcb.Img.Art/");
-			}
 
 	}
 

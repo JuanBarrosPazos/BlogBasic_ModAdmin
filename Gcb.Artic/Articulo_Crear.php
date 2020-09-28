@@ -11,19 +11,17 @@ session_start();
 
 if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'userpro')){
 
-					master_index();
+	master_index();
 
-						if(isset($_POST['oculto'])){
+	if(isset($_POST['oculto'])){
 							
-								if($form_errors = validate_form()){
-									show_form($form_errors);
-										} else {
-											process_form();
-											//accion_Log();
-											}
-							} else {
-										show_form();
-								}
+			if($form_errors = validate_form()){
+						show_form($form_errors);
+			} else { process_form();
+					 //accion_Log();
+						}
+	} else { show_form(); }
+
 } else { require '../Gcb.Inclu/table_permisos.php'; } 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,57 +48,6 @@ function validate_form(){
 				}
 		}
 
-	if($_FILES['myimg']['size'] == 0){
-		$errors [] = "Seleccione una fotograf&iacute;a.";
-		global $img2;
-		$img2 = 'untitled.png';
-		}
-	
-	else{
-			
-	$limite = 500 * 1024;
-	
-	$ext_permitidas = array('jpg','JPG','gif','GIF','png','PNG','bmp','BMP');
-	$extension = substr($_FILES['myimg']['name'],-3);
-	// print($extension);
-	// $extension = end(explode('.', $_FILES['myimg']['name']) );
-	$ext_correcta = in_array($extension, $ext_permitidas);
-
-	// $tipo_correcto = preg_match('/^image\/(gif|png|jpg|bmp)$/', $_FILES['myimg']['type']);
-
-		 
-		if(!$ext_correcta){
-			$errors [] = "La extension no esta admitida: ".$_FILES['myimg']['name'];
-			global $img2;
-			$img2 = 'untitled.png';
-			}
-	/*
-		elseif(!$tipo_correcto){
-			$errors [] = "Este tipo de archivo no esta admitido: ".$_FILES['myimg']['name'];
-			global $img2;
-			$img2 = 'untitled.png';
-			}
-	*/
-		elseif ($_FILES['myimg']['size'] > $limite){
-		$tamanho = $_FILES['myimg']['size'] / 1024;
-		$errors [] = "El archivo".$_FILES['myimg']['name']." es mayor de 500 KBytes. ".$tamanho." KB";
-		global $img2;
-		$img2 = 'untitled.png';
-			}
-		
-			elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_PARTIAL){
-				$errors [] = "La carga del archivo se ha interrumpido.";
-				global $img2;
-				$img2 = 'untitled.png';
-				}
-				
-				elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_NO_FILE){
-					$errors [] = "Es archivo no se ha cargado.";
-					global $img2;
-					$img2 = 'untitled.png';
-					}
-		}
-	
 		///////////////////////////////////////////////////////////////////////////////////
 
 	if(strlen(trim($_POST['titulo'])) == 0){
@@ -176,6 +123,80 @@ function validate_form(){
 			$errors [] = "ARTICULO  <font color='#FF0000'>Caracteres no permitidos. { } [ ] $ < >  # ...</font>";
 			}
 
+
+		///////////////////////////////////////////////////////////////////////////////////
+
+		if($_FILES['myimg']['size'] == 0){
+			$errors [] = "Seleccione una fotograf&iacute;a.";
+			global $img2;
+			$img2 = 'untitled.png';
+		}
+
+		else{
+			
+		$limite = 1400 * 1024;
+		
+		$ext_permitidas = array('.jpg','.JPG','.gif','.GIF','.png','.PNG', 'jpeg', 'JPEG');
+		$extension = substr($_FILES['myimg']['name'],-4);
+		// print($extension);
+		$ext_correcta = in_array($extension, $ext_permitidas);
+
+		global $extension1;
+		$extension1 = strtolower($extension);
+		$extension1 = str_replace(".","",$extension1);
+		global $ctemp;
+		$ctemp = "../Gcb.Temp";
+
+		if(!$ext_correcta){
+			$errors [] = "La extension no esta admitida: ".$_FILES['myimg']['name'];
+			global $img2;
+			$img2 = 'untitled.png';
+			}
+	/*
+		elseif(!$tipo_correcto){
+			$errors [] = "Este tipo de archivo no esta admitido: ".$_FILES['myimg']['name'];
+			global $img2;
+			$img2 = 'untitled.png';
+			}
+	*/
+		elseif ($_FILES['myimg']['size'] > $limite){
+		$tamanho = $_FILES['myimg']['size'] / 1024;
+		$errors [] = "El archivo".$_FILES['myimg']['name']." es mayor de 140 KBytes. ".$tamanho." KB";
+		global $img2;
+		$img2 = 'untitled.png';
+			}
+
+		elseif ($_FILES['myimg']['size'] <= $limite){
+			copy($_FILES['myimg']['tmp_name'], $ctemp."/ini1v.".$extension1); 
+			global $ancho;
+			global $alto;
+			list($ancho, $alto, $tipo, $atributos) = getimagesize($ctemp."/ini1v.".$extension1);
+
+			if($ancho < 400){
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ANCHURA MENOR DE 400 * IMG = ".$ancho;
+			}
+			/*
+			elseif(($ancho > 900)&&($alto < 400)){
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ALTURA MENOR DE 400 ".$alto;
+			}
+			*/
+			elseif(($ancho >= 400)&&($alto < 400)){
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ALTURA MENOR DE 400 * IMG = ".$alto;
+			}
+		}
+			elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_PARTIAL){
+				$errors [] = "LA CARGA DEL ARCHIVO SE HA INTERRUMPIDO";
+				global $img2;
+				$img2 = 'untitled.png';
+				}
+				
+				elseif ($_FILES['myimg']['error'] == UPLOAD_ERR_NO_FILE){
+					$errors [] = "EL ARCHIVO NO SE HA CARGADO";
+					global $img2;
+					$img2 = 'untitled.png';
+					}
+				}
+
 	return $errors;
 
 		} 
@@ -223,7 +244,16 @@ function process_form(){
 			global $carpetaimg;
 			global $new_name;
 
-			print("<table align='center' style='margin-top:10px'>
+			global $ruta;
+			$ruta = "../Gcb.Img.Art/";
+			$_SESSION['ruta'] = $ruta;
+
+			global $redir;
+			$redir = "";
+	
+			require 'Inc_Modificar_Img.php';
+
+	print("<table align='center' style='margin-top:10px'>
 				<tr>
 					<th colspan=3 class='BorderInf'>
 						CREADO POR ".strtoupper($_sec)."
@@ -231,62 +261,38 @@ function process_form(){
 				</tr>
 												
 				<tr>
-					<td width=120px>
-						REFERENCIA
-					</td>
-					<td width=100px>"
-						.$_POST['refart'].
-					"</td>
+					<td width=120px>REFERENCIA</td>
+					<td width=100px>".$_POST['refart']."</td>
 					<td rowspan='4' align='center' width='120px'>
 				<img src='".$carpetaimg."/".$new_name."' height='120px' width='90px' />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>
-						TITULO
-					</td>
-					<td>"
-						.$_POST['titulo'].
-					"</td>
+					<td>TITULO</td>
+					<td>".$_POST['titulo']."</td>
 				</tr>				
 				
 				<tr>
-					<td>	
-						SUBTITULO
-					</td>
-					<td>"
-						.$_POST['subtitul'].
-					"</td>
+					<td>SUBTITULO</td>
+					<td>".$_POST['subtitul']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						DATE IN
-					</td>
-					<td>"
-						.$_POST['datein'].
-					"</td>
+					<td>DATE IN</td>
+					<td>".$_POST['datein']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						TIME IN
-					</td>
-					<td>"
-						.$_POST['timein'].
-					"</td>
+					<td>TIME IN</td>
+					<td>".$_POST['timein']."</td>
 				</tr>
 				
 				<tr>
-					<td colspan=3  align='center'>
-						ARTICULO
-					</td>
+					<td colspan=3  align='center'>ARTICULO</td>
 				</tr>
 				<tr>
-					<td colspan=3>"
-						.$_POST['coment'].
-					"</td>
+					<td colspan=3>".$_POST['coment']."</td>
 				</tr>
 				<tr>
 					<th colspan=3 class='BorderSup'>
@@ -295,48 +301,6 @@ function process_form(){
 				</tr>
 			</table>");
 			
-		/************* CREAMOS LAS IMAGENES DEL ARTICULO EN EL DIRECTORIO Gcb.Img.Art ***************/
-
-	if($_FILES['myimg']['size'] == 0){
-				global $carpetaimg;
-				global $new_name;
-				copy("../Gcb.Img.Sys/untitled.png", $carpetaimg."/".$new_name);
-		} 	
-		else{	$safe_filename = trim(str_replace('/', '', $_FILES['myimg']['name']));
-				$safe_filename = trim(str_replace('..', '', $safe_filename));
-
-				$nombre = $_FILES['myimg']['name'];
-				$nombre_tmp = $_FILES['myimg']['tmp_name'];
-				$tipo = $_FILES['myimg']['type'];
-				$tamano = $_FILES['myimg']['size'];
-			
-				$destination_file = $carpetaimg.'/'.$safe_filename;
-
-	 if( file_exists( $carpetaimg.'/'.$nombre) ){
-			unlink($carpetaimg."/".$nombre);
-		//	print("* El archivo ".$nombre." ya existe, seleccione otra imagen.</br>");
-												}
-			
-	elseif (move_uploaded_file($_FILES['myimg']['tmp_name'], $destination_file)){
-			
-			// Renombrar el archivo:
-			$extension = substr($_FILES['myimg']['name'],-3);
-			// print($extension);
-			// $extension = end(explode('.', $_FILES['myimg']['name']) );
-			global $carpetaimg;
-			global $new_name;
-			$new_name = $_POST['refart'].".".$extension;
-			$rename_filename = $carpetaimg."/".$new_name;								
-			rename($destination_file, $rename_filename);
-
-			// print("El archivo se ha guardado en: ".$destination_file);
-	
-			}
-			
-		else {print("NO SE HA PODIDO GUARDAR EN ".$destination_file);}
-
-		}
-
 	} 	else {print("* MODIFIQUE LA ENTRADA L.207: ".mysqli_error($db));
 						show_form ();
 						//global $texerror;
@@ -349,6 +313,17 @@ function process_form(){
 
 function show_form($errors=''){
 	
+	unset($_SESSION['myimg']);
+	
+	$ctemp = "../Gcb.Temp";
+	if(file_exists($ctemp)){$dir1 = $ctemp."/";
+							$handle1 = opendir($dir1);
+							while ($file1 = readdir($handle1))
+									{if (is_file($dir1.$file1))
+										{unlink($dir1.$file1);}
+										}	
+								} else {}
+
 	if(isset($_POST['oculto1'])){
 		$defaults = $_POST;
 		$_SESSION['refart'] = date('Y.m.d.H.i.s');
