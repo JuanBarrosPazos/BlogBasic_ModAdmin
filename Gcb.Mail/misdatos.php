@@ -122,5 +122,6 @@ $_SESSION['admin_url'] = $admin_url;
 						/////////////////////////////
 
 
-/* Creado por Juan Barros Pazos 2019 */
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

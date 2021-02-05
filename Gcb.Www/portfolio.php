@@ -5,7 +5,11 @@
 
   <title>Juan Barros Pazos - Portfolio</title>
 
-  <?php require 'Inc_Header_Nav_Head.php'; ?>
+  <?php require 'Inc_Header_Nav_Head.php'; 
+  
+  /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
+  ?>
 
   <!-- Portfolio Grid -->
   <section class="bg-light page-section" id="portfolio">

@@ -5,7 +5,11 @@
 
   <title>Juan Barros Pazos - Team</title>
 
-  <?php require 'Inc_Header_Nav_Head.php'; ?>
+  <?php require 'Inc_Header_Nav_Head.php'; 
+  
+  /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
+  ?>
 
   <!-- Team -->
   <section class="bg-light page-section" id="team">

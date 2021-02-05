@@ -20,3 +20,5 @@ php_value date.timezone "Europe/Madrid"
 php_value upload_max_filesize 70M
 php_value post_max_size 70M
 php_value max_execution_time 180
+
+/* Creado por Juan Manuel Barros Pazos 2020/21 */

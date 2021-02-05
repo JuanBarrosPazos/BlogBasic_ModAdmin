@@ -550,6 +550,6 @@ $text = PHP_EOL."- USER BORRAR SELECCIONADO ".$ActionTime.PHP_EOL."\t ID:".$_POS
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-/* Creado por Juan Barros Pazos 2020 */
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
 
 ?>

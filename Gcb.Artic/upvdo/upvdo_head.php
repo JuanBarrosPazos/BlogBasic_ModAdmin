@@ -1,5 +1,8 @@
 <?php
 require '../../Gcb.Inclu/misdatos.php';
+
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>
 
 <!DOCTYPE html>

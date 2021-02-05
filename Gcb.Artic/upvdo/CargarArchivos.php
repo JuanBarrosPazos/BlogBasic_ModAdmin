@@ -185,4 +185,6 @@ if (isset($_POST['btnSubmit'])) {
 
 } // FIN isset($_POST['btnSubmit']
 
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

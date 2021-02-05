@@ -24,4 +24,6 @@
 				$centra = "style=\"margin-left: -".$mrgleft."px;\" ";
 		}
 
+		/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

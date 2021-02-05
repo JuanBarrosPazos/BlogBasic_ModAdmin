@@ -10,4 +10,6 @@ elseif (!preg_match('/^[a-z A-Z 0-9 \s]*$/',$_POST['titulo'])){
 $errors [] = "<font color='#FF0000'>¡¡ CARÁCTERES NO VALIDOS !!</font>";
 }
 
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

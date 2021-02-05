@@ -105,4 +105,6 @@ print(" <table align='center' style=\"border:0px;margin-top:4px\">
         </table>");
                 }	// CONDICIONAL NIVEL ADMIN
 
+    /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

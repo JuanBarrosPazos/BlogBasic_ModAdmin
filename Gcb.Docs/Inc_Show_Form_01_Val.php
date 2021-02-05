@@ -14,4 +14,6 @@ elseif (!preg_match('/^[a-z A-Z \s]*$/',$_POST['Apellidos'])){
     $errors [] = "<font color='#FF0000'>¡¡ CARÁCTERES NO VALIDOS !!</font>";
     }
 
+    /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

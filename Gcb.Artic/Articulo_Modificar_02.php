@@ -554,4 +554,6 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 	require '../Gcb.Inclu/Admin_Inclu_02.php';
 
+	/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

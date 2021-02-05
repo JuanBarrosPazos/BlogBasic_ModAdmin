@@ -30,5 +30,7 @@ print ("
  </a>
     </header>
     ");
-    
+
+	/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

@@ -92,4 +92,6 @@ function show_form(){
 
 	require 'upvdo_footer.php';
 
+	/* Creado por Juan Manuel Barros Pazos 2020/21 */
+
 ?>

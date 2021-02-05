@@ -5,7 +5,11 @@
 
   <title>Juan Barros Pazos - Services</title>
 
-  <?php require 'Inc_Header_Nav_Head.php'; ?>
+  <?php require 'Inc_Header_Nav_Head.php'; 
+  
+  /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
+  ?>
 
   <!-- Services -->
   <section class="page-section" id="services">

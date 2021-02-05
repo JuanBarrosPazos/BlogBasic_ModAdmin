@@ -5,7 +5,11 @@
 
   <title>Juan Barros Pazos - About</title>
 
-  <?php require 'Inc_Header_Nav_Head.php'; ?>
+  <?php require 'Inc_Header_Nav_Head.php'; 
+  
+  /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
+  ?>
 
   <!-- About -->
   <section class="page-section" id="about">

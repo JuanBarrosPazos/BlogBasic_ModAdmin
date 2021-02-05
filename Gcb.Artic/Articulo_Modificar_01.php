@@ -437,4 +437,4 @@ function info(){
 
 	require '../Gcb.Inclu/Admin_Inclu_02.php';
 		
-/* Creado por Juan Barros Pazos 2019 */
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
