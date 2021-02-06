@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  /* Creado por Juan Manuel Barros Pazos 2020/21 */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

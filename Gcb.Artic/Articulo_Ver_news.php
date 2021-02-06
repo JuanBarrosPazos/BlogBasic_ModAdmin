@@ -1,5 +1,5 @@
 <?php
-@session_start();
+	//@session_start();
 
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -76,24 +76,42 @@ function process_form(){
 	global $orden;
 	$orden = "`id` DESC";
 
-	global $dyt1;
-	global $dm1;
 	//global $dd1;
 	
-	if (@$_POST['dy'] == ''){ $dy1 = date('Y');
-							 $dyt1 = $dy1;} 
-							 				else {	$dy1 = "20".$_SESSION['dy'];
-													$dyt1 = $dy1;
+	if ((isset($_POST["page"]))||(isset($_GET["page"]))){
+		global $dyt1;
+		global $dy1;
+		$dy1 = "20".$_SESSION['dy'];
+		$dyt1 = "20".$_SESSION['dy'];
+	}
+	elseif ((!isset($_POST['dy']))||($_POST['dy'] == '')){	
+								global $dyt1;
+								global $dy1;
+								$dy1 = date('Y');
+								$dyt1 = date('Y');
+								$_SESSION['dy'] = date('y');
+											} 
+							 				else {	global $dyt1;
+													global $dy1;
+													$dy1 = "20".$_SESSION['dy'];
+													$dyt1 = "20".$_SESSION['dy'];
 													}
-	if (@$_POST['dm'] == ''){ $dm1 = '';} 
-							 				else {	$dm1 = "-".$_SESSION['dm'];
+	
+	if ((isset($_POST["page"]))||(isset($_GET["page"]))){
+		global $dm1;
+		$dm1 = "-".$_SESSION['dm'];
+	}
+	elseif (!isset($_POST['dm'])){ 	global $dm1;
+									$dm1 = '';} 
+											 else {	global $dm1;
+													$dm1 = "-".$_SESSION['dm'];
 													}
 	global $fil;
 	$fil = $dy1.$dm1."%";
 	//$fil = $dy1."-%".$dm1."%";
 	global $vname;
 	$vname = "gcb_".$dyt1."_articulos";
-	$vname = "`".$vname."`";
+	//$vname = "`".$vname."`";
 
 	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
 	$q = mysqli_query($db, $result);
@@ -144,7 +162,7 @@ function process_form(){
 										<tr>
 											<td aling='center'>
 												<font color='#FF0000'>
-													NO HAY DATOS
+													NO HAY DATOS 20".$_SESSION['dy']."
 												</font>
 											</td>
 										</tr>
@@ -404,7 +422,11 @@ function ver_todo(){
 	global $db_name;
 
 	global $dyt1;
-	$dyt1 = date('Y');
+	$dyt1 = date('Y')/*-1*/;
+	if(!isset($_SESSION['dy'])){$_SESSION['dy'] = date('y')/*-1*/;
+								$_SESSION['dm'] = '';
+	} else { }
+
 	global $fil;
 	$fil = $dyt1."-%";
 	//$fil = $dy1.$dm1.$dd1."%";
@@ -463,7 +485,7 @@ function ver_todo(){
 										<tr>
 											<td aling='center'>
 												<font color='#FF0000'>
-													NO HAY DATOS
+													NO HAY DATOS 20".$_SESSION['dy']."
 												</font>
 											</td>
 										</tr>

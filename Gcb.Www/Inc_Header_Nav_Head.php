@@ -5,6 +5,8 @@
 
   <link href="../Gcb.Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
 
+  <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css">
+
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,7 +23,10 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="../index.php">Juan Barros Pazos</a>
+      <a class="navbar-brand js-scroll-trigger" href="../index.php">
+        <!-- Juan Barros Pazos -->
+        <img src="../Gcb.Img.Sys/logowm.png" class="imglogo" />
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -58,7 +63,7 @@
         <!--
         <div class="intro-lead-in">Welcome To Juan Barros Pazos</div>
         -->
-        <div class="intro-heading text-uppercase">My Company Name</div>
+        <div class="intro-heading text-uppercase">WEB MONKEY</div>
       </div>
     </div>
   </header>

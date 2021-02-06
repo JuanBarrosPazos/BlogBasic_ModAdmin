@@ -35,7 +35,8 @@ session_start();
 				suma_acces();
 				}
 	
-	}// FIN POST OCULTO
+	}// FIN POST OCULTO 
+	 
 
 	elseif (isset($_GET["page"])) { master_index();
 									ver_todo();}

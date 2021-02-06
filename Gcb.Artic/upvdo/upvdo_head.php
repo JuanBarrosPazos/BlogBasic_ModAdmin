@@ -22,6 +22,8 @@ require '../../Gcb.Inclu/misdatos.php';
 	
 <link href="../../Gcb.Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
 
+<link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css">
+
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
