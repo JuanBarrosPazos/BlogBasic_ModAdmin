@@ -9,6 +9,7 @@ require 'misdatos.php';
 	
 <head>
 	
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="content-type" content="text/html" charset="<?php print($meta_type_charset);?>" />
 <meta http-equiv="Content-Language" content="<?php print($meta_lang_cotent2);?>">
 <meta name="Language" content="<?php print($meta_lang_cotent);?>">
@@ -300,7 +301,7 @@ print(" <table align='center' style=\"border:0px;margin_bottom:6px;margin-top:15
  function process_Mail(){	
 
 	global $mail_from;
-	$mail_from = 'juanbarrospazos@hotmail.es';
+	$mail_from = 'juancho@webmonkey.es';
 
 	 $text_body = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 						<html>
@@ -381,13 +382,13 @@ print(" <table align='center' style=\"border:0px;margin_bottom:6px;margin-top:15
 							</html>
 									';
 			
-	$headers = array ('From' => $_SESSION['mail_destin'],
+	$headers = array ('From' => $mail_from ,
 					  'Subject' => $_POST['asunto']);
 					  
 		# datos del mensaje
 	 
 				global $destinatario;
-				$destinatario = $_SESSION['mail_destin']; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
+				$destinatario = $mail_from ; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
 				$titulo= $_POST['asunto']." ".$_POST['nombre']." ".$_POST['apellidos'].".";
 				$responder= $_POST['Email'];
 				$remite= $_POST['Email'];
@@ -459,7 +460,8 @@ print(" <table align='center' style=\"border:0px;margin_bottom:6px;margin-top:15
 							</td>
 						</tr>
 					<table>
-		<embed src='../audi/form_submit_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' ></embed>");
+	<embed src='../audi/form_submit_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	</embed>");
 			show_form();											
 					} /*Fin del if del mail*/
 														
