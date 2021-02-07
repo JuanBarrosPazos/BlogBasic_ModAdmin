@@ -46,24 +46,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
+        <!--
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="../index.php">Inico</a>
+          </li>
+        -->
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="Gcb.Www/services.php">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="Gcb.Www/portfolio.php">Portfolio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="Gcb.Www/news.php">News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="Gcb.Www/team.php">Team</a>
+            <a class="nav-link js-scroll-trigger" href="Gcb.Www/contact.php">Contact</a>
+          </li>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="Gcb.Www/portfolio.php">Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="Gcb.Www/contact.php">Contact</a>
+            <a class="nav-link js-scroll-trigger" href="Gcb.Www/team.php">Team</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="Gcb.Www/clients.php">Clients</a>
           </li>
+          -->
         </ul>
       </div>
     </div>
@@ -76,7 +83,7 @@
         <!--
         <div class="intro-lead-in">Welcome To Juan Barros Pazos</div>
         -->
-        <div class="intro-heading text-uppercase">WEB MONKEY</div>
+        <div class="intro-heading text-uppercase">Web Monkey</div>
       </div>
     </div>
   </header>

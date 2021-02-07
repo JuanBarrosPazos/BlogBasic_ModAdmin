@@ -353,7 +353,7 @@ function validate_form(){
 		$errors [] = "HOST: <font color='#FF0000'>caracteres no validos.</font>";
 		}
 		
-	elseif (!preg_match('/^[a-z A-Z 0-9 !¡?¿\._]+$/',$_POST['host'])){
+	elseif (!preg_match('/^[a-z A-Z 0-9 \-!¡?¿\._]+$/',$_POST['host'])){
 		$errors [] = "HOST: <font color='#FF0000'>NO VALIDOS</font>";
 		}
 
@@ -620,7 +620,7 @@ function show_form($errors=''){
 						DB HOST ADRESS
 					</td>
 					<td width=200px>
-		<input type='text' name='host' size=25 maxlength=25 value='".$defaults['host']."' />
+		<input type='text' name='host' size=25 maxlength=30 value='".$defaults['host']."' />
 					</td>
 				</tr>
 					
