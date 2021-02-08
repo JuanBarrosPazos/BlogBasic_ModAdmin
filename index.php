@@ -350,11 +350,11 @@ function validate_form(){
 		$errors [] = "HOST: <font color='#FF0000'>Más de 3 carácteres.</font>";
 		}
 		
-	elseif (!preg_match('/^[^@´`\'áéíóú#$&%<>:"·\(\)=\[\]\{\};,:\*\s]+$/',$_POST['host'])){
+	elseif (!preg_match('/^[^@´`\'áéíóú#$&%<>"·\(\)=\[\]\{\};,\*\s]+$/',$_POST['host'])){
 		$errors [] = "HOST: <font color='#FF0000'>caracteres no validos.</font>";
 		}
 		
-	elseif (!preg_match('/^[a-z A-Z 0-9 \-!¡?¿\._]*$/',$_POST['host'])){
+	elseif (!preg_match('/^[a-z A-Z 0-9 \-:!¡?¿\._]*$/',$_POST['host'])){
 		$errors [] = "HOST: <font color='#FF0000'>NO VALIDOS</font>";
 		}
 

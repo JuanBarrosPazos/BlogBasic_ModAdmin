@@ -372,6 +372,7 @@ a:hover  img {
 	z-index: 1000;
 }
 
+
 .imglogo {
 	position: relative;
 	display: inline-block;
@@ -511,14 +512,6 @@ a:hover  img {
 	vertical-align: top !important;
 	width: 120px;
 	padding: 1px 4px 1px 4px; 
-	margin: 0.4em 3px 1px 3px;
-	/* border: #93D7BF solid 1px; */
-}
-
-.form {
-	display:inline-block; 
-	vertical-align: top !important;
-	width: auto;
 	margin: 0.4em 3px 1px 3px;
 	/* border: #93D7BF solid 1px; */
 }
