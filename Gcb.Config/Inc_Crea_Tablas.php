@@ -37,6 +37,49 @@
 					
 					}
 
+	/************* CREAMOS LA TABLA FEEDBACK ****************/
+
+	$feedback = "CREATE TABLE IF NOT EXISTS `$db_name`.`gcb_feedback` (
+		`id` int(4) NOT NULL auto_increment,
+		`ref` varchar(20) collate utf8_spanish2_ci NOT NULL,
+		`Nivel` varchar(8) collate utf8_spanish2_ci NOT NULL default 'amd',
+		`Nombre` varchar(25) collate utf8_spanish2_ci NOT NULL,
+		`Apellidos` varchar(25) collate utf8_spanish2_ci NOT NULL,
+		`myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png ',
+		`doc` varchar(11) collate utf8_spanish2_ci NOT NULL,
+		`dni` varchar(8) collate utf8_spanish2_ci NOT NULL,
+		`ldni` varchar(1) collate utf8_spanish2_ci NOT NULL,
+		`Email` varchar(50) collate utf8_spanish2_ci NOT NULL,
+		`Usuario` varchar(10) collate utf8_spanish2_ci NOT NULL,
+		`Password` varchar(100) collate utf8_spanish2_ci NOT NULL,
+		`Pass` varchar(10) collate utf8_spanish2_ci NOT NULL,
+		`Direccion` varchar(60) collate utf8_spanish2_ci NOT NULL,
+		`Tlf1`varchar(9) NOT NULL default '0',
+		`Tlf2`varchar(9) NOT NULL default '0',
+		`lastin` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+		`lastout` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+		`visitadmin` varchar(4) collate utf8_spanish2_ci NOT NULL default '0',
+		`borrado` varchar(22) collate utf8_spanish2_ci NOT NULL default '0',
+
+		UNIQUE KEY `id` (`id`),
+		UNIQUE KEY `ref` (`ref`),
+		UNIQUE KEY `dni` (`dni`),
+		UNIQUE KEY `Email` (`Email`),
+		UNIQUE KEY `Usuario` (`Usuario`)
+	  ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ";
+			  
+		  if(mysqli_query($db, $feedback)){
+											  
+						  global $table1b;
+						  $table1b = "\t* OK TABLA FEEDBACK.".PHP_EOL;
+						  
+					  } else {
+						  
+						  global $table1b;
+						  $table1b = "\t* NO OK TABLA FEEDBACK. ".mysqli_error($db).PHP_EOL;
+	  
+						  }
+
 	/************** CREAMOS LA TABLA ARTICULOS ***************/
 
 	$articulos = "gcb_".date('Y')."_articulos";
