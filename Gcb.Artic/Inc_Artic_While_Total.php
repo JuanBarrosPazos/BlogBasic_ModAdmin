@@ -12,7 +12,7 @@
                             $rutaurlart = "Gcb.Artic/";
                             $rutaurlvdo = "upvdo/";
                                 }
-    else {  $rutaurl = ""; 
+    else {  $rutaurl = "../"; 
             $rutaurlart = "";
             $rutaurlvdo = "upvdo/";
     }

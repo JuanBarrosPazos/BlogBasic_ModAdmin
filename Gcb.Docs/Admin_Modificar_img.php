@@ -295,7 +295,7 @@ function process_form(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 	global $dt;
 
@@ -449,7 +449,8 @@ function show_form($errors=''){
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu/Master_Index_Admin.php';
+				require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
 				} 
 
@@ -520,7 +521,7 @@ function info_01(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-		require '../Gcb.Inclu/Admin_Inclu_02.php';
+		require '../Gcb.Inclu/Admin_Inclu_footer.php';
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

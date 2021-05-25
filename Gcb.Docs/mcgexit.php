@@ -6,7 +6,7 @@ session_start();
 				 ////////////////////				  ///////////////////
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_01b.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -73,7 +73,8 @@ function info(){
 	
 	function master_index(){
 
-		require '../Gcb.Inclu/Master_Index_Admin.php';
+		require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/Master_Index.php';
 
 				} 
 
@@ -108,6 +109,8 @@ function info(){
 								HA CERRADO SESION.
 							</th>
 						</tr>
+	<embed src='../audi/sesion_close.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	</embed>
 					</table>");
 				
 			global $redir;
@@ -117,7 +120,7 @@ function info(){
 						function redir(){
 							window.location.href='access.php?salir=1';
 						}
-						setTimeout('redir()',2000);
+						setTimeout('redir()',3000);
 					</script>";
 			print ($redir);
 	}
@@ -126,7 +129,7 @@ function info(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-	require '../Gcb.Inclu/Inclu_Footer_01.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

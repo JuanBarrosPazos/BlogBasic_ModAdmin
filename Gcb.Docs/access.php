@@ -2,7 +2,7 @@
 session_start();
  
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Inclu_Menu_00.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_c.php';
 	require '../Gcb.Inclu/mydni.php';
 
 	require '../Gcb.Connet/conection.php';
@@ -37,6 +37,11 @@ session_start();
 	
 	}// FIN POST OCULTO 
 	 
+	elseif (isset($_POST['cancel'])) {	
+								if($_SESSION['showf'] == 69){table_desblock();}
+								else{show_form(@$form_errors);
+									 show_visit();}
+							  }
 
 	elseif (isset($_GET["page"])) { master_index();
 									ver_todo();}
@@ -150,6 +155,20 @@ $table_desblock = print("<table align='center' style=\"margin-top:2px; margin-bo
 				</tr>
 				<tr>
 					<td colspan='2' align='center' valign='middle' class='BorderSup' style='padding-top: 10px'>
+						<a href='../Gcb.Docs/Claves_Perdidas.php'>
+							HE PERDIDO MIS CLAVES
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2' align='center' valign='middle' class='BorderSup' style='padding-top: 10px'>
+						<a href='../Gcb.Inclu/desblock_ip.php'>
+							FORMULARIO DESBLOQUEO IP
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2' align='center' valign='middle' class='BorderSup' style='padding-top: 10px'>
 		<a href='mailto:".$_SESSION['mail_destin']."?Subject=Contacto ".$db_name.".'  target='_blank'>
 							WEBMASTER @ CONTACTO
 						</a>
@@ -231,6 +250,9 @@ function process_form(){
 	if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){				 
 			//print("Wellcome: ".$_SESSION['Nombre']." ".$_SESSION['Apellidos'].".");
 			master_index();
+		print("
+		<embed src='../audi/sesion_open.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		</embed>");
 			admin_entrada();
 		}else { require '../Gcb.Inclu/table_permisos.php'; }
 	
@@ -303,6 +325,8 @@ function desbloqueo(){
 	$_SESSION['desbloqh'] = $dbloqh.":".$dbloqm.":00";
 
 		} // FIN IF $CX
+
+	elseif($cx < 1) { $_SESSION['showf'] = 0; }	
 
 	} // FIN FUNCTION
 
@@ -381,6 +405,9 @@ function bloqueo(){
 			if($_SESSION['bloqh'] >= 2300){$_SESSION['desbloqh'] = "23:59:00"; } 
 			elseif(strlen(trim($_SESSION['bloqh'] <= 3))){  $_SESSION['desbloqh'] = "0".$bloqh.":".$bloqm.":00";}
 			else{ $_SESSION['desbloqh'] = $bloqh.":".$bloqm.":00";}
+		print("	
+		<embed src='../audi/ip_block.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		</embed>");
 
 		if(mysqli_query($db, $emarc)){ }else {print("* ERROR ENTRADA 95: ".mysqli_error($db)).".";}
 	}else{ $_SESSION['showf'] = 0;}
@@ -391,7 +418,7 @@ function bloqueo(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 	/*
 	unset($_SESSION['usuarios']);
@@ -429,7 +456,9 @@ function show_form($errors=''){
 		
 		print("</td>
 				</tr>
-				</table>");
+	<embed src='../audi/user_error.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	</embed>
+		</table>");
 		}
 	
 	print("<table align='center' style=\"margin-top:2px; margin-bottom:2px\" >
@@ -461,13 +490,21 @@ function show_form($errors=''){
 	
 				<tr>
 					<td valign='middle' align='right' colspan='2'>
-						<input type='submit' value='ACCEDER' />
+						<input type='submit' value='ACCEDER' class='botonverde' />
 						<input type='hidden' name='oculto' value=1 />
 		</form>	
 					</td>
 					
 				</tr>
 				
+				<tr>
+					<td colspan='2' align='center' valign='middle' class='BorderSup' style='padding-top: 10px'>
+						<a href='../Gcb.Docs/Claves_Perdidas.php'>
+							HE PERDIDO MIS CLAVES
+						</a>
+					</td>
+				</tr>
+
 				<tr>
 					<td colspan='2' align='center' valign='middle' class='BorderSup' style='padding-top: 10px'>
 		<a href='../Gcb.Mail/index.php'  target='_blank'>
@@ -765,7 +802,7 @@ function ver_todo(){
 	global $db_name;
 	
 	global $vname;
-	$vname = "gcb_".date('Y')."_articulos";
+	$vname = "gcb_".(date('Y')-1)."_articulos";
 	$vname = "`".$vname."`";
 
 	$result =  "SELECT * FROM $vname ";
@@ -797,7 +834,8 @@ function ver_todo(){
 	$total_pages = ceil($num_total_rows / $nitem);
 	
     //pongo el n�mero de registros total, el tama�o de p�gina y la p�gina que se muestra
-    echo '<h7>* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
+	echo '<div style="clear:both"></div>';
+    echo '<h7 class="textpaginacion">* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
 
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
@@ -985,7 +1023,7 @@ function ayear(){
 						unset($_SESSION['Tlf2']);
 						unset($_SESSION['nclient']);
 
-						echo "YOU HAVE CLOSE SESSION";
+						echo "<div class='centradiv'>YOU HAVE CLOSE SESSION</div>";
 	}
 
 				   ////////////////////				   ////////////////////
@@ -994,7 +1032,8 @@ function ayear(){
 
 	function master_index(){
 
-		require '../Gcb.Inclu/Master_Index_Admin.php';
+		require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
 				} 
 
@@ -1002,7 +1041,7 @@ function ayear(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 	
-	require '../Gcb.Inclu/Inclu_Footer_01.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 	
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

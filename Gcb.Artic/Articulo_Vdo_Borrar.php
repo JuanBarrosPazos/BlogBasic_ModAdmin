@@ -216,7 +216,7 @@ function info(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 		
 /* Creado por Juan Manuel Barros Pazos 2020/21 */
 

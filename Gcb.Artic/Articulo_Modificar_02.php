@@ -2,7 +2,7 @@
 session_start();
 
   	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_01b.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -223,7 +223,7 @@ function process_form(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 	if(isset($_POST['oculto2'])){
 		//$defaults = $_POST;
@@ -530,9 +530,10 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu/Master_Index_Artic.php';
+				require '../Gcb.Inclu.Menu/rutaartic.php';				
+				require '../Gcb.Inclu.Menu/Master_Index.php';
 		
-				} 
+			} 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -552,7 +553,7 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 
 	/* Creado por Juan Manuel Barros Pazos 2020/21 */
 

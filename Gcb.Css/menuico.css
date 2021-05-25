@@ -1,7 +1,7 @@
 @charset "UTF-8";
   
 .ic{width: 24px;
-	height: 24px;
+	  height: 24px;
 }
 
 .icoh {
@@ -213,5 +213,11 @@
   content: url(icos/ico24.png);
 }
 
-/* Creado por Juan Manuel Barros Pazos 2020/21 */
+.ico25 {
+  content: url(icos/ico25.png);
+}
+
+.ico25b {
+  content: url(icos/ico25.png);
+}
 
