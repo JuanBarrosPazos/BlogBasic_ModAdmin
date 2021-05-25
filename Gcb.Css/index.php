@@ -1,10 +1,22 @@
 <?php
 
-	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_01a.php';
-
+	require '../Inclu/error_hidden.php';
+	require '../Inclu/Admin_Inclu_head.php';
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+
+print ("<table align='center'>
+			<tr>
+				<td align='center'>
+					<h2>ACCESO RESTRINGIDO</h2>
+					<h4>
+						<a href='http://juanbarrospazos.blogspot.com.es/' target='_blank'>
+								JUAN BARROS PAZOS
+						</a>
+					</h4>
+				</td>
+			</tr>
+		</table>");
 
 global $redir;
 // 600000 microsegundos 10 minutos
@@ -17,15 +29,12 @@ $redir = "<script type='text/javascript'>
             </script>";
 print ($redir);
 
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../Inclu/Admin_Inclu_footer.php';
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-/* Creado por Juan Manuel Barros Pazos 2020/21 */
+/* Creado por Juan Barros Pazos 2021 */
 
 ?>

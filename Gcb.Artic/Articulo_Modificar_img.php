@@ -272,7 +272,7 @@ function process_form(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 	global $db; 	
 	global $db_name;
@@ -417,7 +417,7 @@ function show_form($errors=''){
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu/Master_Index_Admin.php';
+				require '../Gcb.Inclu.Menu/Master_Index_Admin.php';
 		
 				} 
 
@@ -489,7 +489,7 @@ $text = PHP_EOL."- ADMIN MODIFICAR IMG SELECCIONADA ".$ActionTime.PHP_EOL."\t ID
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 		
 /* Creado por Juan Manuel Barros Pazos 2020/21 */
 

@@ -2,7 +2,7 @@
 session_start();
 
 	//require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_01b.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
@@ -156,15 +156,16 @@ function delete(){unlink($_POST['ruta']);}
 	
 	function master_index(){
 		
-		require '../Gcb.Inclu/Master_Index_bbdd.php';
+				require '../Gcb.Inclu.Menu/rutabbdd.php';
+				require '../Gcb.Inclu.Menu/Master_Index.php';
 
-		}
+			}
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-	require '../gcb.Inclu/Admin_Inclu_02.php';
+	require '../gcb.Inclu/Admin_Inclu_footer.php';
 		
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

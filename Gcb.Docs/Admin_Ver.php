@@ -2,7 +2,7 @@
 session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_01b.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 	require '../Gcb.Inclu/mydni.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -172,7 +172,8 @@ function ver_todo(){
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu/Master_Index_Admin.php';
+				require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
 				} 
 
@@ -216,7 +217,7 @@ function info(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_02.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 	
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

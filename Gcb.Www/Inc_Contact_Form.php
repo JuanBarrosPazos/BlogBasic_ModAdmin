@@ -192,8 +192,10 @@ print("
 
  function process_Mail(){	
 
+	global $mail_for;
+	$mail_for = 'juanbarrospazos@hotmail.es'; // destinatario
 	global $mail_from;
-	$mail_from = 'juanbarrospazos@hotmail.es';
+	$mail_from = 'juanbarrospazos@hotmail.es'; // remitente  user@midominio.xxx
 
 	 $text_body = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 						<html>
@@ -285,7 +287,7 @@ print("
 		# datos del mensaje
 	 
 				global $destinatario;
-				$destinatario = $mail_from; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
+				$destinatario = $mail_for; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
 				$titulo= $_POST['asunto']." ".$_POST['nombre']." ".$_POST['apellidos'].".";
 				$responder= $_POST['Email'];
 				$remite= $_POST['Email'];
@@ -297,7 +299,7 @@ print("
 				global $cabecera;
 				$cabecera = "Date: ".date("l j F Y, G:i")."\n";
 				$cabecera .="MIME-Version: 1.0\n";
-				$cabecera .="From: ".$remitente."<".$destinatario.">\n";
+				$cabecera .="From: ".$mail_from."<".$mail_from.">\n";
 				$cabecera .="Return-path: ". $remite."\n";
 				$cabecera .="Reply-To: ".$responder."\n";
 				$cabecera .="X-Mailer: PHP/". phpversion()."\n";
