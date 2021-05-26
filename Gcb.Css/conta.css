@@ -17,7 +17,7 @@ h1 {
 	text-align: left;
 }
 
-table, .centradiv {
+table, .centradiv{
 	border: 2px solid #CCC;
 	border-radius: 12px;
 	margin: 2px auto 6px auto;
@@ -26,6 +26,11 @@ table, .centradiv {
 .centradiv {
 	width: max-content;
 	padding: 4px;
+}
+.centradivpage {
+	border:none;
+	margin: -34px auto 6px auto;
+	text-align: center !important;
 }
 
 th {
@@ -349,11 +354,19 @@ a:hover  img {
 	text-decoration: none;
 }
 
-.paginacion {
-	float: left;
-	margin: 0px 3px 0px 3px;
+.paginacion, .paginacionb {
+	display: inline-block;
+	margin: 2px 4px 2px 4px;
+	padding: 4px 8px 4px 8px;
+	border: solid #ccc 2px !important;
+	border-radius: 8px;
 }
-
+.paginacionb {
+	border: solid #f40 2px !important;
+}
+.paginacionb a {
+	color: #f40 !important;
+}
 
 /* BARRA PROGRESO PUNTUACIONES */
 
@@ -591,6 +604,13 @@ a:hover  img {
 	color: #f40 !important;
 	text-decoration: none;
 }
+
+.textpaginacion {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
 .imgtitle {
 	display: block;
 	margin-left: auto;
@@ -599,12 +619,6 @@ a:hover  img {
 	height: 50px;
 	overflow: hidden;
 	border-radius: 12px;
-}
-
-.textpaginacion {
-	display: block;
-	width: 100%;
-	text-align: center;
 }
 
 /*************************************/

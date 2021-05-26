@@ -252,7 +252,7 @@ function process_form(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 
 	global $page;
 	global $defaults;

@@ -264,7 +264,7 @@ function process_form(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 			
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 			require '../Gcb.Inclu/mydni.php';
 

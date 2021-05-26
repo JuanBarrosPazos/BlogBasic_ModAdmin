@@ -802,6 +802,8 @@ function ver_todo(){
 	global $db_name;
 	
 	global $vname;
+	/* 	$vname = "gcb_".date('Y')."_articulos"; */
+	/* MODIFICADA PARA DESARROLLO */
 	$vname = "gcb_".(date('Y')-1)."_articulos";
 	$vname = "`".$vname."`";
 
@@ -881,6 +883,9 @@ function ver_todo(){
 		} 
 
     if ($total_pages > 1) {
+
+		echo "<div class='centradivpage'>";
+
         if ($page != 1) {
 			echo '<div class="paginacion">
 					<a href="access.php?page='.($page-1).'">
@@ -891,7 +896,7 @@ function ver_todo(){
 
         for ($i=1;$i<=$total_pages;$i++) {
             if ($page == $i) {
-				echo '<div class="paginacion">
+				echo '<div class="paginacionb">
 						<a href="#">'.$page.'</a>
 					</div>';
             } else {
@@ -908,6 +913,9 @@ function ver_todo(){
 					</a>
 				</div>';
 			}
+
+		echo "</div>";
+
 		}
 
 	}	/* Final ver_todo(); */

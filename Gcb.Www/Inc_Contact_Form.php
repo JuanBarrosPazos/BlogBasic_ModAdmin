@@ -109,7 +109,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 	
 	if(isset($_POST['ocultomail'])){
 				$defaults = $_POST;

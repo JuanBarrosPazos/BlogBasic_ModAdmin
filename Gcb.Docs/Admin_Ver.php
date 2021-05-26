@@ -19,11 +19,30 @@ if (($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 
 elseif ($_SESSION['Nivel'] == 'admin'){
 
-	master_index();
+		master_index();
 
-	require 'Inc_Logica_01.php';
+		if(isset($_POST['todo'])){ show_form();							
+								   ver_todo();
+								   info();
+										}
+								
+		elseif(isset($_POST['ocultoc'])){
+				if($form_errors = validate_form()){
+						show_form($form_errors);
+			} else {process_form();
+					info();
+					}
+				}
+		elseif ((isset($_GET['page'])) || (isset($_POST['page']))) {
+											show_form();
+											ver_todo();
+										}
+		else { 	show_form();
+			   	ver_todo();
+				}
+		} 
 	
-} else { require '../Gcb.Inclu/table_permisos.php'; }
+	 else { require '../Gcb.Inclu/table_permisos.php'; }
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -55,20 +74,23 @@ function process_form(){
 	$nom = "%".$_POST['Nombre']."%";
 	$ape = "%".$_POST['Apellidos']."%";
 
+	global $table_name_a;
+	$table_name_a = "`gcb_admin`";
+
 	if (strlen(trim($_POST['Apellidos'])) == 0){$ape = $nom;}
 	if (strlen(trim($_POST['Nombre'])) == 0){ $nom = $ape;}
 	
 	//$orden = $_POST['Orden'];
 		
 	if (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] == $_SESSION['mydni'])) { 
-	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape'  ORDER BY `Nombre` ASC  ";
+	$sqlb =  "SELECT * FROM $table_name_a WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape'  ORDER BY `Nombre` ASC  ";
 	$qb = mysqli_query($db, $sqlb);
 				}
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] != $_SESSION['mydni'])){ 
-	$sqlb =  "SELECT * FROM `gcb_admin` WHERE  `dni` <> '$_SESSION[mydni]' AND  `Nombre` LIKE '$nom' OR `dni` <> '$_SESSION[mydni]' AND `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC  ";
+	$sqlb =  "SELECT * FROM $table_name_a WHERE  `dni` <> '$_SESSION[mydni]' AND  `Nombre` LIKE '$nom' OR `dni` <> '$_SESSION[mydni]' AND `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC  ";
 	$qb = mysqli_query($db, $sqlb);
 				}
-//	$sqlc =  "SELECT * FROM `gcb_admin` WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC ";
+//	$sqlc =  "SELECT * FROM $table_name_a WHERE `Nombre` LIKE '$nom' OR `Apellidos` LIKE '$ape' ORDER BY `Nombre` ASC ";
 //	$qc = mysqli_query($db, $sqlc);
 	
 			////////////////////		**********  		////////////////////
@@ -76,23 +98,11 @@ function process_form(){
 	global $twhile;
 	$twhile = "FILTRO USUARIOS CONSULTA";
 
-	global $formularioh;
-	$formularioh = "<form name='ver' action='Admin_Ver_02.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=420px,height=580px')\">";
-
-	global $formulariof;
-	$formulariof = "<td colspan=5 class='BorderInf'>&nbsp;</td>
-					<td colspan=2 align='center' class='BorderInf'>
-						<input type='submit' value='VER DETALLES' />
-						<input type='hidden' name='oculto2' value=1 />
-					</td>
-				</form>";
-
-	global $formulariohi;
-	$formulariohi = "";
-
-	global $formulariofi;
-	$formulariofi = "";
-
+		global $ruta;
+		$ruta = "";
+	require 'Inc_While_Form.php';
+		global $rutaimg;
+		$rutaimg = "../Gcb.Img.User/";
 	require 'Inc_While_Total.php';
 
 			////////////////////		**********  		////////////////////
@@ -103,10 +113,12 @@ function process_form(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-function show_form($errors=''){
+function show_form($errors=[]){
 
 	global $titulo;
-	$titulo = "CONSULTA USUARIOS";
+	$titulo = "GESTION USUARIOS";
+	global $boton;
+	$boton = "USUARIOS VER TODOS";
 
 	require 'Inc_Show_Form_01.php';
 	
@@ -121,45 +133,55 @@ function ver_todo(){
 	global $db;
 	global $db_name;
 
+	global $table_name_a;
+	$table_name_a = "`gcb_admin`";
+
+			if(isset($_POST['Orden'])){	global $orden;
+										$orden = $_POST['Orden'];
+			} elseif ((isset($_GET['page'])) || (isset($_POST['page']))) {
+							if(isset($_SESSION['Orden'])){
+										global $orden;
+										$orden = $_SESSION['Orden']; 
+									} else { global $orden;
+											 $orden ='`id` ASC';}
+			} else { global $orden;
+					 $orden ='`id` ASC';}
+
 	if (($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
 			$ref = $_SESSION['ref'];
-			$sqlb =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$ref'";
+			$sqlb =  "SELECT * FROM $table_name_a WHERE `ref` = '$ref'";
 			$qb = mysqli_query($db, $sqlb);
 		}
 	
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] == $_SESSION['mydni'])) { 
-				$orden = $_POST['Orden'];
-				$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY $orden ";
-				$qb = mysqli_query($db, $sqlb);
+
+			require 'Paginacion_Head.php';
+			/*$sqlb =  "SELECT * FROM $table_name_a ORDER BY $orden ";*/
+			//$sqlb =  "SELECT * FROM $table_name_a  ORDER BY `id` DESC $limit";
+			$sqlb =  "SELECT * FROM $table_name_a  ORDER BY $orden $limit";
+			$qb = mysqli_query($db, $sqlb);
 			}
 	elseif (($_SESSION['Nivel'] == 'admin') && ($_SESSION['dni'] != $_SESSION['mydni'])){ 
-				$orden = $_POST['Orden'];
-				$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
-				$qb = mysqli_query($db, $sqlb);
+			require 'Paginacion_Head.php';
+			/*$sqlb =  "SELECT * FROM $table_name_a WHERE $table_name_a.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";*/
+			/*$sqlb =  "SELECT * FROM $table_name_a WHERE $table_name_a.`dni` <> '$_SESSION[mydni]' ORDER BY  `id` DESC $limit";*/
+			$sqlb =  "SELECT * FROM $table_name_a WHERE $table_name_a.`dni` <> '$_SESSION[mydni]' ORDER BY  $orden $limit";
+			$qb = mysqli_query($db, $sqlb);
 			}
 
 			////////////////////		**********  		////////////////////
 
 	global $twhile;
-	$twhile = "TODOS USUARIOS CONSULTA";
+	//$twhile = "TODOS USUARIOS CONSULTA";
+	$twhile = "";
 	
-	global $formularioh;
-	$formularioh = "<form name='ver' action='Admin_Ver_02.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=420px,height=580px')\">";
-
-	global $formulariof;
-	$formulariof = "<td colspan=5 class='BorderInf'>&nbsp;</td>
-					<td colspan=2 align='center' class='BorderInf'>
-						<input type='submit' value='VER DETALLES' />
-						<input type='hidden' name='oculto2' value=1 />
-					</td>
-				</form>";
-				
-	global $formulariohi;
-	$formulariohi = "";
-
-	global $formulariofi;
-	$formulariofi = "";
-
+		global $ruta;
+		$ruta = "";
+	require 'Inc_While_Form.php';
+		global $rutaimg;
+		$rutaimg = "../Gcb.Img.User/";
+		global $pagedest;
+		$pagedest = "Admin_Ver.php";
 	require 'Inc_While_Total.php';
 
 			////////////////////		**********  		////////////////////
