@@ -37,6 +37,10 @@ if((isset($_POST['Usuario'])&&(isset($_POST['Password'])))){
 
 	$userid = $_SESSION['id'];
 	$uservisita = $_SESSION['visitadmin'];
+
+	global $onlyindex;
+	$onlyindex = 1;
+
 		}
 	}
 

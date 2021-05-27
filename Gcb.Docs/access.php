@@ -11,13 +11,6 @@ session_start();
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
-
-	require '../Gcb.Inclu/Only.index.php';
-
-
-				   ////////////////////				   ////////////////////
-////////////////////				////////////////////				////////////////////
-				 ////////////////////				  ///////////////////
 	
 	desbloqueo();
 
@@ -29,11 +22,8 @@ session_start();
 							 show_visit();}
 							}
 
-		else {	process_form();
-				ayear();
-				//ver_todo();
-				suma_acces();
-				bbdd_backup();
+		else {	require '../Gcb.Inclu/Only.index.php';
+				process_form();
 				}
 	
 	}// FIN POST OCULTO 
@@ -45,7 +35,8 @@ session_start();
 							  }
 
 	elseif (isset($_GET["page"])) { master_index();
-									ver_todo();}
+									ver_todo();
+									}
 
 	elseif (isset($_GET['salir'])) { salir();
 									 show_form();
@@ -249,16 +240,24 @@ function validate_form(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-
 function process_form(){
 	
 	global $db;
 					
 	if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){				 
 			//print("Wellcome: ".$_SESSION['Nombre']." ".$_SESSION['Apellidos'].".");
-			master_index();
-			ver_todo();
-		print("
+
+			global $onlyindex;
+
+			if ($onlyindex == 1){
+					ayear();
+					suma_acces();
+					bbdd_backup();
+					master_index();
+					ver_todo();
+			} else { }
+
+			print("
 		<embed src='../audi/sesion_open.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");
 			admin_entrada();
@@ -479,18 +478,14 @@ function show_form($errors=[]){
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 						
 				<tr>
-					<td>	
-						USUARIO
-					</td>
+					<td>USUARIO</td>
 					<td>
 <input type='Password' name='Usuario' size=20 maxlength=50 value='".$defaults['Usuario']."' />
 					</td>
 				</tr>
 	
 				<tr>
-					<td>	
-						PASSWORD
-					</td>
+					<td>PASSWORD</td>
 					<td>
 <input type='Password' name='Password' size=20 maxlength=50 value='".$defaults['Password']."' />
 					</td>
@@ -502,7 +497,6 @@ function show_form($errors=[]){
 						<input type='hidden' name='oculto' value=1 />
 		</form>	
 					</td>
-					
 				</tr>
 				
 				<tr>
@@ -520,8 +514,7 @@ function show_form($errors=[]){
 						</a>
 					</td>
 				</tr>
-			</table>
-				"); 
+			</table>"); 
 	
 	}
 
