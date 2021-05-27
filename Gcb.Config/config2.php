@@ -165,9 +165,14 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 
+	global $password;
+	$password = $_POST['Password'] ;
+	global $passwordhash;
+	$passwordhash = password_hash($password, PASSWORD_DEFAULT, array ( "cost"=>10));
+
 	global $db_name;
 
-	$sql = "INSERT INTO `$db_name`.`gcb_admin` (`ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Direccion`, `Tlf1`, `Tlf2`) VALUES ('$rf', '$_POST[Nivel]', '$_POST[Nombre]', '$_POST[Apellidos]', '$new_name', '$_POST[doc]', '$_POST[dni]', '$_POST[ldni]', '$_POST[Email]', '$_POST[Usuario]', '$_POST[Password]', '$_POST[Direccion]', '$_POST[Tlf1]', '$_POST[Tlf2]')";
+	$sql = "INSERT INTO `$db_name`.`gcb_admin` (`ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`) VALUES ('$rf', '$_POST[Nivel]', '$_POST[Nombre]', '$_POST[Apellidos]', '$new_name', '$_POST[doc]', '$_POST[dni]', '$_POST[ldni]', '$_POST[Email]', '$_POST[Usuario]', '$passwordhash', '$password', '$_POST[Direccion]', '$_POST[Tlf1]', '$_POST[Tlf2]')";
 		
 	if(mysqli_query($db, $sql)){	// CREA EL ARCHIVO MYDNI.TXT $_SESSION['mydni'].
 									$filename = "../Gcb.Inclu/mydni.php";
@@ -205,7 +210,6 @@ $log = fopen($filename, 'ab+');
 fwrite($log, $logtext);
 fclose($log);
 
-				
 	} else {	print("</br>
 				<font color='#FF0000'>
 			* Estos datos no son validos, modifique esta entrada: </font></br> ".mysqli_error($db))."
@@ -286,7 +290,9 @@ function show_form($errors=[]){
 										);
 	
 	/*******************************/
-
+		
+		global $imgform;
+		$imgform = "config2";
 		require '../Gcb.Docs/table_crea_admin.php';
 	
 	}	

@@ -173,9 +173,12 @@
 					<td style='text-align:left;'>
 		<input type='text' name='Tlf2' size=12 maxlength=9 value='".$defaults['Tlf2']."' />
 					</td>
-				</tr>
-				
-				<tr>
+				</tr>");
+		 
+		global $imgform;
+		if($imgform == "config2") {
+
+		print("	<tr>
 					<td style='text-align:right;'>
 						<font color='#FF0000'>*</font>
 						Fotografía:
@@ -183,17 +186,16 @@
 					<td style='text-align:left;'>
 		<input type='file' name='myimg' value='".@$defaults['myimg']."' />						
 					</td>
-				</tr>
+				</tr>");
+			} else { }	
 
-				<tr>
-					<td colspan='2'  align='right' valign='middle'  class='BorderSup'>
-						<input type='submit' value='REGISTRARME CON ESTOS DATOS' class='botonverde' />
-						<input type='hidden' name='oculto' value=1 />
-						
-					</td>
-				</tr>
-		</form>														
-			</table>"); 
-
+	print("	<tr>
+				<td colspan='2'  align='right' valign='middle'  class='BorderSup'>
+					<input type='submit' value='REGISTRARME CON ESTOS DATOS' class='botonverde' />
+					<input type='hidden' name='oculto' value=1 />
+				</td>
+			</tr>
+				</form>
+		</table>"); 
 
 ?>

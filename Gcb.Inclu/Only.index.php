@@ -2,7 +2,11 @@
 <?php
 
 if((isset($_POST['Usuario'])&&(isset($_POST['Password'])))){
-	$sql =  "SELECT * FROM `gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
+
+	global $db;
+	global $db_name;
+
+	$sql =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Pass` = '$_POST[Password]'";
 	$q = mysqli_query($db, $sql);
 	global $row;
 	$row = mysqli_fetch_assoc($q);
@@ -23,6 +27,7 @@ if((isset($_POST['Usuario'])&&(isset($_POST['Password'])))){
 	$_SESSION['Email'] = $row['Email'];
 	$_SESSION['Usuario'] = $row['Usuario'];
 	$_SESSION['Password'] = $row['Password'];
+	$_SESSION['Pass'] = $row['Pass'];
 	$_SESSION['Direccion'] = $row['Direccion'];
 	$_SESSION['Tlf1'] = $row['Tlf1'];
 	$_SESSION['Tlf2'] = $row['Tlf2'];

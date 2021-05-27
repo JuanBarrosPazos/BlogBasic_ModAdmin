@@ -43,7 +43,7 @@
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Referencia Usuario: </td>
+					<td style='text-align:right !important;'>Ref. Usuario: </td>
 					<td style='text-align:left !important;' colspan='2'>".$rf."</td>
 				</tr>
 				

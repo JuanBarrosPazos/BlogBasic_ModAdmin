@@ -31,8 +31,9 @@ session_start();
 
 		else {	process_form();
 				ayear();
-				ver_todo();
+				//ver_todo();
 				suma_acces();
+				bbdd_backup();
 				}
 	
 	}// FIN POST OCULTO 
@@ -55,7 +56,6 @@ session_start();
 					else{show_form();
 						 show_visit();}
 						 suma_visit();
-						 bbdd_backup();
 					}	
 
 				   ////////////////////				   ////////////////////
@@ -198,18 +198,22 @@ function validate_form(){
 	
 	global $db;
 	global $db_name;
-	/*
-	$sqlp =  "SELECT * FROM `gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' AND `Password` = '$_POST[Password]'";
+
+	$sqlp =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `Usuario` = '$_POST[Usuario]' ";
 	$qp = mysqli_query($db, $sqlp);
 	$rn = mysqli_fetch_assoc($qp);
-	*/
+	$count = mysqli_num_rows($qp);
+
+	global $password;
+	$password = $_POST['Password'] ;
+	global $hash;
+	global $row;
+	$hash = $row['Password'];
+	//echo $row['Password']."<br>";
+	//echo $hash;
 
 	$errors = array();
 	
-		// global $sql;
-		// global $q;
-		global $row;
-		
 		if (strlen(trim($_POST['Usuario'])) == 0){
 			//$errors [] = "Usuario: Campo obligatorio.";
 			$errors [] = "USER ACCES ERROR";
@@ -220,17 +224,20 @@ function validate_form(){
 			$errors [] = "USER ACCES ERROR";
 			}
 
-		elseif(trim($_POST['Usuario']) != $row['Usuario']){
-			//$errors [] = "Nombre o Password incorrecto.";
+		elseif($count < 1){
+			//$errors [] = "Nombre incorrecto.";
 			$errors [] = "USER ACCES ERROR";
 			}
 
-		elseif(trim($_POST['Password']) != $row['Password']){
-			//$errors [] = "Nombre o Password incorrecto.";
-			$errors [] = "USER ACCES ERROR";
+		elseif(!password_verify($_POST['Password'], $hash)){
+			if(trim($_POST['Password'] != $rn['Pass'])){
+				//$errors [] = "Password incorrecto.";
+				$errors [] = "USER ACCES ERROR";
+				} else {}
+	
 			}
 		
-		elseif ($row['Nivel'] == 'close'){
+		elseif ($rn['Nivel'] == 'close'){
 			$errors [] = "ACCESO RESTRINGIDO POR EL WEB MASTER";
 			}
 	
@@ -250,6 +257,7 @@ function process_form(){
 	if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){				 
 			//print("Wellcome: ".$_SESSION['Nombre']." ".$_SESSION['Apellidos'].".");
 			master_index();
+			ver_todo();
 		print("
 		<embed src='../audi/sesion_open.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");

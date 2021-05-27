@@ -65,12 +65,12 @@ function manual_backup(){
 
 function listfiles(){
 
-	print ("<table align='center' style='border:1; margin-top:2px' width='auto'>
+	print ("<table style='margin-top:2px;'>
 				<tr>
 					<td align='center'>
 						<form name='delete' action='$_SERVER[PHP_SELF]' method='post'>
-							<input type='submit' value='REALIZA UNA EXPORTACION MANUAL DE BBDD AHORA' >
-							<input type='hidden' name='backupm' value='1' >
+				<input type='submit' value='REALIZAR UNA EXPORTACION MANUAL DE BBDD AHORA' class='botonverde' />
+				<input type='hidden' name='backupm' value='1' >
 						</form>
 					</td>
 				</tr>
@@ -111,17 +111,17 @@ function listfiles(){
 			<td class='BorderInfDch'>
 				<form name='delete' action='$_SERVER[PHP_SELF]' method='POST'>
 					<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
-					<input type='hidden' name='ruta' value='".$ruta.$archivo."'>
-					<input type='submit' value='ELIMINAR' >
-					<input type='hidden' name='delete' value='1' >
+					<input type='hidden' name='ruta' value='".$ruta.$archivo."' />
+					<input type='submit' value='ELIMINAR' class='botonrojo' />
+					<input type='hidden' name='delete' value='1' />
 				</form>
 			</td>
 			<td class='BorderInfDch'>
 				<form name='archivos' action='$_SERVER[PHP_SELF]' method='POST'>
 					<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
-					<input type='hidden' name='ruta' value='".$ruta.$archivo."'>
-					<input type='submit' value='DESCARGAR'>
-					<input type='hidden' name='downl' value='1' >
+					<input type='hidden' name='ruta' value='".$ruta.$archivo."' />
+					<input type='submit' value='DESCARGAR' class='botonverde' />
+					<input type='hidden' name='downl' value='1' />
 				</form>
 			</td>
 			<td class='BorderInf'>".strtoupper($archivo)."</td>

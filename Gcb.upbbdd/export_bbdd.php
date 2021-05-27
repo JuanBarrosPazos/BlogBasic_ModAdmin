@@ -39,8 +39,8 @@
 // EXPORTA LA TABLA ADMIN DEL SISTEMA //
 
 if (trim($_POST['tabla']) == "gcb_admin" ){
-$campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
-$texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
+$campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Pass,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
+$texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
 $id = "`id`";
 $c3 = "\n\t`id` int(4) NOT NULL auto_increment,
 \t`ref` varchar(20) collate utf8_spanish2_ci NOT NULL,
@@ -53,7 +53,8 @@ $c3 = "\n\t`id` int(4) NOT NULL auto_increment,
 \t`ldni` varchar(1) collate utf8_spanish2_ci NOT NULL,
 \t`Email` varchar(50) collate utf8_spanish2_ci NOT NULL,
 \t`Usuario` varchar(10) collate utf8_spanish2_ci NOT NULL,
-\t`Password` varchar(10) collate utf8_spanish2_ci NOT NULL,
+\t`Password` varchar(100) collate utf8_spanish2_ci NOT NULL,
+\t`Pass` varchar(10) collate utf8_spanish2_ci NOT NULL,
 \t`Direccion` varchar(60) collate utf8_spanish2_ci NOT NULL,
 \t`Tlf1`varchar(9) NOT NULL default '0',
 \t`Tlf2`varchar(9) NOT NULL default '0',
@@ -73,6 +74,47 @@ $c3 = "\n\t`id` int(4) NOT NULL auto_increment,
 $c4 = "\nENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=".$numr;
 		 		}	
 				
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
+
+// EXPORTA LA TABLA ADMIN FEEDBACK DEL SISTEMA //
+
+if (trim($_POST['tabla']) == "gcb_admin" ){
+$campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Pass,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
+$texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
+$id = "`id`";
+$c3 = "\n\t`id` int(4) NOT NULL auto_increment,
+\t`ref` varchar(20) collate utf8_spanish2_ci NOT NULL,
+\t`Nivel` varchar(8) collate utf8_spanish2_ci NOT NULL default 'amd',
+\t`Nombre` varchar(25) collate utf8_spanish2_ci NOT NULL,
+\t`Apellidos` varchar(25) collate utf8_spanish2_ci NOT NULL,
+\t`myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png ',
+\t`doc` varchar(11) collate utf8_spanish2_ci NOT NULL,
+\t`dni` varchar(8) collate utf8_spanish2_ci NOT NULL,
+\t`ldni` varchar(1) collate utf8_spanish2_ci NOT NULL,
+\t`Email` varchar(50) collate utf8_spanish2_ci NOT NULL,
+\t`Usuario` varchar(10) collate utf8_spanish2_ci NOT NULL,
+\t`Password` varchar(100) collate utf8_spanish2_ci NOT NULL,
+\t`Pass` varchar(10) collate utf8_spanish2_ci NOT NULL,
+\t`Direccion` varchar(60) collate utf8_spanish2_ci NOT NULL,
+\t`Tlf1`varchar(9) NOT NULL default '0',
+\t`Tlf2`varchar(9) NOT NULL default '0',
+\t`lastin` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+\t`lastout` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+\t`visitadmin` varchar(4) collate utf8_spanish2_ci NOT NULL default '0',
+\tUNIQUE KEY `id` (`id`),
+\tUNIQUE KEY `ref` (`ref`),
+\tUNIQUE KEY `dni` (`dni`),
+\tUNIQUE KEY `Email` (`Email`),
+\tUNIQUE KEY `Usuario` (`Usuario`)";
+	$sqlc =  "SELECT * FROM $valort ORDER BY $id ASC";
+	$qc = mysqli_query($db, $sqlc);
+			while($rowc = mysqli_fetch_row($qc)){
+				global $numr;
+				$numr = ($rowc[0]+1);}
+$c4 = "\nENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=".$numr;
+		 		}	
 				
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

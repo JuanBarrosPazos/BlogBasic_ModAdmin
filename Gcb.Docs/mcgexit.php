@@ -88,14 +88,13 @@ function info(){
 						<form name='salir' action='$_SERVER[PHP_SELF]' method='post'>
 							<tr>
 								<td valign='bottom' align='center'>
-									<input type='submit' value='CONFIRME CERRAR SESION' />
+					<input type='submit' value='CONFIRME CERRAR SESION' class='botonnaranja' />
 								</td>
 							</tr>								
 									<input type='hidden' name='salir' value=1 />
 						</form>	
 					</table>");
-	
-			} 
+				} 
 			
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

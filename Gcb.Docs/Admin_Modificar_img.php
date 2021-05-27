@@ -157,120 +157,72 @@ function process_form(){
 				</tr>
 				
 				<tr>
-					<td width=150px>
-						Nombre:
-					</td>
-					<td width=200px>"
-						.$_POST['Nombre'].
-					"</td>
+					<td style='text-align:right !important; width:120px' >Nombre: </td>
+					<td style='text-align:left !important; width:100px' >".$_POST['Nombre']."</td>
 					<td rowspan='5' align='center'>
 	<img src='../Gcb.Img.User/".$_SESSION['new_name']."' height='120px' width='90px' />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Apellidos:
-					</td>
-					<td>"
-						.$_POST['Apellidos'].
-					"</td>
+					<td style='text-align:right !important;'>Apellidos: </td>
+					<td style='text-align:left !important;'>".$_POST['Apellidos']."</td>
 				</tr>				
 				
 				<tr>
-					<td>
-						Tipo Documento:
-					</td>
-					<td>"
-						.$_POST['doc'].
-					"</td>
+					<td style='text-align:right !important;'>Documento: </td>
+					<td style='text-align:left !important;'>".$_POST['doc']."</td>
 				</tr>				
 				
 				<tr>
-					<td>
-						N&uacute;mero:
-					</td>
-					<td>"
-						.$_POST['dni'].
-					"</td>
+					<td style='text-align:right !important;'>N&uacute;mero: </td>
+					<td style='text-align:left !important;'>".$_POST['dni']."</td>
 				</tr>				
 				
 				<tr>
-					<td>
-						Control:
-					</td>
-					<td>"
-						.$_POST['ldni'].
-					"</td>
+					<td style='text-align:right !important;'>Control: </td>
+					<td style='text-align:left !important;'>".$_POST['ldni']."</td>
 				</tr>				
 				
 				<tr>
-					<td>
-						Mail:
-					</td>
-					<td colspan=2>"
-						.$_POST['Email'].
-					"</td>
+					<td style='text-align:right !important;'>Mail: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Email']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Tipo Usuario
-					</td>
-					<td colspan=2>"
-						.$_POST['Nivel'].
-					"</td>
+					<td style='text-align:right !important;'>Nivel: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Nivel']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Usuario:
-					</td>
-					<td colspan=2>"
-						.$_POST['Usuario'].
-					"</td>
+					<td style='text-align:right !important;'>Usuario: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Usuario']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Password:
-					</td>
-					<td colspan=2>"
-						.$_POST['Password'].
-					"</td>
+					<td style='text-align:right !important;'>Password: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Pass']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Dirección:
-					</td>
-					<td colspan=2>"
-						.$_POST['Direccion'].
-					"</td>
+					<td style='text-align:right !important;'>Dirección: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Direccion']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Teléfono 1:
-					</td>
-					<td colspan=2>"
-						.$_POST['Tlf1'].
-					"</td>
+					<td style='text-align:right !important;'>Teléfono 1: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Tlf1']."</td>
 				</tr>
 				
 				<tr>
-					<td>
-						Teléfono 2:
-					</td>
-					<td colspan=2>"
-						.$_POST['Tlf2'].
-					"</td>
+					<td style='text-align:right !important;'>Teléfono 2: </td>
+					<td style='text-align:left !important;' colspan=2>".$_POST['Tlf2']."</td>
 				</tr>
 												
 				<tr>
 					<td colspan=3 align='right' class='BorderSup'>
 		<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' />
+						<input type='submit' value='CERRAR VENTANA' class='botonrojo />
 						<input type='hidden' name='oculto2' value=1 />
 		</form>
 					</td>
@@ -324,6 +276,7 @@ function show_form($errors=[]){
 									'Usuario2' => $_POST['Usuario'],
 									'Password' => $_POST['Password'],
 									'Password2' => $_POST['Password'],
+									'Pass' => $_POST['Pass'],
 									'Direccion' => $_POST['Direccion'],
 									'Tlf1' => $_POST['Tlf1'],
 									'Tlf2' => $_POST['Tlf2']);
@@ -345,6 +298,7 @@ function show_form($errors=[]){
 									'Usuario2' => $_POST['Usuario'],
 									'Password' => $_POST['Password'],
 									'Password2' => $_POST['Password'],
+									'Pass' => $_POST['Pass'],
 									'Direccion' => $_POST['Direccion'],
 									'Tlf1' => $_POST['Tlf1'],
 									'Tlf2' => $_POST['Tlf2']);
@@ -369,7 +323,7 @@ function show_form($errors=[]){
 				 </table>");
 				}
 		
-	print("<table align='center'  border=0 style='margin-top:20px; width:95.5%'>
+	print("<table align='center' border=0 style='margin-top:20px; width:95.5%' >
 				<tr>
 					<th colspan=2 class='BorderInf'>
 						SELECCIONE UNA NUEVA IMAGEN.
@@ -386,12 +340,10 @@ function show_form($errors=[]){
 				</tr>
 				
 				<tr>
-					<td>
-							Seleccione una Fotografía:	
-					</td>
-					<td>
-					<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
-						<input type='file' name='myimg' value='".$defaults['myimg']."' />						
+					<td colspan=2>
+	<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
+		<input type='file' name='myimg' id='myimg' value='".$defaults['myimg']."' class='inputfile custom' />
+		<label for='myimg'><span id='file_name'>SELECCIONE UNA IMAGEN</span></label>
 					</td>
 				</tr>
 
@@ -412,11 +364,12 @@ function show_form($errors=[]){
 						<input type='hidden' name='Usuario2' value='".$defaults['Usuario2']."' />
 						<input type='hidden' name='Password' value='".$defaults['Password']."' />
 						<input type='hidden' name='Password2' value='".$defaults['Password2']."' />
+						<input type='hidden' name='Pass' value='".$defaults['Pass']."' />
 						<input type='hidden' name='Direccion' value='".$defaults['Direccion']."' />
 						<input type='hidden' name='Tlf1' value='".$defaults['Tlf1']."' />
 						<input type='hidden' name='Tlf2' value='".$defaults['Tlf2']."' />
 
-						<input type='submit' value='MODIFICAR IMAGEN' />
+						<input type='submit' value='MODIFICAR IMAGEN' class='botonnaranja' />
 						<input type='hidden' name='imagenmodif' value=1 />
 		</form>																				
 					</td>
@@ -434,7 +387,7 @@ function show_form($errors=[]){
 					</td>
 					<td align='right' class='BorderSup'>
 			<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-											<input type='submit' value='CERRAR VENTANA' />
+											<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
 											<input type='hidden' name='oculto2' value=1 />
 			</form>
 					</td>

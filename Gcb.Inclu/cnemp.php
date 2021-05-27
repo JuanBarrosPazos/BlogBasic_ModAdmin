@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-	require '../Inclu/error_hidden.php';
-	require 'Admin_Inclu_head.php';
+	require 'error_hidden.php';
+	require 'Admin_Inclu_head_b.php';
 	require 'mydni.php';
 	require 'nemp.php';
-	require '../Conections/conection.php';
-	require '../Conections/conect.php';
+	require '../Gcb.Connet/conection.php';
+	require '../Gcb.Connet/conect.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -159,14 +159,14 @@ function show_form($errors=[]){
 	
 	function master_index(){
 		
-		require '../'.$_SESSION['menu'].'/rutainclu.php';
-		require '../'.$_SESSION['menu'].'/Master_Index.php';
+		require '../Gcb.Inclu.Menu/rutainclu.php';
+		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
 	} 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Inclu/Admin_Inclu_footer.php';
+	require 'Admin_Inclu_footer.php';
 		
 /* Creado por Juan Barros Pazos 2021 */
 ?>
