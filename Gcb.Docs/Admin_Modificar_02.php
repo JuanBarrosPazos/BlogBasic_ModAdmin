@@ -1,8 +1,11 @@
 <?php
 session_start();
 
+	global $docs;
+	$docs = 1;
+	
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
+	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
@@ -18,22 +21,22 @@ $rowd = mysqli_fetch_assoc($qd);
 
 if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 
-					master_index();
+	//master_index();
 
-							if (isset($_POST['oculto2'])){
-								show_form();
-								info_01();
-								}
-							elseif($_POST['modifica']){
-									if($form_errors = validate_form()){
-										show_form($form_errors);
-											} else {
-												process_form();
-												info_02();
-												unset($_SESSION['refcl']);
-												}
-								} else { show_form(); }
-				} else { require '../Gcb.Inclu/table_permisos.php'; }
+	if (isset($_POST['oculto2'])){
+		show_form();
+		info_01();
+		}
+	elseif($_POST['modifica']){
+			if($form_errors = validate_form()){
+				show_form($form_errors);
+					} else {
+						process_form();
+						info_02();
+						unset($_SESSION['refcl']);
+						}
+		} else { show_form(); }
+	} else { require '../Gcb.Inclu/table_permisos.php'; }
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -41,17 +44,13 @@ if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESS
 
 function validate_form(){
 	
-		/*
-		global $sqld;
-		global $qd;
-		global $rowd;
-		*/
+		/* global $sqld; global $qd; global $rowd; */
 	
-		require '../Gcb.Inclu/validate.php';	
+	require '../Gcb.Inclu/validate.php';	
 		
 		return $errors;
 
-		} 
+	} 
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -67,146 +66,14 @@ function process_form(){
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 	
-	global $tabla;							 
-	$tabla = "<table align='center' style=\"margin-top:20px\">
-				<tr>
-					<th colspan=3  class='BorderInf'>
-						NUEVOS DATOS DEL USUARIO.
-					</th>
-				</tr>
-				
-				<tr>
-					<td width=150px>
-						Nombre:
-					</td>
-					<td width=200px>"
-						.$_POST['Nombre'].
-					"</td>
-					<td rowspan='5' align='center'>
-		<img src='../Gcb.Img.User/".$_SESSION['myimgcl']."' height='120px' width='90px' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Apellidos:
-					</td>
-					<td>"
-						.$_POST['Apellidos'].
-					"</td>
-				</tr>				
-				
-				<tr>
-					<td>
-						Tipo Documento:
-					</td>
-					<td>"
-						.$_POST['doc'].
-					"</td>
-				</tr>				
-				
-				<tr>
-					<td>
-						N&uacute;mero:
-					</td>
-					<td>"
-						.$_POST['dni'].
-					"</td>
-				</tr>				
-				
-				<tr>
-					<td>
-						Control:
-					</td>
-					<td>"
-						.$_POST['ldni'].
-					"</td>
-				</tr>				
-				
-				<tr>
-					<td>
-						Mail:
-					</td>
-					<td colspan=2>"
-						.$_POST['Email'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Tipo Usuario
-					</td>
-					<td colspan=2>"
-						.$_POST['Nivel'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Referencia Usuario
-					</td>
-					<td colspan=2>"
-						.$_SESSION['refcl'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Usuario:
-					</td>
-					<td colspan=2>"
-						.$_POST['Usuario'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Password:
-					</td>
-					<td colspan=2>"
-						.$_POST['Password'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Dirección:
-					</td>
-					<td colspan=2>"
-						.$_POST['Direccion'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Teléfono 1:
-					</td>
-					<td colspan=2>"
-						.$_POST['Tlf1'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						Teléfono 2:
-					</td>
-					<td colspan=2>"
-						.$_POST['Tlf2']./*" / ".$_SESSION['dni']." / ".$_SESSION['mydni'].*/
-					"</td>
-				</tr>
-				<tr>
-					<td colspan=3 align='right' class='BorderSup'>
-						<form name='closewindow' action='Admin_Modificar_01.php'  \">
-							<input type='submit' value='VOLVER A ADMIN MODIFICAR' />
-							<input type='hidden' name='volver' value=1 />
-						</form>
-					</td>
-				</tr>
-			</table>"; 
+	global $password;
+	$password = $_POST['Password'] ;
+	global $passwordhash;
+	$passwordhash = password_hash($password, PASSWORD_DEFAULT, array ( "cost"=>10));
 
 	if ($_SESSION['Nivel'] == 'admin') {
 		
-	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `doc` = '$_POST[doc]', `dni` = '$_POST[dni]', `ldni` = '$_POST[ldni]', `Email` = '$_POST[Email]', `Usuario` = '$_POST[Usuario]', `Password` = '$_POST[Password]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
+	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `doc` = '$_POST[doc]', `dni` = '$_POST[dni]', `ldni` = '$_POST[ldni]', `Email` = '$_POST[Email]', `Usuario` = '$_POST[Usuario]', `Password` = '$passwordhash', `Pass` = '$password', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){ 	
 		
@@ -224,8 +91,23 @@ function process_form(){
 								 
 					require '../Gcb.Inclu/mydni.php';
 
-				global $tabla;
-				print( $tabla );
+		print("<table align='center' style=\"margin-top:20px\">
+				<tr>
+					<th colspan=3  class='BorderInf'>
+						NUEVOS DATOS DEL USUARIO.
+					</th>
+				</tr>");
+
+				global $rutaimg;
+				$rutaimg = "src='../Gcb.Img.User/".$_SESSION['myimgcl']."'";
+				require 'table_data_resum.php';
+
+		print("<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
+					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+						<input type='hidden' name='closewin' value=1 />
+					</form></td></tr>
+				</table>");
 
 				} else {
 				print("<font color='#FF0000'>
@@ -244,10 +126,26 @@ function process_form(){
 		
 			$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `Nivel` = '$_POST[Nivel]', `Nombre` = '$_POST[Nombre]', `Apellidos` = '$_POST[Apellidos]', `Email` = '$_POST[Email]', `Direccion` = '$_POST[Direccion]', `Tlf1` = '$_POST[Tlf1]', `Tlf2` = '$_POST[Tlf2]' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
-	if(mysqli_query($db, $sqlc)){ global $tabla;
-								  print( $tabla );
-				} else {
-				print("<font color='#FF0000'>
+	if(mysqli_query($db, $sqlc)){ 
+		print("<table align='center' style=\"margin-top:20px\">
+				<tr>
+					<th colspan=3  class='BorderInf'>
+						NUEVOS DATOS DEL USUARIO.
+					</th>
+				</tr>");
+
+				global $rutaimg;
+				$rutaimg = "src='../Gcb.Img.User/".$_SESSION['myimgcl']."'";
+				require 'table_data_resum.php';
+
+		print("<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
+					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+						<input type='hidden' name='closewin' value=1 />
+					</form></td></tr>
+				</table>");
+
+		} else {print("<font color='#FF0000'>
 						* MODIFIQUE LA ENTRADA 241: </font>
 						</br>
 						&nbsp;&nbsp;&nbsp;".mysqli_error($db))."
@@ -268,14 +166,15 @@ function show_form($errors=[]){
 	
 			require '../Gcb.Inclu/mydni.php';
 
-	if($_POST['oculto2']){
+	if(isset($_POST['oculto2'])){
 
 				$_SESSION['refcl'] = $_POST['ref'];
 				$_SESSION['myimgcl'] = $_POST['myimg'];
 				
 				global $dt;
 				$dt = $_POST['doc'];
-		
+
+				global $defaults;
 				$defaults = array ( 'id' => $_POST['id'],
 									'ref' => $_POST['ref'],
 									'Nombre' => $_POST['Nombre'],
@@ -288,18 +187,19 @@ function show_form($errors=[]){
 									'Email' => $_POST['Email'],
 									'Usuario' => $_POST['Usuario'],
 									'Usuario2' => $_POST['Usuario'],
-									'Password' => $_POST['Password'],
-									'Password2' => $_POST['Password'],
+									'Password' => $_POST['Pass'],
+									'Password2' => $_POST['Pass'],
 									'Direccion' => $_POST['Direccion'],
 									'Tlf1' => $_POST['Tlf1'],
 									'Tlf2' => $_POST['Tlf2']);
 												}
 								   
-		elseif($_POST['modifica']){
+		elseif(isset($_POST['modifica'])){
 			
 			global $dt;
 			$dt = $_POST['doc'];
 			
+			global $defaults;
 			$defaults = array ( 'id' => $_POST['id'],
 								'ref' => $_SESSION['refcl'],
 								'Nombre' => $_POST['Nombre'],
@@ -318,6 +218,25 @@ function show_form($errors=[]){
 								'Tlf1' => $_POST['Tlf1'],
 								'Tlf2' => $_POST['Tlf2']);
 												}
+		else {  global $defaults;
+				$defaults = array ( 'id' => $defaults['id'],
+									'ref' => $defaults['ref'],
+									'Nombre' => $defaults['Nombre'],
+									'Apellidos' => $defaults['Apellidos'],
+									'myimg' => $defaults['myimgcl'],
+									'Nivel' => $defaults['Nivel'],			
+									'doc' => $defaults['doc'],
+									'dni' => $defaults['dni'],
+									'ldni' => $defaults['ldni'],
+									'Email' => $defaults['Email'],
+									'Usuario' => $defaults['Usuario'],
+									'Usuario2' => $defaults['Usuario'],
+									'Password' => $defaults['Pass'],
+									'Password2' => $defaults['Pass'],
+									'Direccion' => $defaults['Direccion'],
+									'Tlf1' => $defaults['Tlf1'],
+									'Tlf2' => $defaults['Tlf2']);
+					}
 	
 	if ($errors){
 		print("<table align='center'>
@@ -346,6 +265,7 @@ function show_form($errors=[]){
 	$doctype = array (	'DNI' => 'DNI/NIF Espa&ntilde;oles',
 						'NIE' => 'NIE/NIF Extranjeros',
 						'NIFespecial' => 'NIF Persona F&iacute;sica Especial',
+						/*
 						'NIFsa' => 'NIF Sociedad An&oacute;nima',
 						'NIFsrl' => 'NIF Sociedad Responsabilidad Limitada',
 						'NIFscol' => 'NIF Sociedad Colectiva',
@@ -363,349 +283,22 @@ function show_form($errors=[]){
 						'NIFute' => 'NIF Uniones Temporales de Empresas',
 						'NIFotnd' => 'NIF Otros Tipos no Definidos',
 						'NIFepenr' => 'NIF Establecimientos Permanentes Entidades no Residentes',
-										);
+						*/		);
 	
 	if ($_SESSION['Nivel'] == 'admin'){
 	
-	print("<table align='center' border=0>
-				<tr>
-					<th colspan=2 class='BorderInf'>
-			<img src='../Gcb.Img.User/".$_POST['myimg']."' height='44px' width='33px' />
-						</br>INTRODUZCA LOS NUEVOS DATOS EN EL FORMULARIO.
-					</th>
-				</tr>
-				
-		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'>
-			
-		<input name='id' type='hidden' value='".$defaults['id']."' />					
-		<input name='myimg' type='hidden' value='".$_POST['myimg']."' />					
-				<tr>
-					<td>	
-						<font color='#FF0000'>*</font>
-						Referencia Usuario:
-					</td>
-					<td>
-		<input name='ref' type='hidden' value='".$_SESSION['refcl']."' />".$defaults['ref']."			
-					</td>
-				</tr>
-					
-				<tr>
-					<td>	
-						<font color='#FF0000'>*</font>
-						Nombre:
-					</td>
-					<td>
-		<input type='text' name='Nombre' size=28 maxlength=25 value='".$defaults['Nombre']."' />
-					</td>
-				</tr>
-					
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Apellidos:
-					</td>
-					<td>
-	<input type='text' name='Apellidos' size=28 maxlength=25 value='".$defaults['Apellidos']."' />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Tipo Documento:
-					</td>
-					<td>
-		<select name='doc'>");
-				foreach($doctype as $option => $label2){
-					print ("<option value='".$option."' ");
-					if($option == $defaults['doc']){print ("selected = 'selected'");}
-													print ("> $label2 </option>");
-												}	
-	print ("</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						N&uacute;mero:
-					</td>
-					<td>
-		<input type='text' name='dni' size=28 maxlength=8 value='".$defaults['dni']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Control::
-					</td>
-					<td>
-		<input type='text' name='ldni' size=4 maxlength=1 value='".$defaults['ldni']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Mail:
-					</td>
-					<td>
-		<input type='text' name='Email' size=52 maxlength=50 value='".$defaults['Email']."' />
-					</td>
-				</tr>	
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Nivel Usuario:
-					</td>
-					<td>
-		<select name='Nivel'>");
-				foreach($Nivel as $optionnv => $labelnv){
-					print ("<option value='".$optionnv."' ");
-					if($optionnv == $defaults['Nivel']){print ("selected = 'selected'");}
-													print ("> $labelnv </option>");
-												}	
-	print ("</select>
-					</td>
-				</tr>
-					
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Nombre de Usuario:
-					</td>
-					<td>
-		<input type='text' name='Usuario' size=12 maxlength=10 value='".$defaults['Usuario']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Confirme el Usuario:
-					</td>
-					<td>
-		<input type='text' name='Usuario2' size=12 maxlength=10 value='".$defaults['Usuario2']."' />
-					</td>
-				</tr>
-							
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Password:
-					</td>
-					<td>
-		<input type='text' name='Password' size=12 maxlength=10 value='".$defaults['Password']."' />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Confirme el Password:
-					</td>
-					<td>
-	<input type='text' name='Password2' size=12 maxlength=10 value='".$defaults['Password2']."' />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Dirección:
-					</td>
-					<td>
-	<input type='text' name='Direccion' size=52 maxlength=60 value='".$defaults['Direccion']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Teléfono 1:
-					</td>
-					<td>
-		<input type='text' name='Tlf1' size=12 maxlength=9 value='".$defaults['Tlf1']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Teléfono 2:
-					</td>
-					<td>
-		<input type='text' name='Tlf2' size=12 maxlength=9 value='".$defaults['Tlf2']."' />
-					</td>
-				</tr>
-				
-				<tr height=40px>
-					<td colspan='2' align='right'>
-						<input type='submit' value='MODIFICAR DATOS' />
-						<input type='hidden' name='modifica' value=1 />
-						
-					</td>
-				</tr>
-			</form>														
-		</table>");
-
+		global $modifadmin;
+		$modifadmin = 1;
+		require 'table_crea_admin.php';
+		
 	} // FIN IF ADMIN
 	
+		
 	elseif(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 	
-			print("<table align='center' border=0>
-				<tr>
-					<th colspan=2 class='BorderInf'>
-<img src='../Gcb.Img.User/".$_POST['myimg']."' height='44px' width='33px' />
-						INTRODUZCA LOS NUEVOS DATOS EN EL FORMULARIO.
-					</th>
-				</tr>
-				
-		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'>
-			
-		<input name='id' type='hidden' value='".$defaults['id']."' />					
-		<input name='myimg' type='hidden' value='".$_POST['myimg']."' />					
-				<tr>
-					<td>	
-						<font color='#FF0000'>*</font>
-						Referencia Usuario:
-					</td>
-					<td>
-		<input name='ref' type='hidden' value='".$_SESSION['refcl']."' />".$defaults['ref']."			
-					</td>
-				</tr>
-					
-				<tr>
-					<td>	
-						<font color='#FF0000'>*</font>
-						Nombre:
-					</td>
-					<td>
-		<input type='text' name='Nombre' size=28 maxlength=25 value='".$defaults['Nombre']."' />
-					</td>
-				</tr>
-					
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Apellidos:
-					</td>
-					<td>
-		<input type='text' name='Apellidos' size=28 maxlength=25 value='".$defaults['Apellidos']."' />
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Tipo Documento:
-					</td>
-					<td>
-		<input type='hidden' name='doc' value='".$defaults['doc']."' />".$defaults['doc']."
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						N&uacute;mero:
-					</td>
-					<td>
-		<input type='hidden' name='dni' value='".$defaults['dni']."' />".$defaults['dni']."
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Control::
-					</td>
-					<td>
-		<input type='hidden' name='ldni' value='".$defaults['ldni']."' />".$defaults['ldni']."
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Mail:
-					</td>
-					<td>
-		<input type='text' name='Email' size=52 maxlength=50 value='".$defaults['Email']."' />
-					</td>
-				</tr>	
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Nivel Usuario:
-					</td>
-					<td>
-		<input type='hidden' name='Nivel' value='".$defaults['Nivel']."' />".$defaults['Nivel']."
-					</td>
-				</tr>
-					
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Nombre de Usuario:
-					</td>
-					<td>
-		<input type='hidden' name='Usuario' value='".$defaults['Usuario']."' />".$defaults['Usuario']."
-					</td>
-				</tr>
-				
-		<input type='hidden' name='Usuario2' value='".$defaults['Usuario2']."' />
-							
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Password:
-					</td>
-					<td>
-		<input type='hidden' name='Password' value='".$defaults['Password']."' />".$defaults['Password']."
-					</td>
-				</tr>
-		<input type='hidden' name='Password2' value='".$defaults['Password2']."' />
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Dirección:
-					</td>
-					<td>
-		<input type='text' name='Direccion' size=52 maxlength=60 value='".$defaults['Direccion']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Teléfono 1:
-					</td>
-					<td>
-		<input type='text' name='Tlf1' size=12 maxlength=9 value='".$defaults['Tlf1']."' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<font color='#FF0000'>*</font>
-						Teléfono 2:
-					</td>
-					<td>
-		<input type='text' name='Tlf2' size=12 maxlength=9 value='".$defaults['Tlf2']."' />
-					</td>
-				</tr>
-				
-				<tr height=40px>
-					<td colspan='2' align='right'>
-						<input type='submit' value='MODIFICAR DATOS' />
-						<input type='hidden' name='modifica' value=1 />
-						
-					</td>
-				</tr>
-			</form>														
-		</table>");
+		global $modifadmin;
+		$modifadmin = 1;
+		require 'table_crea_admin.php';
 
 			} // FIN ELSE IF USER / PLUS
 	
@@ -717,10 +310,10 @@ function show_form($errors=[]){
 	
 	function master_index(){
 		
-				require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/rutaadmin.php';
 		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
-				} 
+		} 
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

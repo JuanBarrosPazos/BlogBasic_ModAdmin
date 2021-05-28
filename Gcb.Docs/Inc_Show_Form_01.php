@@ -51,7 +51,7 @@ $ordenar = array (	'`id` ASC' => 'ID Ascendente',
 
 if (($_SESSION['Nivel'] == 'admin')){ 
 
-print(" <table align='center' style=\"border:0px;margin-top:-20px\">
+print(" <table style=\"text-alig:center;margin-top:-20px\">
             <tr>
                 <th colspan=3 width=100%>".$titulo."</th>
             </tr>
@@ -59,24 +59,18 @@ print(" <table align='center' style=\"border:0px;margin-top:-20px\">
     <form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
                     
             <tr>
-                <td align='right'>
+                <td style='text-align:right;'>
                     <input type='submit' value='USER CONSULTA' class='botonazul' />
                     <input type='hidden' name='ocultoc' value=1 />
                 </td>
-                <td align='right'>	
-                    NOMBRE
-                </td>
+                <td style='text-align:right;'>NOMBRE </td>
                 <td>
         <input type='text' name='Nombre' size=20 maxlenth=10 value='".@$defaults['Nombre']."' />
                 </td>
             </tr>
 
             <tr>
-                <td>
-                </td>
-                <td align='right'>	
-                    APELLIDO
-                </td>
+                <td></td><td style='text-align:right;'>APELLIDO </td>
                 <td>
 <input type='text' name='Apellidos' size=20 maxlenth=10 value='".@$defaults['Apellidos']."' />
                 </td>
@@ -85,11 +79,11 @@ print(" <table align='center' style=\"border:0px;margin-top:-20px\">
             
     <form name='todo' method='post' action='$_SERVER[PHP_SELF]' >
             <tr>
-                <td align='right'>
+                <td style='text-align:right;'>
                     <input type='submit' value='".$boton."' class='botonazul' />
                     <input type='hidden' name='todo' value=1 />
                 </td>
-                <td align='right'>	
+                <td style='text-align:right;'>	
                     ORDEN
                 </td>
                 <td>

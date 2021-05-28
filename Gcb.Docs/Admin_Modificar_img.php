@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+	global $docs;
+	$docs = 1;
+	
 	require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Connet/conection.php';
@@ -149,78 +152,25 @@ function process_form(){
 	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `myimg` = '$new_name' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){
-			print( "<table align='center' style=\"margin-top:20px\">
+
+		if ($_SESSION['sref'] == $_SESSION['ref']){ $_SESSION['myimg'] = $new_name;  }
+		else { }
+		
+	print( "<table style=\"margin-top:20px;\">
 				<tr>
 					<th colspan=3  class='BorderInf'>
-						Estos son los nuevos datos de registro.
+						NUEVOS DATOS
 					</th>
-				</tr>
+				</tr>");
 				
-				<tr>
-					<td style='text-align:right !important; width:120px' >Nombre: </td>
-					<td style='text-align:left !important; width:100px' >".$_POST['Nombre']."</td>
-					<td rowspan='5' align='center'>
-	<img src='../Gcb.Img.User/".$_SESSION['new_name']."' height='120px' width='90px' />
-					</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Apellidos: </td>
-					<td style='text-align:left !important;'>".$_POST['Apellidos']."</td>
-				</tr>				
-				
-				<tr>
-					<td style='text-align:right !important;'>Documento: </td>
-					<td style='text-align:left !important;'>".$_POST['doc']."</td>
-				</tr>				
-				
-				<tr>
-					<td style='text-align:right !important;'>N&uacute;mero: </td>
-					<td style='text-align:left !important;'>".$_POST['dni']."</td>
-				</tr>				
-				
-				<tr>
-					<td style='text-align:right !important;'>Control: </td>
-					<td style='text-align:left !important;'>".$_POST['ldni']."</td>
-				</tr>				
-				
-				<tr>
-					<td style='text-align:right !important;'>Mail: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Email']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Nivel: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Nivel']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Usuario: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Usuario']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Password: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Pass']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Dirección: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Direccion']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Teléfono 1: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Tlf1']."</td>
-				</tr>
-				
-				<tr>
-					<td style='text-align:right !important;'>Teléfono 2: </td>
-					<td style='text-align:left !important;' colspan=2>".$_POST['Tlf2']."</td>
-				</tr>
+		global $rutaimg;
+		$rutaimg = "src='../Gcb.Img.User/".$_SESSION['new_name']."'";
+		global $vertabla;
+		$vertabla = 1;
+		require 'table_data_resum.php';
 												
-				<tr>
-					<td colspan=3 align='right' class='BorderSup'>
+		print("	<tr>
+					<td colspan=3 style='text-align:right;' class='BorderSup'>
 		<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
 						<input type='submit' value='CERRAR VENTANA' class='botonrojo />
 						<input type='hidden' name='oculto2' value=1 />

@@ -17,14 +17,21 @@ require '../Gcb.Inclu/misdatos.php';
 
   <title>Juan Barros Pazos - Inicio</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <?php
 
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    if(isset($docs)){
 
+    } elseif (!isset($docs)){
+      print("<!-- Bootstrap core CSS 
+              <link href=\"../vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
+              <link href=\"../vendor/fontawesome-free/css/all.min.css\" rel=\"stylesheet\" type=\"text/css\">
+            -->");
+    }
+  ?>
   <!-- Custom styles for this template -->
-  <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css" />
+  
   <link href="../css/agency.min.css" rel="stylesheet">
+  <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css" />
 
   <script src="img_change_jscss/jquery-3.4.1.min.js"></script>
   <script src="img_change_jscss/inputfile-custom.js"></script>

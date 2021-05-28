@@ -250,11 +250,11 @@ function process_form(){
 			global $onlyindex;
 
 			if ($onlyindex == 1){
+					master_index();
+					ver_todo();
 					ayear();
 					suma_acces();
 					bbdd_backup();
-					master_index();
-					ver_todo();
 			} else { }
 
 			print("
@@ -264,10 +264,6 @@ function process_form(){
 		}else { require '../Gcb.Inclu/table_permisos.php'; }
 	
 	}	
-
-				   ////////////////////				   ////////////////////
-////////////////////				////////////////////				////////////////////
-				 ////////////////////				  ///////////////////
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -698,59 +694,26 @@ function show_visit(){
 	
 	if(mysqli_query($db, $sqlv)){
 		print(" <table align='center'>
-					
-						<tr>	
-							<td align='right'>
-								<font color='#59746A'>
-									VISITS:
-								</font>
-							</td>
-							<td  align='right'>
-								<font color='#59746A'>
-														".$tot."
-								</font>
-							</td>
-						</tr>
+					<tr>	
+						<td align='right'><font color='#59746A'>VISITS: </font></td>
+						<td  align='right'><font color='#59746A'>".$tot."</font></td>
+					</tr>
 						
-						<tr>
-							<td align='right'>
-								<font color='#59746A'>
-									AUTHORIZED:
-								</font>
-							</td>
-							<td align='right'>
-								<font color='#59746A'>
-														".$rowv['acceso']."
-								</font>
-							</td>
-						</tr>
+					<tr>
+						<td align='right'><font color='#59746A'>AUTHORIZED: </font></td>
+						<td align='right'><font color='#59746A'>".$rowv['acceso']."</font></td>
+					</tr>
 
-						<tr>
-							<td align='right'>
-								<font color='#59746A'>
-									FORBIDDEN:
-								</font>
-							</td>
-							<td align='right'>
-								<font color='#59746A'>
-														".$rowv['deneg']."
-								</font>
-							</td>
-							
-						</tr>
-					</table>");
-										} 
-				
-				 else {
-				print("<font color='#FF0000'>
-						* Error: show visit</font>
-						</br>
-						&nbsp;&nbsp;&nbsp;".mysqli_error($db)."
-						</br>");
-						
-							}
+					<tr>
+						<td align='right'><font color='#59746A'>FORBIDDEN: </font></td>
+						<td align='right'><font color='#59746A'>".$rowv['deneg']."</font></td>
+					</tr>
+				</table>");
+		} else { print("<font color='#FF0000'>* Error: show visit</font></br>
+						&nbsp;&nbsp;&nbsp;".mysqli_error($db)."</br>");
+			}
 
-					}
+	}
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

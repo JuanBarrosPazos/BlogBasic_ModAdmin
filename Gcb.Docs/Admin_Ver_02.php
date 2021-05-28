@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+	global $docs;
+	$docs = 1;
+	
 	require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Inclu/mydni.php';
@@ -35,7 +38,7 @@ function process_form(){
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 	
-	print("<table align='center'>
+	print("<table style='margin-top:12px;'>
 				<tr>
 					<th colspan=3  class='BorderInf'>
 						DATOS DEL USUARIO
@@ -48,7 +51,7 @@ function process_form(){
 			require 'table_data_resum.php';
 
 	print("<tr>
-				<td colspan=3 align='right' class='BorderSup'>
+				<td colspan=3 style='text-align:right;' class='BorderSup'>
 					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
 						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
 						<input type='hidden' name='oculto2' value=1 />

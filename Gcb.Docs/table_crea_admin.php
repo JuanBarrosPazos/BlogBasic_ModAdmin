@@ -1,21 +1,52 @@
 <?php
 
-	print(" <table style=\"margin-top:2px\">
+	if (isset($modifadmin)){ 
+		global $title;
+		$title = "<img src='../Gcb.Img.User/".$_POST['myimg']."' height='44px' width='33px' />
+					</br>MODIFIQUE LOS DATOS DEL ADMINISTRADOR";
+		global $title2;
+		$title2 = "<input name='ref' type='hidden' value='".$_SESSION['refcl']."' />".$defaults['ref'];
+		global $title3;
+		$title3 = "MODIFICAR DATOS USUARIO";
+		global $title4;
+		$title4 = "modifica";
+		global $closewin;
+		$closewin = "<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
+			<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+				<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+				<input type='hidden' name='closewin' value=1 />
+			</form></td></tr>"; 
+	}
+	elseif (!isset($modifadmin)){ 
+		global $title;
+		$title = "DATOS DEL NUEVO ADMINISTRADOR";
+		global $title2;
+		$title2 = "SE GENERA LA CLAVE AUTOMÁTICAMENTE";
+		global $title3;
+		$title3 = "REGISTRARME CON ESTOS DATOS";
+		global $title4;
+		$title4 = "oculto";
+	 }
+
+	print("<table style=\"margin-top:6px\">
 				<tr>
 					<th colspan=2 class='BorderInf'>
-							DATOS DEL NUEVO ADMINISTRADOR
+							".$title."
 					</th>
-				</tr>
+				</tr>".$closewin."
 				
-<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
+		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'>
+
+			<input name='id' type='hidden' value='".$defaults['id']."' />				
+			<input name='myimg' type='hidden' value='".$_POST['myimg']."' />					
 						
 				<tr>
 					<td style='text-align:right; width:140px;' >	
 						<font color='#FF0000'>*</font>
-						Ref Userbb:
+						Ref User:
 					</td>
 					<td style='text-align:left; width:290px;'>
-						SE GENERA LA CLAVE AUTOMÁTICAMENTE 
+						".$title2." 
 					</td>
 				</tr>
 					
@@ -44,18 +75,26 @@
 						<font color='#FF0000'>*</font>
 						Tipo Documento:
 					</td>
-					<td style='text-align:left;'>
+					<td style='text-align:left;'>");
+	
+	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
 
-	<select name='doc'>");
+		print("	<input type='hidden' name='doc' value='".$defaults['doc']."' />".$defaults['doc']);
 
-				foreach($doctype as $option => $label){
-					print ("<option value='".$option."' ");
-					if($option == $defaults['doc']){print ("selected = 'selected'");}
-													print ("> $label </option>");
-												}	
-						
-	print ("</select>
-					</td>
+		}
+
+	else { print("<select name='doc'>");
+					foreach($doctype as $option => $label){
+						print ("<option value='".$option."' ");
+						if($option == $defaults['doc']){print ("selected = 'selected'");}
+														print ("> $label </option>");
+													}	
+			print ("</select>");
+		}
+	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+			print("</td>
 				</tr>
 
 				<tr>
@@ -63,9 +102,21 @@
 						<font color='#FF0000'>*</font>
 						N&uacute;mero:
 					</td>
-					<td style='text-align:left;'>
-		<input type='text' name='dni' size=12 maxlength=8 value='".$defaults['dni']."' />
-					</td>
+					<td style='text-align:left;'>");
+
+		// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+		if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
+
+		print("<input type='hidden' name='dni' value='".$defaults['dni']."' />".$defaults['dni']);
+
+		} else {
+		
+		print("<input type='text' name='dni' size=12 maxlength=8 value='".$defaults['dni']."' />");
+
+		}
+		// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+			print("</td>
 				</tr>
 				
 				<tr>
@@ -73,9 +124,21 @@
 						<font color='#FF0000'>*</font>
 						Control:
 					</td>
-					<td style='text-align:left;'>
-		<input type='text' name='ldni' size=4 maxlength=1 value='".$defaults['ldni']."' />
-					</td>
+					<td style='text-align:left;'>");
+
+		// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+		if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
+
+		print("<input type='hidden' name='ldni' value='".$defaults['ldni']."' />".$defaults['ldni']);
+
+		} else {
+		
+		print("<input type='text' name='ldni' size=4 maxlength=1 value='".$defaults['ldni']."' />");
+
+		}
+		// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+		print("		</td>
 				</tr>
 				<tr>
 					<td style='text-align:right;'>
@@ -92,18 +155,24 @@
 						<font color='#FF0000'>*</font>
 						Nivel Usuario:
 					</td>
-					<td style='text-align:left;'>
-	
-	<select name='Nivel'>");
+					<td style='text-align:left;'>");
 
-		foreach($Nivel as $optionnv => $labelnv){
-			print ("<option value='".$optionnv."' ");
-			if($optionnv == $defaults['Nivel']){print ("selected = 'selected'");}
-												print ("> $labelnv </option>");
-										}	
-						
-	print ("</select>
-					</td>
+	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
+
+		print("<input type='hidden' name='Nivel' value='".$defaults['Nivel']."' />".$defaults['Nivel']);
+
+		} else { print("<select name='Nivel'>");
+						foreach($Nivel as $optionnv => $labelnv){
+							print ("<option value='".$optionnv."' ");
+							if($optionnv == $defaults['Nivel']){print ("selected = 'selected'");}
+																print ("> $labelnv </option>");
+														}	
+				print ("</select>");
+		}
+	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+			print("</td>
 				</tr>
 					
 				<tr>
@@ -111,41 +180,52 @@
 						<font color='#FF0000'>*</font>
 						Nombre Usuario:
 					</td>
-					<td style='text-align:left;'>
-		<input type='text' name='Usuario' size=12 maxlength=10 value='".$defaults['Usuario']."' />
-					</td>
-				</tr>
-				<tr>
-					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
+					<td style='text-align:left;'>");
+
+	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
+
+	print("	<input type='hidden' name='Usuario' value='".$defaults['Usuario']."' />".$defaults['Usuario']."
+				</td></tr>
+			<input type='hidden' name='Usuario2' value='".$defaults['Usuario2']."' />");
+
+	} else {
+	print("<input type='text' name='Usuario' size=12 maxlength=10 value='".$defaults['Usuario']."' />
+				</td></tr>
+				<tr><td style='text-align:right;'><font color='#FF0000'>*</font>
 						Confirme Usuario:
-					</td>
-					<td style='text-align:left;'>
+				</td><td style='text-align:left;'>
 		<input type='text' name='Usuario2' size=12 maxlength=10 value='".$defaults['Usuario2']."' />
-					</td>
-				</tr>
-							
-				<tr>
+				</td></tr>");
+		}
+	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+		print("<tr>
 					<td style='text-align:right;'>
 						<font color='#FF0000'>*</font>
 						Password:
 					</td>
-					<td style='text-align:left;'>
-		<input type='text' name='Password' size=12 maxlength=10 value='".$defaults['Password']."' />
-					</td>
-				</tr>
+					<td style='text-align:left;'>");
 
-				<tr>
-					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
+	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
+
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
+
+		print("<input type='hidden' name='Password' value='".$defaults['Password']."' />".$defaults['Password']."
+				</td></tr>
+			<input type='hidden' name='Password2' value='".$defaults['Password2']."' />");
+	} else { 
+		print("<input type='text' name='Password' size=12 maxlength=10 value='".$defaults['Password']."' />
+				</td></tr>
+				<tr><td style='text-align:right;'><font color='#FF0000'>*</font>
 						Confirme Password:
-					</td>
-					<td style='text-align:left;'>
+				</td><td style='text-align:left;'>
 	<input type='text' name='Password2' size=12 maxlength=10 value='".$defaults['Password2']."' />
-					</td>
-				</tr>
+				</td></tr>");
+		}
+	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
 
-				<tr>
+		print("	<tr>
 					<td style='text-align:right;'>
 						<font color='#FF0000'>*</font>
 						Dirección:
@@ -191,11 +271,11 @@
 
 	print("	<tr>
 				<td colspan='2'  align='right' valign='middle'  class='BorderSup'>
-					<input type='submit' value='REGISTRARME CON ESTOS DATOS' class='botonverde' />
-					<input type='hidden' name='oculto' value=1 />
+					<input type='submit' value='".$title3."' class='botonverde' />
+					<input type='hidden' name='".$title4."' value=1 />
 				</td>
 			</tr>
-				</form>
+				</form>".$closewin."
 		</table>"); 
 
 ?>
