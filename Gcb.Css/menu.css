@@ -1,3 +1,56 @@
+@media screen and (max-width:740px){ 
+  
+  .app {
+    height: 256px !important;
+      }
+
+  .sidebar {
+    position: absolute;
+    width: 6.2em !important;
+    height: 70px !important;
+      }
+
+  .sidebar:hover {
+    height: 100% !important;
+    width: 11.6em !important;
+        }
+
+  .sidebar header {
+    background-color: #343434;
+    width: auto;
+    display: block;
+    padding: 0.0em	0.5em;
+        }
+
+    }
+
+@media screen and (max-width:440px){
+  .app {
+      height: 208px !important;
+        }
+  .sidebar {
+      position: absolute;
+      width: 6.7em !important;
+      height: 25px !important;
+        }
+
+  .sidebar:hover {
+      height: 100% !important;
+      width: 11.6em !important;
+        }
+
+  .sidebar header {
+      background-color: #343434;
+      width: auto;
+      display: block;
+      padding: 0.0em	0.5em;
+        }
+  
+    }
+
+/*************************************/
+/*************************************/
+/*************************************/
 
 body {
   /*font-family: "Lato";*/
@@ -31,8 +84,7 @@ a:hover {
 .app {
   /*height: 40.4vh;
   height: 304px;*/
-  height: 418px;
-
+  height: 318px;
 }
 
 .sidebar li{

@@ -15,18 +15,19 @@ print ("
 	<header style='text-align:center'>
     <!--    -->
     <img src='".$rutaindex."Gcb.Img.User/".$_SESSION['myimg']."' class='imgtitle' />
-    
-    ".$usertitle."</br>
-    ".$niv."</br>
-        <a href='#'>
+    <div class='ocultahead'>
+        ".$usertitle."</br>
+        ".$niv."</br>
+    </div>
+        <a href='#' class='ocultahead'>
             <form name='cerrar' action='".$rutaadmin."mcgexit.php' method='post'>
                 <input type='submit' value='CLOSE SESSION'  style='margin-top:2px;' class='botonverde' />
                 <input type='hidden' name='cerrar' value=1 />
             </form>
         </a>
 
- <a href='#'><i class='ic icoh'></i>
-		<span style='color:#FFFFFF;vertical-align:middle'>MENU APP</span>
+ <a href='#'><i class='ic icoh ocultahead'></i>
+		<span class='borderhead' style='color:#FFFFFF;vertical-align:middle'>MENU APP</span>
  </a>
     </header>
     ");
