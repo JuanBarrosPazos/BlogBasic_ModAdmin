@@ -78,7 +78,7 @@ function info(){
 	$ActionTime = date('H:i:s');
 	
 	global $dir;
-	$dir = "../Users/".$_SESSION['ref']."/log";
+	$dir = "../Gcb.Log";
 	
 	global $text;
 	$text = PHP_EOL."- USERS VER DETALLES ".$ActionTime.PHP_EOL."\t Nombre: ".$nombre." ".$apellido;
