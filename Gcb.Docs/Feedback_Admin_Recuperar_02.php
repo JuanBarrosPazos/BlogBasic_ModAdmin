@@ -3,19 +3,10 @@
 session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_head.php';
-
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 	require '../Gcb.Inclu/my_bbdd_clave.php';
-
-/*
-global $table_name_a;
-$table_name_a = "`".$_SESSION['clave']."admin`";
-$sqld =  "SELECT * FROM $table_name_a WHERE `ref` = '$_SESSION[ref]' AND `Usuario` = '$_SESSION[Usuario]'";
-$qd = mysqli_query($db, $sqld);
-$rowd = mysqli_fetch_assoc($qd);
-*/
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -61,7 +52,7 @@ function process_form(){
 						</tr>");
 							
 			global $rutaimg;
-			$rutaimg = "src='../Users/".$_POST['ref']."/img_admin/".$_POST['myimg']."'";
+			$rutaimg = "src='../Gcb.Imb.User/".$_POST['myimg']."'";
 			require 'table_data_resum.php';
 			require 'table_data_resum_feed.php';
 				
@@ -120,7 +111,7 @@ function show_form(){
 							require 'admin_array_total.php'; 
 								}
 	
-	print("<table align='center'>
+	print("<table style='margin-top:1px;'>
 				<tr>
 					<td colspan=3 class='BorderInf' align='center'>
 						DATOS DEL USER A RECUPERAR.
@@ -231,7 +222,7 @@ $text = PHP_EOL."- ADMIN FEEDBACK RECUPERAR SELECCIONADO ".$ActionTime.PHP_EOL."
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
-	require '../Gcb.Inclu/Admin_Inclu_footer.php';
+		require '../Gcb.Inclu/Admin_Inclu_footer.php';
 
 					   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////

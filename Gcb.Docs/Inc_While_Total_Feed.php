@@ -86,9 +86,8 @@
 				</td>
 						
 				<td class='BorderInfDch'>
-	<img src='../Users/".$rowb['ref']."/img_admin/".$rowb['myimg']."' height='40px' width='30px' />
+					<img src='../Gcb.Img.User/".$rowb['myimg']."' height='40px' width='30px' />
 				</td>
-												
 													
 				<td class='BorderInfDch'>
 					".$rowb['Usuario']."
@@ -97,8 +96,8 @@
 				<td class='BorderInfDch'>
 					".$rowb['Pass']."
 				</td>
-						
 			</tr>
+
 			<tr>
 					
         <!-- AQUÍ VA LA BOTONERA -->

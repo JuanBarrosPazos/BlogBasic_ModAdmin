@@ -1,21 +1,17 @@
-<?php
-require '../Gcb.Inclu/misdatos.php';
-
-/* Creado por Juan Manuel Barros Pazos 2020/21 */
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Juan Barros Pazos - Inicio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+<meta http-equiv="Content-Language" content="es-es">
+<meta name="Language" content="Spanish">
+<meta name="description" content="Gestor Basico Contenidos" />
+<meta name="keywords" content="Juan Barros Pazos, Programas gratis, Spain, Mallorca, Palma de Mallorca" />
+<meta name="robots" content="all, index, follow" />
+<meta name="audience" content="All" />
+<title>Juan Manuel Barros Pazos</title>
 
   <?php
 
