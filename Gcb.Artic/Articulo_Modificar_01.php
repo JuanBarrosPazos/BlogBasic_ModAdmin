@@ -208,6 +208,7 @@ function process_form(){
 
 function show_form($errors=[]){
 	
+	unset ($_SESSION['dyt1']);
 	global $titulo;
 	$titulo = "MODIFICAR ARTICULOS";
 
