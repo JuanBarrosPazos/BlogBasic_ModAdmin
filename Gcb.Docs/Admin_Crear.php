@@ -126,7 +126,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	print("	<tr>
 				<td colspan=3 align='right' class='BorderSup'>
 					<form name='closewindow' action='Admin_Crear.php'  \">
-						<input type='submit' value='VOLVER A ADMIN CREAR' />
+						<input type='submit' value='VOLVER A ADMIN CREAR' class='botonverde' />
 						<input type='hidden' name='volver' value=1 />
 					</form>
 				</td>

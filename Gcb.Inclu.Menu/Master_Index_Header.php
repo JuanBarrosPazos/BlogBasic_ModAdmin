@@ -14,7 +14,7 @@ print ("
 
 	<header style='text-align:center'>
     <!--    -->
-    <img src='".$rutaindex."Gcb.Img.User/".$_SESSION['myimg']."' class='imgtitle' />
+    <img src='".$rutaindex."Gcb.Img.User/".$_SESSION['imgadmin']."' class='imgtitle' />
     <div class='ocultahead'>
         ".$usertitle."</br>
         ".$niv."</br>

@@ -2,8 +2,7 @@
 session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_head.php';
-
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 	require '../Gcb.Inclu/my_bbdd_clave.php';
@@ -47,7 +46,7 @@ function process_form(){
 	if(mysqli_query($db, $sql)){
 			//print("* ");
 
-	print ("<table align='center'>
+	print ("<table>
 				<tr>
 					<td colspan=3  class='BorderInf'>
 						SE HAN BORRADO TODOS LOS DATOS.
@@ -217,7 +216,7 @@ function show_form(){
 							$array_a = 1;
 							require 'admin_array_total.php'; }
 								   
-	print("<table style=\"margin-top:20px\">
+	print("<table style='margin-top:1px;'>
 				<tr>
 					<th colspan=3 class='BorderInf'>
 						<font color='#FF0000'>

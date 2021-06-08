@@ -42,6 +42,19 @@
 		border: 2px #fff solid !important;
 		border-radius: 6px !important;
 			}
+
+	.whiletotalaimg  {
+		display:block !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		max-width: max-content !important;
+		/* border: #93D7BF solid 2px; */
+			}
+
+	.juancentra {
+		width: 98vw !important;
+			}
+
 	}
 
 /*************************************/
@@ -470,14 +483,13 @@ a:hover  img {
 }
 
 .juancentra {
-    margin-left: auto;
-	margin-right: auto;
+    margin: 2px auto 7vh auto;
 	text-align: center;
-    width: 80vw;
+    width: max-content;
     min-width: 340px;
     height: auto;
-	margin-bottom: 7vh;
-    /* border: solid 1px #000; */
+    border: solid 2px #ccc;
+	border-radius: 12px;
 }
 
 .juancentraerror {
@@ -591,10 +603,10 @@ a:hover  img {
 .whiletotala {
 	display:inline-block; 
 	vertical-align: top !important;
-	width: 120px;
+	width: max-content;
 	padding: 1px 4px 1px 4px; 
 	margin: 0.4em 3px 1px 3px;
-	/* border: #93D7BF solid 1px; */
+	border: #93D7BF solid 1px;
 }
 
 .whiletotala img {

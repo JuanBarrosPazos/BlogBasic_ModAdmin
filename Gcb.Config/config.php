@@ -85,7 +85,7 @@ function inittot(){
 				<tr>
 			<form name='limpia' action='$_SERVER[PHP_SELF]' method='post' >
 				<td  align='center'>
-					<input type='submit' value='ELIMINE TODOS LOS DATOS DEL SISTEMA' />
+					<input type='submit' value='ELIMINE TODOS LOS DATOS DEL SISTEMA' class='botonrojo' />
 					<input type='hidden' name='limpia' value=1 />
 					</br></br>
 				</td>
@@ -109,7 +109,7 @@ function inittot(){
 					<tr>
 				<form name='inscancel' action='config2.php' method='post' >
 					<td align='center' class='BorderInf'>
-						<input type='submit' value='CONTINUE CON LA CONFIGURACIÓN ACTUAL' />
+						<input type='submit' value='CONTINUE CON LA CONFIGURACIÓN ACTUAL' class='botonverde' />
 						<input type='hidden' name='inscancel' value=1 />
 						</br></br>
 					</td>
@@ -123,7 +123,7 @@ function inittot(){
 					<tr>
 				<form name='limpia' action='$_SERVER[PHP_SELF]' method='post' >
 					<td  align='center'>
-						<input type='submit' value='ELIMINE TODOS LOS DATOS DEL SISTEMA' />
+						<input type='submit' value='ELIMINE TODOS LOS DATOS DEL SISTEMA' class='botonrojo' />
 						<input type='hidden' name='limpia' value=1 />
 						</br></br>
 					</td>

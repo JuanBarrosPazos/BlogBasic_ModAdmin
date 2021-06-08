@@ -770,6 +770,8 @@ function ver_todo(){
 	/* MODIFICADA PARA DESARROLLO */
 	$vname = "gcb_".(date('Y')-1)."_articulos";
 	$vname = "`".$vname."`";
+	
+	$_SESSION['dyt1'] = (date('Y')-1);
 
 	$result =  "SELECT * FROM $vname ";
 	$q = mysqli_query($db, $result);

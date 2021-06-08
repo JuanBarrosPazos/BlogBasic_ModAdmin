@@ -4,7 +4,7 @@ print("	<tr>
 			<td style='text-align:right !important; width:120px'>Ref. User: </td>
 			<td style='text-align:left !important; width:100px'>".$defaults['ref']."</td>
 			<td rowspan=5 width=94px>
-<img src='../Users/".$_SESSION['sref']."/img_admin/".$defaults['myimg']."' height='120px' width='90px' />
+				<img src='../Gcb.Img.User/".$defaults['myimg']."' height='120px' width='90px' />
 			</td>
 		</tr>
 		<tr>

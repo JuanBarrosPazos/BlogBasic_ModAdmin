@@ -103,7 +103,6 @@
 						".$titulo."
 					</th>
 				</tr>
-				
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 						
 				<tr>

@@ -2,8 +2,8 @@
 session_start();
 
   	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
-
+	require '../Gcb.Inclu/Admin_Inclu_popup.php';
+	require '../Gcb.Inclu/mydni.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
@@ -11,7 +11,7 @@ session_start();
 
 if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
 
-					master_index();
+	//master_index();
 
 							if (isset($_POST['oculto2'])){
 										show_form();
@@ -316,13 +316,23 @@ function show_form($errors=[]){
 		print("
 			<table align='center' style=\"border:0px;margin-top:4px\" width='400px'>
 				
-			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 				<tr>
 					<th colspan='2'>
 						MODIFICAR ARTICULO DE ".strtoupper($_sec)."
 					</th>
 				</tr>		
+				
 				<tr>
+					<td colspan=3 align='right' class='BorderSup BorderInf'>
+				<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+					<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+					<input type='hidden' name='oculto2' value=1 />
+				</form>
+					</td>
+				</tr>
+
+				<tr>
+			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 					<td align='right'>
 						<input type='submit' value='SELECCIONE UN AUTOR' />
 						<input type='hidden' name='oculto1' value=1 />
@@ -479,7 +489,7 @@ function show_form($errors=[]){
 
 				<tr>
 					<td colspan='2' align='right' valign='middle'  class='BorderSup'>
-						<input type='submit' value='MODIFICAR ARTICULO' />
+						<input type='submit' value='MODIFICAR ARTICULO' class='botonnaranja' />
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 				</tr>

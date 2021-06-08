@@ -2,8 +2,7 @@
 session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_head.php';
-
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 	require '../Gcb.Inclu/my_bbdd_clave.php';
@@ -93,7 +92,7 @@ function process_form(){
 
 	require 'Inc_While_Form_Feed.php';
 		global $rutaimg;
-		$rutaimg = "../Users/";
+		$rutaimg = "../Gcb.Img.User/";
 	require 'Inc_While_Total_Feed.php';
 
 			////////////////////		**********  		////////////////////
@@ -151,7 +150,7 @@ function ver_todo(){
 	global $ruta;
 	$ruta = "";
 	global $rutaimg;
-	$rutaimg = "../Users/";
+	$rutaimg = "../Gcb.Img.User/";
 	global $pagedest;
 	$pagedest = "Feedback_Ver.php";
 	require 'Inc_While_Total_Feed.php';

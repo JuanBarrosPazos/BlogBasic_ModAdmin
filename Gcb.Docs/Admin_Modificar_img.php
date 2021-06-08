@@ -153,7 +153,7 @@ function process_form(){
 
 	if(mysqli_query($db, $sqlc)){
 
-		if ($_SESSION['sref'] == $_SESSION['ref']){ $_SESSION['myimg'] = $new_name;  }
+		if ($_SESSION['sref'] == $_SESSION['ref']){ $_SESSION['imgadmin'] = $new_name;  }
 		else { }
 		
 	print( "<table style=\"margin-top:20px;\">
