@@ -5,14 +5,17 @@
     $conte = $conte." ...";	
 
     global $rutaurl;
+    global $rutaimg;
     global $rutaurlart;
     global $rutaurlvdo;
     global $rutaurlimg;
     if ($rectifurl == 1){   $rutaurl = "../";
+                            $rutaimg = "../";
                             $rutaurlart = "Gcb.Artic/";
                             $rutaurlvdo = "upvdo/";
                                 }
-    else {  $rutaurl = "../"; 
+    else {  $rutaurl = "";
+            $rutaimg = "../";
             $rutaurlart = "";
             $rutaurlvdo = "upvdo/";
     }
@@ -20,14 +23,14 @@
 	if(strlen(trim($rowb['myvdo'])) > 0){
 		global $visual;
 		$visual = "<video controls width='98%' height='auto'>
-						<source src='".$rutaurl."Gcb.Vdo.Art/".$rowb['myvdo']."' />
+						<source src='".$rutaimg."Gcb.Vdo.Art/".$rowb['myvdo']."' />
 					</video>";
 		global $delvdo;
 		$delvdo = "<input type='submit' value='BORRAR VIDEO' class='botonrojo' />";
 		global $upvdo;
 		$upvdo = "<input type='submit' value='MODIFICA VIDEO' class='botonnaranja' />";
 	} else { global $visual;
-			 $visual = "<img src='".$rutaurl."Gcb.Img.Art/untitled.png' width='92%' height='auto' />";
+			 $visual = "<img src='".$rutaimg."Gcb.Img.Art/untitled.png' width='92%' height='auto' />";
 			 global $delvdo;
 			 $delvdo = 1;
 			 global $upvdo;
@@ -51,7 +54,7 @@
             </div>
 
             <div class='whiletotala'>
-                <img src='".$rutaurl."Gcb.Img.Art/".$rowb['myimg']."' width='92%' height='auto' />
+                <img src='".$rutaimg."Gcb.Img.Art/".$rowb['myimg']."' width='92%' height='auto' />
             </div>
                                     
             <div class='whiletotala'>
@@ -76,6 +79,7 @@
 
 	print("	<input type='submit' value='MODIFICA DATOS' class='botonnaranja' />
 			<input type='hidden' name='oculto2' value=1 />
+			<input type='hidden' name='headpop' value=1 />
 			</form>
 
 		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Borrar_02.php' method='POST' class='whiletotala'>
@@ -87,7 +91,7 @@
 			<input type='hidden' name='oculto2' value=1 />
 			</form>
 
-        <form name='modifica_img' action='".$rutaurl.$rutaurlart."Articulo_Modificar_img.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup',  'width=550px,height=400px')\" class='whiletotala' >");
+        <form name='modifica_img' action='".$rutaurl.$rutaurlart."Articulo_Modificar_img.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup',  'width=540px,height=460px')\" class='whiletotala' >");
 			
             require 'Inc_Artic_While_Total_Rows.php';
 

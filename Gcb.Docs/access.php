@@ -21,7 +21,7 @@ session_start();
 						else{show_form($form_errors);
 							 show_visit();}
 							}
-
+	
 		else {	require '../Gcb.Inclu/Only.index.php';
 				process_form();
 				}
@@ -37,6 +37,12 @@ session_start();
 	elseif (isset($_GET["page"])) { master_index();
 									ver_todo();
 									}
+
+	elseif(isset($_POST['ocultoc'])){
+		if($form_errors = validate_form()){
+						show_form($form_errors);
+		} else {process_form();}
+			}
 
 	elseif (isset($_GET['salir'])) { salir();
 									 show_form();
@@ -811,6 +817,24 @@ function ver_todo(){
 
 	$sqlb =  "SELECT * FROM `$db_name`.$vname  ORDER BY `refart` ASC $limit";
 
+	if(isset($_POST['ocultoc'])){
+
+	$defaults['Nombre'] = $_POST['Nombre'];
+	$defaults['Apellidos'] = $_POST['Apellidos'];
+	global $refrescaimg;
+	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
+			<input type='hidden' name='Nombre' value='".@$defaults['Nombre']."' />
+			<input type='hidden' name='Apellidos' value='".@$defaults['Apellidos']."' />
+			<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+			<input type='hidden' name='ocultoc' value=1 />
+						</form>";
+	} else { global $refrescaimg;
+			 $refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' style='margin-top: 4px;'>
+		<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+		<input type='hidden' name='page' value=".$page." />
+					</form>";
+			}
+
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
@@ -832,8 +856,8 @@ function ver_todo(){
 									
 				} else { 
 					
-		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
-				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').".<br>");
+		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px; padding-top: 8px; \">
+				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);
 			
 			while($rowb = mysqli_fetch_assoc($qb)){
 

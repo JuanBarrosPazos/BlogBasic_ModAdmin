@@ -67,26 +67,26 @@ function validate_form(){
 	$ctemp = "../Gcb.Temp";
 
 		if($_FILES['myimg']['size'] == 0){
-			$errors [] = "Ha de seleccionar una fotograf&iacute;a.";
+			$errors [] = "SELECCIONE UNA IMAGEN";
 			global $img2;
 			$img2 = 'untitled.png';
 		}
 		 
 		elseif(!$ext_correcta){
-			$errors [] = "La extension no esta admitida: ".$_FILES['myimg']['name'];
+			$errors [] = "EXTENSION NO ADMINTIDA ".$_FILES['myimg']['name'];
 			global $img2;
 			$img2 = 'untitled.png';
 			}
 	/*
 		elseif(!$tipo_correcto){
-			$errors [] = "Este tipo de archivo no esta admitido: ".$_FILES['myimg']['name'];
+			$errors [] = "ARCHIVO NO ADMINTIDO ".$_FILES['myimg']['name'];
 			global $img2;
 			$img2 = 'untitled.png';
 			}
 	*/
 		elseif ($_FILES['myimg']['size'] > $limite){
 		$tamanho = $_FILES['myimg']['size'] / 1024;
-		$errors [] = "El archivo".$_FILES['myimg']['name']." es mayor de 140 KBytes. ".$tamanho." KB";
+		$errors [] = "IMAGEN ".$_FILES['myimg']['name']." > 140 KBytes. ".$tamanho." KB";
 		global $img2;
 		$img2 = 'untitled.png';
 			}
@@ -98,7 +98,7 @@ function validate_form(){
 			list($ancho, $alto, $tipo, $atributos) = getimagesize($ctemp."/ini1v.".$extension1);
 
 			if($ancho < 400){
-				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ANCHURA MENOR DE 400 ".$ancho;
+				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ANCHURA ".$ancho." MENOR DE 400 ";
 			}
 			elseif(($ancho > 400)&&($alto < 400)){
 				$errors [] = "IMAGEN ".$_FILES['myimg']['name']." ALTURA MENOR DE 400 ".$alto;
@@ -166,94 +166,61 @@ function process_form(){
 			require 'Inc_Modificar_Img.php';
 	
 			print("</br>
-					MODIFICADO CORRECTAMENT");
-	print( "<table align='center' style=\"margin-top:20px; text-align:left; width:96%; max-width:500px\" >
+					MODIFICADO CORRECTAMENTE");
+	print( "<table style=\"margin-top:20px; width:96%; max-width:500px\" >
 				<tr>
-					<th colspan=3 class='BorderInf'>
+					<th colspan=3 class='BorderInf' >
 						ARTICULO CREADO POR ".strtoupper($_sec)."
 					</th>
 				</tr>
 				
 				<tr>
-					<td width=140px>
-					REFERENCIA
-					</td>
-					<td width=140px>"
-						.$_SESSION['srefart'].
-					"</td>
-					<td rowspan='4' align='center' width='auto'>
-	<img src='../Gcb.Img.Art/".$new_name."' width='98%' height='auto' />
+					<td style='text-align:right; width:140px;' >REFERENCIA </td>
+					<td style='text-align:left; width:140px;'>".$_SESSION['srefart']."</td>
+					<td rowspan='6'>
+			<img src='../Gcb.Img.Art/".$new_name."' width='120px' height='auto' />
 					</td>
 				</tr>
-				
 				<tr>
-					<td>
-						TITULO
-					</td>
-					<td>"
-						.$_POST['tit'].
-					"</td>
+					<td style='text-align:right;'>TITULO </td>
+					<td style='text-align:left;'>".$_POST['tit']."</td>
 				</tr>				
-				
 				<tr>
-					<td>	
-						SUBTITULO
-					</td>
-					<td>"
-						.$_POST['titsub'].
-					"</td>
+					<td style='text-align:right;'>SUBTITULO </td>
+					<td style='text-align:left;'>".$_POST['titsub']."</td>
+				</tr>
+				<tr>
+					<td style='text-align:right;'>DATE IN </td>
+					<td style='text-align:left;'>".$_POST['datein']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						DATE IN
-					</td>
-					<td colspan>"
-						.$_POST['datein'].
-					"</td>
+					<td style='text-align:right;'>TIME IN </td>
+					<td style='text-align:left;'>".$_POST['timein']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						TIME IN
-					</td>
-					<td colspan=2>"
-						.$_POST['timein'].
-					"</td>
+					<td style='text-align:right;'>DATE MOD </td>
+					<td style='text-align:left;'>".$_POST['datemod']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						DATE MOD
-					</td>
-					<td colspan=2>"
-						.$_POST['datemod'].
-					"</td>
+					<td style='text-align:right;'>TIME MOD </td>
+					<td style='text-align:left;' colspan=2>".$_POST['timemod']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						TIME MOD
-					</td>
-					<td colspan=2>"
-						.$_POST['timemod'].
-					"</td>
-				</tr>
-				
-				<tr>
-					<td>
-						CONTENIDO
-					</td>
-					<td colspan=2>"
-						.$_POST['conte'].
-					"</td>
+					<th colspan=3>CONTENIDO</th>
 				</tr>
 				<tr>
-					<td colspan=3 align='right' class='BorderSup'>
-	<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' />
-						<input type='hidden' name='oculto2' value=1 />
-	</form>
+					<td style='text-align:left;' colspan=3>".$_POST['conte']."</td>
+				</tr>
+				<tr>
+					<td style='text-align:right;' colspan=3 class='BorderSup'>
+						<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+							<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+							<input type='hidden' name='oculto2' value=1 />
+						</form>
 					</td>
 				</tr>
 			</table>");
@@ -261,9 +228,7 @@ function process_form(){
 				 else {
 				print("<font color='#FF0000'>
 						* ESTOS DATOS NO SON VALIDOS, MODIFIQUE ESTA ENTRADA: </font>
-						</br>
-						&nbsp;&nbsp;&nbsp;".mysqli_error($db))."
-						</br>";
+						</br>&nbsp;&nbsp;&nbsp;".mysqli_error($db))."</br>";
 						show_form ();
 						
 							} // FIN ELSE SI NO SE CUMPLE EL QUERY
@@ -288,8 +253,11 @@ function show_form($errors=[]){
 	$_SESSION['srefart'] = $_POST['refart'];
 	$_SESSION['refuser'] = $_POST['refuser'];
 	
+	if (isset($_POST['dyt1'])){$defaults['dyt1'] = trim($_POST['dyt1']);}
+	else {$defaults['dyt1'] = trim($_SESSION['dyt1']);}
+
 				$defaults = array ( 'id' => $_POST['id'],
-									'dyt1' => $_POST['dyt1'],
+									'dyt1' => $defaults['dyt1'],
 									'refuser' => $_SESSION['refuser'],
 									'refart' =>  $_SESSION['refart'],
 									'tit' => $_POST['tit'],
@@ -322,25 +290,16 @@ function show_form($errors=[]){
 								   
 	if ($errors){
 		print("	<div  class='errorsimg'>
-					<table align='left' style='border:none'>
-					<th style='text-align:left'>
-					<font color='#FF0000'>* SOLUCIONE ESTOS ERRORES:</font><br/>
-					</th>
-					<tr>
-					<td style='text-align:left'>");
+					<font color='#FF0000'>* SOLUCIONE ESTOS ERRORES</font><br/>");
 			
 		for($a=0; $c=count($errors), $a<$c; $a++){
 			print("<font color='#FF0000'>**</font>  ".$errors [$a]."<br/>");
 			}
-		print("</td>
-				</tr>
-				</table>
-				</div>
+		print("</div>
 				<div style='clear:both'></div>");
 		}
 		
-	print("<table align='center' style=\"margin-top:90px; text-align:left; width:96%; max-width:500px\"  border=0>
-			
+	print("<table style=\"margin-top:auto; text-align:left; width:96%; max-width:500px\" >
 				<tr>
 					<th colspan=2 class='BorderInf'>
 						SELECCIONE UNA NUEVA IMAGEN.
@@ -348,31 +307,26 @@ function show_form($errors=[]){
 				</tr>
 				
 				<tr>
-					<td class='BorderInf' align='center'>
-				<img src='../Gcb.Img.Art/".$_SESSION['smyimg']."' width='98%' height='auto' />
+					<td class='BorderInf'>
+				<img src='../Gcb.Img.Art/".$_SESSION['smyimg']."' width='120px' height='auto' />
 					</td>
 					<td class='BorderInf'>
-							LA IMAGEN ACTUAL DEL ARTICULO : </br></br>
-							REFERENCIA: ".$_SESSION['srefart']."</br>
+							LA IMAGEN ACTUAL</br></br>
+							REF. ARTICULO ".$_SESSION['srefart']."</br>
 							TITULO: ".$_POST['tit'].".
 					</td>
 				</tr>
 				
 				<tr>
+					<td>SELECCIONE UNA IMAGEN</td>
+		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
 					<td>
-							Seleccione una Fotografía:	
-					</td>
-					<td>
-					<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
 						<input type='file' name='myimg' value='".$defaults['myimg']."' />						
 					</td>
 				</tr>
 
-				<tr align='center' height=30px>
-					<td>
-					</td>
-					<td >
-
+				<tr>
+					<td colspan=2>
 						<input name='id' type='hidden' value='".$defaults['id']."' />
 						<input name='dyt1' type='hidden' value='".$defaults['dyt1']."' />
 						<input name='refuser' type='hidden' value='".$_SESSION['refuser']."' />
@@ -385,11 +339,10 @@ function show_form($errors=[]){
 						<input name='timemod' type='hidden' value='".$defaults['timemod']."' />
 						<input name='conte' type='hidden' value='".$defaults['conte']."' />		
 						<input name='myimg' type='hidden' value='".$defaults['myimg']."' />
-			
-						<input type='submit' value='MODIFICAR IMAGEN' />
+						<input type='submit' value='MODIFICAR IMAGEN' class='botonverde' />
 						<input type='hidden' name='imagenmodif' value=1 />
-		</form>																				
 					</td>
+		</form>																				
 				</tr>
 			
 				<tr>
@@ -404,7 +357,7 @@ function show_form($errors=[]){
 					</td>
 					<td align='right' class='BorderSup'>
 			<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-											<input type='submit' value='CERRAR VENTANA' />
+											<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
 											<input type='hidden' name='oculto2' value=1 />
 			</form>
 					</td>
