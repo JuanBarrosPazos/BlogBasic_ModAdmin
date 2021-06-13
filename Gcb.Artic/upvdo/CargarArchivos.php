@@ -118,10 +118,15 @@ if (isset($_POST['btnSubmit'])) {
         global $db;
         global $db_name;
         global $tablename;
-        $tablename = "gcb_articulos";
+        $tablename = "gcb_".$_SESSION['dyt1']."_articulos";
         $tablename = "`".$tablename."`";
         $sqlc = "UPDATE `$db_name`.$tablename SET `myvdo` = '$new_name' WHERE $tablename.`refart` = '$_SESSION[myvdo]' LIMIT 1 ";
-        if(mysqli_query($db, $sqlc)){}
+        if(mysqli_query($db, $sqlc)){
+            global $folderRuta;
+            global $rutav;
+            $rutav = $folderRuta.$_SESSION['oldvdo'];
+            if(file_exists($rutav)){ unlink($rutav); } else { }
+        }
         else{   print("<font color='#FF0000'>
                             * ESTOS DATOS NO SON VALIDOS, MODIFIQUE ESTA ENTRADA: </font>
                             </br>
@@ -160,10 +165,15 @@ if (isset($_POST['btnSubmit'])) {
         global $db;
         global $db_name;
         global $tablename;
-        $tablename = "gcb_articulos";
+        $tablename = "gcb_".$_SESSION['dyt1']."_articulos";
         $tablename = "`".$tablename."`";
         $sqlc = "UPDATE `$db_name`.$tablename SET `myvdo` = '$new_name' WHERE $tablename.`refart` = '$_SESSION[myvdo]' LIMIT 1 ";
-        if(mysqli_query($db, $sqlc)){}
+        if(mysqli_query($db, $sqlc)){
+            global $folderRuta;
+            global $rutav;
+            $rutav = $folderRuta.$_SESSION['oldvdo'];
+            if(file_exists($rutav)){ unlink($rutav); } else { }
+        }
         else{   print("<font color='#FF0000'>
                             * ESTOS DATOS NO SON VALIDOS, MODIFIQUE ESTA ENTRADA: </font>
                             </br>

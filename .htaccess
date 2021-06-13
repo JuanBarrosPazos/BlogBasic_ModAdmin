@@ -8,7 +8,7 @@
 # php_flag html_errors off 
 
 # OK OCULTA errores
- php_flag display_errors off 
+## php_flag display_errors off 
 
 # OK OCULTA ERRORES MENOS Notice
 
@@ -16,3 +16,7 @@
 #	  php_value error_reporting 7
 #     php_flag display_errors On
 #	  php_flag display_errors 1
+
+php_value upload_max_filesize 70M
+php_value post_max_size 70M
+php_value max_execution_time 180

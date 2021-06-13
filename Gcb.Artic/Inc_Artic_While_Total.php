@@ -22,7 +22,7 @@
 
 	if(strlen(trim($rowb['myvdo'])) > 0){
 		global $visual;
-		$visual = "<video controls width='98%' height='auto'>
+		$visual = "<video controls width='110px' height='auto'>
 						<source src='".$rutaimg."Gcb.Vdo.Art/".$rowb['myvdo']."' />
 					</video>";
 		global $delvdo;

@@ -28,7 +28,7 @@ function process_form(){
 	global $db_name;
 
 	global $tablename;
-	$tablename = "gcb_art";
+	$tablename = "gcb_".$_SESSION['dyt1']."_articulos";
 	$tablename = "`".$tablename."`";
 
 	$sqla = "UPDATE `$db_name`.$tablename SET `myvdo` = '' WHERE $tablename.`myvdo` = '$_SESSION[myvdo]' LIMIT 1 ";
@@ -165,7 +165,7 @@ function show_form(){
 				<td colspan=2 align='center' valign='middle'  class='BorderSup'>
 					<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 						<input name='myvdo' type='hidden' value='".$_SESSION['myvdo']."' />
-						<input type='submit' value='BORRAR ESTE VIDEO' />
+						<input type='submit' value='BORRAR ESTE VIDEO' class='botonrojo' />
 						<input type='hidden' name='oculto' value=1 />
 					</form>	
 				</td>
@@ -174,7 +174,7 @@ function show_form(){
 			<tr>
 				<td colspan=2 align='right' class='BorderSup'>
 					<form name='closewindow' action='$_SERVER[PHP_SELF]' onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' />
+						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
 						<input type='hidden' name='oculto2' value=1 />
 					</form>
 				</td>

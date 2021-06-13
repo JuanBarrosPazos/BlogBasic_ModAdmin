@@ -15,7 +15,7 @@
 
 
 <!-- Inicio footer -->
-<div id="footer"><?php print($head_footer);?></div>
+<div id="footer">&copy; Juan Barr&oacute;s Pazos 2021.</div>
 <!-- Fin footer -->
 
 </div>

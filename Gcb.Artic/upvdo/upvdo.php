@@ -13,6 +13,7 @@ session_start();
 
 		if (isset($_POST['oculto2'])){
 			$_SESSION['myvdo'] = $_POST['refart'];
+			$_SESSION['oldvdo'] = $_POST['myvdo'];
 			echo "REFERENCIA ARTICULO ".$_SESSION['myvdo'];
 			show_form();
 		}

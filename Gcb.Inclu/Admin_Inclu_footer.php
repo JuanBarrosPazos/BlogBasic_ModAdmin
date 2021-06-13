@@ -16,7 +16,7 @@
 
 
 <!-- Inicio footer -->
-<div id="footer">&copy; Juan Barr&oacute;s Pazos 2020.</div>
+<div id="footer">&copy; Juan Barr&oacute;s Pazos 2021.</div>
 <!-- Fin footer -->
 
 </div>
