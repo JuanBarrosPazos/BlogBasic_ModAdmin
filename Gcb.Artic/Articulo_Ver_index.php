@@ -130,7 +130,7 @@ function ver_todo(){
 	global $db_name;
 
 	global $dyt1;
-	$dyt1 = date('Y')/*-1*/;
+	$dyt1 = date('Y')-1; /* */
 	global $fil;
 	$fil = $dyt1."-%";
 	//$fil = $dy1.$dm1.$dd1."%";

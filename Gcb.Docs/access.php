@@ -807,7 +807,7 @@ function ver_todo(){
     //calculo el total de paginas
 	$total_pages = ceil($num_total_rows / $nitem);
 	
-    //pongo el n�mero de registros total, el tama�o de p�gina y la p�gina que se muestra
+    //pongo el numero de registros total, el tamaño de pagina y la pagina que se muestra
 	echo '<div style="clear:both"></div>';
     echo '<h7 class="textpaginacion">* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
 
@@ -856,17 +856,17 @@ function ver_todo(){
 									
 				} else { 
 					
-		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px; padding-top: 8px; \">
-				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);
+	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
+			Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);
 			
-			while($rowb = mysqli_fetch_assoc($qb)){
+		while($rowb = mysqli_fetch_assoc($qb)){
 
-				global $rectifurl;
-				$rectifurl = 1;
+			global $rectifurl;
+			$rectifurl = 1;
 				
-				require '../Gcb.Artic/Inc_Artic_While_Total.php';
+			require '../Gcb.Artic/Inc_Artic_While_Total.php';
 
-					} // FIN WHILE
+				} // FIN WHILE
 
 				print("</div>");
 			} 

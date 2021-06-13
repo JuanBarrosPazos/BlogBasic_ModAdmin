@@ -73,7 +73,7 @@
             <input type='hidden' name='oculto2' value=1 />
             </form>
 
-		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Modificar_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=520px,height=720px')\" class='whiletotala'>");
+		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Modificar_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=420px,height=850em')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';
 

@@ -28,9 +28,12 @@ function process_form(){
 	$sqlx =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$_POST[refuser]'";
 	$q = mysqli_query($db, $sqlx);
 	$rowautor = mysqli_fetch_assoc($q);
-	global $_sec;
-	$_sec = $rowautor['Nombre']." ".$rowautor['Apellidos'];
+	$counta = mysqli_num_rows($q);
 
+	global $_sec;
+	if ($counta !== 1) { $_sec = "AUTOR ANONIMO";}
+	else { $_sec = $rowautor['Nombre']." ".$rowautor['Apellidos']; }
+	
 	if(strlen(trim($_POST['myvdo'])) > 0){
 		global $visual;
 		$visual = "<video controls width='90%' height='auto'>
@@ -40,78 +43,76 @@ function process_form(){
 			 $visual = "<img src='../Gcb.Img.Art/untitled.png' width='90%' height='auto' />";
 				}
 
-	print("<table align='center' style=\"text-align:left; width:96%; max-width:500px\" >
+	print("<table style=\"width:96%; max-width:500px\" >
 				<tr>
-					<th colspan=3  class='BorderInf'>
-						DETALLES DEL ARTICULO
-					</th>
+					<th colspan=3  class='BorderInf'>DETALLES DEL ARTICULO</th>
 				</tr>
 				
 				<tr>
-					<td width=100px >ID</td>
-					<td width=140px>".$_POST['id']."</td>
-					<td rowspan='5' align='center' width='auto'>
+					<td style='text-align:right; width:100px;' >ID</td>
+					<td style='text-align:left; width:140px;'>".$_POST['id']."</td>
+					<td rowspan='5' style=' width:auto;' >
 	<img src='../Gcb.Img.Art/".$_POST['myimg']."'  width='90%' height='auto' />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>AUTOR REF</td>
-					<td>".$_POST['refuser']."</td>
+					<td style='text-align:right;'>AUTOR REF</td>
+					<td style='text-align:left;'>".$_POST['refuser']."</td>
 				</tr>
 				
 				<tr>
-					<td>AUTOR NAME</td>
-					<td>".$_sec."</td>
+					<td style='text-align:right;'>AUTOR NAME</td>
+					<td style='text-align:left;'>".$_sec."</td>
 				</tr>
 				
 				<tr>
-					<td>REFERENCIA</td>
-					<td>".$_POST['refart']."</td>
+					<td style='text-align:right;'>REFERENCIA</td>
+					<td style='text-align:left;'>".$_POST['refart']."</td>
 				</tr>
 				
 				<tr>
-					<td>TITULO</td>
-					<td>".$_POST['tit']."</td>
+					<td style='text-align:right;'>TITULO</td>
+					<td style='text-align:left;'>".$_POST['tit']."</td>
 				</tr>
 				
 				<tr>
-					<td>SUBTITULO</td>
-					<td>".$_POST['titsub']."</td>
-					<td rowspan='5' align='center' width='auto'>".$visual."</td>
+					<td style='text-align:right;'>SUBTITULO</td>
+					<td style='text-align:left;'>".$_POST['titsub']."</td>
+					<td rowspan='5'>".$visual."</td>
 				</tr>				
 				
 				<tr>
-					<td>DATE IN</td>
-					<td>".$_POST['datein']."</td>
+					<td style='text-align:right;'>DATE IN</td>
+					<td style='text-align:left;'>".$_POST['datein']."</td>
 				</tr>				
 				
 				<tr>
-					<td>TIME IN</td>
-					<td colspan='2'>".$_POST['timein']."</td>
+					<td style='text-align:right;'>TIME IN</td>
+					<td style='text-align:left;' colspan='2'>".$_POST['timein']."</td>
 				</tr>				
 				
 				<tr>
-					<td>DATE MOD</td>
-					<td colspan='2'>".$_POST['datemod']."</td>
+					<td style='text-align:right;'>DATE MOD</td>
+					<td style='text-align:left;' colspan='2'>".$_POST['datemod']."</td>
 				</tr>				
 				
 				<tr>
-					<td>TIME MOD</td>
-					<td colspan='2'>".$_POST['timemod']."</td>
+					<td style='text-align:right;'>TIME MOD</td>
+					<td style='text-align:left;' colspan='2'>".$_POST['timemod']."</td>
 				</tr>
 				
 				<tr>
-					<td colspan='3' align='center'>ARTICULO</td>
+					<td colspan='3'>ARTICULO</td>
 				</tr>
 				<tr>
-					<td colspan='3' align='left'>".$_POST['conte']."</td>
+					<td colspan='3' style='text-align:left;'>".$_POST['conte']."</td>
 				</tr>
 				
 				<tr>
-					<td colspan=3 align='right' class='BorderSup'>
+					<td colspan=3 style='text-align:right;' class='BorderSup'>
 				<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-					<input type='submit' value='CERRAR VENTANA' />
+					<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
 					<input type='hidden' name='oculto2' value=1 />
 				</form>
 					</td>

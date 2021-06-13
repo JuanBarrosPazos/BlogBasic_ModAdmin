@@ -30,21 +30,21 @@ if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESS
 
 	if (isset($_POST['headpop'])){ } else { master_index(); }
 
-							if (isset($_POST['oculto2'])){
-										show_form();
-										//accion_Log();
-									}
-							elseif(isset($_POST['oculto'])){
+		if (isset($_POST['oculto2'])){
+					show_form();
+					//accion_Log();
+				}
+		elseif(isset($_POST['oculto'])){
 							
-								if($form_errors = validate_form()){
-									show_form($form_errors);
-										} else {
-											process_form();
-											//accion_Log();
-											}
-							} else {
-										show_form();
-								}
+			if($form_errors = validate_form()){
+				show_form($form_errors);
+					} else {
+						process_form();
+						//accion_Log();
+						}
+		} else {
+					show_form();
+			}
 } else { require '../Gcb.Inclu/table_permisos.php'; } 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,68 +156,44 @@ function process_form(){
 
 	if(mysqli_query($db, $sqla)){
 
-			global $carpetaimg;
-			global $new_name;
+		global $carpetaimg;
+		global $new_name;
 
-			print("<table align='center' style=\"margin-top:10px; text-align:left; width:96%; max-width:500px\" >
+		print("<table align='center' style=\"margin-top:10px; text-align:left; width:96%; max-width:500px\" >
 				<tr>
-					<th colspan=3 class='BorderInf'>
-						CREADO POR ".strtoupper($_sec)."
-					</th>
+					<th colspan=3 class='BorderInf'>CREADO POR ".strtoupper($_sec)."</th>
 				</tr>
 												
 				<tr>
-					<td width=100px>
-						REFERENCIA
-					</td>
-					<td width=140px>"
-						.$_SESSION['refart'].
-					"</td>
+					<td style='text-align:right; width:100px;'>REFERENCIA</td>
+					<td style='text-align:left; width:140px'>".$_SESSION['refart']."</td>
 					<td rowspan='4' align='center' width='auto'>
 				<img src='".$carpetaimg."/".$_SESSION['myimg']."' width='98% height='auto' />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>
-						TITULO
-					</td>
-					<td>"
-						.$_POST['titulo'].
-					"</td>
+					<td style='text-align:right;'>TITULO </td>
+					<td style='text-align:left;'>".$_POST['titulo']."</td>
 				</tr>				
 				
 				<tr>
-					<td>	
-						SUBTITULO
-					</td>
-					<td>"
-						.$_POST['subtitul'].
-					"</td>
+					<td style='text-align:right;'>SUBTITULO </td>
+					<td style='text-align:left;'>".$_POST['subtitul']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						DATE IN
-					</td>
-					<td>"
-						.$_POST['datein'].
-					"</td>
+					<td style='text-align:right;'>DATE IN </td>
+					<td style='text-align:left;'>".$_POST['datein']."</td>
 				</tr>
 				
 				<tr>
-					<td>	
-						TIME IN
-					</td>
-					<td>"
-						.$_POST['timein'].
-					"</td>
+					<td style='text-align:right;'>TIME IN </td>
+					<td style='text-align:left;'>".$_POST['timein']."</td>
 				</tr>
 				
 				<tr>
-					<td colspan=3 align='center'>
-						ARTICULO
-					</td>
+					<td colspan=3'>ARTICULO</td>
 				</tr>
 					<td colspan=3 align='left'>"
 						.$_POST['coment'].
@@ -327,21 +303,22 @@ function show_form($errors=[]){
 	$sqlx =  "SELECT * FROM `gcb_admin` WHERE `ref` = '$autor' ";
 	$q = mysqli_query($db, $sqlx);
 	$rowautor = mysqli_fetch_assoc($q);
+	$counta = mysqli_num_rows($q);
 	global $_sec;
-	$_sec = $rowautor['Nombre']." ".$rowautor['Apellidos'];
+	if ($counta !== 1){$_sec = "AUTOR ANONIMO";}
+	else {$_sec = $rowautor['Nombre']." ".$rowautor['Apellidos'];}
+	
 	global $headpop;
 
-	print("<table align='center' style=\"border:0px;margin-top:4px\" width='400px'>
+	print("<table style=\"margin-top:4px;\">
 				<tr>
-					<th colspan='2'>
-						MODIFICAR ARTICULO DE ".strtoupper($_sec)."
-					</th>
+					<th colspan='2'>MODIFICAR ARTICULO DE ".strtoupper($_sec)."</th>
 				</tr>	
 				".$headpop."
 				<tr>
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 					<td align='right'>
-						<input type='submit' value='SELECCIONE UN AUTOR' />
+						<input type='submit' value='SELECCIONE UN AUTOR' class='botonnaranja' />
 						<input type='hidden' name='oculto1' value=1 />
 					</td>
 					<td align='left'>
@@ -355,158 +332,114 @@ function show_form($errors=[]){
 	if(!$qb){
 			print("* ".mysqli_error($db)."</br>");
 	} else {
-					
 		while($rows = mysqli_fetch_assoc($qb)){
-					
 					print ("<option value='".$rows['ref']."' ");
-					
-					if($rows['ref'] == $defaults['autor']){
-															print ("selected = 'selected'");
-																								}
-									print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
-				}
-		
-			}  
+					if($rows['ref'] == $defaults['autor']){print ("selected = 'selected'");}
+							print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
+						}
+					}  
 
-	print ("	</select>
-					</td>
-			</tr>
+	print ("</select></td></tr>
 	
-		</form>	
-			
-			</table>				
-						");
+		</form></table>");
 				
 	if ((strlen(trim(@$_POST['autor'])) == 0) && (strlen(trim($_SESSION['refuser']))) == 0) { 
-						print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
-									<tr align='center'>
-										<td>
-											<font color='red'>
-												<b>
-										HA DE SELECCIONAR UN AUTOR PARA CREAR ARTICULOS.
-											</font>
-										</td>
-									</tr>
-								</table>");
-												}	
+			print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
+						<tr align='center'><td>
+								<font color='red'>
+						<b>HA DE SELECCIONAR UN AUTOR PARA CREAR ARTICULOS.
+								</font>
+						</td></tr>
+					</table>");
+				}	
 
 	elseif ((@$_POST['autor'] != '') || ($_SESSION['refuser'] != '')) { 
 		
-	print("
-			<table align='center' style=\"margin-top:10px\">
-				<tr>
-					<th colspan=2 class='BorderInf'>
-
-							NUEVO ARTICULO DE ".strtoupper($_sec)."
-					</th>
-				</tr>
+	print("<table align='center' style=\"margin-top:10px\">
+				<tr><th colspan=2 class='BorderInf'>
+							ARTICULO DE ".strtoupper($_sec)."
+				</th></tr>
 				
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
-						
 			<tr>								
-						<td>
-							REF AUTOR
-						</td>
-						<td>
+				<td style='text-align:right;'>REF AUTOR </td>
+				<td style='text-align:left;'>
 			<input name='autor' type='hidden' value='".$defaults['autor']."' />".$defaults['autor']."
-						</td>
+				</td>
 			</tr>
 
-				<tr>
-					<td>
-						TITULO
-					</td>
-					<td>
-
+			<tr>
+				<td style='text-align:right;'>TITULO </td>
+				<td style='text-align:left;'>
 		<input type='text' name='titulo' size=20 maxlength=20 value='".$defaults['titulo']."' />
-
-					</td>
-				</tr>
+				</td>
+			</tr>
 									
-				<tr>
-					<td>						
-						SUBTITULO
-					</td>
-					<td>
+			<tr>
+				<td style='text-align:right;'>SUBTITULO </td>
+				<td style='text-align:left;'>
 		<input type='text' name='subtitul' size=20 maxlength=20 value='".$defaults['subtitul']."' />
-					</td>
-				</tr>
+				</td>
+			</tr>
 									
-				<tr>
-					<td>						
-						REFERENCIA
-					</td>
-					<td>
+			<tr>
+				<td style='text-align:right;'>REFERENCIA </td>
+				<td style='text-align:left;'>
 		<input type='hidden' name='refart' value='".$_SESSION['refart']."' />".$_SESSION['refart']."
-					</td>
-				</tr>
-				<tr>
-					<td>						
-						DATE IN
-					</td>
-					<td>
+				</td>
+			</tr>
+			<tr>
+				<td style='text-align:right;'>DATE IN </td>
+				<td style='text-align:left;'>
 		<input type='hidden' name='datein' value='".$_SESSION['datein']."' />".$_SESSION['datein']."
-					</td>
-				</tr>
-				<tr>
-					<td>						
-						TIME IN
-					</td>
-					<td>
+				</td>
+			</tr>
+			<tr>
+				<td style='text-align:right;'>TIME IN </td>
+				<td style='text-align:left;'>
 		<input type='hidden' name='timein' value='".$_SESSION['timein']."' />".$_SESSION['timein']."
-					</td>
-				</tr>
+				</td>
+			</tr>
 					
-				<tr>
-					<td>						
-						DATE MOD
-					</td>
-					<td>
+			<tr>
+				<td style='text-align:right;'>DATE MOD </td>
+				<td style='text-align:left;'>
 		<input type='hidden' name='datemod' value='".$defaults['datemod']."' />".$defaults['datemod']."
-					</td>
-				</tr>
-				<tr>
-					<td>						
-						TIME MOD
-					</td>
-					<td>
+				</td>
+			</tr>
+			<tr>
+				<td style='text-align:right;'>TIME MOD </td>
+				<td style='text-align:left;'>
 		<input type='hidden' name='timemod' value='".$defaults['timemod']."' />".$defaults['timemod']."
-					</td>
-				</tr>
+				</td>
+			</tr>
 
-				<tr>
-					<td colspan=2 align='center'>
-						ARTICULO
-					</td>
-				</tr>
-				<tr>
-					<td colspan=2 align='center'>
+			<tr>
+				<td colspan=2>ARTICULO </td>
+			</tr>
+			<tr>
+				<td colspan=2>
 	<textarea cols='41' rows='9' onkeypress='return limitac(event, 400);' onkeyup='actualizaInfoc(400)' name='coment' id='coment'>".$defaults['coment']."</textarea>
-	
 			</br>
 	            <div id='infoc' align='center' style='color:#0080C0;'>
         					Maximum 400 characters            
 				</div>
-
-					</td>
-				</tr>
+				</td>
+			</tr>
 								
-			<input name='myimg' type='hidden' value='".$_SESSION['myimg']."' />
+		<input name='myimg' type='hidden' value='".$_SESSION['myimg']."' />
 
-				<tr>
-					<td colspan='2' align='right' valign='middle'  class='BorderSup'>
-						<input type='submit' value='MODIFICAR ARTICULO' class='botonnaranja' />
-						<input type='hidden' name='oculto' value=1 />
-					</td>
-				</tr>
-				
+			<tr>
+				<td colspan='2' style='text-align:right;' valign='middle'  class='BorderSup'>
+					<input type='submit' value='MODIFICAR ARTICULO' class='botonnaranja' />
+					<input type='hidden' name='oculto' value=1 />
+				</td>
+			</tr>
 		</form>														
-			
-			</table>				
-						"); 
-											}
+			</table>"); 
+				}
 	
-			}	
+		}	
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /*

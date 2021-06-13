@@ -18,7 +18,7 @@
 		overflow: hidden;
 			}
 
-	}
+	} /* FIN @media screen and (max-width:740px) */
 
 @media screen and (max-width:440px){
 
@@ -52,10 +52,17 @@
 			}
 
 	.juancentra {
-		width: 98vw !important;
+		/* width: 98% !important; */
+		width: min-content !important;
 			}
 
-	}
+	/*
+	#Caja2Admin {
+		border: cyan solid 1px;
+			}
+	*/
+
+	} /* FIN @media screen and (max-width:440px) */
 
 /*************************************/
 /*************************************/
@@ -484,7 +491,7 @@ a:hover  img {
     margin: 2px auto 7vh auto;
 	text-align: center;
     width: max-content;
-    min-width: 340px;
+    min-width: 320px;
     height: auto;
     border: solid 2px #ccc;
 	border-radius: 12px;
