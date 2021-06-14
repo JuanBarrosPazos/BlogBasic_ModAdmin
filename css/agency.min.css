@@ -456,9 +456,11 @@ header.masthead .intro-text .intro-heading {
   margin-left: 0;
   text-align: center;
   color: #fff;
-  /* border: 5px solid #4a9988; */
-  border: 3px solid #4a9988;
-  border-radius: 30%;
+  /*
+    border: 5px solid #4a9988;
+    border: 3px solid #4a9988;
+    border-radius: 30%;
+   */
   background-color: #fff;
   overflow: hidden; /* */
 }

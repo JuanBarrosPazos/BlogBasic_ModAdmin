@@ -721,7 +721,13 @@ a:hover  img {
 .botonazul {
 	background-color: #dd92fd;
 }
-
+.botonleer {
+	cursor: pointer;
+	margin-top: 4px;
+	padding: 1px 8px 1px 8px !important;
+	border-radius: 8px;
+	background-color: #CCC;
+}
 .botonverde, .botonnaranja, .botonrojo, .botonazul, select {
 	cursor: pointer;
 	border: none;
@@ -731,7 +737,7 @@ a:hover  img {
 	border-radius: 4px;
 	font-weight: bold;
 }
-.botonverde:hover, .botonnaranja:hover, .botonrojo:hover, .botonazul:hover {
+.botonverde:hover, .botonnaranja:hover, .botonrojo:hover, .botonazul:hover, .botonleer:hover {
 	background-color: #dadada;
 }
 
@@ -739,5 +745,12 @@ a:hover  img {
 /*************************************/
 /*************************************/
 
+.imgarticulo {
+	width:98%;
+	max-width:700px;
+	height:auto;
+	border: 2px solid #CCC;
+	border-radius: 22px;
+}
 
 /* Creado por Juan Manuel Barros Pazos 2020/21 */

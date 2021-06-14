@@ -437,9 +437,12 @@ mark {
     height: auto;
     min-width: 170px;
 */
-  width: auto;
+  width: 100%;
   min-width: 80px;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
+  border: solid 2px #6c757d;
+  border-radius: 14px;
 }
 .img-thumbnail {
   padding: 0.25rem;

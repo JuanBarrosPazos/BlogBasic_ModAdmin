@@ -14,7 +14,20 @@ if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESS
 
 	master_index();
 
-	require 'Inc_Logica_01.php';
+    if(isset($_POST['todo'])){ show_form();							
+                               ver_todo();
+                               //info();
+                            }
+
+    elseif(isset($_POST['oculto'])){
+
+        if($form_errors = validate_form()){
+            show_form($form_errors);
+                } else { process_form();
+                         //info();
+                            }
+                            
+    } else { show_form(); }
 
 } else {  require '../Gcb.Inclu/table_permisos.php'; }
 
