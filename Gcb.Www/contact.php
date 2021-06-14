@@ -92,12 +92,13 @@ function MM_validateForm() {
     <div class="row">
         <div class="col-lg-12 text-center" style="color: #ababab">
           <h4 >
-              DISEÑO, POSICIONAMIENTO Y PROGRAMACIÓN WEB
+              DISEÑO WEB Y PROGRAMACIÓN
           </h4>
           <h6>
-              C/. UNA CALLE DE PALMA <br>
-              Tlf: 666666666 <br>
-              Email: ibfood@ibfood.es<br>
+              PALMA DE MALLORCA<br>
+              SPAIN<br>
+              +34 696969696<br>
+              JuanBarrosPazos@hotmail.es<br>
           </h6>
         </div>
       </div>

@@ -3,7 +3,7 @@
 
 <!-- Footer -->
   <p>
-          <span class="copyright">Copyright &copy; Juan Barros Pazos 2020</span>
+          <span class="copyright">Copyright &copy; Juan Barros Pazos 2021</span>
   </p>
 
 </body>

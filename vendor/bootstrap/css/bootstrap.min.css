@@ -440,6 +440,7 @@ mark {
   width: 100%;
   min-width: 80px;
   height: auto;
+  min-height: 50%;
   max-height: 100%;
   border: solid 2px #6c757d;
   border-radius: 14px;

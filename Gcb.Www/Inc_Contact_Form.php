@@ -178,7 +178,7 @@ print("
 		</div>          
 
         <div style=\"display: block; text-align: center;\">
-            <input type='submit' value='ENVIAR FORMULARIO DE CONTACTO' />
+            <input type='submit' value='ENVIAR FORMULARIO DE CONTACTO' class=\"botonleer\" />
 			<input type='hidden' name='ocultomail' value=1 />
         </div>
     </form>	

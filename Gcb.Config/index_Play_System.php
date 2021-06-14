@@ -104,7 +104,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4">
-          <span class="copyright">Copyright &copy; Juan Barros Pazos 2020</span>
+          <span class="copyright">Copyright &copy; Juan Barros Pazos 2021</span>
         </div>
         <div class="col-md-4">
           <ul class="list-inline social-buttons">
