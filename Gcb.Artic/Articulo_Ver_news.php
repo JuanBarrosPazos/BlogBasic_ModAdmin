@@ -4,7 +4,9 @@
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 	if(isset($_POST['oculto'])){
 				if($form_errors = validate_form()){
@@ -27,7 +29,9 @@
 			show_form();
 			ver_todo();}
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function validate_form(){
 	
@@ -44,7 +48,9 @@ function validate_form(){
 
 		} 
 		
-//////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function process_form(){
 	
@@ -115,9 +121,25 @@ function process_form(){
 
 	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
 	$q = mysqli_query($db, $result);
-	$row = mysqli_fetch_assoc($q);
-	$num_total_rows = mysqli_num_rows($q);
-	
+	global $row;
+	@$row = mysqli_fetch_assoc($q);
+	global $num_total_rows;
+	@$num_total_rows = mysqli_num_rows($q);
+
+	if(!$q || ($num_total_rows < 1)){
+		global $fil;
+		$fil = ($dy1-1).$dm1."%";
+		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
+		global $vname;
+		$vname = "gcb_".($dyt1-1)."_articulos";
+		$vname = "`".$vname."`";
+		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+		$q = mysqli_query($db, $result);
+		@$row = mysqli_fetch_assoc($q);
+		global $num_total_rows;
+		@$num_total_rows = mysqli_num_rows($q);
+	} else { }
+
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
@@ -197,8 +219,6 @@ function process_form(){
 
 	require '../Gcb.Artic/Inc_Artic_News_Form.php';
 
-	require 'Inc_Centra_News_Img.php';
-
 	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
 	<img class='<!--rounded-circle--> img-fluid' src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
@@ -250,7 +270,9 @@ function process_form(){
 			} 
 		}
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function show_form($errors=[]){
 
@@ -378,7 +400,7 @@ function show_form($errors=[]){
 		
 			}  
 
-	print ("	</select>
+	print ("</select>
 
 				<select name='dy'>"
 				);
@@ -414,7 +436,9 @@ function show_form($errors=[]){
 	
 	}	
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function ver_todo(){
 		
@@ -436,9 +460,26 @@ function ver_todo(){
 
 	$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
 	$q = mysqli_query($db, $result);
-	$row = mysqli_fetch_assoc($q);
-	$num_total_rows = mysqli_num_rows($q);
-	
+	global $row;
+	@$row = mysqli_fetch_assoc($q);
+	global $num_total_rows;
+	@$num_total_rows = mysqli_num_rows($q);
+
+	if(!$q || ($num_total_rows < 1)){
+		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
+		global $fil;
+		$fil = ($dyt1-1)."-%";	
+		global $vname;
+		$vname = "gcb_".($dyt1-1)."_articulos";
+		$vname = "`".$vname."`";
+		$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
+		$q = mysqli_query($db, $result);
+		$row = mysqli_fetch_assoc($q);
+		global $num_total_rows;
+		$num_total_rows = mysqli_num_rows($q);
+	} else { }
+
+	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
 	
@@ -519,12 +560,9 @@ function ver_todo(){
 
 	require '../Gcb.Artic/Inc_Artic_News_Form.php';
 
-	require 'Inc_Centra_News_Img.php';
-
-		print ("
-			<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
+	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
-	<img class='<!--rounded-circle--> img-fluid' ".$centra." src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
+	<img class='<!--rounded-circle--> img-fluid' src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
 			</div>
 			<div class='timeline-panel'>
 			<div class='timeline-heading'>
@@ -574,7 +612,9 @@ function ver_todo(){
 			} 
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function info(){
 
@@ -611,7 +651,9 @@ function info(){
 
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 	//require '../Gcb.Inclu/Admin_Inclu_footer.php';
 		

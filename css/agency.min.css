@@ -414,7 +414,7 @@ header.masthead .intro-text .intro-heading {
   margin-left: -1.5px;
   content: "";
   /* background-color: #e9ecef; */
-  border-right: 2px solid #6c757d;
+  border-right: 2px solid #CCC;
 }
 .timeline > li {
   position: relative;

@@ -781,9 +781,24 @@ function ver_todo(){
 
 	$result =  "SELECT * FROM $vname ";
 	$q = mysqli_query($db, $result);
-	$row = mysqli_fetch_assoc($q);
-	$num_total_rows = mysqli_num_rows($q);
-	
+	global $row;
+	@$row = mysqli_fetch_assoc($q);
+	global $num_total_rows;
+	@$num_total_rows = mysqli_num_rows($q);
+
+	if(!$q || ($num_total_rows < 1)){
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
+		global $vname;
+		$vname = "gcb_".(date('Y')-1)."_articulos";
+		$vname = "`".$vname."`";
+		$_SESSION['dyt1'] = (date('Y')-1);
+		$result =  "SELECT * FROM $vname ";
+		$q = mysqli_query($db, $result);
+		@$row = mysqli_fetch_assoc($q);
+		global $num_total_rows;
+		@$num_total_rows = mysqli_num_rows($q);
+	} else { }
+
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
@@ -844,15 +859,15 @@ function ver_todo(){
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){
-							print ("<table align='center'>
-										<tr>
-											<td>
-												<font color='#FF0000'>
-													NO HAY DATOS
-												</font>
-											</td>
-										</tr>
-									</table>");
+					print ("<table align='center'>
+								<tr>
+									<td>
+										<font color='#FF0000'>
+											NO HAY DATOS
+										</font>
+									</td>
+								</tr>
+							</table>");
 									
 				} else { 
 					
@@ -929,14 +944,15 @@ function articulos(){
   `tit` varchar(22) collate utf8_spanish2_ci NOT NULL,
   `titsub` varchar(22) collate utf8_spanish2_ci NOT NULL,
   `datein` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+  `timein` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
   `datemod` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
-  `conte` text collate utf8_spanish2_ci NOT NULL,
-  `myimg1` varchar(30) collate utf8_spanish2_ci,
-  `myimg2` varchar(30) collate utf8_spanish2_ci,
-  `myimg3` varchar(30) collate utf8_spanish2_ci,
-  `myimg4` varchar(30) collate utf8_spanish2_ci,
+  `timemod` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
+  `conte` text(402) collate utf8_spanish2_ci NOT NULL,
+  `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
+  `myvdo` varchar(30) collate utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `id` (`id`)
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `refart` (`refart`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ";
 		
 	if(mysqli_query($db, $tg)){
@@ -960,7 +976,6 @@ function modif(){
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";
 	$contenido = implode("\n",$contenido);
 	
-	//fseek($fw, 37);
 	$fw = fopen($filename, 'w+');
 	fwrite($fw, $contenido);
 	fclose($fw);
