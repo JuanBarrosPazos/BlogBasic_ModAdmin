@@ -3,10 +3,8 @@ session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_popup.php';
-
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
-
 	require '../Gcb.Inclu/Only.rowd.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -14,33 +12,33 @@ session_start();
 if (($_SESSION['Nivel'] == 'admin')||($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 
 	if (isset($_POST['oculto2'])){
-								show_form();
-								//info_01();
-								}
-							elseif($_POST['imagenmodif']){
-								
-									if($form_errors = validate_form()){
-										show_form($form_errors);
-											} else {
-												process_form();
-												//info_02();
-					 $ctemp = "../Gcb.Temp";
-					 if(file_exists($ctemp)){$dir1 = $ctemp."/";
-											 $handle1 = opendir($dir1);
-											 while ($file1 = readdir($handle1))
-													 {if (is_file($dir1.$file1))
-														 {unlink($dir1.$file1);}
-														 }	
-												 } else {}
-					global $redir;
-					$redir = "<script type='text/javascript'>
-								function redir(){
-									window.close();
-										}
-								setTimeout('redir()',8000);
-							</script>";
-					print ($redir);
-												}
+					show_form();
+					//info_01();
+					}
+				elseif($_POST['imagenmodif']){
+					
+						if($form_errors = validate_form()){
+							show_form($form_errors);
+								} else {
+									process_form();
+									//info_02();
+		$ctemp = "../Gcb.Temp";
+		if(file_exists($ctemp)){$dir1 = $ctemp."/";
+								 $handle1 = opendir($dir1);
+								 while ($file1 = readdir($handle1))
+										 {if (is_file($dir1.$file1))
+											 {unlink($dir1.$file1);}
+											 }	
+									 } else {}
+		global $redir;
+		$redir = "<script type='text/javascript'>
+					function redir(){
+						window.close();
+							}
+					setTimeout('redir()',8000);
+				</script>";
+		print ($redir);
+									}
 								
 	} else { show_form(); }
 
@@ -144,7 +142,7 @@ function process_form(){
 		date('Y_m_d');
 		$dt = date('is');
 		global $new_name;
-		$new_name = $_SESSION['srefnews']."_".$dt.".".$extension;
+		$new_name = $_SESSION['srefart']."_".$dt.".".$extension;
 
 	global $db;
 	global $db_name;

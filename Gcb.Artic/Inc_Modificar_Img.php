@@ -34,7 +34,7 @@ if( file_exists($ruta.$nombre)){
 
     global $extension;
     global $ctemp;
-    $ctemp = "../Gch.Temp";
+    $ctemp = "../Gcb.Temp";
     if (!file_exists($ctemp)) {
       mkdir($ctemp, 0777, true);
       copy($_FILES['myimg']['tmp_name'], $ctemp."/inim.".$extension); 

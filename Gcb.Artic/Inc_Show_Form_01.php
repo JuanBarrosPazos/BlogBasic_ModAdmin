@@ -112,7 +112,7 @@
 					</td>
 					<td>
 					<div style='float:left'>
-					Orden:&nbsp;
+					ORDEN&nbsp;
 			<select name='Orden'>");
 					
 		foreach($ordenar as $option => $label){
@@ -155,11 +155,11 @@
                     </td>
                     <td class='BorderInf'>
                         <div style='float:left'>	
-                        &nbsp;Titulo:&nbsp;
+                        &nbsp;TITULO&nbsp;
 	<input type='text' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />
-                        </div>
-                        <div style='float:left'>
-                        &nbsp;Autor:&nbsp;
+                         &nbsp;AUTOR&nbsp;
+						</div>
+                        <div style='float:left;'>
 
             <select name='autor'>");
 						

@@ -218,8 +218,12 @@ function process_form(){
 	
 	global $carpetaimg;
 	$carpetaimg = "../Gcb.Img.Art";
-	$extension = substr($_FILES['myimg']['name'],-3);
-	// print($extension);
+	global $extension;
+	$extension = substr($_FILES['myimg']['name'],-4);
+	$extension = strtolower($extension);
+	global $extension;
+	$extension = str_replace(".","",$extension);
+// print($extension);
 	global $new_name;
 	$new_name = $_POST['refart'].".".$extension;
 
@@ -243,10 +247,6 @@ function process_form(){
 
 			global $carpetaimg;
 			global $new_name;
-
-			global $ruta;
-			$ruta = "../Gcb.Img.Art/";
-			$_SESSION['ruta'] = $ruta;
 
 			global $redir;
 			$redir = "";
@@ -381,7 +381,7 @@ function show_form($errors=[]){
 				</tr>		
 				<tr>
 					<td align='right'>
-						<input type='submit' value='SELECCIONE UN AUTOR' />
+						<input type='submit' value='SELECCIONE UN AUTOR' class='botonverde' />
 						<input type='hidden' name='oculto1' value=1 />
 					</td>
 					<td align='left'>
@@ -542,7 +542,7 @@ function show_form($errors=[]){
 
 				<tr>
 					<td colspan='2' align='right' valign='middle'  class='BorderSup'>
-						<input type='submit' value='CREAR ARTICULO' />
+						<input type='submit' value='CREAR ARTICULO' class='botonverde' />
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 				</tr>
@@ -600,24 +600,10 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	function desconexion(){
-
-			print("<form name='cerrar' action='../Admin/mcgexit.php' method='post'>
-							<tr>
-								<td valign='bottom' align='right' colspan='8'>
-											<input type='submit' value='Cerrar Sesion' />
-								</td>
-							</tr>								
-											<input type='hidden' name='cerrar' value=1 />
-					</form>	
-							");
-	
-			} 
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
 	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 
-	/* Creado por Juan Manuel Barros Pazos 2020/21 */
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Creado por Juan Manuel Barros Pazos 2020/21 */
 
 ?>

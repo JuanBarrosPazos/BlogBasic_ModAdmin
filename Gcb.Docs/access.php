@@ -774,10 +774,10 @@ function ver_todo(){
 	global $vname;
 	/* 	$vname = "gcb_".date('Y')."_articulos"; */
 	/* MODIFICADA PARA DESARROLLO */
-	$vname = "gcb_".(date('Y')-1)."_articulos";
+	$vname = "gcb_".date('Y')."_articulos";
 	$vname = "`".$vname."`";
 	
-	$_SESSION['dyt1'] = (date('Y')-1);
+	$_SESSION['dyt1'] = date('Y');
 
 	$result =  "SELECT * FROM $vname ";
 	$q = mysqli_query($db, $result);

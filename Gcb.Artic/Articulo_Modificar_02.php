@@ -2,23 +2,17 @@
 session_start();
 
   	require '../Gcb.Inclu/error_hidden.php';
+	global $headpop;
+	$headpop = "<tr>
+					<td colspan=3 align='right' class='BorderSup BorderInf'>
+						<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
+							<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
+							<input type='hidden' name='oculto2' value=1 />
+						</form>
+					</td>
+				</tr>";
 
-	if (isset($_POST['headpop'])){
-		global $headpop;
-		$headpop = "<tr>
-						<td colspan=3 align='right' class='BorderSup BorderInf'>
-							<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-								<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-								<input type='hidden' name='oculto2' value=1 />
-							</form>
-						</td>
-					</tr>";
-	  require '../Gcb.Inclu/Admin_Inclu_popup.php';
-	} else {
-		global $headpop;
-		$headpop = "";
-	  require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
-	}
+	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 
 	require '../Gcb.Inclu/mydni.php';
 	require '../Gcb.Connet/conection.php';
@@ -27,8 +21,6 @@ session_start();
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
-
-	if (isset($_POST['headpop'])){ } else { master_index(); }
 
 		if (isset($_POST['oculto2'])){
 					show_form();
@@ -158,6 +150,7 @@ function process_form(){
 
 		global $carpetaimg;
 		global $new_name;
+		global $headpop;
 
 		print("<table align='center' style=\"margin-top:10px; text-align:left; width:96%; max-width:500px\" >
 				<tr>
@@ -198,13 +191,7 @@ function process_form(){
 					<td colspan=3 align='left'>"
 						.$_POST['coment'].
 					"</td>
-				</tr>
-				<tr>
-					<th colspan=3 class='BorderSup'>
-						<a href=Articulo_Modificar_01.php>MODIFICAR OTRO ARTICULO</a>
-					</th>
-				</tr>
-			</table>");
+				</tr>".$headpop."</table>");
 			
 	} 	else {print("* MODIFIQUE LA ENTRADA L.152: ".mysqli_error($db));
 						show_form ();
@@ -221,7 +208,7 @@ function show_form($errors=[]){
 	if(isset($_POST['oculto2'])){
 		//$defaults = $_POST;
 		
-		$_SESSION['dyt1'] = $_POST['dyt1'];
+		//$_SESSION['dyt1'] = $_POST['dyt1'];
 		$_SESSION['refuser'] = $_POST['refuser'];
 		$_SESSION['tit'] = $_POST['tit'];
 		$_SESSION['titsub'] = $_POST['titsub'];
@@ -475,14 +462,6 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 	}
 */
-/////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	function master_index(){
-		
-				require '../Gcb.Inclu.Menu/rutaartic.php';				
-				require '../Gcb.Inclu.Menu/Master_Index.php';
-		
-			} 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 	

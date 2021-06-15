@@ -71,6 +71,25 @@ function process_form(){
 	if ($_POST['dm'] == ''){ $dm1 = '';} 
 							 				else {	$dm1 = "-".$_POST['dm'];
 													}
+
+	$_SESSION['dyt1'] = $dyt1;
+	/*
+	echo "****** ".$_SESSION['dyt1'];
+	echo "****** ".$_POST['dy'];
+	*/
+
+	global $refrescaimg;
+	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
+			<input type='hidden' name='autor' value='".@$_POST['autor']."' />
+			<input type='hidden' name='titulo' value='".@$_POST['titulo']."' />
+			<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+			<input type='hidden' name='dy' value='".@$_POST['dy']."' />
+			<input type='hidden' name='dm' value='".@$_POST['dm']."' />
+			<input type='hidden' name='dd' value='".@$_POST['dd']."' />
+			<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+			<input type='hidden' name='oculto' value=1 />
+						</form>";
+
 	global $fil;
 	$fil = $dy1.$dm1."%";
 	//$fil = $dy1."-%".$dm1."%";
@@ -103,8 +122,8 @@ function process_form(){
 									
 				} else { 
 
-		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
-					Nº Articulos: ".mysqli_num_rows($qc)." YEAR ".date('Y').".<br>");
+	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
+					Nº Articulos: ".mysqli_num_rows($qc)." YEAR ".date('Y').$refrescaimg);
 				
 			while($rowb = mysqli_fetch_assoc($qc)){
 				
@@ -160,6 +179,23 @@ function ver_todo(){
 																					}
 												else{ global $fil;												  $fil = $dy1.$dm1.$dd1."%";
 														}
+	$_SESSION['dyt1'] = $dyt1;
+	/*
+	echo "****** ".$_SESSION['dyt1'];
+	echo "****** ".$_POST['dy'];
+	*/
+
+	global $refrescaimg;
+	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
+				<input type='hidden' name='autor' value='".@$_POST['autor']."' />
+				<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+				<input type='hidden' name='dy' value='".@$_POST['dy']."' />
+				<input type='hidden' name='dm' value='".@$_POST['dm']."' />
+				<input type='hidden' name='dd' value='".@$_POST['dd']."' />
+				<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+				<input type='hidden' name='todo' value=1 />
+					</form>";
+	
 	global $vname;
 	$vname = "gcb_".$dyt1."_articulos";
 	$vname = "`".$vname."`";
@@ -187,8 +223,8 @@ function ver_todo(){
 									
 				} else { 
 
-		print ("<div class=\"juancentra col-xs-12 col-sm-12 col-lg-6\" style=\"	vertical-align: top !important; margin-top: 6px;\">
-				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').".<br>");
+	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
+				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);
 
 			while($rowb = mysqli_fetch_assoc($qb)){
 				

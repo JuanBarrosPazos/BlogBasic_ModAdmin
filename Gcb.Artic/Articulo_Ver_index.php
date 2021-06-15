@@ -118,11 +118,15 @@
             }
         }
         
-///////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
-		ver_todo();
+	ver_todo();
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function ver_todo(){
 		
@@ -130,7 +134,7 @@ function ver_todo(){
 	global $db_name;
 
 	global $dyt1;
-	$dyt1 = date('Y')-1; /* */
+	$dyt1 = date('Y'); /* */
 	global $fil;
 	$fil = $dyt1."-%";
 	//$fil = $dy1.$dm1.$dd1."%";
@@ -140,17 +144,21 @@ function ver_todo(){
 	
 	$result =  "SELECT * FROM $vname ";
 	$q = mysqli_query($db, $result);
+	$row = mysqli_fetch_assoc($q);
+	global $num_total_rows;
+	$num_total_rows = mysqli_num_rows($q);
 
-	if(!$q){
+	if(!$q || ($num_total_rows < 1)){
 		global $vname;
 		$vname = "gcb_".($dyt1-1)."_articulos";
 		$vname = "`".$vname."`";
 		$result =  "SELECT * FROM $vname ";
-		$q = mysqli_query($db, $result);	
+		$q = mysqli_query($db, $result);
+		$row = mysqli_fetch_assoc($q);
+		global $num_total_rows;
+		$num_total_rows = mysqli_num_rows($q);
 	} else { }
 
-	$row = mysqli_fetch_assoc($q);
-	$num_total_rows = mysqli_num_rows($q);
 	
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
@@ -297,6 +305,8 @@ function ver_todo(){
 		
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 /* Creado por Juan Manuel Barros Pazos 2020/21 */

@@ -45,7 +45,7 @@
     global $contep;
 	$contep = $rowb['conte'];
 	$contep = $autor.$vdonw.$contep."
-	<img src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' class='imgarticulo'/>
+	<img src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' class='imgarticulo' />
 	<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />
 				<input type='hidden' name='refart' value='".$rowb['refart']."' />
