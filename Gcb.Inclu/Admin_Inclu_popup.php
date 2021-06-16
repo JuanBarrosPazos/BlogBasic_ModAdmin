@@ -19,8 +19,8 @@
 
     } elseif (!isset($docs)){
       print("<!-- Bootstrap core CSS 
-              <link href=\"../vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
-              <link href=\"../vendor/fontawesome-free/css/all.min.css\" rel=\"stylesheet\" type=\"text/css\">
+              <link href=\"../Gcb.Css/bootstrap.min.css\" rel=\"stylesheet\">
+              <link href=\"../Gcb.Css/fontawesome-free/css/all.min.css\" rel=\"stylesheet\" type=\"text/css\">
             -->");
     }
   ?>

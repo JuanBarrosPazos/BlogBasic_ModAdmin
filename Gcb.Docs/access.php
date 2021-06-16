@@ -264,7 +264,7 @@ function process_form(){
 			} else { }
 
 			print("
-		<embed src='../audi/sesion_open.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		<embed src='../Gcb.Audi/sesion_open.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");
 			admin_entrada();
 		}else { require '../Gcb.Inclu/table_permisos.php'; }
@@ -415,7 +415,7 @@ function bloqueo(){
 			elseif(strlen(trim($_SESSION['bloqh'] <= 3))){  $_SESSION['desbloqh'] = "0".$bloqh.":".$bloqm.":00";}
 			else{ $_SESSION['desbloqh'] = $bloqh.":".$bloqm.":00";}
 		print("	
-		<embed src='../audi/ip_block.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		<embed src='../Gcb.Audi/ip_block.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");
 
 		if(mysqli_query($db, $emarc)){ }else {print("* ERROR ENTRADA 95: ".mysqli_error($db)).".";}
@@ -465,7 +465,7 @@ function show_form($errors=[]){
 		
 		print("</td>
 				</tr>
-	<embed src='../audi/user_error.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/user_error.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 	</embed>
 		</table>");
 		}
@@ -801,7 +801,7 @@ function ver_todo(){
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
-	$nitem = 3;
+	$nitem = 4;
 	
 	global $page;
 
@@ -872,7 +872,7 @@ function ver_todo(){
 				} else { 
 					
 	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
-			Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);
+			Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".$_SESSION['dyt1'].$refrescaimg);
 			
 		while($rowb = mysqli_fetch_assoc($qb)){
 

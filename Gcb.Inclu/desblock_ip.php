@@ -24,7 +24,7 @@
 										</td>
 									</tr>
 								</table>
-	<embed src='../audi/ip_confirm_unlock.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/ip_confirm_unlock.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 	</embed>
 					");
 											
@@ -175,12 +175,12 @@ function show_form($errors=[]){
 				}
 				print("</td>
 						 </tr>
-		<embed src='../audi/user_lost.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		<embed src='../Gcb.Audi/user_lost.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>
 				</table>");
 
 		}elseif(isset($_POST['oculto2']) != 1){
-		print("<embed src='../audi/ip_unlock_form.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' ></embed>");
+		print("<embed src='../Gcb.Audi/ip_unlock_form.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' ></embed>");
 				}
 	
 	print("<table align='center' style=\"border:0px;margin_bottom:6px;margin-top:2px\">
@@ -344,7 +344,7 @@ function desbloqueo(){
 							</td>
 						</tr>
 					</table>
-	<embed src='../audi/ip_unlocked_ok.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/ip_unlocked_ok.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 	</embed>");
 								 
 		 	global $redir;

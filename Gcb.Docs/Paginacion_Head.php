@@ -7,7 +7,7 @@
 	
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
-	$nitem = 3;
+	$nitem = 4;
 	
 	global $page;
 

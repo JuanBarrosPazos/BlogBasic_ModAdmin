@@ -49,7 +49,7 @@
 								</td>
 							</tr>
 						</table>
-<embed src='../audi/claves_lost_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+<embed src='../Gcb.Audi/claves_lost_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 </embed>");
 											
 		process_form();
@@ -191,13 +191,13 @@ function show_form($errors=[]){
 			}
 		print("</td>
 				</tr>
-		<embed src='../audi/user_lost.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+		<embed src='../Gcb.Audi/user_lost.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>
 			</table>");
 
 		}elseif(isset($_POST['oculto2']) != 1){
 	print("
-	<embed src='../audi/claves_lost_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/claves_lost_2.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 	</embed>");
 				}
 	
@@ -503,7 +503,7 @@ function process_form(){
 									</td>
 								</tr>
 							<table>
-	<embed src='../audi/claves_lost_3.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/claves_lost_3.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");
 						
 			}else{
@@ -532,7 +532,7 @@ function process_form(){
 							</td>
 						</tr>
 					<table>
-	<embed src='../audi/claves_lost_4.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/claves_lost_4.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 		</embed>");
 														
 					} /*Fin del if del mail*/

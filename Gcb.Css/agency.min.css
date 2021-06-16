@@ -180,7 +180,7 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: #fff;
-  background-image: url(../img/header-bg.jpg);
+  background-image: url(../Gcb.Img.Tema/header-bg.jpg);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -413,8 +413,9 @@ header.masthead .intro-text .intro-heading {
   width: 2px;
   margin-left: -1.5px;
   content: "";
-  /* background-color: #e9ecef; */
+  /* background-color: #e9ecef;
   border-right: 2px solid #CCC;
+  */
 }
 .timeline > li {
   position: relative;
@@ -595,7 +596,7 @@ header.masthead .intro-text .intro-heading {
 }
 section#contact {
   background-color: #212529;
-  background-image: url(../img/map-image.png);
+  background-image: url(../Gcb.Img.Tema/map-image.png);
   background-repeat: no-repeat;
   background-position: center;
 }

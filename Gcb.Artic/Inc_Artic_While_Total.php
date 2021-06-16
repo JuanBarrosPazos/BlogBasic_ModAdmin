@@ -73,6 +73,14 @@
             <input type='hidden' name='oculto2' value=1 />
             </form>
 
+        <form name='modifica_img' action='".$rutaurl.$rutaurlart."Articulo_Modificar_img.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup',  'width=540px,height=460px')\" class='whiletotala' >");
+			
+            require 'Inc_Artic_While_Total_Rows.php';
+
+	print(" <input type='submit' value='MODIFICA IMAGEN' class='botonnaranja' />
+			<input type='hidden' name='oculto2' value=1 />
+            </form>
+
 		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Modificar_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=420px,height=850em')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';
@@ -91,14 +99,7 @@
 			<input type='hidden' name='oculto2' value=1 />
 			</form>
 
-        <form name='modifica_img' action='".$rutaurl.$rutaurlart."Articulo_Modificar_img.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup',  'width=540px,height=460px')\" class='whiletotala' >");
-			
-            require 'Inc_Artic_While_Total_Rows.php';
-
-	print(" <input type='submit' value='MODIFICA IMAGEN' class='botonnaranja' />
-			<input type='hidden' name='oculto2' value=1 />
-            </form>
-
+        <div>
         <form name='videonews' action='".$rutaurl.$rutaurlart.$rutaurlvdo."upvdo.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=400px,height=560px')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';
@@ -107,7 +108,7 @@
 		    <input type='hidden' name='oculto2' value=1 />
 		    </form>");
 
-    if($delvdo == 1){ } 
+    if($delvdo == 1){ print("</div>"); } 
     else { 
         print("<form name='videonews' action='".$rutaurl.$rutaurlart."Articulo_Vdo_Borrar.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=400px,height=560px')\" class='whiletotala'>");
 
@@ -115,7 +116,7 @@
 			
         print( $delvdo."
                 <input type='hidden' name='oculto2' value=1 />
-                </form>	");
+                </form></div>");
         }
 
     print("</div>");

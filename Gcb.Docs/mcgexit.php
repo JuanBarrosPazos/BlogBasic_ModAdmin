@@ -108,7 +108,7 @@ function info(){
 								HA CERRADO SESION.
 							</th>
 						</tr>
-	<embed src='../audi/sesion_close.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
+	<embed src='../Gcb.Audi/sesion_close.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
 	</embed>
 					</table>");
 				
