@@ -62,9 +62,12 @@
             </div>
                                     
 		</div>
+    
+        <div style='clear:both'></div>
+        
+	<div class=\"BorderInf\" style=\"text-align:center; display:block;\">
 
-		<div class=\"BorderInf\" style=\"text-align:center; display:block;\">
-
+    <div class='botongrupo' >
     <form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Ver_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=520px,height=auto')\" class='whiletotala'>");
 
         require 'Inc_Artic_While_Total_Rows.php';
@@ -79,8 +82,9 @@
 
 	print(" <input type='submit' value='MODIFICA IMAGEN' class='botonnaranja' />
 			<input type='hidden' name='oculto2' value=1 />
-            </form>
+            </form></div>
 
+        <div class='botongrupo' >
 		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Modificar_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=420px,height=850em')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';
@@ -97,9 +101,9 @@
 
 	print("	<input type='submit' value='BORRAR DATOS' class='botonrojo' />
 			<input type='hidden' name='oculto2' value=1 />
-			</form>
+			</form></div>
 
-        <div>
+        <div class='botongrupo' >
         <form name='videonews' action='".$rutaurl.$rutaurlart.$rutaurlvdo."upvdo.php' target='popup' method='POST' onsubmit=\"window.open('', 'popup', 'width=400px,height=560px')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';

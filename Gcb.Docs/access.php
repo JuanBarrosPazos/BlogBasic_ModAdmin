@@ -842,7 +842,7 @@ function ver_todo(){
 			<input type='hidden' name='Apellidos' value='".@$defaults['Apellidos']."' />
 			<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
 			<input type='hidden' name='ocultoc' value=1 />
-						</form>";
+					</form>";
 	} else { global $refrescaimg;
 			 $refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' style='margin-top: 4px;'>
 		<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
@@ -861,14 +861,9 @@ function ver_todo(){
 			if(mysqli_num_rows($qb)== 0){
 					print ("<table align='center'>
 								<tr>
-									<td>
-										<font color='#FF0000'>
-											NO HAY DATOS
-										</font>
-									</td>
+						<td><font color='#FF0000'>NO HAY DATOS</font></td>
 								</tr>
 							</table>");
-									
 				} else { 
 					
 	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">

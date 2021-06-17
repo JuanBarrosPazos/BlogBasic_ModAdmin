@@ -111,8 +111,10 @@
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 					<td>
-					<div style='float:left'>
+				<div style='float:left; text-align:left; margin-top:6px; '>
 					ORDEN&nbsp;
+				</div>
+				<div style='float:left; text-align:left;'>
 			<select name='Orden'>");
 					
 		foreach($ordenar as $option => $label){
@@ -123,7 +125,7 @@
 							}	
 	print ("</select>
 				</div>
-					<div style='float:left'>
+					<div style='float:left;'>
 					<select name='dy'>");
 							
 		foreach($dy as $optiondy => $labeldy){
@@ -154,13 +156,14 @@
                     <td class='BorderInf'>
                     </td>
                     <td class='BorderInf'>
-                        <div style='float:left'>	
+                        <div style='float:left;'>	
                         &nbsp;TITULO&nbsp;
 	<input type='text' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />
+						</div>
+			<div style='float:left; text-align:left; margin-top:6px; '>
                          &nbsp;AUTOR&nbsp;
 						</div>
-                        <div style='float:left;'>
-
+						<div style='float:left; text-align:left;'>
             <select name='autor'>");
 						
 	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	

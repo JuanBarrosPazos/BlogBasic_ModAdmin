@@ -26,7 +26,8 @@
   ?>
   <!-- Custom styles for this template -->
   
-  <link href="../css/agency.min.css" rel="stylesheet">
+  <link href="../Gcb.Css/agency.min.css" rel="stylesheet">
+  <link href="../Gcb.Css/html.css" rel="stylesheet" type="text/css" />
   <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css" />
 
   <script src="img_change_jscss/jquery-3.4.1.min.js"></script>

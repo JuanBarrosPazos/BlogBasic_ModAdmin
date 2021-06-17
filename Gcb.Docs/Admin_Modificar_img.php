@@ -149,7 +149,7 @@ function process_form(){
 	$nombre = $_POST['Nombre'];
 	$apellido = $_POST['Apellidos'];
 	
-	$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `myimg` = '$new_name' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
+$sqlc = "UPDATE `$db_name`.`gcb_admin` SET `myimg` = '$new_name' WHERE `gcb_admin`.`id` = '$_POST[id]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqlc)){
 
@@ -268,10 +268,7 @@ function show_form($errors=[]){
 						print("<font color='#FF0000'>**</font>  ".$errors [$a]."<br/>");
 						}
 
-		print("</td>
-				</tr>
-				 </table>");
-				}
+		print("</td></tr></table>");}
 		
 	print("<table align='center' border=0 style='margin-top:20px; width:95.5%' >
 				<tr>
@@ -285,7 +282,7 @@ function show_form($errors=[]){
 				LA IMAGEN ACTUAL DE : </br>".$defaults['Nombre']." ".$defaults['Apellidos'].".
 					</th>
 					<th class='BorderInf'>
-<img src='../Gcb.Img.User/".$_SESSION['smyimg']."' height='120px' width='90px' />
+		<img src='../Gcb.Img.User/".$_SESSION['smyimg']."' height='120px' width='90px' />
 					</th>
 				</tr>
 				

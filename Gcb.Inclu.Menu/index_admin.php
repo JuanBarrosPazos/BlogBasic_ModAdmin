@@ -44,22 +44,12 @@
 			<ul class='nav-flyout'>
 				<li>
 					<a href='".$rutaartic."Articulo_Ver.php' ".$topcat1.">
-						<i class='ic ico20b'></i>CONSULTAR
+						<i class='ic ico20b'></i>GESTIONAR
 					</a>
 				</li>
 				<li>
 					<a href='".$rutaartic."Articulo_Crear.php'>
 						<i class='ic ico20b'></i>CREAR
-					</a>
-				</li>
-				<li>
-					<a href='".$rutaartic."Articulo_Modificar_01.php'>
-						<i class='ic ico20b'></i>MODIFICAR
-					</a>
-				</li>
-				<li>
-					<a href='".$rutaartic."Articulo_Borrar_01.php'>
-						<i class='ic ico20b'></i>BORRAR
 					</a>
 				</li>
 			</ul>

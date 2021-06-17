@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+	global $docs;
+	$docs = 1;
+
 	require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Connet/conection.php';
@@ -306,20 +309,20 @@ function show_form($errors=[]){
 				
 				<tr>
 					<td class='BorderInf'>
-				<img src='../Gcb.Img.Art/".$_SESSION['smyimg']."' width='120px' height='auto' />
+			<img src='../Gcb.Img.Art/".$_SESSION['smyimg']."' width='120px' height='auto' />
 					</td>
 					<td class='BorderInf'>
-							LA IMAGEN ACTUAL</br></br>
+							IMAGEN ACTUAL</br></br>
 							REF. ARTICULO ".$_SESSION['srefart']."</br>
 							TITULO: ".$_POST['tit'].".
 					</td>
 				</tr>
 				
 				<tr>
-					<td>SELECCIONE UNA IMAGEN</td>
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'  enctype='multipart/form-data'>
-					<td>
-						<input type='file' name='myimg' value='".$defaults['myimg']."' />						
+					<td colspan=2 >
+		<input type='file' name='myimg' id='myimg' value='".$defaults['myimg']."' class='inputfile custom' />	
+		<label for='myimg'><span id='file_name'>SELECCIONE UNA IMAGEN</span></label>
 					</td>
 				</tr>
 

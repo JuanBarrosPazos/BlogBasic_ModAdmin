@@ -12,6 +12,7 @@
 <meta name="audience" content="All" />
 <title>Juan Manuel Barros Pazos</title>
 	
+<link href="../Gcb.Css/html.css" rel="stylesheet" type="text/css" />
 <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css" />
 <link href="../Gcb.Css/menu.css" rel="stylesheet" type="text/css" />
 <link href="../Gcb.Css/menuico.css" rel="stylesheet" type="text/css" />

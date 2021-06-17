@@ -19,6 +19,7 @@
 
   <link href="Gcb.Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
   
+  <link href="Gcb.Css/html.css" rel="stylesheet" type="text/css" />
   <link href="Gcb.Css/conta.css" rel="stylesheet" type="text/css">
 
   <!-- Bootstrap core CSS -->
