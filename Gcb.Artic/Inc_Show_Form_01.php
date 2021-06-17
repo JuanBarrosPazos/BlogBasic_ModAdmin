@@ -97,7 +97,7 @@
 							'`Nombre` DESC' => 'Nombre Descendente',
 																);
 
-	print("<table align='center' style=\"border:0px;margin-top:4px;width:auto\">
+	print("<table style=\"margin-top:4px; width:auto;\">
 				<tr>
 					<th colspan=2 width=100% class='BorderInf BorderSup'>
 						".$titulo."
@@ -107,7 +107,7 @@
 						
 				<tr>
 					<td align='right'>
-						<input type='submit' value='FILTRO ARTICULOS' />
+						<input type='submit' value='FILTRO ARTICULOS' class='botonazul' />
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 					<td>
@@ -195,7 +195,7 @@
 		
 			<tr>
 				<td align='center' class='BorderInf'>
-					<input type='submit' value='ARTICULOS TODOS' />
+					<input type='submit' value='ARTICULOS TODOS' class='botonazul' />
 					<input type='hidden' name='todo' value=1 />
 				</td>
 				<td class='BorderInf'>

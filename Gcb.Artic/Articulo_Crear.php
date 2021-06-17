@@ -264,7 +264,7 @@ function process_form(){
 					<td width=120px>REFERENCIA</td>
 					<td width=100px>".$_POST['refart']."</td>
 					<td rowspan='4' align='center' width='120px'>
-				<img src='".$carpetaimg."/".$new_name."' height='120px' width='90px' />
+				<img style='height:120px; width:90px' src='".$carpetaimg."/".$new_name."' />
 					</td>
 				</tr>
 				

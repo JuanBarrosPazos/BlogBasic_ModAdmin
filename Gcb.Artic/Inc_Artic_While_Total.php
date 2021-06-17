@@ -30,7 +30,7 @@
 		global $upvdo;
 		$upvdo = "<input type='submit' value='MODIFICA VIDEO' class='botonnaranja' />";
 	} else { global $visual;
-			 $visual = "<img src='".$rutaimg."Gcb.Img.Art/untitled.png' width='92%' height='auto' />";
+			 $visual = "<img style='width:80%; height:auto;' src='".$rutaimg."Gcb.Img.Art/untitled.png' />";
 			 global $delvdo;
 			 $delvdo = 1;
 			 global $upvdo;
@@ -54,7 +54,7 @@
             </div>
 
             <div class='whiletotala'>
-                <img src='".$rutaimg."Gcb.Img.Art/".$rowb['myimg']."' width='92%' height='auto' />
+                <img style='width:92%; height:auto;' src='".$rutaimg."Gcb.Img.Art/".$rowb['myimg']."' />
             </div>
                                     
             <div class='whiletotala'>

@@ -272,7 +272,7 @@ function process_form(){
 		</tr>
 		<tr>
 			<td colspan=2 align='center'>
-				<img src='../Gcb.Img.User/".$rowqc['myimg']."' height='60px' width='45px' />
+				<img style='height:60px; width:45px;' src='../Gcb.Img.User/".$rowqc['myimg']."'  />
 			</td>
 		</tr>
 		<tr>

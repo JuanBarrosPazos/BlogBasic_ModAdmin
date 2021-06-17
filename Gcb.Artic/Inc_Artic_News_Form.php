@@ -22,7 +22,7 @@
 	if ($rowb['myvdo'] != ''){
 		global $vdonw;
 		$vdonw = "<video style=\" width:98%; max-width:600px !important; height:auto\" controls>
-			<source src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' style=\" width:98%; height:auto\" />
+			<source style=\" width:98%; height:auto\" src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' />
 				  </video>";
 		}else{	global $vdonw;
 				$vdonw = '';
@@ -45,7 +45,7 @@
     global $contep;
 	$contep = $rowb['conte'];
 	$contep = $autor.$vdonw.$contep."
-	<img src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' class='imgarticulo' />
+	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 	<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />
 				<input type='hidden' name='refart' value='".$rowb['refart']."' />

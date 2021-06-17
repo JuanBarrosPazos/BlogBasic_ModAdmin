@@ -161,7 +161,7 @@ function process_form(){
 					<td style='text-align:right; width:100px;'>REFERENCIA</td>
 					<td style='text-align:left; width:140px'>".$_SESSION['refart']."</td>
 					<td rowspan='4' align='center' width='auto'>
-				<img src='".$carpetaimg."/".$_SESSION['myimg']."' width='98% height='auto' />
+				<img style='width:98%; height:auto;' src='".$carpetaimg."/".$_SESSION['myimg']."'  />
 					</td>
 				</tr>
 				

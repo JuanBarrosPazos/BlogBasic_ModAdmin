@@ -24,10 +24,10 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
+  <div class="container imglogo">
       <a class="navbar-brand js-scroll-trigger" href="../index.php">
         <!-- Juan Barros Pazos -->
-        <img src="../Gcb.Img.Sys/logowm.png" class="imglogo" />
+        <img style='height: 3.2em !important; width: auto;' src="../Gcb.Img.Sys/logowm.png" />
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu

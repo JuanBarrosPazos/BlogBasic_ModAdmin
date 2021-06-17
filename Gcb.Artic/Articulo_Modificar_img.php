@@ -179,7 +179,7 @@ function process_form(){
 					<td style='text-align:right; width:140px;' >REFERENCIA </td>
 					<td style='text-align:left; width:140px;'>".$_SESSION['srefart']."</td>
 					<td rowspan='6'>
-			<img src='../Gcb.Img.Art/".$new_name."' width='120px' height='auto' />
+			<img style='width:120px; height:auto;' src='../Gcb.Img.Art/".$new_name."' />
 					</td>
 				</tr>
 				<tr>
@@ -309,7 +309,7 @@ function show_form($errors=[]){
 				
 				<tr>
 					<td class='BorderInf'>
-			<img src='../Gcb.Img.Art/".$_SESSION['smyimg']."' width='120px' height='auto' />
+			<img style='width:120px; height:auto;' src='../Gcb.Img.Art/".$_SESSION['smyimg']."' />
 					</td>
 					<td class='BorderInf'>
 							IMAGEN ACTUAL</br></br>

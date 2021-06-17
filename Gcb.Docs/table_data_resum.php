@@ -11,7 +11,7 @@
 					<td style='text-align:right !important; width:120px;' >Nombre:</td>
 					<td style='text-align:left !important; width:110px;' >".$_POST['Nombre']."</td>
 					<td rowspan='5' style='text-align:center !important;'>
-						<img ".$rutaimg." height='120px' width='90px' />
+						<img style='height:120px; width:90px;' ".$rutaimg."  />
 					</td>
 				</tr>
 				

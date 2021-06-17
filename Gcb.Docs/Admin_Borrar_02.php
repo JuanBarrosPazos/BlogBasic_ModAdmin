@@ -115,7 +115,7 @@ function show_form(){
 				<td style='text-align:right !important; width:120px;'>Nivel: </td>
 				<td style='text-align:left !important; width:100px;'>".$defaults['Nivel']."</td>
 				<td rowspan='5' align='center' width='94px'>
-					<img src='../Gcb.Img.User/".$_POST['myimg']."' height='120px' width='90px' />
+					<img style='height:120px; width:90px;' src='../Gcb.Img.User/".$_POST['myimg']."' />
 				</td>
 			</tr>
 			<tr>

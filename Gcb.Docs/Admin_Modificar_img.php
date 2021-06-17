@@ -282,7 +282,7 @@ function show_form($errors=[]){
 				LA IMAGEN ACTUAL DE : </br>".$defaults['Nombre']." ".$defaults['Apellidos'].".
 					</th>
 					<th class='BorderInf'>
-		<img src='../Gcb.Img.User/".$_SESSION['smyimg']."' height='120px' width='90px' />
+		<img style='height:120px; width:90px;' src='../Gcb.Img.User/".$_SESSION['smyimg']."' />
 					</th>
 				</tr>
 				

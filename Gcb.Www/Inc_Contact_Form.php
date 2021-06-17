@@ -287,7 +287,7 @@ print("
 		# datos del mensaje
 	 
 				global $destinatario;
-				$destinatario = $mail_for; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
+				$destinatario = $mail_for; /*../Gcb.Inclu/MISDATOS.PHP // MISDATOS.PHP */
 				$titulo= $_POST['asunto']." ".$_POST['nombre']." ".$_POST['apellidos'].".";
 				$responder= $_POST['Email'];
 				$remite= $_POST['Email'];

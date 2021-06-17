@@ -18,7 +18,7 @@
                          }
 
 if ($errors){
-    print("	<table style='text-align:center; margin-bottom: 30px;'>
+    print("	<table style='text-align:center; margin-bottom: 30px; width:auto;'>
                 <tr>
                     <th style='text-align:center'>
                         <font color='#FF0000'>* SOLUCIONE ESTOS ERRORES:</font><br/>
@@ -35,25 +35,17 @@ if ($errors){
             </table>");
                 }
     
-$ordenar = array (	'`id` ASC' => 'ID Ascendente',
-                    '`id` DESC' => 'ID Descendente',
-                    '`Nombre` ASC' => 'Nombre Ascendente',
-                    '`Nombre` DESC' => 'Nombre Descendente',
-                    '`Apellidos` ASC' => 'Apellidos Ascenedente',
-                    '`Apellidos` DESC' => 'Apellidos Descendente',
-                    '`Email` ASC' => 'Email Ascendente',
-                    '`Email` DESC' => 'Email Descendente',
-                    '`Tlf1` ASC' => 'Teléfono 1 Ascendente',
-                    '`Tlf1` DESC' => 'Teléfono 1 Descendente',
-                    '`Tlf2` ASC' => 'Teléfono 2 Ascendente',
-                    '`Tlf2` DESC' => 'Teléfono 2 Descendente',
-                                                            );
+		$ordenar = array (	'`id` ASC' => 'ID Ascendente',
+							'`id` DESC' => 'ID Descendente',
+							'`Nombre` ASC' => 'Nombre Ascendente',
+							'`Nombre` DESC' => 'Nombre Descenden',
+																);
 
 if (($_SESSION['Nivel'] == 'admin')){ 
 
-print(" <table style=\"text-alig:center;margin-top:-20px\">
+print(" <table style=\"margin-top:-8px; width:auto;\">
             <tr>
-                <th colspan=3 width=100%>".$titulo."</th>
+                <th colspan=2 width=100%>".$titulo."</th>
             </tr>
             
     <form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
@@ -63,16 +55,25 @@ print(" <table style=\"text-alig:center;margin-top:-20px\">
                     <input type='submit' value='USER CONSULTA' class='botonazul' />
                     <input type='hidden' name='ocultoc' value=1 />
                 </td>
-                <td style='text-align:right;'>NOMBRE </td>
                 <td>
-        <input type='text' name='Nombre' size=20 maxlenth=10 value='".@$defaults['Nombre']."' />
+                    <div style='float:left; text-align:left; margin-top:6px;'>
+                        NOMBRE&nbsp;
+                    </div>
+                    <div style='float:left; text-align:left;'>
+            <input type='text' name='Nombre' size=20 maxlenth=10 value='".@$defaults['Nombre']."' />
+                    </div>
                 </td>
             </tr>
 
             <tr>
-                <td></td><td style='text-align:right;'>APELLIDO </td>
-                <td>
-<input type='text' name='Apellidos' size=20 maxlenth=10 value='".@$defaults['Apellidos']."' />
+                <td></td>
+                <td style='text-align:right;'>
+                    <div style='float:left; text-align:left; margin-top:6px;'>
+                        APELLIDO&nbsp;
+                    </div>
+                    <div style='float:left; text-align:left;'>
+            <input type='text' name='Apellidos' size=20 maxlenth=10 value='".@$defaults['Apellidos']."' />
+                    </div>
                 </td>
             </tr>
     </form>	
@@ -83,11 +84,12 @@ print(" <table style=\"text-alig:center;margin-top:-20px\">
                     <input type='submit' value='".$boton."' class='botonazul' />
                     <input type='hidden' name='todo' value=1 />
                 </td>
-                <td style='text-align:right;'>	
-                    ORDEN
-                </td>
-                <td>
-                    <select name='Orden'>");
+                <td style='text-align:right;'>
+                <div style='float:left; text-align:left; margin-top:6px; '>
+                    ORDEN&nbsp;
+                </div
+                <div style='float:left; text-align:left;'>
+                <select name='Orden'>");
                     
             foreach($ordenar as $option => $label){
                 
@@ -97,6 +99,7 @@ print(" <table style=\"text-alig:center;margin-top:-20px\">
                                                 print ("> $label </option>");
                                             }	
         print ("	</select>
+                        </div>
                         </td>
                     </tr>
             </form>														

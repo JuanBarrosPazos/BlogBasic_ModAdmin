@@ -387,7 +387,7 @@ print(" <table align='center' style=\"border:0px;margin_bottom:6px;margin-top:15
 		# datos del mensaje
 	 
 				global $destinatario;
-				$destinatario = $_SESSION['mail_admin']; /*../INCLU/MISDATOS.PHP // MISDATOS.PHP */
+				$destinatario = $_SESSION['mail_admin']; /*../Gcb.Inclu/MISDATOS.PHP // MISDATOS.PHP */
 				$titulo= $_POST['asunto']." ".$_POST['nombre']." ".$_POST['apellidos'].".";
 				$responder= $_POST['Email'];
 				$remite= $_POST['Email'];

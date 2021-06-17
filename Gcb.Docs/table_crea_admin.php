@@ -2,7 +2,7 @@
 
 	if (isset($modifadmin)){ 
 		global $title;
-		$title = "<img src='../Gcb.Img.User/".$_POST['myimg']."' height='44px' width='33px' />
+		$title = "<img style='height:44px; width:33px;' src='../Gcb.Img.User/".$_POST['myimg']."' />
 					</br>MODIFIQUE LOS DATOS DEL ADMINISTRADOR";
 		global $title2;
 		$title2 = "<input name='ref' type='hidden' value='".$_SESSION['refcl']."' />".$defaults['ref'];

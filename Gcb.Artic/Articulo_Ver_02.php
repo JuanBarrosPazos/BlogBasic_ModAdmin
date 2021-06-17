@@ -40,7 +40,7 @@ function process_form(){
 						<source src='../Gcb.Vdo.Art/".$_POST['myvdo']."' />
 					</video>";
 	} else { global $visual;
-			 $visual = "<img src='../Gcb.Img.Art/untitled.png' width='90%' height='auto' />";
+			 $visual = "<img style='width:80%; height:auto;' src='../Gcb.Img.Art/untitled.png' />";
 				}
 
 	print("<table style=\"width:96%; max-width:500px\" >
@@ -52,7 +52,7 @@ function process_form(){
 					<td style='text-align:right; width:100px;' >ID</td>
 					<td style='text-align:left; width:140px;'>".$_POST['id']."</td>
 					<td rowspan='5' style=' width:auto;' >
-	<img src='../Gcb.Img.Art/".$_POST['myimg']."'  width='90%' height='auto' />
+			<img style='width:90%; height:auto;' src='../Gcb.Img.Art/".$_POST['myimg']."' />
 					</td>
 				</tr>
 				

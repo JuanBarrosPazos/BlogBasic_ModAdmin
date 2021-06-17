@@ -70,7 +70,7 @@ function process_form(){
 					".$_SESSION['refuser']."
 				</td>
 				<td rowspan='5' align='right' width='120px'>
-					<img src='../Gcb.Img.Art/".$_SESSION['myimg']."' height='120px' width='90px' />
+					<img style='height:120px; width:90px;' src='../Gcb.Img.Art/".$_SESSION['myimg']."' />
 				</td>
 			</tr>
 			<tr>
@@ -240,7 +240,7 @@ function show_form(){
 			<input name='autor' type='hidden' value='".$_SESSION['refuser']."' />".$_SESSION['refuser']."
 						</td>
 					<td rowspan='5' align='right' width='auto'>
-			<img src='../Gcb.Img.Art/".$_SESSION['myimg']."' width='90%' height='auto' />
+			<img style='width:90%; height:auto;' src='../Gcb.Img.Art/".$_SESSION['myimg']."' />
 					</td>
 			</tr>
 

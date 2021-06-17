@@ -102,4 +102,11 @@ a:hover  img {
 	border: 1px solid #FF9900;
 }
 
+.limpiar {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+}
+
+
 /* Creado por Juan Manuel Barros Pazos 2020/21 */

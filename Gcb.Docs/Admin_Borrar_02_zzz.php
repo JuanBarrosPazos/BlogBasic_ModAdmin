@@ -49,7 +49,7 @@ function process_form(){
 					"</td>
 					
 					<td rowspan=5 align='center'>
-		<img src='../Gcb.Temp/".$_POST['myimg']."' height='120px' width='90px' />
+		<img style='height:120px; width:90px;' src='../Gcb.Temp/".$_POST['myimg']."' />
 					</td>
 				</tr>
 				
@@ -333,8 +333,8 @@ function show_form(){
 			</td>
 			
 			<td rowspan='5' align='center' width='94px'>
-<img src='../Gcb.Img.User/".$_POST['myimg']."' height='120px' width='90px' />
-						<input name='myimg' type='hidden' value='".$_POST['myimg']."' />
+		<img style='height:120px; width:90px;' src='../Gcb.Img.User/".$_POST['myimg']."' />
+				<input name='myimg' type='hidden' value='".$_POST['myimg']."' />
 
 			</td>
 		</tr>
