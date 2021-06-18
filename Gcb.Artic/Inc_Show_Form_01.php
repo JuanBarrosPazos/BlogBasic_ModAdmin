@@ -99,7 +99,7 @@
 
 	print("<table style=\"margin-top:4px; width:auto;\">
 				<tr>
-					<th colspan=2 width=100% class='BorderInf BorderSup'>
+					<th colspan=2 width=100% class='BorderInf'>
 						".$titulo."
 					</th>
 				</tr>
@@ -156,7 +156,7 @@
                     <td class='BorderInf'>
                     </td>
                     <td class='BorderInf'>
-                        <div style='float:left;'>	
+                        <div style='float:left; text-align:left;'>	
                         &nbsp;TITULO&nbsp;
 	<input type='text' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />
 						</div>
@@ -194,11 +194,11 @@
         <form name='todo' method='post' action='$_SERVER[PHP_SELF]' >
 		
 			<tr>
-				<td align='center' class='BorderInf'>
+				<td align='center'>
 					<input type='submit' value='ARTICULOS TODOS' class='botonazul' />
 					<input type='hidden' name='todo' value=1 />
 				</td>
-				<td class='BorderInf'>
+				<td>
 
 			<div style='float:left'>
 		<select name='Orden'>");

@@ -253,7 +253,7 @@ function process_form(){
 	
 			require 'Inc_Modificar_Img.php';
 
-	print("<table align='center' style='margin-top:10px'>
+	print("<table style='margin-top:10px; width: min-content;'>
 				<tr>
 					<th colspan=3 class='BorderInf'>
 						CREADO POR ".strtoupper($_sec)."
@@ -261,38 +261,38 @@ function process_form(){
 				</tr>
 												
 				<tr>
-					<td width=120px>REFERENCIA</td>
-					<td width=100px>".$_POST['refart']."</td>
-					<td rowspan='4' align='center' width='120px'>
-				<img style='height:120px; width:90px' src='".$carpetaimg."/".$new_name."' />
+					<td style='text-align:right; width:120px;' >REFERENCIA</td>
+					<td style='text-align:left; width:100px;'>".$_POST['refart']."</td>
+					<td style='text-align:center; width:100px' rowspan='4'>
+				<img style='width:96px; height:auto;' src='".$carpetaimg."/".$new_name."' />
 					</td>
 				</tr>
 				
 				<tr>
-					<td>TITULO</td>
-					<td>".$_POST['titulo']."</td>
+					<td style='text-align:right;'>TITULO</td>
+					<td style='text-align:left;'>".$_POST['titulo']."</td>
 				</tr>				
 				
 				<tr>
-					<td>SUBTITULO</td>
-					<td>".$_POST['subtitul']."</td>
+					<td style='text-align:right;'>SUBTITULO</td>
+					<td style='text-align:left;'>".$_POST['subtitul']."</td>
 				</tr>
 				
 				<tr>
-					<td>DATE IN</td>
-					<td>".$_POST['datein']."</td>
+					<td style='text-align:right;'>DATE IN</td>
+					<td style='text-align:left;'>".$_POST['datein']."</td>
 				</tr>
 				
 				<tr>
-					<td>TIME IN</td>
-					<td>".$_POST['timein']."</td>
+					<td style='text-align:right;'>TIME IN</td>
+					<td style='text-align:left;'>".$_POST['timein']."</td>
 				</tr>
 				
 				<tr>
-					<td colspan=3  align='center'>ARTICULO</td>
+					<td colspan=3>ARTICULO</td>
 				</tr>
 				<tr>
-					<td colspan=3>".$_POST['coment']."</td>
+					<td style='text-align:left;' colspan=3>".$_POST['coment']."</td>
 				</tr>
 				<tr>
 					<th colspan=3 class='BorderSup'>

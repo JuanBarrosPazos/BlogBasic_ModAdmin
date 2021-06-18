@@ -56,7 +56,7 @@
 				</li>
 				<li>
 			<a href='#'>
-				<i class='ic ico19'></i><span>RESPALDO DATOS</span>
+				<i class='ic ico19'></i><span>BACKUPS</span>
 			</a>
 			<ul class='nav-flyout'>
 				<li>
@@ -78,7 +78,7 @@
 	print("
 		<li>
 			<a href='".$rutaindex."Mail_Php/index.php' target='_blank'>
-				<i class='ic ico16'></i>NOTIFICACIONES
+				<i class='ic ico16'></i>CONTACTOS
 			</a>
 		</li>
 	

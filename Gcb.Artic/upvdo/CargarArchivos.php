@@ -1,6 +1,7 @@
 <?php
     @session_start();
 
+    require_once '../../Gcb.Inclu/error_hidden.php';
     require_once '../../Gcb.Connet/conection.php';
     require_once '../../Gcb.Connet/conect.php';
     

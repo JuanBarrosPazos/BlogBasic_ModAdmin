@@ -22,15 +22,21 @@
 
 	if(strlen(trim($rowb['myvdo'])) > 0){
 		global $visual;
-		$visual = "<video controls width='110px' height='auto'>
+		$visual = "<div class='whiletotala'>
+                    <video controls width='140px' height='auto'>
 						<source src='".$rutaimg."Gcb.Vdo.Art/".$rowb['myvdo']."' />
-					</video>";
+					</video></div>";
 		global $delvdo;
 		$delvdo = "<input type='submit' value='BORRAR VIDEO' class='botonrojo' />";
 		global $upvdo;
 		$upvdo = "<input type='submit' value='MODIFICA VIDEO' class='botonnaranja' />";
 	} else { global $visual;
-			 $visual = "<img style='width:80%; height:auto;' src='".$rutaimg."Gcb.Img.Art/untitled.png' />";
+             $visual = "";
+            /*
+			 $visual = "<div class='whiletotala'>
+             <img style='width:80%; height:auto;' src='".$rutaimg."Gcb.Img.Art/untitled.png' />
+             </div>";
+             */
 			 global $delvdo;
 			 $delvdo = 1;
 			 global $upvdo;
@@ -53,14 +59,13 @@
                 </span>".strtoupper($conte)."
             </div>
 
-            <div class='whiletotala'>
-                <img style='width:92%; height:auto;' src='".$rutaimg."Gcb.Img.Art/".$rowb['myimg']."' />
-            </div>
-                                    
-            <div class='whiletotala'>
-                ".$visual."
-            </div>
-                                    
+            <div class='botongrupo' >
+                <div class='whiletotala'>
+                    <img style='width:92%; height:auto;' src='".$rutaimg."Gcb.Img.Art/".$rowb['myimg']."' />
+                </div>
+                    ".$visual."
+            </div>                           
+                                
 		</div>
     
         <div style='clear:both'></div>

@@ -57,7 +57,7 @@ print(" <table style=\"margin-top:-8px; width:auto;\">
                 </td>
                 <td>
                     <div style='float:left; text-align:left; margin-top:6px;'>
-                        NOMBRE&nbsp;
+                        NOMBRE &nbsp&nbsp;
                     </div>
                     <div style='float:left; text-align:left;'>
             <input type='text' name='Nombre' size=20 maxlenth=10 value='".@$defaults['Nombre']."' />

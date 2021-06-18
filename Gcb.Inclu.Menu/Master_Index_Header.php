@@ -27,7 +27,7 @@ print ("
         </a>
 
  <a href='#'><i class='ic icoh ocultahead'></i>
-		<span class='borderhead' style='color:#FFFFFF;vertical-align:middle'>MENU APP</span>
+		<span class='borderhead' style='color:#FFFFFF;vertical-align:middle'>MENU</span>
  </a>
     </header>
     ");

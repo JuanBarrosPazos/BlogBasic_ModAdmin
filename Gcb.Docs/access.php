@@ -1031,7 +1031,7 @@ function ayear(){
 						unset($_SESSION['Tlf2']);
 						unset($_SESSION['nclient']);
 
-						echo "<div class='centradiv'>YOU HAVE CLOSE SESSION</div>";
+			echo "<div class='centradiv' style='margin-top:16px !important;'>YOU HAVE CLOSE SESSION</div>";
 	}
 
 				   ////////////////////				   ////////////////////

@@ -8,7 +8,7 @@
         else { $pass = $_POST['Pass'];}
 
         print(" <tr>
-					<td style='text-align:right !important; width:120px;' >Nombre:</td>
+					<td style='text-align:right !important; width:120px;' >NOMBRE </td>
 					<td style='text-align:left !important; width:110px;' >".$_POST['Nombre']."</td>
 					<td rowspan='5' style='text-align:center !important;'>
 						<img style='height:120px; width:90px;' ".$rutaimg."  />
@@ -16,65 +16,71 @@
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Apellidos: </td>
+					<td style='text-align:right !important;'>APELLIDOS</td>
 					<td style='text-align:left !important;'>".$_POST['Apellidos']."</td>
 				</tr>				
 				
 				<tr>
-					<td style='text-align:right !important;'>Documento: </td>
+					<td style='text-align:right !important;'>TIPOR DOC </td>
 					<td style='text-align:left !important;'>".$_POST['doc']."</td>
 				</tr>				
 				
 				<tr>
-					<td style='text-align:right !important;'>N&uacute;mero: </td>
-					<td style='text-align:left !important;'>".$_POST['dni']."</td>
+					<td style='text-align:right !important;'>REF DOC </td>
+					<td style='text-align:left !important;'>".$_POST['dni']."-".$_POST['ldni']."</td>
 				</tr>				
 				
 				<tr>
-					<td style='text-align:right !important;'>Control: </td>
-					<td style='text-align:left !important;'>".$_POST['ldni']."</td>
-				</tr>				
-				
-				<tr>
-					<td style='text-align:right !important;'>Mail: </td>
+					<td style='text-align:right !important;'>MAIL </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Email']."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Nivel: </td>
+					<td style='text-align:right !important;'>NIVEL </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Nivel']."</td>
 				</tr>");
 
 		if (isset($vertabla)){ }
 		elseif (!isset($vertabla)){		
 		print("	<tr>
-					<td style='text-align:right !important;'>Ref. Usuario: </td>
+					<td style='text-align:right !important;'>REF USER </td>
 					<td style='text-align:left !important;' colspan='2'>".$rf."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Usuario: </td>
+					<td style='text-align:right !important;'>USUARIO </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Usuario']."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Password: </td>
+					<td style='text-align:right !important;'>PASSWORD </td>
 					<td style='text-align:left !important;' colspan='2'>".$pass."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Localidad: </td>
+					<td style='text-align:right !important;'>LOCALIDAD </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Direccion']."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Teléfono 1: </td>
+					<td style='text-align:right !important;'>TLF 1 </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Tlf1']."</td>
 				</tr>
 				
 				<tr>
-					<td style='text-align:right !important;'>Teléfono 2: </td>
+					<td style='text-align:right !important;'>TLF 2 </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Tlf2']."</td>
-				</tr>");
+				</tr>
+
+				<tr>
+					<td style='text-align:right !important;'>LAST IN </td>
+					<td style='text-align:left !important;' colspan='2'>".$_POST['lastin']."</td>
+				</tr>
+				<tr>
+					<td style='text-align:right !important;'>LAST OUT </td>
+					<td style='text-align:left !important;' colspan='2'>".$_POST['lastout']."</td>
+				</tr>
+				
+				");
 			}
 ?>
