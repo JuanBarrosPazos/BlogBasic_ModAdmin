@@ -22,7 +22,7 @@
               <link href=\"../Gcb.Css/bootstrap.min.css\" rel=\"stylesheet\">
               <link href=\"../Gcb.Css/fontawesome-free/css/all.min.css\" rel=\"stylesheet\" type=\"text/css\">
             -->");
-    }
+        }
   ?>
   <!-- Custom styles for this template -->
   

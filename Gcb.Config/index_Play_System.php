@@ -95,7 +95,13 @@
   <section class="page-section" id="about">
     <div class="container">
 
-      <?php require 'Gcb.Artic/Articulo_Ver_index.php'; ?>
+      <?php
+          // DEFINO LA PLANTILLA QUE SE UTILIZA EN LA WEB
+            //require 'Gcb.Artic/Articulo_Ver_index.php';
+            //require 'Gcb.Artic/Articulo_Ver_index_Popup.php'; 
+            require 'Gcb.Artic/plantilla.php';
+            require 'Gcb.Artic/'.$_SESSION['plantilla'];
+       ?>
 
     </div> <!-- Fin container -->
   </section>

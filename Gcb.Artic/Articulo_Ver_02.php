@@ -1,14 +1,44 @@
 <?php
 session_start();
 
-  	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_popup.php';
-	require '../Gcb.Inclu/mydni.php';
+?>
 
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="../Gcb.Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
+
+  <link href="../Gcb.Css/html.css" rel="stylesheet" type="text/css" />
+  <link href="../Gcb.Css/conta.css" rel="stylesheet" type="text/css">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../Gcb.Css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../Gcb.Css/agency.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../Gcb.Css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body id="page-top">
+
+
+<?php
+
+  	require '../Gcb.Inclu/error_hidden.php';
+	//require '../Gcb.Inclu/Admin_Inclu_popup.php';
+	require '../Gcb.Inclu/mydni.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
-///////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 if (($_SESSION['Nivel'] == 'admin')||($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 				
@@ -18,7 +48,9 @@ if (($_SESSION['Nivel'] == 'admin')||($_SESSION['Nivel'] == 'user') || ($_SESSIO
 								
 } else { require '../Gcb.Inclu/table_permisos.php'; }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function process_form(){
 	
@@ -122,7 +154,9 @@ function process_form(){
 
 			}
 			
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 function info(){
 
@@ -153,7 +187,9 @@ function info(){
 
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
 
 	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 		

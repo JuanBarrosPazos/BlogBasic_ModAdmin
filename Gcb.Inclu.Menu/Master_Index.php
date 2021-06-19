@@ -78,6 +78,11 @@ if ($_SESSION['dni'] == $_SESSION['mydni']) {
 							<i class='ic ico22'></i>EXPORT BBDD
 						</a>
 					</li>
+					<li>
+						<a href='".$rutaartic."plantilla_gest.php'>
+							<i class='ic ico22'></i>PLANTILLA WEB
+						</a>
+					</li>
 				</ul>
 			</li>");
 
