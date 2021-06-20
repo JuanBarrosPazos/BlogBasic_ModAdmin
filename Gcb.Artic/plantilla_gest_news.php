@@ -46,7 +46,7 @@ function validate_form(){
 function process_form(){
 	
 	// CREA EL ARCHIVO MYDNI.TXT $_SESSION['mydni'].
-		$filename = "plantillanews.php";
+		$filename = "plantilla_news.php";
 		$fw2 = fopen($filename, 'w+');
 		$mydni = '<?php $_SESSION[\'plantillanews\'] = \''.$_POST['plantillanews'].'\'; ?>';
 		fwrite($fw2, $mydni);
@@ -101,11 +101,11 @@ function show_form($errors=[]){
 	
 	// ARRAY PARA RADIO BOTTOM
 	$plantilla = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
+						'Articulo_Ver_news_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
 						/*
-						'Articulo_Ver_index_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
-						'Articulo_Ver_index_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
-						'Articulo_Ver_index_Card_b.php' => 'PLANTILLA CARD HORIZONTAL & DETALLES POPUP ',
-						'Articulo_Ver_index_Card_c.php' => 'PLANTILLA CARD VERTICAL 2 & DETALLES POPUP ',
+						'Articulo_Ver_news_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
+						'Articulo_Ver_news_Card_b.php' => 'PLANTILLA CARD HORIZONTAL & DETALLES POPUP ',
+						'Articulo_Ver_news_Card_c.php' => 'PLANTILLA CARD VERTICAL 2 & DETALLES POPUP ',
 						*/
 						);	
 
@@ -119,7 +119,7 @@ function show_form($errors=[]){
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 
 		<legend style='text-align:center !important' >
-		PLANTILLAS WEB PARA news<br>INDEX PLANTILLA ACTUAL NEWS<br>".$_SESSION['plantillanews']."
+		PLANTILLAS WEB PARA NEWS<br>PLANTILLA ACTUAL NEWS<br>".$_SESSION['plantillanews']."
 		</legend><hr>";
 
 		foreach ($plantilla as $key => $value){
