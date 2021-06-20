@@ -65,7 +65,7 @@ function process_form(){
 								
 				<tr>
 					<td  align='center'>
-						PLANTILLA WEB<BR> "
+						INDEX PLANTILLA WEB<BR> "
 						.$_POST['plantilla'].
 					"</td>
 				</tr>
@@ -78,7 +78,7 @@ function process_form(){
 
 function show_form($errors=[]){
 	
-	if(isset($_POST['oculto'])){
+	if((isset($_POST['oculto']))||(isset($_POST['ocultoch']))){
 		$defaults = $_POST;
 		} else {$defaults = array ( 'plantilla' => $_SESSION['plantilla']); }
 	
@@ -98,59 +98,86 @@ function show_form($errors=[]){
 				</tr>
 				</table>");
 		}
-		
+	
+	// ARRAY PARA EL SELECT
+	/*
 	$plantilla = array ('' => 'PLANTILLAS DISPONIBLES',
 						'Articulo_Ver_index.php' => 'PLANTILLA 1',
 						'Articulo_Ver_index_Popup.php' => 'PLANTILLA 1 POPUP',
 						'Articulo_Ver_index_Targetas.php' => 'PLANTILLA TARGETAS',
-											);														
+											);
+	FIN ARRAY PARA EL SELECT */
+	
+	// ARRAY PARA RADIO BOTTOM
+	$plantilla = array ('Articulo_Ver_index.php' => 'PLANTILLA CASILLAS INVERTED: DETALLES TARJETA EXTENDIDA ',
+						'Articulo_Ver_index_Popup.php' => 'PLANTILLA CASILLAS INVERTED: DETALLES POPUP',
+						'Articulo_Ver_index_Targetas.php' => 'PLANTILLA TARGETAS: DETALLES POPUP',
+											);	
 
 /*******************************/
 
-		print("<table style=\"margin-top:4px\">
-				<tr>
-					<th class='BorderInf'>
-							PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."
-					</th>
-				</tr>
-				
-				<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
-						
-				<tr>
-					<td>
-				<select name='plantilla'>");
+		global $c;
+		$c=count($plantilla);
+		global $a;
+		$a=0;
+		echo "<div class='juancentra'>
+		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 
+		<legend style='text-align:center !important' >
+		PLANTILLAS WEB PARA INDEX<br>INDEX PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."
+		</legend><hr>";
+
+		foreach ($plantilla as $key => $value){
+				if ($a<$c){ $a++;}else { }
+			echo"
+			<div class='gestplantillas'>
+			<input id='".$a."' name='plantilla' type='radio' value='".$key."'";
+			
+			if($_SESSION['plantilla'] == $key) {print(" checked=\"checked\"");} else { }
+			
+			echo" required />
+			<label for='".$a."'>".$a." ".$value."</label><br>
+				<div style='text-align:center;'>
+					<img src='plantillas_img/p0".$a."a' />
+					<img src='plantillas_img/p0".$a."b' />
+				</div>
+			</div><hr>";
+		} // FIN FOREACH
+
+		echo "<div style='text-align:center;'>
+				<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonverde' />
+			  <input type='hidden' name='oculto' value=1 />
+				</div></form></fieldset></div>";
+
+	/*******************************/
+		// GESTIONAR PLANTILLA MEDIANTE UN SELECT
+		/*
+		print("<table style=\"margin-top:4px\">
+				<tr><th class='BorderInf'>PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."</th></tr>
+				<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
+				<tr><td>
+				<select name='plantilla'>");
 				foreach($plantilla as $optionnv => $labelnv){
-					
 					print ("<option value='".$optionnv."' ");
-					
 					if($optionnv == $defaults['plantilla']){
-															print ("selected = 'selected'");
-																								}
-													print ("> $labelnv </option>");
-												}	
-						
-	print ("</select>
-					</td>
-				</tr>
-				
-				<tr>
-					<td valign='middle'  class='BorderSup'>
+										print ("selected = 'selected'");}
+												print ("> $labelnv </option>");
+									}	
+	print ("</select></td></tr>
+				<tr><td valign='middle'  class='BorderSup'>
 						<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonnaranja' />
 						<input type='hidden' name='oculto' value=1 />
-						
-					</td>
-				</tr>
-		</form>														
-			</table>"); 
-	
-	}
+				</td></tr>
+			</form></table>"); 
+		FIN GESTIONAR PLANTILLAS INDEX CON UN SELECT */ 
+	/*******************************/
+	} // FIN FUNCTION show_form()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	function master_index(){
 		
-		require '../Gcb.Inclu.Menu/rutainclu.php';
+		require '../Gcb.Inclu.Menu/rutaadmin.php';
 		require '../Gcb.Inclu.Menu/Master_Index.php';
 		
 	} 

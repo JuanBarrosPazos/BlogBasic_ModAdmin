@@ -8,6 +8,31 @@
 				 ////////////////////				  ///////////////////
 
 function ver_todo(){
+
+	echo "<style>
+				.container { max-width: 96% !important;}
+
+				.card-img-top, video {
+					max-width: 98% !important;
+					display:block;
+					height: auto;
+					max-height: 190px !important;
+					overflow: hidden;
+					border-radius: 8px;
+					}
+			@media screen and (min-width:720px){
+				.articles { width: auto;
+							text-align:center !important;
+							padding-left: 0.6%;
+							margin: 1px auto 1px auto 1px;
+							}
+				.card { display: inline-block;
+						max-width: 32.7%; 
+						margin: 1px 2px 12px 2px !important;
+						border-radius: 12px !important;
+							}
+					}
+		</style>";
 		
 	global $db;
 	global $db_name;
@@ -87,19 +112,10 @@ function ver_todo(){
 	} else {
 		if(mysqli_num_rows($qb)== 0){
 
-			print ("<table align='center' style='border:none;'>
-						<tr>
-							<td style='text-align:center'>
-								<h4>
-									<a href='Gcb.Www/news.php'>
-								NO HAY ENTRADAS EN ".$dyt1."
-									<br>
-								CONSULTAR NEWS
-									</a>
-								</h4>
-							</td>
-						</tr>
-					</table>");
+	print ("<table align='center' style='border:none;'>
+				<tr><td style='text-align:center'>
+		<h4><a href='Gcb.Www/news.php'>NO HAY ENTRADAS EN ".$dyt1."<br>CONSULTAR NEWS</a></h4>
+			</td></tr></table>");
 	} else { 	
 
 	print ("<div class='row'> <!-- Titulo -->
@@ -118,7 +134,8 @@ function ver_todo(){
 
         if(strlen(trim($rowb ['myvdo'])) > 0){
             global $visual;
-            $visual = "<p><video controls width='90%' height='auto'>
+            $visual = "<p>
+						<video controls>
                             <source src='Gcb.Vdo.Art/".$rowb['myvdo']."' />
                         </video></p>";
         } else { global $visual;

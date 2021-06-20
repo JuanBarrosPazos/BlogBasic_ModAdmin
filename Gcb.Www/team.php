@@ -28,12 +28,12 @@
             <p class="text-muted">Lead Designer</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <a href="#">
+              <a href="http://twitter.com/JuanBarrosPazos" target="_blank">
                   <i class="fab fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+              <a href="https://www.facebook.com/juan.barrospazos" target="_blank">
                   <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
@@ -52,12 +52,12 @@
             <p class="text-muted">Lead Marketer</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <a href="#">
+              <a href="http://twitter.com/JuanBarrosPazos" target="_blank">
                   <i class="fab fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+              <a href="https://www.facebook.com/juan.barrospazos" target="_blank">
                   <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
@@ -76,12 +76,12 @@
             <p class="text-muted">Lead Developer</p>
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <a href="#">
+              <a href="http://twitter.com/JuanBarrosPazos" target="_blank">
                   <i class="fab fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+              <a href="https://www.facebook.com/juan.barrospazos" target="_blank">
                   <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
