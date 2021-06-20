@@ -414,8 +414,10 @@ function show_form($errors=[]){
 													}	
 																	
 			print ("	</select>
-						<select name='dm'>");
-		
+						<!--<select name='dm'>-->
+						<input type='hidden' name='dm' value='' />
+						");
+		/*
 				foreach($dm as $optiondm => $labeldm){
 					
 					print ("<option value='".$optiondm."' ");
@@ -425,9 +427,8 @@ function show_form($errors=[]){
 																								}
 													print ("> $labeldm </option>");
 												}	
-																
-		print ("</select>
-				
+		*/														
+		print ("<!--</select>-->
 				</td>
 			</tr>
 		</form>	

@@ -461,19 +461,16 @@ function show_form($errors=[]){
 													}	
 																	
 			print ("	</select>
-						<select name='dm'>");
-		
+						<!--<select name='dm'>-->
+						<input type='hidden' name='dm' value='' />
+						");
+			/*
 				foreach($dm as $optiondm => $labeldm){
-					
 					print ("<option value='".$optiondm."' ");
-					
-					if($optiondm == @$defaults['dm']){
-															print ("selected = 'selected'");
-																								}
-													print ("> $labeldm </option>");
-												}	
-																
-		print ("</select>
+					if($optiondm == @$defaults['dm']){print ("selected = 'selected'");}
+													print ("> $labeldm </option>");}	
+			*/													
+		print ("<!--</select>-->
 				
 				</td>
 			</tr>
