@@ -177,14 +177,14 @@ function show_form($errors=[]){
 	
 	function master_index(){
 		
-		require '../Gcb.Inclu.Menu/rutaadmin.php';
+		require '../Gcb.Inclu.Menu/rutaartic.php';				
 		require '../Gcb.Inclu.Menu/Master_Index.php';
-		
+
 	} 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	require '../Admin_Inclu_footer.php';
+	require '../Gcb.Inclu/Admin_Inclu_footer.php';
 		
 /* Creado por Juan Barros Pazos 2021 */
 ?>
