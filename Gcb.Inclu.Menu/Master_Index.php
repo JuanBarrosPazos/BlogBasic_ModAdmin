@@ -80,7 +80,12 @@ if ($_SESSION['dni'] == $_SESSION['mydni']) {
 					</li>
 					<li>
 						<a href='".$rutaartic."plantilla_gest.php'>
-							<i class='ic ico22'></i>PLANTILLA WEB
+							<i class='ic ico22'></i>FRONT INDEX
+						</a>
+					</li>
+					<li>
+						<a href='".$rutaartic."plantilla_gest_news.php'>
+							<i class='ic ico22'></i>FRONT NEWS
 						</a>
 					</li>
 				</ul>

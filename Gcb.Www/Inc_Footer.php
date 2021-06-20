@@ -18,9 +18,14 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+                <a href="https://github.com/JuanBarrosPazos" target="_blank">
+                  <i class="fab fa-github"></i>
+                </a>
+              </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/juan.barrospazos" target="_blank">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
             </li>
           </ul>
         </div>

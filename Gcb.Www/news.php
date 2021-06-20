@@ -22,7 +22,10 @@
   <section class="page-section" id="about">
     <div class="container">
 
-    <?php require '../Gcb.Artic/Articulo_Ver_news.php'; ?>
+      <?php
+          require '../Gcb.Artic/plantilla_news.php';
+          require '../Gcb.Artic/'.$_SESSION['plantillanews'];
+      ?>
 
   </div> <!-- Fin container -->
 </section>

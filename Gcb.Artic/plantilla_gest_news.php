@@ -4,7 +4,7 @@ session_start();
 	require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_head_b.php';
 	require '../Gcb.Inclu/mydni.php';
-	require 'plantilla.php';
+	require 'plantilla_news.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
 
@@ -33,8 +33,8 @@ function validate_form(){
 	
 	/* VALIDAMOS EL CAMPO NIVEL. */
 	
-	if(strlen(trim($_POST['plantilla'])) == 0){
-		$errors [] = "<font color='#FF0000'>SELECCIONE PLANTILLA WEB</font>";
+	if(strlen(trim($_POST['plantillanews'])) == 0){
+		$errors [] = "<font color='#FF0000'>SELECCIONE PLANTILLA WEB NEWS</font>";
 		}
 	
 	return $errors;
@@ -46,13 +46,13 @@ function validate_form(){
 function process_form(){
 	
 	// CREA EL ARCHIVO MYDNI.TXT $_SESSION['mydni'].
-		$filename = "plantilla.php";
+		$filename = "plantillanews.php";
 		$fw2 = fopen($filename, 'w+');
-		$mydni = '<?php $_SESSION[\'plantilla\'] = \''.$_POST['plantilla'].'\'; ?>';
+		$mydni = '<?php $_SESSION[\'plantillanews\'] = \''.$_POST['plantillanews'].'\'; ?>';
 		fwrite($fw2, $mydni);
 		fclose($fw2);
 	
-		$_SESSION['plantilla'] = $_POST['plantilla'];
+		$_SESSION['plantillanews'] = $_POST['plantillanews'];
 
 	/**************************************/
 
@@ -65,8 +65,8 @@ function process_form(){
 								
 				<tr>
 					<td  align='center'>
-						INDEX PLANTILLA WEB<BR> "
-						.$_POST['plantilla'].
+						INDEX PLANTILLA WEB NEWS<BR> "
+						.$_POST['plantillanews'].
 					"</td>
 				</tr>
 				
@@ -80,7 +80,7 @@ function show_form($errors=[]){
 	
 	if((isset($_POST['oculto']))||(isset($_POST['ocultoch']))){
 		$defaults = $_POST;
-		} else {$defaults = array ( 'plantilla' => $_SESSION['plantilla']); }
+		} else {$defaults = array ( 'plantillanews' => $_SESSION['plantillanews']); }
 	
 	if ($errors){
 		print("<table align='center'>
@@ -99,21 +99,14 @@ function show_form($errors=[]){
 				</table>");
 		}
 	
-	// ARRAY PARA EL SELECT
-	/*
-	$plantilla = array ('' => 'PLANTILLAS DISPONIBLES',
-						'Articulo_Ver_index.php' => 'PLANTILLA 1',
-						'Articulo_Ver_index_Popup.php' => 'PLANTILLA 1 POPUP',
-						'Articulo_Ver_index_Card.php' => 'PLANTILLA TARGETAS',
-											);
-	FIN ARRAY PARA EL SELECT */
-	
 	// ARRAY PARA RADIO BOTTOM
-	$plantilla = array ('Articulo_Ver_index.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
+	$plantilla = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
+						/*
 						'Articulo_Ver_index_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
 						'Articulo_Ver_index_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
 						'Articulo_Ver_index_Card_b.php' => 'PLANTILLA CARD HORIZONTAL & DETALLES POPUP ',
 						'Articulo_Ver_index_Card_c.php' => 'PLANTILLA CARD VERTICAL 2 & DETALLES POPUP ',
+						*/
 						);	
 
 /*******************************/
@@ -126,53 +119,31 @@ function show_form($errors=[]){
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 
 		<legend style='text-align:center !important' >
-		PLANTILLAS WEB PARA INDEX<br>INDEX PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."
+		PLANTILLAS WEB PARA news<br>INDEX PLANTILLA ACTUAL NEWS<br>".$_SESSION['plantillanews']."
 		</legend><hr>";
 
 		foreach ($plantilla as $key => $value){
 				if ($a<$c){ $a++;}else { }
 			echo"
 			<div class='gestplantillas'>
-			<input id='".$a."' name='plantilla' type='radio' value='".$key."'";
+			<input id='".$a."' name='plantillanews' type='radio' value='".$key."'";
 			
-			if($_SESSION['plantilla'] == $key) {print(" checked=\"checked\"");} else { }
+			if($_SESSION['plantillanews'] == $key) {print(" checked=\"checked\"");} else { }
 			
 			echo" required />
 			<label for='".$a."'>".$a." ".$value."</label><br>
 				<div style='text-align:center;'>
-					<img src='plantillas_img/p0".$a."a' />
-					<img src='plantillas_img/p0".$a."b' />
+					<img src='plantillas_img_news/p0".$a."a' />
+					<img src='plantillas_img_news/p0".$a."b' />
 				</div>
 			</div><hr>";
 		} // FIN FOREACH
 
 		echo "<div style='text-align:center;'>
-				<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonverde' />
+				<input type='submit' value='GRABAR NUEVA PLANTILLA NEWS' class='botonverde' />
 			  <input type='hidden' name='oculto' value=1 />
 				</div></form></fieldset></div>";
 
-	/*******************************/
-		// GESTIONAR PLANTILLA MEDIANTE UN SELECT
-		/*
-		print("<table style=\"margin-top:4px\">
-				<tr><th class='BorderInf'>PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."</th></tr>
-				<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
-				<tr><td>
-				<select name='plantilla'>");
-				foreach($plantilla as $optionnv => $labelnv){
-					print ("<option value='".$optionnv."' ");
-					if($optionnv == $defaults['plantilla']){
-										print ("selected = 'selected'");}
-												print ("> $labelnv </option>");
-									}	
-	print ("</select></td></tr>
-				<tr><td valign='middle'  class='BorderSup'>
-						<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonnaranja' />
-						<input type='hidden' name='oculto' value=1 />
-				</td></tr>
-			</form></table>"); 
-		FIN GESTIONAR PLANTILLAS INDEX CON UN SELECT */ 
-	/*******************************/
 	} // FIN FUNCTION show_form()
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
