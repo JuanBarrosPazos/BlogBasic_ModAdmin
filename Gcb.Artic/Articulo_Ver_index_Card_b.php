@@ -30,21 +30,14 @@ function ver_todo(){
 	} else {
 		if(mysqli_num_rows($qb)== 0){
 
-	print ("<table align='center' style='border:none;'>
-				<tr><td style='text-align:center'>
-		<h4><a href='Gcb.Www/news.php'>NO HAY ENTRADAS EN ".$dyt1."<br>CONSULTAR NEWS</a></h4>
-			</td></tr></table>");
+			require 'Gcb.Artic/Articulo_no_hay_datos_index.php';
+
 	} else { 	
 
-	print ("<!-- Titulo --> 
-			<!-- <div class='projects-horizontal'> 
-				<div class='intro'>
-					<h2 class='section-heading text-uppercase'>Noticias</h2>
-					<h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
-				</div>
-		  	</div> -->
-            <div class='row projects'><!-- Inicio class row-->
-				");
+    // INICIO DISEÑO PLANTILLA
+	//require 'Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
+
+			print("<div class='row projects'><!-- Inicio class row-->");
 
 	while($rowb = mysqli_fetch_assoc($qb)){
 

@@ -31,8 +31,6 @@ function validate_form(){
 	
 	$errors = array();
 	
-	/* VALIDAMOS EL CAMPO NIVEL. */
-	
 	if(strlen(trim($_POST['plantillanews'])) == 0){
 		$errors [] = "<font color='#FF0000'>SELECCIONE PLANTILLA WEB NEWS</font>";
 		}
@@ -46,14 +44,14 @@ function validate_form(){
 function process_form(){
 	
 	// CREA EL ARCHIVO MYDNI.TXT $_SESSION['mydni'].
+		$_SESSION['plantillanews'] = $_POST['plantillanews'];
+
 		$filename = "plantilla_news.php";
 		$fw2 = fopen($filename, 'w+');
-		$mydni = '<?php $_SESSION[\'plantillanews\'] = \''.$_POST['plantillanews'].'\'; ?>';
+		$mydni = '<?php $_SESSION[\'plantillanews\'] = \''.$_SESSION['plantillanews'].'\'; ?>';
 		fwrite($fw2, $mydni);
 		fclose($fw2);
 	
-		$_SESSION['plantillanews'] = $_POST['plantillanews'];
-
 	/**************************************/
 
 	print( "<table align='center' style='margin-top:10px'>
@@ -78,7 +76,7 @@ function process_form(){
 
 function show_form($errors=[]){
 	
-	if((isset($_POST['oculto']))||(isset($_POST['ocultoch']))){
+	if(isset($_POST['oculto'])){
 		$defaults = array ( 'plantillanews' => $_POST['plantillanews']);
 		} else {$defaults = array ( 'plantillanews' => $_SESSION['plantillanews']); }
 	

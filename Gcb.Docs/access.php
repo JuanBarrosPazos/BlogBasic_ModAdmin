@@ -46,7 +46,7 @@ session_start();
 
 	elseif (isset($_GET['salir'])) { salir();
 									 show_form();
-									 session_destroy();
+									 //session_destroy();
 									}
 
 	else{ if(@$_SESSION['showf'] == 69){table_desblock();}
@@ -1029,9 +1029,11 @@ function ayear(){
 						unset($_SESSION['Direccion']);
 						unset($_SESSION['Tlf1']);
 						unset($_SESSION['Tlf2']);
+						unset($_SESSION['myvdo']);
+						unset($_SESSION['myimg']);
 						unset($_SESSION['nclient']);
 
-			echo "<div class='centradiv' style='margin-top:16px !important;'>YOU HAVE CLOSE SESSION</div>";
+		echo "<div class='centradiv' style='margin-top:16px !important;'>YOU HAVE CLOSE SESSION</div>";
 	}
 
 				   ////////////////////				   ////////////////////

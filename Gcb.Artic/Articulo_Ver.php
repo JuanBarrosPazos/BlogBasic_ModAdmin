@@ -110,17 +110,10 @@ function process_form(){
 			
 		} else {
 			if(mysqli_num_rows($qc)== 0){
-							print ("<table align='center'>
-										<tr>
-											<td>
-												<font color='#FF0000'>
-													NO HAY DATOS
-												</font>
-											</td>
-										</tr>
-									</table>");
-									
-				} else { 
+
+				require '../Gcb.Artic/Articulo_no_hay_datos_index.php';
+
+		} else { 
 
 	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
 					Nº Articulos: ".mysqli_num_rows($qc)." YEAR ".date('Y').$refrescaimg);
@@ -211,17 +204,10 @@ function ver_todo(){
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){
-							print ("<table align='center'>
-										<tr>
-											<td>
-												<font color='#FF0000'>
-													NO HAY DATOS
-												</font>
-											</td>
-										</tr>
-									</table>");
-									
-				} else { 
+
+				require '../Gcb.Artic/Articulo_no_hay_datos_index.php';
+
+		} else { 
 
 	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
 				Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".date('Y').$refrescaimg);

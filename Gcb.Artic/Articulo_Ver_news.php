@@ -54,156 +54,29 @@ function validate_form(){
 
 function process_form(){
 	
-	global $db;
-	global $db_name;
-	
-	//echo @$_SESSION['autor']."<br>";
-
-	global $autor;
-	global $g;
-	global $titulo;
-
-	if (strlen(trim(@$_SESSION['titulo'])) == 0){
-		$titulo = '';
-		$g = 'AND';
-	}else{
-		$titulo = trim($_SESSION['titulo']);
-		$titulo = "AND `tit` LIKE '%".$titulo."%' ";
-		$g = 'OR';
-	}
-
-	if (strlen(trim(@$_SESSION['autor'])) == 0){
-		$autor = '';
-	}else{
-		$autor = trim($_SESSION['autor']);
-		$autor = "$g `refuser` LIKE '%".$autor."%' ";
-	}
-
-	global $orden;
-	$orden = "`id` DESC";
-
-	//global $dd1;
-	
-	if ((isset($_POST["page"]))||(isset($_GET["page"]))){
-		global $dyt1;
-		global $dy1;
-		$dy1 = "20".$_SESSION['dy'];
-		$dyt1 = "20".$_SESSION['dy'];
-	}
-	elseif ((!isset($_POST['dy']))||($_POST['dy'] == '')){	
-								global $dyt1;
-								global $dy1;
-								$dy1 = date('Y');
-								$dyt1 = date('Y');
-								$_SESSION['dy'] = date('y');
-											} 
-							 				else {	global $dyt1;
-													global $dy1;
-													$dy1 = "20".$_SESSION['dy'];
-													$dyt1 = "20".$_SESSION['dy'];
-													}
-	
-	if ((isset($_POST["page"]))||(isset($_GET["page"]))){
-		global $dm1;
-		$dm1 = "-".$_SESSION['dm'];
-	}
-	elseif (!isset($_POST['dm'])){ 	global $dm1;
-									$dm1 = '';} 
-											 else {	global $dm1;
-													$dm1 = "-".$_SESSION['dm'];
-													}
-	global $fil;
-	$fil = $dy1.$dm1."%";
-	//$fil = $dy1."-%".$dm1."%";
-	global $vname;
-	$vname = "gcb_".$dyt1."_articulos";
-	//$vname = "`".$vname."`";
-
-	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
-	$q = mysqli_query($db, $result);
-	global $row;
-	@$row = mysqli_fetch_assoc($q);
-	global $num_total_rows;
-	@$num_total_rows = mysqli_num_rows($q);
-
-	if(!$q || ($num_total_rows < 1)){
-		global $fil;
-		$fil = ($dy1-1).$dm1."%";
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
-		$q = mysqli_query($db, $result);
-		@$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		@$num_total_rows = mysqli_num_rows($q);
-	} else { }
-
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
 	
-	global $page;
-
-	if (isset($_POST["page"])) {
-		global $page;
-        $page = $_POST["page"];
-    }
-
-    //examino la pagina a mostrar y el inicio del registro a mostrar
-    if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-    }
-
-    if (!$page) {
-        $start = 0;
-        $page = 1;
-    } else {
-        $start = ($page - 1) * $nitem;
-    }
-    
-    //calculo el total de paginas
-	$total_pages = ceil($num_total_rows / $nitem);
-	
-    //pongo el n�mero de registros total, el tama�o de p�gina y la p�gina que se muestra
-    echo '<h7>* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
-
-	global $limit;
-	$limit = " LIMIT ".$start.", ".$nitem;
-
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor  ORDER BY $orden $limit";
-	$qb = mysqli_query($db, $sqlb);
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_ab.php';
 
 	if(!$qb){
 			print("<font color='#FF0000'>Consulte L.116: </font></br>".mysqli_error($db)."</br>");
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){
-							print ("<table align='center'>
-										<tr>
-											<td aling='center'>
-												<font color='#FF0000'>
-													NO HAY DATOS 20".$_SESSION['dy']."
-												</font>
-											</td>
-										</tr>
-									</table>");
-									
+
+				require '../Gcb.Artic/Articulo_no_hay_datos.php';
+				
 				} else {
-			print ("<div class='row'> <!-- Titulo -->
-					<div class='col-lg-12 text-center'>
-					  <h2 class='section-heading text-uppercase'>Noticias</h2>
-					  <!--
-					  <h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
-					  -->
-					</div>
-				  	</div>
 					
-					<div class='row'> <!-- Inicio class row-->
-					<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
-					<ul class='timeline'> <!-- Inicio Ul class timeline -->
-									");
+    // INICIO DISEÑO PLANTILLA
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
+
+			print("<div class='row'> <!-- Inicio class row-->
+						<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
+							<ul class='timeline'> <!-- Inicio Ul class timeline -->
+								");
 			
 				global $estilo;
 				$estilo = array('timeline','timeline-inverted');
@@ -217,7 +90,7 @@ function process_form(){
     //$rut = "";
     $rut = "../";
 
-	require '../Gcb.Artic/Inc_Artic_News_Form.php';
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_c.php';
 
 	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
@@ -244,28 +117,8 @@ function process_form(){
   			</div> <!-- Fin class row-->
 			");
 				} 
-    echo '<nav>';
-    echo '<ul class="pagination">';
-
-    if ($total_pages > 1) {
-        if ($page != 1) {
-            echo '<li class="page-item"><a class="page-link" href="news.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
-        }
-
-        for ($i=1;$i<=$total_pages;$i++) {
-            if ($page == $i) {
-                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
-            } else {
-                echo '<li class="page-item"><a class="page-link" href="news.php?page='.$i.'">'.$i.'</a></li>';
-            }
-        }
-
-        if ($page != $total_pages) {
-            echo '<li class="page-item"><a class="page-link" href="news.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
-        }
-    }
-    echo '</ul>';
-    echo '</nav>';
+				
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_b.php';
 
 			} 
 		}
@@ -443,109 +296,29 @@ function show_form($errors=[]){
 
 function ver_todo(){
 		
-	global $db;
-	global $db_name;
-
-	global $dyt1;
-	$dyt1 = date('Y')/*-1*/;
-	if(!isset($_SESSION['dy'])){$_SESSION['dy'] = date('y')/*-1*/;
-								$_SESSION['dm'] = '';
-	} else { }
-
-	global $fil;
-	$fil = $dyt1."-%";
-	//$fil = $dy1.$dm1.$dd1."%";
-	global $vname;
-	$vname = "gcb_".$dyt1."_articulos";
-	$vname = "`".$vname."`";
-
-	$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
-	$q = mysqli_query($db, $result);
-	global $row;
-	@$row = mysqli_fetch_assoc($q);
-	global $num_total_rows;
-	@$num_total_rows = mysqli_num_rows($q);
-
-	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
-		global $fil;
-		$fil = ($dyt1-1)."-%";	
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
-		$q = mysqli_query($db, $result);
-		$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		$num_total_rows = mysqli_num_rows($q);
-	} else { }
-
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
 	
-	global $page;
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_a.php';
 
-     if (isset($_POST["page"])) {
-		global $page;
-        $page = $_POST["page"];
-	}
-	
-   //examino la pagina a mostrar y el inicio del registro a mostrar
-    if (isset($_GET["page"])) {
-        $page = $_GET["page"];
-    }
-
-    if (!$page) {
-        $start = 0;
-        $page = 1;
-    } else {
-        $start = ($page - 1) * $nitem;
-    }
-    
-    //calculo el total de paginas
-	$total_pages = ceil($num_total_rows / $nitem);
-	
-    //pongo el n�mero de registros total, el tama�o de p�gina y la p�gina que se muestra
-    echo '<h7>* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
-
-	global $limit;
-	$limit = " LIMIT ".$start.", ".$nitem;
-
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
-
-	/*
-	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
-	*/
-	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
 			print("<font color='#FF0000'>Consulte L.496: </font></br>".mysqli_error($db)."</br>");
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){
-							print ("<table align='center'>
-										<tr>
-											<td aling='center'>
-												<font color='#FF0000'>
-													NO HAY DATOS 20".$_SESSION['dy']."
-												</font>
-											</td>
-										</tr>
-									</table>");
+
+				require '../Gcb.Artic/Articulo_no_hay_datos.php';
+
 			} else {
-			print ("<div class='row'> <!-- Titulo -->
-					<div class='col-lg-12 text-center'>
-					  <h2 class='section-heading text-uppercase'>Noticias</h2>
-					  <!--
-					  <h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
-					  -->
-					</div>
-				  	</div>
-					
-					<div class='row'> <!-- Inicio class row-->
+
+    // INICIO DISEÑO PLANTILLA
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
+
+			print("<div class='row'> <!-- Inicio class row-->
 					<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
-					<ul class='timeline'> <!-- Inicio Ul class timeline -->
-									");
+						<ul class='timeline'> <!-- Inicio Ul class timeline -->
+							");
 			
 				global $estilo;
 				$estilo = array('timeline','timeline-inverted');
@@ -559,7 +332,7 @@ function ver_todo(){
     //$rut = "";
     $rut = "../";
 
-	require '../Gcb.Artic/Inc_Artic_News_Form.php';
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_c.php';
 
 	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
 			<div class='timeline-image'>
@@ -587,28 +360,7 @@ function ver_todo(){
 			");
 						} 
 
-    echo '<nav>';
-    echo '<ul class="pagination">';
-
-    if ($total_pages > 1) {
-        if ($page != 1) {
-            echo '<li class="page-item"><a class="page-link" href="news.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
-        }
-
-        for ($i=1;$i<=$total_pages;$i++) {
-            if ($page == $i) {
-                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
-            } else {
-                echo '<li class="page-item"><a class="page-link" href="news.php?page='.$i.'">'.$i.'</a></li>';
-            }
-        }
-
-        if ($page != $total_pages) {
-            echo '<li class="page-item"><a class="page-link" href="news.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
-        }
-    }
-    echo '</ul>';
-    echo '</nav>';
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_b.php';
 
 			} 
 	}
