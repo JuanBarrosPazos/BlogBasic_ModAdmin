@@ -18,78 +18,11 @@ function ver_todo(){
 				border-radius: 8px;
 				}
 		</style>";
-
-	global $db;
-	global $db_name;
-
-	global $dyt1;
-	$dyt1 = date('Y'); /* */
-	global $fil;
-	$fil = $dyt1."-%";
-	//$fil = $dy1.$dm1.$dd1."%";
-	global $vname;
-	$vname = "gcb_".$dyt1."_articulos";
-	$vname = "`".$vname."`";
-	
-	$result =  "SELECT * FROM $vname ";
-	$q = mysqli_query($db, $result);
-	global $row;
-	@$row = mysqli_fetch_assoc($q);
-	global $num_total_rows;
-	@$num_total_rows = mysqli_num_rows($q);
-
-	if(!$q || ($num_total_rows < 1)){
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM $vname ";
-		$q = mysqli_query($db, $result);
-		$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		$num_total_rows = mysqli_num_rows($q);
-	} else { }
-
-
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 4;
-	
-	global $page;
 
-    if (isset($_POST["page"])) {
-		global $page;
-        $page = $_POST["page"];
-    }
-
-    //examino la pagina a mostrar y el inicio del registro a mostrar
-    if (isset($_GET["page"])) {
-		global $page;
-        $page = $_GET["page"];
-    }
-
-    if (!$page) {
-		global $page;
-        $start = 0;
-        $page = 1;
-    } else {
-        $start = ($page - 1) * $nitem;
-    }
-    
-    //calculo el total de paginas
-	$total_pages = ceil($num_total_rows / $nitem);
-	
-    //pongo el n�mero de registros total, el tama�o de p�gina y la p�gina que se muestra
-    echo '<h7>* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
-
-	global $limit;
-	$limit = " LIMIT ".$start.", ".$nitem;
-
-	$sqlb =  "SELECT * FROM `$db_name`.$vname ORDER BY `id` DESC $limit";
-
-	/*
-	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
-	*/
-	$qb = mysqli_query($db, $sqlb);
+	require 'Gcb.Artic/Articulo_Ver_index_vertodo_a.php';
 
 	if(!$qb){
 			print("<font color='#FF0000'>Consulte L.496: </font></br>".mysqli_error($db)."</br>");
@@ -125,26 +58,7 @@ function ver_todo(){
                  //$visual = "";
                     }
     
-				global $conte;
-				$conte = substr($rowb['conte'],0,160);
-				$conte = $conte." ...&nbsp;
-				
-	<form name='ver' method='POST' action='Gcb.Artic/Articulo_Ver_index_Popup_Ver.php' target='popup' onsubmit=\"window.open('', 'popup', 'width=500px, height=650px')\">
-				<input name='id' type='hidden' value='".$rowb['id']."' />
-				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
-				<input name='refart' type='hidden' value='".$rowb['refart']."' />
-				<input name='tit' type='hidden' value='".$rowb['tit']."' />
-				<input name='titsub' type='hidden' value='".$rowb['titsub']."' />
-				<input name='datein' type='hidden' value='".$rowb['datein']."' />
-				<input name='timein' type='hidden' value='".$rowb['timein']."' />
-				<input name='datemod' type='hidden' value='".$rowb['datemod']."' />
-				<input name='timemod' type='hidden' value='".$rowb['timemod']."' />
-				<input name='conte' type='hidden' value='".$rowb['conte']."' />
-				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
-				<input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
-				<input type='submit' value='LEER MÁS...' class='botonleer' />
-				<input type='hidden' name='oculto2' value=1 />
-			</form>";	
+	require 'Gcb.Artic/Articulo_Ver_index_vertodo_d.php';
 
 	print ("<div class='col-sm-6 item'>
 				<div class='row'>
@@ -164,28 +78,8 @@ function ver_todo(){
 	print(" </div> <!-- Fin class row-->");
 			
 						} 
-    echo '<nav>';
-    echo '<ul class="pagination">';
 
-    if ($total_pages > 1) {
-        if ($page != 1) {
-            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page-1).'"><span aria-hidden="true">&laquo;</span></a></li>';
-        }
-
-        for ($i=1;$i<=$total_pages;$i++) {
-            if ($page == $i) {
-                echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
-            } else {
-                echo '<li class="page-item"><a class="page-link" href="index.php?page='.$i.'">'.$i.'</a></li>';
-            }
-        }
-
-        if ($page != $total_pages) {
-            echo '<li class="page-item"><a class="page-link" href="index.php?page='.($page+1).'"><span aria-hidden="true">&raquo;</span></a></li>';
-        }
-    }
-    echo '</ul>';
-    echo '</nav>';
+	require 'Gcb.Artic/Articulo_Ver_index_vertodo_b.php';
 
 			} 
 		
