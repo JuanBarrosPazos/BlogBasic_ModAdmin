@@ -70,22 +70,22 @@ if ($_SESSION['dni'] == $_SESSION['mydni']) {
 				<ul class='nav-flyout'>
 					<li>
 						<a href='".$rutainclu."cnemp.php'>
-							<i class='ic ico22'></i>Nª EMPLEADOS
+							<i class='ic ico22'></i>EMPLEADOS Nº
 						</a>
 					</li>
 					<li>
 						<a href='".$rutabbdd."export_bbdd_backups.php'>
-							<i class='ic ico22'></i>EXPORT BBDD
+							<i class='ic ico22'></i>BBDD EXPORT
 						</a>
 					</li>
 					<li>
 						<a href='".$rutaartic."plantilla_gest.php'>
-							<i class='ic ico22'></i>FRONT INDEX
+							<i class='ic ico22'></i>INDEX FRONT
 						</a>
 					</li>
 					<li>
 						<a href='".$rutaartic."plantilla_gest_news.php'>
-							<i class='ic ico22'></i>FRONT NEWS
+							<i class='ic ico22'></i>NEWS FRONT
 						</a>
 					</li>
 				</ul>

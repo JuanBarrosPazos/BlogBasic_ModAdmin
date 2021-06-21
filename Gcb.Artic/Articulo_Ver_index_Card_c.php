@@ -97,17 +97,19 @@ function ver_todo(){
 				<tr><td style='text-align:center'>
 		<h4><a href='Gcb.Www/news.php'>NO HAY ENTRADAS EN ".$dyt1."<br>CONSULTAR NEWS</a></h4>
 			</td></tr></table>");
-	} else { 	
+	} else { 
 
-	print ("<div class='projects-clean'> <!-- Titulo -->
+    // INICIO DISEÑO PLANTILLA
+	print ("<!-- Titulo -->
+			<!-- <div class='projects-clean'> 
 				<div class='intro'>
-					<h2 class='text-center'>Noticias</h2>
+					<h2 class='section-heading text-uppercase'>Noticias</h2>
+					<h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
 				</div>
-		  	</div>
-            <div class='row projects'>
-                <!-- Inicio class row-->
+		  	</div> -->
+            <div class='row projects'><!-- Inicio class row-->
 				");
-			
+
 	while($rowb = mysqli_fetch_assoc($qb)){
 
         if(strlen(trim($rowb ['myvdo'])) > 0){

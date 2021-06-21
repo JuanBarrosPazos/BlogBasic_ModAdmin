@@ -79,7 +79,7 @@ function process_form(){
 function show_form($errors=[]){
 	
 	if((isset($_POST['oculto']))||(isset($_POST['ocultoch']))){
-		$defaults = $_POST;
+		$defaults = array ( 'plantillanews' => $_POST['plantillanews']);
 		} else {$defaults = array ( 'plantillanews' => $_SESSION['plantillanews']); }
 	
 	if ($errors){
@@ -100,19 +100,17 @@ function show_form($errors=[]){
 		}
 	
 	// ARRAY PARA RADIO BOTTOM
-	$plantilla = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
+$plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
 						'Articulo_Ver_news_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
-						/*
 						'Articulo_Ver_news_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
 						'Articulo_Ver_news_Card_b.php' => 'PLANTILLA CARD HORIZONTAL & DETALLES POPUP ',
 						'Articulo_Ver_news_Card_c.php' => 'PLANTILLA CARD VERTICAL 2 & DETALLES POPUP ',
-						*/
 						);	
 
 /*******************************/
 
 		global $c;
-		$c=count($plantilla);
+		$c=count($plantillanews );
 		global $a;
 		$a=0;
 		echo "<div class='juancentra'>
@@ -122,13 +120,13 @@ function show_form($errors=[]){
 		PLANTILLAS WEB PARA NEWS<br>PLANTILLA ACTUAL NEWS<br>".$_SESSION['plantillanews']."
 		</legend><hr>";
 
-		foreach ($plantilla as $key => $value){
+		foreach ($plantillanews  as $key => $value){
 				if ($a<$c){ $a++;}else { }
 			echo"
 			<div class='gestplantillas'>
 			<input id='".$a."' name='plantillanews' type='radio' value='".$key."'";
 			
-			if($_SESSION['plantillanews'] == $key) {print(" checked=\"checked\"");} else { }
+			if($defaults['plantillanews'] == $key) {print(" checked=\"checked\"");} else { }
 			
 			echo" required />
 			<label for='".$a."'>".$a." ".$value."</label><br>
@@ -140,7 +138,7 @@ function show_form($errors=[]){
 		} // FIN FOREACH
 
 		echo "<div style='text-align:center;'>
-				<input type='submit' value='GRABAR NUEVA PLANTILLA NEWS' class='botonverde' />
+				<input type='submit' value='NEWS FRONT GRABAR NUEVA PLANTILLA' class='botonverde' />
 			  <input type='hidden' name='oculto' value=1 />
 				</div></form></fieldset></div>";
 

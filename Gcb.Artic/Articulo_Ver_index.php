@@ -99,21 +99,18 @@ function ver_todo(){
 							</td>
 						</tr>
 					</table>");
-	} else { 	
+	} else { 
 
-	print ("<div class='row'> <!-- Titulo -->
+	print ("<!--<div class='row'> <!-- Titulo -->
 				<div class='col-lg-12 text-center'>
 				<h2 class='section-heading text-uppercase'>Noticias</h2>
-				<!--
 				<h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
-				-->
-				</div>
+				</div>-->
 		  	</div>
 			<div class='row'> <!-- Inicio class row-->
 			<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
 			<ul class='timeline'> <!-- Inicio Ul class timeline -->
 				");
-			
 	global $estilo;
 	$estilo = array('timeline','timeline-inverted');
 	global $estiloin;

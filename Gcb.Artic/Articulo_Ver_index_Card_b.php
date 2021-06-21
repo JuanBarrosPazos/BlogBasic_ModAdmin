@@ -103,15 +103,16 @@ function ver_todo(){
 			</td></tr></table>");
 	} else { 	
 
-	print ("<div class='projects-horizontal'> <!-- Titulo -->
+	print ("<!-- Titulo --> 
+			<!-- <div class='projects-horizontal'> 
 				<div class='intro'>
-					<h2 class='text-center'>Noticias</h2>
+					<h2 class='section-heading text-uppercase'>Noticias</h2>
+					<h3 class='section-subheading text-muted'>Lorem ipsum dolor sit amet consectetur.</h3>
 				</div>
-		  	</div>
-            <div class='row projects'>
-                <!-- Inicio class row-->
+		  	</div> -->
+            <div class='row projects'><!-- Inicio class row-->
 				");
-			
+
 	while($rowb = mysqli_fetch_assoc($qb)){
 
         if(strlen(trim($rowb ['myvdo'])) > 0){

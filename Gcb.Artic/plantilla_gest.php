@@ -79,7 +79,7 @@ function process_form(){
 function show_form($errors=[]){
 	
 	if((isset($_POST['oculto']))||(isset($_POST['ocultoch']))){
-		$defaults = $_POST;
+		$defaults = array ( 'plantilla' => $_POST['plantilla']);
 		} else {$defaults = array ( 'plantilla' => $_SESSION['plantilla']); }
 	
 	if ($errors){
@@ -135,7 +135,7 @@ function show_form($errors=[]){
 			<div class='gestplantillas'>
 			<input id='".$a."' name='plantilla' type='radio' value='".$key."'";
 			
-			if($_SESSION['plantilla'] == $key) {print(" checked=\"checked\"");} else { }
+			if($defaults['plantilla'] == $key) {print(" checked=\"checked\"");} else { }
 			
 			echo" required />
 			<label for='".$a."'>".$a." ".$value."</label><br>
@@ -147,7 +147,7 @@ function show_form($errors=[]){
 		} // FIN FOREACH
 
 		echo "<div style='text-align:center;'>
-				<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonverde' />
+				<input type='submit' value='INDEX FRONT GRABAR NUEVA PLANTILLA' class='botonverde' />
 			  <input type='hidden' name='oculto' value=1 />
 				</div></form></fieldset></div>";
 
@@ -167,8 +167,8 @@ function show_form($errors=[]){
 									}	
 	print ("</select></td></tr>
 				<tr><td valign='middle'  class='BorderSup'>
-						<input type='submit' value='GRABAR NUEVA PLANTILLA' class='botonnaranja' />
-						<input type='hidden' name='oculto' value=1 />
+					<input type='submit' value='INDEX FRONT GRABAR NUEVA PLANTILLA' class='botonnaranja' />
+					<input type='hidden' name='oculto' value=1 />
 				</td></tr>
 			</form></table>"); 
 		FIN GESTIONAR PLANTILLAS INDEX CON UN SELECT */ 
