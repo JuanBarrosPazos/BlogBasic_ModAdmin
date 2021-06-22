@@ -28,15 +28,7 @@ function ver_todo(){
     // INICIO DISEÑO PLANTILLA
 	//require 'Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
 
-			print("<div class='row'> <!-- Inicio class row-->
-				<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
-					<ul class='timeline'> <!-- Inicio Ul class timeline -->
-						");
-						
-	global $estilo;
-	$estilo = array('timeline','timeline-inverted');
-	global $estiloin;
-	$estiloin = 0;
+	require 'Gcb.Artic/Articulo_Ver_p01a.php';
 
 	while($rowb = mysqli_fetch_assoc($qb)){
 		
@@ -50,33 +42,18 @@ function ver_todo(){
                  //$visual = "";
                     }
     
+    // DEFINO LA RECTIFICACIÓN DE LA RUTA IMG
+    global $rut;
+    $rut = "";
+    //$rut = "../";
+
 	require 'Gcb.Artic/Articulo_Ver_index_vertodo_d.php';
 
-	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
-			<div class='timeline-image'>
-			<img class='imgarticulo' src='Gcb.Img.Art/".$rowb['myimg']."' alt=''>
-			</div>
-			<div class='timeline-panel'>
-			<div class='timeline-heading'>
-				<h5>".$rowb['datein']."</h5>
-				<h3>".$rowb['tit']."</h3>
-				<h5 class='subheading'>".$rowb['titsub']."</h5>
-			</div>
-			<div class='timeline-body'>
-				<p class='text-muted'>".$conte."</p>
-			</div>
-			</div>
-		</li> <!-- Final Li contenedor -->
-		");
-		
-		$estiloin = 1 - $estiloin;	
+	require 'Gcb.Artic/Articulo_Ver_p01b.php';
 
 	} // Fin While
 
-	print(" </ul> <!-- Fin Ul class timeline -->
-			</div> <!-- Fin class col-lg-12 -->
-  			</div> <!-- Fin class row-->
-			");
+	require 'Gcb.Artic/Articulo_Ver_p01c.php';
 			
 						} 
 

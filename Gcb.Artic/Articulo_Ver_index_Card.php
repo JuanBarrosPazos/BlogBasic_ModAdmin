@@ -53,7 +53,8 @@ function ver_todo(){
     // INICIO DISEÑO PLANTILLA
 	//require 'Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
 
-			print("<div class='row articles'><!-- Inicio class row-->");
+	// 	INICIA EL DISEÑO HTML
+	require 'Gcb.Artic/Articulo_ver_p02a.php';
 			
 	while($rowb = mysqli_fetch_assoc($qb)){
 
@@ -70,18 +71,13 @@ function ver_todo(){
     
 	require 'Gcb.Artic/Articulo_Ver_index_vertodo_d.php';
 
-	print ("<div class='card col-sm-6 col-md-4'>
-                <div class='card-body'>
-                    <h4>".$rowb['tit']."</h4>
-                    <h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>
-                        ".$visual."
-				<h7 class='description'>".$conte."</h7>
-             </div>
-		 </div>");
+	// 	CUERPO DEL DISEÑO HTML
+	require 'Gcb.Artic/Articulo_ver_p02b.php';
 
 	} // Fin While
 
-	print(" </div> <!-- Fin class row-->");
+	// 	FIN DEL DISEÑO HTML
+	require 'Gcb.Artic/Articulo_ver_p02c.php';
 			
 						} 
 

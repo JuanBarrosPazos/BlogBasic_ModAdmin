@@ -1,1 +1,1 @@
-<?php $_SESSION['plantilla'] = 'Articulo_Ver_index_Popup.php'; ?>
+<?php $_SESSION['plantilla'] = 'Articulo_Ver_index.php'; ?>

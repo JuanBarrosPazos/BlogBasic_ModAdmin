@@ -1,6 +1,8 @@
 <?php
   session_start();
 
+            require 'Gcb.Artic/plantilla.php';
+            
   /* Creado por Juan Manuel Barros Pazos 2020/21 */
 
 ?>
@@ -99,7 +101,6 @@
           // DEFINO LA PLANTILLA QUE SE UTILIZA EN LA WEB
             //require 'Gcb.Artic/Articulo_Ver_index.php';
             //require 'Gcb.Artic/Articulo_Ver_index_Popup.php'; 
-            require 'Gcb.Artic/plantilla.php';
             require 'Gcb.Artic/'.$_SESSION['plantilla'];
        ?>
 

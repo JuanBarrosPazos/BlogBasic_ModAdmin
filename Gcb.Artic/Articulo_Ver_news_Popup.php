@@ -53,7 +53,11 @@ function validate_form(){
 				 ////////////////////				  ///////////////////
 
 function process_form(){
-	
+
+	print("<style>
+				video { width:98%; max-width:600px !important; height:auto; }
+			</style>");
+
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
@@ -73,15 +77,7 @@ function process_form(){
     // INICIO DISEÑO PLANTILLA
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
 
-			print("<div class='row'> <!-- Inicio class row-->
-					<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
-					<ul class='timeline'> <!-- Inicio Ul class timeline -->
-									");
-			
-				global $estilo;
-				$estilo = array('timeline','timeline-inverted');
-				global $estiloin;
-				$estiloin = 0;
+	require '../Gcb.Artic/Articulo_Ver_p01a.php';
 	
 		while($rowb = mysqli_fetch_assoc($qb)){
 
@@ -90,29 +86,12 @@ function process_form(){
     //$rut = "";
     $rut = "../";
 
-	if ($page > 1){
-		global $pg;
-		$pg = "<input type='hidden' name='page' value=".$page." />";
-	}else{	global $pg;
-			$pg = "<input type='hidden' name='page' value=1 />";
-			}
-
-	global $db;
-	$sqlra =  "SELECT * FROM `gcb_admin` WHERE `ref`='$rowb[refuser]' LIMIT 1 ";
-	$qra = mysqli_query($db, $sqlra);
-	
-	if(!$qra){ print("* ".mysqli_error($db)."</br>");
-	} else { 
-			while($rowautor = mysqli_fetch_assoc($qra)){
-				global $autor;
-				$autor = "<h6>".$rowautor['Nombre']." ".$rowautor['Apellidos']."</h6>";
-				}
-			}
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_f.php';
 
 	if ($rowb['myvdo'] != ''){
 		global $vdonw;
-		$vdonw = "<video style=\" width:98%; max-width:600px !important; height:auto\" controls>
-			<source style=\" width:98%; height:auto\" src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' />
+		$vdonw = "<video controls>
+						<source src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' />
 				  </video>";
 		}else{	global $vdonw;
 				$vdonw = '';
@@ -120,31 +99,13 @@ function process_form(){
 	
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_d.php';
 
-	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
-			<div class='timeline-image'>
-	<img class='<!--rounded-circle--> img-fluid' src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
-			</div>
-			<div class='timeline-panel'>
-			<div class='timeline-heading'>
-				<h6>".$rowb['datein']."</h6>
-				<h5>".$rowb['tit']."</h5>
-			</div>
-			<div class='timeline-body'>
-				<p class='text-muted'>".$conte."</p>
-			</div>
-		<div id=\"".$rowb['refart']."\"></div>
-			</div>
-		</li> <!-- Final Li contenedor -->
-		");
-		$estiloin = 1 - $estiloin;	
+	require '../Gcb.Artic/Articulo_Ver_p01b.php';
 
 		} // Fin While
 
-	print(" </ul> <!-- Fin Ul class timeline -->
-			</div> <!-- Fin class col-lg-12 -->
-  			</div> <!-- Fin class row-->
-			");
-				} 
+	require '../Gcb.Artic/Articulo_Ver_p01c.php';
+
+		} 
 
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_b.php';
 
@@ -157,160 +118,8 @@ function process_form(){
 
 function show_form($errors=[]){
 
-	global $page;
-	global $defaults;
-
-	if(isset($_POST['oculto'])){$_SESSION['titulo'] = $_POST['titulo'];
-								$_SESSION['autor'] = $_POST['autor'];
-								$_SESSION['dy'] = $_POST['dy'];
-								$_SESSION['dm'] = $_POST['dm'];
-								$defaults = $_POST;
-		}
-	else {	$defaults = array ('titulo' => @$_SESSION['titulo'],
-								'autor' => @$_SESSION['autor'],
-								'dy' => @$_SESSION['dy'],
-								'dm' => @$_SESSION['dm']
-							);
-										}
-	
-	if ($errors){
-		print("	<div  class='errors'>
-					<table align='left' style='border:none'>
-					<th style='text-align:left'>
-					<font color='#FF0000'>* SOLUCIONE ESTOS ERRORES:</font><br/>
-					</th>
-					<tr>
-					<td style='text-align:left'>");
-			
-		for($a=0; $c=count($errors), $a<$c; $a++){
-			print("<font color='#FF0000'>**</font>  ".$errors [$a]."<br/>");
-			}
-		print("</td>
-				</tr>
-				</table>
-				</div>
-				<div style='clear:both'></div>");
-		}
-		
-		require "../Gcb.Config/ayear.php";
-			
-		$dm = array (	'' => 'MES TODOS',
-						'01' => 'ENERO',
-						'02' => 'FEBRERO',
-						'03' => 'MARZO',
-						'04' => 'ABRIL',
-						'05' => 'MAYO',
-						'06' => 'JUNIO',
-						'07' => 'JULIO',
-						'08' => 'AGOSTO',
-						'09' => 'SEPTIEMBRE',
-						'10' => 'OCTUBRE',
-						'11' => 'NOVIEMBRE',
-						'12' => 'DICIEMBRE',
-										);
-		
-		$dd = array (	'' => 'DÍA TODOS',
-						'01' => '01',
-						'02' => '02',
-						'03' => '03',
-						'04' => '04',
-						'05' => '05',
-						'06' => '06',
-						'07' => '07',
-						'08' => '08',
-						'09' => '09',
-						'10' => '10',
-						'11' => '11',
-						'12' => '12',
-						'13' => '13',
-						'14' => '14',
-						'15' => '15',
-						'16' => '16',
-						'17' => '17',
-						'18' => '18',
-						'19' => '19',
-						'20' => '20',
-						'21' => '21',
-						'22' => '22',
-						'23' => '23',
-						'24' => '24',
-						'25' => '25',
-						'26' => '26',
-						'27' => '27',
-						'28' => '28',
-						'29' => '29',
-						'30' => '30',
-						'31' => '31',
-						);
-											
-
-	print("<table align='center' style=\"border:0px;margin-top:4px;width:auto\">
-				
-			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
-						
-				<tr>
-					<td align='right'>
-						<input type='submit' value='FILTRO NOTICIAS' />
-						<input type='hidden' name='oculto' value=1 />
-		<!-- --> 
-	<input type='hidden' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />
-		
-
-		<select name='autor'>
-			
-		<option value=''>SELECCIONE AUTOR</option>");
-						
-	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	
-			
-	global $db;
-	$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY `Apellidos` ASC ";
-	$qb = mysqli_query($db, $sqlb);
-	if(!$qb){
-			print("* ".mysqli_error($db)."</br>");
-	} else {
-					
-		while($rows = mysqli_fetch_assoc($qb)){
-					
-					print ("<option value='".$rows['ref']."' ");
-					
-					if($rows['ref'] == $defaults['autor']){
-															print ("selected = 'selected'");
-																								}
-									print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
-				}
-		
-			}  
-
-	print ("</select>
-
-				<select name='dy'>"
-				);
-							
-					foreach($dy as $optiondy => $labeldy){
-						
-						print ("<option value='".$optiondy."' ");
-						
-						if($optiondy == @$defaults['dy']){print ("selected = 'selected'");}
-														print ("> $labeldy </option>");
-													}	
-																	
-			print ("	</select>
-						<!--<select name='dm'>-->
-						<input type='hidden' name='dm' value='' />
-						");
-			/*
-				foreach($dm as $optiondm => $labeldm){
-					print ("<option value='".$optiondm."' ");
-					if($optiondm == @$defaults['dm']){print ("selected = 'selected'");}
-													print ("> $labeldm </option>");}	
-			*/													
-		print ("<!--</select>-->
-				
-				</td>
-			</tr>
-		</form>	
-			</table>
-			");
+	// FORMULARIO FILTRO ARTICULOS AUTOR
+	require '../Gcb.Artic/Articulo_Ver_news_showform.php';
 	
 	}	
 
@@ -320,6 +129,10 @@ function show_form($errors=[]){
 
 function ver_todo(){
 		
+	print("<style>
+				video { width:98%; max-width:600px !important; height:auto; }
+			</style>");
+
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	global $nitem;
 	$nitem = 3;
@@ -339,15 +152,7 @@ function ver_todo(){
     // INICIO DISEÑO PLANTILLA
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_e.php';
 
-			print("<div class='row'> <!-- Inicio class row-->
-						<div class='col-lg-12'>  <!-- Inicio class col-lg-12 -->
-							<ul class='timeline'> <!-- Inicio Ul class timeline -->
-						");
-			
-				global $estilo;
-				$estilo = array('timeline','timeline-inverted');
-				global $estiloin;
-				$estiloin = 0;
+	require '../Gcb.Artic/Articulo_Ver_p01a.php';
 
 		while($rowb = mysqli_fetch_assoc($qb)){
 
@@ -356,29 +161,12 @@ function ver_todo(){
     //$rut = "";
     $rut = "../";
 
-	if ($page > 1){
-		global $pg;
-		$pg = "<input type='hidden' name='page' value=".$page." />";
-	}else{	global $pg;
-			$pg = "<input type='hidden' name='page' value=1 />";
-			}
-
-	global $db;
-	$sqlra =  "SELECT * FROM `gcb_admin` WHERE `ref`='$rowb[refuser]' LIMIT 1 ";
-	$qra = mysqli_query($db, $sqlra);
-	
-	if(!$qra){ print("* ".mysqli_error($db)."</br>");
-	} else { 
-			while($rowautor = mysqli_fetch_assoc($qra)){
-				global $autor;
-				$autor = "<h6>".$rowautor['Nombre']." ".$rowautor['Apellidos']."</h6>";
-				}
-			}
+	require '../Gcb.Artic/Articulo_Ver_news_vertodo_f.php';
 
 	if ($rowb['myvdo'] != ''){
 		global $vdonw;
-		$vdonw = "<video style=\" width:98%; max-width:600px !important; height:auto\" controls>
-			<source style=\" width:98%; height:auto\" src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' />
+		$vdonw = "<video controls>
+						<source src='../Gcb.Vdo.Art/".@$_POST['myvdo']."' />
 				  </video>";
 		}else{	global $vdonw;
 				$vdonw = '';
@@ -386,32 +174,13 @@ function ver_todo(){
 	
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_d.php';
 
-	print ("<li  class='".$estilo[$estiloin]."'> <!-- Inicio Li contenedor -->
-			<div class='timeline-image'>
-	<img class='<!--rounded-circle--> img-fluid' src='../Gcb.Img.Art/".$rowb['myimg']."' alt=''>
-			</div>
-			<div class='timeline-panel'>
-			<div class='timeline-heading'>
-				<h6>".$rowb['datein']."</h6>
-				<h5>".$rowb['tit']."</h5>
-			</div>
-			<div class='timeline-body'>
-				<p class='text-muted'>".$conte."</p>
-			</div>
-		<div id=\"".$rowb['refart']."\"></div>
-			</div>
-		</li> <!-- Final Li contenedor -->
-		");
-
-		$estiloin = 1 - $estiloin;	
+	require '../Gcb.Artic/Articulo_Ver_p01b.php';
 
 		} // Fin While
 
-	print(" </ul> <!-- Fin Ul class timeline -->
-			</div> <!-- Fin class col-lg-12 -->
-  			</div> <!-- Fin class row-->
-			");
-						} 
+	require '../Gcb.Artic/Articulo_Ver_p01c.php';
+
+		} 
 
 	require '../Gcb.Artic/Articulo_Ver_news_vertodo_b.php';
 

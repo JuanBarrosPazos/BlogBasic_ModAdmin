@@ -1,5 +1,7 @@
 <?php
   session_start();
+  
+          require '../Gcb.Artic/plantilla_news.php';
 
   /* Creado por Juan Manuel Barros Pazos 2020/21 */
 
@@ -23,7 +25,6 @@
     <div class="container">
 
       <?php
-          require '../Gcb.Artic/plantilla_news.php';
           require '../Gcb.Artic/'.$_SESSION['plantillanews'];
       ?>
 
