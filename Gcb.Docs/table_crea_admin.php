@@ -1,5 +1,7 @@
 <?php
 
+	 require 'Admin_Botonera.php';
+
 	if (isset($modifadmin)){ 
 		global $title;
 		$title = "<img style='height:44px; width:33px;' src='../Gcb.Img.User/".$_POST['myimg']."' />
@@ -12,11 +14,8 @@
 		$title4 = "modifica";
 		global $closewin;
 		$closewin = "<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
-			<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-				<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-				<input type='hidden' name='closewin' value=1 />
-			</form></td></tr>"; 
-	}
+					".$closewindow."</td></tr>";
+			}
 	elseif (!isset($modifadmin)){ 
 		global $title;
 		$title = "DATOS DEL NUEVO ADMINISTRADOR";
@@ -26,9 +25,13 @@
 		$title3 = "REGISTRARME CON ESTOS DATOS";
 		global $title4;
 		$title4 = "oculto";
+		global $closewin;
+		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderSup BorderInf'>
+						".$inciobajas.$inicioadmin."</td></tr>";
+	
 	 }
 
-	print("<table style=\"margin-top:6px\">
+	 print("<table style=\"margin-top:6px\">
 				<tr>
 					<th colspan=2 class='BorderInf'>
 							".$title."

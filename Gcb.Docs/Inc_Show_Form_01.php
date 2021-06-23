@@ -98,8 +98,8 @@ print(" <table style=\"margin-top:-8px; width:auto;\">
                 if($option == @$defaults['Orden']){ print ("selected = 'selected'"); }
                                                 print ("> $label </option>");
                                             }	
-        print ("	</select>
-                        </div>
+        print ("</select>
+                    </div>
                         </td>
                     </tr>
             </form>														

@@ -106,7 +106,7 @@ function process_form(){
 function show_form($errors=''){
 	
 	global $titulo;
-	$titulo = "BAJAS TEMPORALES DEL SISTEMA";
+	$titulo = "BAJAS TEMPORALES DEL SISTEMA<hr>";
 	global $boton;
 	$boton = "BAJAS VER TODAS";
 	require 'Inc_Show_Form_01.php';
@@ -146,6 +146,7 @@ function ver_todo(){
 	global $twhile;
 	$twhile = "TODOS USUARIOS BAJAS CONSULTAR";
 
+	require 'Admin_Botonera.php';
 	require 'Inc_While_Form_Feed.php';
 	global $ruta;
 	$ruta = "";

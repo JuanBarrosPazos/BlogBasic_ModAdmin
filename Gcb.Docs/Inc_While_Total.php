@@ -20,26 +20,34 @@
 				 if ($page >= 1){ } 
 				 else { $page = 1;}
 
+	if ($_SESSION['Nivel'] == 'admin') { 
+		
 			if(isset($_POST['ocultoc'])){
 
 				$defaults['Nombre'] = $_POST['Nombre'];
 				$defaults['Apellidos'] = $_POST['Apellidos'];
-				global $refrescaimg;
-				$refrescaimg = "<form name='refresimg' action='".$ruta."Admin_Ver.php' method='POST'>
-					<input type='hidden' name='Nombre' value='".@$defaults['Nombre']."' />
-					<input type='hidden' name='Apellidos' value='".@$defaults['Apellidos']."' />
-					<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
-					<input type='hidden' name='ocultoc' value=1 />
-								</form>";
-			} else { global $refrescaimg;
-					 $refrescaimg = "<form name='refresimg' action='".$ruta."Admin_Ver.php'>
-						<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
-						<input type='hidden' name='page' value=".$page." />
-								</form>";
-					}
 
+
+		global $refrescaimg;
+		$refrescaimg = "<form name='refresimg' action='".$ruta."Admin_Ver.php' method='POST'>
+			<input type='hidden' name='Nombre' value='".@$defaults['Nombre']."' />
+			<input type='hidden' name='Apellidos' value='".@$defaults['Apellidos']."' />
+			<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+			<input type='hidden' name='ocultoc' value=1 />
+						</form><hr>";
+	} else { global $refrescaimg;
+			 $refrescaimg = "<form name='refresimg' action='".$ruta."Admin_Ver.php'>
+				<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+				<input type='hidden' name='page' value=".$page." />
+						</form><hr>";
+				}
+
+		} else { global $refrescaimg; $refrescaimg = ""; }
+
+	require 'Admin_Botonera.php';
+	
 	print ("<div class=\"juancentra\">
-			<!--".$twhile.": ".mysqli_num_rows($qb).".-->".$refrescaimg);
+	<!--".$twhile.": ".mysqli_num_rows($qb).".-->".$inicioadmincrear.$inciobajas."<hr>".$refrescaimg);
                                     
 	while($rowb = mysqli_fetch_assoc($qb)){
     
@@ -50,7 +58,7 @@
 		global $formulariohe;
 		global $formulariofe;
 
-	print (	"<hr><div class='whiletotalaimg'>
+	print (	"<div class='whiletotalaimg'>
 					<img src='".$rutaimg.$rowb['myimg']."' height='40px' width='30px' />
 				</div>
 				<div class='whiletotala'>NOMBRE<br>".$rowb['Nombre']."</div>
@@ -79,7 +87,7 @@
 
 		require 'rowbtotal.php';
 
-			print($formulariofe);
+			print($formulariofe."<hr>");
                     
 	}  // FIN DEL WHILE
 

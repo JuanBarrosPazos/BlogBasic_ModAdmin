@@ -122,13 +122,12 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 				global $rutaimg;
 				$rutaimg = "src='".$carpetaimg."/".$new_name."'";
 				require 'table_data_resum.php';
-		
+	
+	require 'Admin_Botonera.php';
+
 	print("	<tr>
 				<td colspan=3 align='right' class='BorderSup'>
-					<form name='closewindow' action='Admin_Crear.php'  \">
-						<input type='submit' value='VOLVER A ADMIN CREAR' class='botonverde' />
-						<input type='hidden' name='volver' value=1 />
-					</form>
+					".$inicioadmin.$inicioadmincrear."
 				</td>
 			</tr>
 		</table>");
@@ -238,20 +237,13 @@ function show_form($errors=[]){
 	
 	if ($nuser >= $_SESSION['nuser']){ 
 		print("<table align='center' style=\"margin-top:10px;margin-bottom:170px\">
-					<tr align='center'>
-						<td>
-							<b>
-								<font color='red'>
-									ACCESO RESTRINGIDO.
-								</font>	
-							</b>
-					</br></br>
+					<tr align='center'><td><b>
+						<font color='red'>ACCESO RESTRINGIDO.</font>	
+						</b></br></br>
 		EMPLEADOS PERMITIDOS: ".$_SESSION['nuser'].". Nº EMPLEADOS: ".$nuser.". PARA CONTINUAR:
-					</br></br>
+						</br></br>
 		ELIMINE ALGUN EMPLEADO EN BORRAR BAJAS O DAR DE BAJA.
-						</td>
-					</tr>
-				</table>");
+						</td></tr></table>");
 			}else{
 		
 		global $imgform;

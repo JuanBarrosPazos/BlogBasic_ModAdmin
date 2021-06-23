@@ -49,15 +49,9 @@ function process_form(){
 	require 'table_data_resum.php';
 	require 'table_data_resum_feed.php';
 				
-		print(" <tr>
-					<td colspan=3 align='right' class='BorderSup'>
-						<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-							<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-							<input type='hidden' name='oculto2' value=1 />
-			</form>
-					</td>
-				</tr>
-			</table>");	
+	require 'Admin_Botonera.php';
+
+	print(" <tr><td colspan=3 align='right' class='BorderSup'>".$closewindow."</td></tr></table>");	
 
 	}	
 

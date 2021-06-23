@@ -824,7 +824,7 @@ function ver_todo(){
 	
     //pongo el numero de registros total, el tamaño de pagina y la pagina que se muestra
 	echo '<div style="clear:both"></div>';
-    echo '<h7 class="textpaginacion">* Noticias: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
+    echo '<h7 class="textpaginacion">* ARTICULOS: '.$num_total_rows.' * P&aacute;gina '.$page.' de ' .$total_pages.'.</h7>';
 
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
@@ -836,6 +836,9 @@ function ver_todo(){
 
 	$defaults['Nombre'] = $_POST['Nombre'];
 	$defaults['Apellidos'] = $_POST['Apellidos'];
+
+	if ($_SESSION['Nivel'] == 'admin') { 
+
 	global $refrescaimg;
 	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
 			<input type='hidden' name='Nombre' value='".@$defaults['Nombre']."' />
@@ -849,7 +852,7 @@ function ver_todo(){
 		<input type='hidden' name='page' value=".$page." />
 					</form>";
 			}
-
+		} else {global $refrescaimg; $refrescaimg = "";}
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
@@ -867,7 +870,7 @@ function ver_todo(){
 				} else { 
 					
 	print ("<div class=\"juancentra\" style=\"vertical-align:top !important; margin-top:6px; padding-top:8px; \">
-			Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".$_SESSION['dyt1'].$refrescaimg);
+			Nº Articulos: ".mysqli_num_rows($qb)." YEAR ".$_SESSION['dyt1'].$refrescaimg."<hr>");
 			
 		while($rowb = mysqli_fetch_assoc($qb)){
 

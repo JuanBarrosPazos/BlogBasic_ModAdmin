@@ -50,15 +50,10 @@ function process_form(){
 			$rutaimg = "src='../Gcb.Img.User/".$_POST['myimg']."'";
 			require 'table_data_resum.php';
 
-	print("<tr>
-				<td colspan=3 style='text-align:right;' class='BorderSup'>
-					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-						<input type='hidden' name='oculto2' value=1 />
-					</form>
-				</td>
-			</tr>
-		</table>"); 
+	require 'Admin_Botonera.php';
+
+	print("<tr><td colspan=3 style='text-align:right;' class='BorderSup'>
+				".$closewindow."</td></tr></table>"); 
 
 		}
 			

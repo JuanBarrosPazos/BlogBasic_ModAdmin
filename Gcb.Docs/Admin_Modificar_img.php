@@ -169,15 +169,11 @@ $sqlc = "UPDATE `$db_name`.`gcb_admin` SET `myimg` = '$new_name' WHERE `gcb_admi
 		$vertabla = 1;
 		require 'table_data_resum.php';
 												
-		print("	<tr>
-					<td colspan=3 style='text-align:right;' class='BorderSup'>
-		<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' class='botonrojo />
-						<input type='hidden' name='oculto2' value=1 />
-		</form>
-					</td>
-				</tr>
-			</table>" );
+		require 'Admin_Botonera.php';
+
+		print("	<tr><td colspan=3 style='text-align:right;' class='BorderSup'>
+					".$closewindow."</td></tr></table>" );
+
 				} else {
 				print("<font color='#FF0000'>
 						* ESTOS DATOS NO SON VALIDOS, MODIFIQUE ESTA ENTRADA: </font>
@@ -270,6 +266,8 @@ function show_form($errors=[]){
 
 		print("</td></tr></table>");}
 		
+	require 'Admin_Botonera.php';
+
 	print("<table align='center' border=0 style='margin-top:20px; width:95.5%' >
 				<tr>
 					<th colspan=2 class='BorderInf'>
@@ -323,23 +321,8 @@ function show_form($errors=[]){
 				</tr>
 			
 				<tr>
-					<td class='BorderSup'>
-					</td>
-					<td align='right' class='BorderSup'>
-					</td>
-				</tr>
-				
-				<tr>
-					<td class='BorderSup'>
-					</td>
-					<td align='right' class='BorderSup'>
-			<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-											<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-											<input type='hidden' name='oculto2' value=1 />
-			</form>
-					</td>
-				</tr>
-			</table>");
+					<td colspan=2 align='right' class='BorderSup'>
+						".$closewindow."</td></tr></table>");
 
 	}
 

@@ -102,12 +102,10 @@ function process_form(){
 				$rutaimg = "src='../Gcb.Img.User/".$_SESSION['myimgcl']."'";
 				require 'table_data_resum.php';
 
+		require 'Admin_Botonera.php';
+
 		print("<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
-					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-						<input type='hidden' name='closewin' value=1 />
-					</form></td></tr>
-				</table>");
+					".$closewindow."</td></tr></table>");
 
 				} else {
 				print("<font color='#FF0000'>
@@ -138,12 +136,10 @@ function process_form(){
 				$rutaimg = "src='../Gcb.Img.User/".$_SESSION['myimgcl']."'";
 				require 'table_data_resum.php';
 
-		print("<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
-					<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
-						<input type='submit' value='CERRAR VENTANA' class='botonrojo' />
-						<input type='hidden' name='closewin' value=1 />
-					</form></td></tr>
-				</table>");
+	require 'Admin_Botonera.php';
+
+	print("<tr><td colspan=3 style='text-align:right;' class='BorderSup BorderInf'>
+					".$closewindow."</td></tr></table>");
 
 		} else {print("<font color='#FF0000'>
 						* MODIFIQUE LA ENTRADA 241: </font>

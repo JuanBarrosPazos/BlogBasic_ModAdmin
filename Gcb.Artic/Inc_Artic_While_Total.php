@@ -43,7 +43,7 @@
 			 $upvdo = "<input type='submit' value='CREAR VIDEO'class='botonverde' />";
 				}
 
-    print ("<div class=\"BorderSup\" style=\"text-align:center; display:block; margin-top:8px; padding-top: 0px; border-top: #fff solid 1px;\">
+    print ("<div style=\"text-align:center; display:block; margin-top:8px; padding-top: 0px;\">
 
             <div class='whiletotala'>
                 DATE IN<br>".strtoupper($rowb['datein'])."
@@ -68,9 +68,11 @@
                                 
 		</div>
     
-        <div style='clear:both'></div>
+        <div style='clear:both'></div>");
+
+    if ($_SESSION['Nivel'] == 'admin') { 
         
-	<div class=\"BorderInf\" style=\"text-align:center; display:block;\">
+	print("<div style=\"text-align:center; display:block;\">
 
     <div class='botongrupo' >
     <form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Ver_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=520px,height=auto')\" class='whiletotala'>");
@@ -128,7 +130,7 @@
                 </form></div>");
         }
 
-    print("</div>");
+    print("</div><hr>"); } else { echo "<hr>"; }
 
     /* Creado por Juan Manuel Barros Pazos 2020/21 */
 

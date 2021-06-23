@@ -41,10 +41,17 @@ function process_form(){
 			$rutaimg = "src='../Gcb.Img.User/".$_POST['myimg']."'";
 			require 'table_data_resum.php';
 
+	require 'Admin_Botonera.php';
+
 	print("	<tr>
 				<td colspan=3 align='right' class='BorderSup'>
-					<form name='closewindow' action='Admin_Ver.php'>
-						<input type='submit' value='INICIO GESTION USUARIOS' class='botonverde' />
+				".$inicioadmin.$inciobajas."
+					<form name='boton' action='Admin_Ver.php' method='post'>
+						<input type='submit' value='INICIO GESTION ADMIN' class='botonverde' />
+						<input type='hidden' name='volver' value=1 />
+					</form>
+					<form name='boton' action='Feedback_Ver.php' method='post'>
+						<input type='submit' value='INICIO GESTION BAJAS' class='botonverde' />
 						<input type='hidden' name='volver' value=1 />
 					</form>
 				</td>
@@ -67,13 +74,10 @@ function process_form(){
 	if(mysqli_query($db, $sql)){
 			//print("* ");
 				} else {
-				print("<font color='#FF0000'>
-						SE HA PRODUCIDO UN ERROR: </font>
-						</br>
-						&nbsp;&nbsp;&nbsp;".mysqli_error($db))."
-						</br>";
-						show_form ();
-							}
+		print("<font color='#FF0000'>
+				SE HA PRODUCIDO UN ERROR: </font></br>&nbsp;&nbsp;&nbsp;".mysqli_error($db))."</br>";
+				show_form ();
+			}
 
 	}	
 

@@ -116,7 +116,7 @@ function process_form(){
 function show_form($errors=[]){
 
 	global $titulo;
-	$titulo = "GESTION USUARIOS";
+	$titulo = "GESTION USUARIOS<hr>";
 	global $boton;
 	$boton = "USUARIOS VER TODOS";
 

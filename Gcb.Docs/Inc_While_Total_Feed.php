@@ -9,18 +9,13 @@
 		} else {
 			
 			if(mysqli_num_rows($qb)== 0){
-							print ("<table align='center' style=\"border:0px\">
-										<tr>
-											<td align='center'>
-												<font color='#FF0000'>
-													NO HAY DATOS
-												</font>
-											</td>
-										</tr>
-									</table>");
+				print ("<table align='center' style=\"border:0px\">
+							<tr><td align='center'>
+								<font color='#FF0000'>NO HAY DATOS</font>
+							</td></tr></table>");
 
 		} else { print ("<div class=\"juancentra\">
-					".$twhile.": ".mysqli_num_rows($qb).".");
+					".$twhile.": ".mysqli_num_rows($qb)."<hr>".$inicioadmin.$inicioadmincrear);
                                     
 	while($rowb = mysqli_fetch_assoc($qb)){
     
@@ -54,7 +49,7 @@
 
 		require 'rowbtotal.php';
 
-		print($formulariofi);
+		print($formulariofi."<hr>");
 
 	 }  // FIN DEL WHILE
 
