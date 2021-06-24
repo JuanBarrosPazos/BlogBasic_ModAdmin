@@ -37,23 +37,15 @@ function process_form(){
 					</th>
 				</tr>");
 				
-			global $rutaimg;
-			$rutaimg = "src='../Gcb.Img.User/".$_POST['myimg']."'";
-			require 'table_data_resum.php';
+		global $rutaimg;
+		$rutaimg = "src='../Gcb.Img.User/".$_POST['myimg']."'";
+		require 'table_data_resum.php';
 
-	require 'Admin_Botonera.php';
+		require 'Admin_Botonera.php';
 
 	print("	<tr>
-				<td colspan=3 align='right' class='BorderSup'>
+				<td colspan=3 class='BorderSup'>
 				".$inicioadmin.$inciobajas."
-					<form name='boton' action='Admin_Ver.php' method='post'>
-						<input type='submit' value='INICIO GESTION ADMIN' class='botonverde' />
-						<input type='hidden' name='volver' value=1 />
-					</form>
-					<form name='boton' action='Feedback_Ver.php' method='post'>
-						<input type='submit' value='INICIO GESTION BAJAS' class='botonverde' />
-						<input type='hidden' name='volver' value=1 />
-					</form>
 				</td>
 			</tr>
 		</table>");	

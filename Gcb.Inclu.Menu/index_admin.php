@@ -30,6 +30,11 @@
 						<i class='ic ico02b'></i>USERS.LOG
 					</a>
 				</li>
+				<li>
+					<a href='".$rutabbdd."export_log_bajas.php'>
+						<i class='ic ico02b'></i>BAJAS.LOG
+					</a>
+				</li>
 			</ul>
 		</li>
 			");

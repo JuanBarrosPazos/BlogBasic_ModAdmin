@@ -1,6 +1,6 @@
 <?php
 
-	if(!$qb){
+if(!$qb){
 			print("<font color='#FF0000'>
 					Se ha producido un error: </font>".mysqli_error($db)."</br></br>");
 					
@@ -10,9 +10,10 @@
 			
 			if(mysqli_num_rows($qb)== 0){
 				print ("<table align='center' style=\"border:0px\">
-							<tr><td align='center'>
-								<font color='#FF0000'>NO HAY DATOS</font>
-							</td></tr></table>");
+						<tr><td align='center'>
+							".$inicioadmincrear.$inicioadmin."<hr>
+							<font color='#FF0000'>NO HAY DATOS</font>
+						</td></tr></table>");
 
 		} else { print ("<div class=\"juancentra\">
 					".$twhile.": ".mysqli_num_rows($qb)."<hr>".$inicioadmin.$inicioadmincrear);

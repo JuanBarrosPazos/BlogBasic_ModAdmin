@@ -100,6 +100,7 @@ function process_form(){
 
 		global $ruta;
 		$ruta = "";
+	require 'Admin_Botonera.php';
 	require 'Inc_While_Form.php';
 		global $rutaimg;
 		$rutaimg = "../Gcb.Img.User/";
@@ -177,6 +178,7 @@ function ver_todo(){
 	
 		global $ruta;
 		$ruta = "";
+	require 'Admin_Botonera.php';
 	require 'Inc_While_Form.php';
 		global $rutaimg;
 		$rutaimg = "../Gcb.Img.User/";

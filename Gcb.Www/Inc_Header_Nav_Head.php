@@ -17,6 +17,17 @@
   <!-- Custom fonts for this template -->
   <link href="../Gcb.Css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+<?php
+
+  // MODIFICO LA IMAGEN DE HEADER
+  //$_SESSION['imghead'] = "header-bg_Old.jpg";
+  echo"<style>
+        header.masthead {
+          background-image: url(../Gcb.Img.Tema/header-bg.jpg) !important;
+              }
+      </style>";
+
+?>
 
 </head>
 

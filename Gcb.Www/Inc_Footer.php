@@ -31,12 +31,14 @@
         </div>
         <div class="col-md-4">
           <ul class="list-inline quicklinks">
+          <!--
             <li class="list-inline-item">
               <a href="#">Privacy Policy</a>
             </li>
             <li class="list-inline-item">
               <a href="#">Terms of Use</a>
             </li>
+          -->
             <li class="list-inline-item">
               <a href="../Gcb.Docs/access.php" target="_blank">Admin Access</a>
             </li>

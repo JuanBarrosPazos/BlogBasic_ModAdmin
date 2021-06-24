@@ -56,7 +56,6 @@ function show_form(){
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 			
 			<input type='hidden' name='Orden' value='".$defaults['Orden']."' />
-			
 				<tr>
 					<td align='center'>
 							EXPORTE .LOG USUARIOS.
@@ -65,12 +64,11 @@ function show_form(){
 				<tr>
 					<td>
 					<div style='float:left; margin-right:6px''>
-						<input type='submit' value='SELECCIONE USUARIO' />
+						<input type='submit' value='SELECCIONE USUARIO' class='botonazul' />
 						<input type='hidden' name='oculto1' value=1 />
 					</div>
-					<div style='float:left'>
-
-						<select name='tablas'>");
+			<div style='float:left'>
+		<select name='tablas'>");
 
 	global $db;
 	global $tablau;
@@ -135,10 +133,11 @@ function listfiles(){
 	}else{
 	
 	print ("<table align='center' style='border:1; margin-top:2px' width='auto'>
-	<tr><td align='center' colspan='3' class='BorderInf'>".strtoupper($_SESSION['tablas'])." ARCHIVOS LOG </td></tr>");
+	<tr><td align='center' colspan='3' class='BorderInf'>".strtoupper($_SESSION['tablas'])." ARCHIVOS LOG 
+	</td></tr>");
 	while($archivo = readdir($directorio)){
 
-			$arch = substr($archivo, -16, 16);
+			$arch = substr($archivo, -15, 16);
 			$arch = strtolower($arch);
 			$ses = strtolower($_SESSION['tablas'].".log");
 
@@ -150,14 +149,14 @@ function listfiles(){
 			<form name='delete' action='$_SERVER[PHP_SELF]' method='post'>
 				<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
 				<input type='hidden' name='ruta' value='".$ruta.$archivo."'>
-				<input type='submit' value='ELIMINAR' >
+				<input type='submit' value='ELIMINAR' class='botonrojo' >
 				<input type='hidden' name='delete' value='1' >
 			</form>
 			</td>
 			<td class='BorderInfDch'>
 				<form name='archivos' action='".$ruta.$archivo."' target='_blank' method='post'>
 					<input type='hidden' name='tablas' value='".$_SESSION['tablas']."' />
-					<input type='submit' value='DESCARGAR'>
+					<input type='submit' value='DESCARGAR' class='botonverde' >
 				</form>
 			</td>
 			<td class='BorderInf'>".strtoupper($archivo)."</td>

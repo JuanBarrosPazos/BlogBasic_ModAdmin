@@ -15,13 +15,83 @@ if ($_SESSION['Nivel'] == 'admin'){
 
 	master_index();
 
-	if (@$_POST['oculto2']){ show_form();
+	if (@$_POST['oculto2']){ limpiatemp();
+							 show_form();
 							 info_01();
 							}
-	elseif($_POST['borrar']){	process_form();
-								info_02();
+	elseif($_POST['borrar']){ copyimgtemp();
+							  process_form();
+							  deletelog();
+							  info_02();
 		} else {show_form();}
 	} else { require '../Gcb.Inclu/table_permisos.php'; }
+
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
+
+function limpiatemp(){
+	global $ctemp;
+	$ctemp = "../Gcb.Temp";
+	if(file_exists($ctemp)){$dir1 = $ctemp."/";
+							$handle1 = opendir($dir1);
+							while ($file1 = readdir($handle1))
+									{if (is_file($dir1.$file1))
+										{unlink($dir1.$file1);}
+										}	
+								//rmdir ($ctemp);
+						} else {}
+	}
+
+function copyimgtemp(){
+		global $ctemp;
+		$ctemp = "../Gcb.Temp";
+		global $imgorg;
+		$imgorg = "../Gcb.Img.User/".$_POST['myimg'];
+					
+		if (!file_exists($ctemp)) {
+			mkdir($ctemp, 0777, true);
+			copy($imgorg, $ctemp."/".$_POST['myimg']);
+		}else{
+			copy($imgorg, $ctemp."/".$_POST['myimg']);
+				}
+	}
+
+function deletelog(){
+	
+		if (@$_SESSION['sref'] == "") { @$_SESSION['sref'] = $_POST['ref']; }
+		else { }
+
+		global $ruta;
+		$ruta ="../Gcb.Log/";
+		//print("RUTA: ".$ruta.".</br>");
+		
+		global $rutag;
+		$rutag = "../Gcb.Log/{*}";
+		//print("RUTA G: ".$rutag.".</br>");
+			
+		$directorio = opendir($ruta);
+		global $num;
+		$num=count(glob($rutag,GLOB_BRACE));
+		if($num < 1){ }else{
+		
+		while($archivo = readdir($directorio)){
+	
+				$arch = substr($archivo, -15, 16);
+				$arch = strtolower($arch);
+				$ses = strtolower($_SESSION['sref'].".log");
+	
+			if(($archivo != ',') && ($archivo != '.') && ($archivo != '..') && ($arch == $ses)){
+	
+				unlink($ruta.$archivo);
+
+			}else{}
+
+		} // FIN DEL WHILE
+		}
+		closedir($directorio);
+	
+}
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -44,20 +114,32 @@ function process_form(){
 
 	if(mysqli_query($db, $sql)){
 			//print("* ");
+	
+	/*
+		global $ctemp;
+		$ctemp = "../Gcb.Temp";
+		global $imgorg;
+		$imgorg = "../Gcb.Img.User/".$_POST['myimg'];
+			
+		if (!file_exists($ctemp)) {
+			mkdir($ctemp, 0777, true);
+			copy($imgorg, $ctemp."/".$_POST['myimg']);
+		}else{
+			copy($imgorg, $ctemp."/".$_POST['myimg']);
+					}
+	*/
 
 	print ("<table>
-				<tr>
-					<td colspan=3  class='BorderInf'>
-						SE HAN BORRADO TODOS LOS DATOS.
-					</td>
-				</tr>");
+				<tr><td colspan=3  class='BorderInf'>
+					SE HAN BORRADO TODOS LOS DATOS.
+				</td></tr>");
 	
 		global $rutaimg;
-		$rutaimg = "src='../Users/temp/".$_POST['myimg']."'";
+		$rutaimg = "src='../Gcb.Temp/".$_POST['myimg']."'";
 		require 'table_data_resum.php';
 		require 'table_data_resum_feed.php';
 
-	require 'Admin_Botonera.php';
+		require 'Admin_Botonera.php';
 
 	print("	<tr>
 				<td colspan=3 class='BorderSup'>
@@ -66,26 +148,8 @@ function process_form(){
 			</tr>
 		</table>"); // SE IMPRIME LA TABLA DE CONFIRMACION
 
-	global $ctemp;
-	$ctemp = "../Gcb.Temp";
-	global $imgorg;
-	$imgorg = "../Gcb.Img.User/".$_POST['myimg'];
-		
-	if (!file_exists($ctemp)) {
-		mkdir($ctemp, 0777, true);
-		copy($imgorg, $ctemp."/".$_POST['myimg']);
-	}else{
-		copy($imgorg, $ctemp."/".$_POST['myimg']);
-				}
-	
-	print ($table); // SE IMPRIME LA TABLA DE CONFIRMACION
 	
 	unlink("../Gcb.Img.User/".$_POST['myimg']);
-	
-	// SE GRABAN LOS DATOS EN LOG DEL ADMIN
-	global $deletet2;
-	global $deletet;
-	$deletet = $deletet2;
 	
 	} // FIN PRIMER IF SI SE BORRA EL USER DE LA BBDD
 	  // => ELSE BORRADO NO OK PRIMER QUERY
@@ -101,19 +165,7 @@ function process_form(){
 				 ////////////////////				  ///////////////////
 
 function show_form(){
-		
-	global $ctemp;
-	$ctemp = "../Users/temp";
-	global $imgorg;
-	$imgorg = "../Users/".$_POST['ref']."/img_admin/".$_POST['myimg'];
-				
-	if (!file_exists($ctemp)) {
-		mkdir($ctemp, 0777, true);
-		copy($imgorg, $ctemp."/".$_POST['myimg']);
-	}else{
-		copy($imgorg, $ctemp."/".$_POST['myimg']);
-			}
-
+	
 	if($_POST['oculto2']){	$_SESSION['sref'] = $_POST['ref'];
 							global $array_a;
 							$array_a = 1;

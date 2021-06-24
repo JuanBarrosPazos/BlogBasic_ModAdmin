@@ -9,19 +9,16 @@
 	} else {
 			
 		if(mysqli_num_rows($qb)== 0){
-				print ("<table style=\"text-align:center; border:0px;\">
-							<tr>
-								<td>
-									<font color='#FF0000'>NO HAY DATOS</font>
-								</td>
-							</tr>
-						</table>");
+			print ("<table style=\"text-align:center; border:0px;\">
+						<tr><td>
+							".$inicioadmincrear.$inciobajas."<hr>
+							<font color='#FF0000'>NO HAY DATOS</font>
+						</td></tr>
+					</table>");
 		} else { global $page;
 				 if ($page >= 1){ } 
 				 else { $page = 1;}
 
-	if ($_SESSION['Nivel'] == 'admin') { 
-		
 			if(isset($_POST['ocultoc'])){
 
 				$defaults['Nombre'] = $_POST['Nombre'];
@@ -42,10 +39,6 @@
 						</form><hr>";
 				}
 
-		} else { global $refrescaimg; $refrescaimg = ""; }
-
-	require 'Admin_Botonera.php';
-	
 	print ("<div class=\"juancentra\">
 	<!--".$twhile.": ".mysqli_num_rows($qb).".-->".$inicioadmincrear.$inciobajas."<hr>".$refrescaimg);
                                     
