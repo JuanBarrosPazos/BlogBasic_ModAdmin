@@ -52,7 +52,7 @@
             <div class='whiletotala'>
                 TITULO<br>".strtoupper($rowb['tit'])."
             </div>
-
+            
             <div class='whiletotala' style=\"width:180px !important; text-align:left;\">
                 <span style=\"display:block; text-align:center;\">
                     DESCRIPCION

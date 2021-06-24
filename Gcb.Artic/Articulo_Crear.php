@@ -241,7 +241,7 @@ function process_form(){
 		global $subtitul;
 		$subtitul = strtoupper($_POST['subtitul']);
 
-	$sqla = "INSERT INTO `$db_name`.$tablename (`refuser`, `refart`,`tit`,`titsub`,`datein`,`timein`,`datemod`,`timemod`,`conte`,`myimg`) VALUES ('$_POST[autor]', '$_POST[refart]', '$titulo', '$subtitul', '$_POST[datein]', '$_POST[timein]', '0000-00-00', '00:00:00', '$_POST[coment]', '$new_name')";
+	$sqla = "INSERT INTO `$db_name`.$tablename (`refuser`, `refart`,`tit`,`titsub`,`datein`,`timein`,`datemod`,`timemod`,`conte`,`myimg`,`myurl`) VALUES ('$_POST[autor]', '$_POST[refart]', '$titulo', '$subtitul', '$_POST[datein]', '$_POST[timein]', '0000-00-00', '00:00:00', '$_POST[coment]', '$new_name', '$_POST[myurl]')";
 
 	if(mysqli_query($db, $sqla)){
 
@@ -276,6 +276,11 @@ function process_form(){
 				<tr>
 					<td style='text-align:right;'>SUBTITULO</td>
 					<td style='text-align:left;'>".$_POST['subtitul']."</td>
+				</tr>
+				
+				<tr>
+					<td style='text-align:right;'>URL</td>
+					<td style='text-align:left;'>".$_POST['myurl']."</td>
 				</tr>
 				
 				<tr>
@@ -339,6 +344,7 @@ function show_form($errors=[]){
 								   	//'refart' => @$_SESSION['refart'],  Referencia articulo
 								   	'coment' => '',
 									'myimg' => '',	
+									'myurl' => '',	
 												);
 								   					}
 	
@@ -370,8 +376,7 @@ function show_form($errors=[]){
 	$rowautor = mysqli_fetch_assoc($q);
 	$_sec = @$rowautor['Nombre'];
 
-		print("
-			<table align='center' style=\"border:0px;margin-top:4px\" width='400px'>
+	print("<table align='center' style=\"border:0px;margin-top:4px\" width='400px'>
 				
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 				<tr>
@@ -398,39 +403,24 @@ function show_form($errors=[]){
 	} else {
 					
 		while($rows = mysqli_fetch_assoc($qb)){
-					
-					print ("<option value='".$rows['ref']."' ");
-					
-					if($rows['ref'] == $defaults['autor']){
-															print ("selected = 'selected'");
-																								}
-									print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
+				print ("<option value='".$rows['ref']."' ");
+				if($rows['ref'] == $defaults['autor']){ print ("selected = 'selected'"); }
+					print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
 				}
-		
 			}  
 
-	print ("	</select>
-					</td>
-			</tr>
-	
-		</form>	
-			
-			</table>				
-						");
+	print ("</select></td></tr></form></table>");
 				
 	if (isset($_POST['oculto1']) || isset($_POST['oculto'])) {
 	if ($_POST['autor'] == '0') { 
-						print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
-									<tr align='center'>
-										<td>
-											<font color='red'>
-												<b>
-										HA DE SELECCIONAR UN AUTOR PARA CREAR ARTICULOS.
-											</font>
-										</td>
-									</tr>
-								</table>");
-												}	
+			print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
+						<tr align='center'><td>
+								<font color='red'>
+									<b>
+							HA DE SELECCIONAR UN AUTOR PARA CREAR ARTICULOS.
+								</font>
+						</td></tr></table>");
+				}	
 
 //////////////////////////
 
@@ -459,7 +449,6 @@ function show_form($errors=[]){
 				
 <form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' enctype='multipart/form-data'>
 						
-
 			<tr>								
 						<td width=100px>
 							REF AUTOR
@@ -489,6 +478,15 @@ function show_form($errors=[]){
 					</td>
 				</tr>
 									
+				<tr>
+					<td>						
+						URL
+					</td>
+					<td>
+		<input type='text' name='myurl' size=20 maxlength=30 value='".@$defaults['myurl']."' />
+					</td>
+				</tr>
+
 				<tr>
 					<td>						
 						REFERENCIA
@@ -546,7 +544,6 @@ function show_form($errors=[]){
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 				</tr>
-				
 		</form>														
 			</table>				
 						"); 

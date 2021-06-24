@@ -99,6 +99,14 @@ function process_form(){
 			</tr>
 			<tr>
 				<td>						
+					URL
+				</td>
+				<td>
+					".$_SESSION['myurl']."
+				</td>
+			</tr>
+			<tr>
+				<td>						
 					DATE IN
 				</td>
 				<td>
@@ -167,6 +175,7 @@ function show_form(){
 		$_SESSION['timemod'] = date('H:i:s');
 		$_SESSION['conte'] = $_POST['conte'];
 		$_SESSION['myimg'] = $_POST['myimg'];
+		$_SESSION['myurl'] = $_POST['myurl'];
 		
 		$defaults = array ( 'autor' => $_SESSION['refuser'],  // ref autor
 							'titulo' => $_SESSION['tit'], // Titulo
@@ -178,6 +187,7 @@ function show_form(){
 							'timemod' => $_SESSION['timemod'], // Sub Titulo
 							'coment' => $_SESSION['conte'],
 							'myimg' => $_SESSION['myimg'],	
+							'myurl' => $_SESSION['myurl'],	
 									);
 
 		} elseif(isset($_POST['oculto'])){
@@ -193,6 +203,7 @@ function show_form(){
 							'timemod' => $_SESSION['timemod'], // Sub Titulo
 							'coment' => $_SESSION['conte'],
 							'myimg' => $_SESSION['myimg'],	
+							'myurl' => $_SESSION['myurl'],	
 									);
 								   					}
 		
@@ -209,27 +220,27 @@ function show_form(){
 
 		print("
 			<table align='center' style=\"border:0px;margin-top:4px\" width='400px'>
-				
-				<tr>
-					<th colspan='2'>
+				<tr><th colspan='2'>
 						ELIMINAR ARTICULO DE ".strtoupper($_sec)."
-					</th>
-				</tr>		
-			
-			</table>				
-						");
+				</th></tr>		
+			</table>");
 				
-
 	if ((@$_POST['autor'] != '') || ($_SESSION['refuser'] != '')) { 
-		
+
+
 	print("<table align='center' style=\"margin-top:10px; text-align:left; width:96%; max-width:500px\" >
 				<tr>
 					<th colspan=3 class='BorderInf'>
-
 							SERÁ IMPOSOBLE RECUPERAR ESTE ARTICULO
 					</th>
 				</tr>
-				
+
+				<tr>
+					<td colspan=3 class='BorderInf'>
+					<a href='Articulo_Ver.php' >CANCELAR Y VOLVER</a>
+					</td>
+				</tr>	
+
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 						
 			<tr>								
@@ -272,6 +283,16 @@ function show_form(){
 		<input type='hidden' name='refart' value='".$_SESSION['refart']."' />".$_SESSION['refart']."
 					</td>
 				</tr>
+
+				<tr>
+					<td>						
+						URL
+					</td>
+					<td>
+		<input type='hidden' name='myurl' value='".$_SESSION['myurl']."' />".$_SESSION['myurl']."
+					</td>
+				</tr>
+
 				<tr>
 					<td>						
 						DATE IN
@@ -322,7 +343,7 @@ function show_form(){
 
 				<tr>
 					<td colspan=3 align='right' valign='middle'  class='BorderSup'>
-						<input type='submit' value='BORRADO TOTAL ARTICULO' />
+						<input type='submit' value='BORRADO TOTAL ARTICULO' class='botonrojo' />
 						<input type='hidden' name='oculto' value=1 />
 					</td>
 				</tr>

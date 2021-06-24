@@ -837,8 +837,6 @@ function ver_todo(){
 	$defaults['Nombre'] = $_POST['Nombre'];
 	$defaults['Apellidos'] = $_POST['Apellidos'];
 
-	if ($_SESSION['Nivel'] == 'admin') { 
-
 	global $refrescaimg;
 	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
 			<input type='hidden' name='Nombre' value='".@$defaults['Nombre']."' />
@@ -852,7 +850,6 @@ function ver_todo(){
 		<input type='hidden' name='page' value=".$page." />
 					</form>";
 			}
-		} else {global $refrescaimg; $refrescaimg = "";}
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
 	*/
@@ -948,6 +945,7 @@ function articulos(){
   `conte` text(402) collate utf8_spanish2_ci NOT NULL,
   `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
   `myvdo` varchar(30) collate utf8_spanish2_ci DEFAULT NULL,
+  `myurl` varchar(50) collate utf8_spanish2_ci DEFAULT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `refart` (`refart`)

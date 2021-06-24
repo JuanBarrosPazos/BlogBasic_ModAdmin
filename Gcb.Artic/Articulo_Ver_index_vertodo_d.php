@@ -17,6 +17,7 @@
 				<input name='conte' type='hidden' value='".$rowb['conte']."' />
 				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
 				<input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
+				<input name='myurl' type='hidden' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='oculto2' value=1 />
 			</form>";	

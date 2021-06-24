@@ -12,6 +12,7 @@
             <input name='conte' type='hidden' value='".$rowb['conte']."' />
             <input name='myimg' type='hidden' value='".$rowb['myimg']."' />    
             <input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
+            <input name='myurl' type='hidden' value='".$rowb['myurl']."' />
         ");
 
         /* Creado por Juan Manuel Barros Pazos 2020/21 */

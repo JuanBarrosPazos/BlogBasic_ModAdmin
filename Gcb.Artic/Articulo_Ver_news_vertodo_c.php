@@ -14,10 +14,15 @@
 	if(!$qra){ print("* ".mysqli_error($db)."</br>");
 	} else { 
 			while($rowautor = mysqli_fetch_assoc($qra)){
-				global $autor;
-				$autor = "<h6>".$rowautor['Nombre']." ".$rowautor['Apellidos']."</h6>";
+				if(($rowautor['Nombre'] == "")||($rowautor['Apellidos'] == "")){
+					global $autor;
+					$autor =  "<h6>AUTOR ANONIMO</h6>";
+				} else {
+		global $autor;
+		$autor = "<h6>".strtoupper($rowautor['Nombre'])." ".strtoupper($rowautor['Apellidos'])."</h6>";
 				}
-			}
+			} // FIN WHILE
+		}
 
 	if ($rowb['myvdo'] != ''){
 		global $vdonw;
@@ -28,6 +33,12 @@
 				$vdonw = '';
 				}
 	
+	if ($rowb['myurl'] != ""){
+			global $myurl;
+			$myurl = '<h6><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h6>'; }
+	else { global $myurl;
+		   $myurl = "";}
+	
 	global $contem;
 	$contem = substr($rowb['conte'],0,100);
 	$contem = $contem." ...&nbsp;
@@ -37,6 +48,7 @@
 				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
 				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
 				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='leermas' id=\"".$rowb['refart']."\" value=1 />
 				".$pg."
@@ -44,7 +56,8 @@
 
     global $contep;
 	$contep = $rowb['conte'];
-	$contep = $autor.$vdonw.$contep."
+	global $autor;
+	$contep = $autor.$myurl.$vdonw.$contep."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 	<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />

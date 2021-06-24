@@ -144,7 +144,7 @@ function process_form(){
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
 
-	$sqla = "UPDATE `$db_name`.$tablename SET `refuser` = '$_POST[autor]', `tit` = '$_POST[titulo]', `titsub` = '$_POST[subtitul]', `datemod` = '$_POST[datemod]', `timemod` = '$_POST[timemod]', `conte` = '$_POST[coment]' WHERE $tablename.`refart` = '$_SESSION[refart]' LIMIT 1 ";
+	$sqla = "UPDATE `$db_name`.$tablename SET `refuser` = '$_POST[autor]', `tit` = '$_POST[titulo]', `titsub` = '$_POST[subtitul]', `datemod` = '$_POST[datemod]', `timemod` = '$_POST[timemod]', `conte` = '$_POST[coment]', `myurl` = '$_POST[myurl]' WHERE $tablename.`refart` = '$_SESSION[refart]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqla)){
 
@@ -173,6 +173,11 @@ function process_form(){
 				<tr>
 					<td style='text-align:right;'>SUBTITULO </td>
 					<td style='text-align:left;'>".$_POST['subtitul']."</td>
+				</tr>
+				
+				<tr>
+					<td style='text-align:right;'>URL </td>
+					<td style='text-align:left;'>".$_POST['myurl']."</td>
 				</tr>
 				
 				<tr>
@@ -219,6 +224,7 @@ function show_form($errors=[]){
 		$_SESSION['timemod'] = date('H:i:s');
 		$_SESSION['conte'] = $_POST['conte'];
 		$_SESSION['myimg'] = $_POST['myimg'];
+		$_SESSION['myurl'] = $_POST['myurl'];
 		
 		$defaults = array ( 'autor' => $_SESSION['refuser'],  // ref autor
 							'titulo' => $_SESSION['tit'], // Titulo
@@ -230,6 +236,7 @@ function show_form($errors=[]){
 							'timemod' => $_SESSION['timemod'], // Sub Titulo
 							'coment' => $_SESSION['conte'],
 							'myimg' => $_SESSION['myimg'],	
+							'myurl' => $_SESSION['myurl'],	
 									);
 
 		} elseif(isset($_POST['oculto1'])){
@@ -247,6 +254,7 @@ function show_form($errors=[]){
 									'timemod' => $_SESSION['timemod'], // Sub Titulo
 									'coment' => $_SESSION['conte'],
 									'myimg' => $_SESSION['myimg'],	
+									'myurl' => $_SESSION['myurl'],	
 									);
 
 
@@ -366,6 +374,13 @@ function show_form($errors=[]){
 				<td style='text-align:right;'>SUBTITULO </td>
 				<td style='text-align:left;'>
 		<input type='text' name='subtitul' size=20 maxlength=20 value='".$defaults['subtitul']."' />
+				</td>
+			</tr>
+									
+			<tr>
+				<td style='text-align:right;'>URL </td>
+				<td style='text-align:left;'>
+		<input type='text' name='myurl' size=20 maxlength=30 value='".$defaults['myurl']."' />
 				</td>
 			</tr>
 									

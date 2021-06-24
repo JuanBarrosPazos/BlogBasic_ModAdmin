@@ -78,17 +78,17 @@ function process_form(){
 	echo "****** ".$_POST['dy'];
 	*/
 
-	global $refrescaimg;
-	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
-			<input type='hidden' name='autor' value='".@$_POST['autor']."' />
-			<input type='hidden' name='titulo' value='".@$_POST['titulo']."' />
-			<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
-			<input type='hidden' name='dy' value='".@$_POST['dy']."' />
-			<input type='hidden' name='dm' value='".@$_POST['dm']."' />
-			<input type='hidden' name='dd' value='".@$_POST['dd']."' />
-			<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
-			<input type='hidden' name='oculto' value=1 />
-						</form>";
+global $refrescaimg;
+$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
+					<input type='hidden' name='autor' value='".@$_POST['autor']."' />
+					<input type='hidden' name='titulo' value='".@$_POST['titulo']."' />
+					<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+					<input type='hidden' name='dy' value='".@$_POST['dy']."' />
+					<input type='hidden' name='dm' value='".@$_POST['dm']."' />
+					<input type='hidden' name='dd' value='".@$_POST['dd']."' />
+					<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+					<input type='hidden' name='oculto' value=1 />
+				</form><hr>";
 
 	global $fil;
 	$fil = $dy1.$dm1."%";
@@ -178,16 +178,16 @@ function ver_todo(){
 	echo "****** ".$_POST['dy'];
 	*/
 
-	global $refrescaimg;
-	$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
-				<input type='hidden' name='autor' value='".@$_POST['autor']."' />
-				<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
-				<input type='hidden' name='dy' value='".@$_POST['dy']."' />
-				<input type='hidden' name='dm' value='".@$_POST['dm']."' />
-				<input type='hidden' name='dd' value='".@$_POST['dd']."' />
-				<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
-				<input type='hidden' name='todo' value=1 />
-					</form>";
+global $refrescaimg;
+$refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST' style='margin-top: 4px;'>
+					<input type='hidden' name='autor' value='".@$_POST['autor']."' />
+					<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+					<input type='hidden' name='dy' value='".@$_POST['dy']."' />
+					<input type='hidden' name='dm' value='".@$_POST['dm']."' />
+					<input type='hidden' name='dd' value='".@$_POST['dd']."' />
+					<input type='submit' value='REFRESCAR DESPUES DE MODIFICAR DATOS' class='botonazul' />
+					<input type='hidden' name='todo' value=1 />
+				</form><hr>";
 	
 	global $vname;
 	$vname = "gcb_".$dyt1."_articulos";
@@ -219,7 +219,6 @@ function ver_todo(){
 			} // FIN WHILE
 
 	print("</div>");
-			
 						} 
 
 			} 

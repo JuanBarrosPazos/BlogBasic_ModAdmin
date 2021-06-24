@@ -15,6 +15,7 @@ $conte = $conte." ...&nbsp;
             <input name='timemod' type='hidden' value='".$rowb['timemod']."' />
             <input name='conte' type='hidden' value='".$rowb['conte']."' />
             <input name='myimg' type='hidden' value='".$rowb['myimg']."' />
+            <input name='myurl' type='hidden' value='".$rowb['myurl']."' />
             <input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
             <input type='submit' value='LEER MÁS...' class='botonleer' />
             <input type='hidden' name='oculto2' value=1 />

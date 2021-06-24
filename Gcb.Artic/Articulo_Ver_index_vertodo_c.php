@@ -14,8 +14,8 @@
 	if(!$qra){ print("* ".mysqli_error($db)."</br>");
 	} else { 
 			while($rowautor = mysqli_fetch_assoc($qra)){
-				global $autor;
-				$autor = "<h6>".$rowautor['Nombre']." ".$rowautor['Apellidos']."</h6>";
+	global $autor;
+	$autor = "<h6>AUTOR: ".strtoupper($rowautor['Nombre'])." ".strtoupper($rowautor['Apellidos'])."</h6>";
 				}
 			}
 
@@ -27,6 +27,12 @@
 		}else{	global $vdonw;
 				$vdonw = '';
 				}
+	
+	if ($rowb['myurl'] != ""){
+			global $myurl;
+			$myurl = '<h6><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h6>'; }
+	else { global $myurl;
+		   $myurl = "";}
 	
 	global $contem;
 	$contem = substr($rowb['conte'],0,100);
@@ -44,7 +50,9 @@
 
     global $contep;
 	$contep = $rowb['conte'];
-	$contep = $autor.$vdonw.$contep."
+	if (!isset($autor)){ global $autor;
+						 $autor = "<h6>AUTOR ANONIMO</h6>";};
+	$contep = $autor.$myurl.$vdonw.$contep."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 			<form name='ver' name='ver' action=\"index.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />

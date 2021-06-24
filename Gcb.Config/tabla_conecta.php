@@ -1,13 +1,11 @@
 <?php
 
 	print("<table align='center' style=\"margin-top:10px\">
-					<tr>
-					<td style='color:red' align='center'>
+				<tr><td style='color:red' align='center'>
 					INTRODUZCA LOS DATOS DE CONEXI&Oacute;N A LA BBDD.
-							</br>
+					</br>
 			SE CREAR&Aacute; EL ARCHIVO DE CONEXI&Oacute;N Y LAS TABLAS DE CONFIGURACI&Oacute;N.
-					</td>
-				</tr>
+				</td></tr>
 			</table>
 			
 			<table style=\"margin-top:10px\">
