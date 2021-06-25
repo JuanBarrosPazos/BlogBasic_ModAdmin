@@ -8,7 +8,7 @@
   `Nivel` varchar(8) collate utf8_spanish2_ci NOT NULL default 'amd',
   `Nombre` varchar(25) collate utf8_spanish2_ci NOT NULL,
   `Apellidos` varchar(25) collate utf8_spanish2_ci NOT NULL,
-  `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png ',
+  `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
   `doc` varchar(11) collate utf8_spanish2_ci NOT NULL,
   `dni` varchar(8) collate utf8_spanish2_ci NOT NULL,
   `ldni` varchar(1) collate utf8_spanish2_ci NOT NULL,
@@ -17,8 +17,8 @@
   `Password` varchar(100) collate utf8_spanish2_ci NOT NULL,
   `Pass` varchar(10) collate utf8_spanish2_ci NOT NULL,
   `Direccion` varchar(60) collate utf8_spanish2_ci NOT NULL,
-  `Tlf1`varchar(9) NOT NULL default '0',
-  `Tlf2`varchar(9) NOT NULL default '0',
+  `Tlf1` varchar(9) NOT NULL default '0',
+  `Tlf2` varchar(9) NOT NULL default '0',
   `lastin` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
   `lastout` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
   `visitadmin` varchar(4) collate utf8_spanish2_ci NOT NULL default '0',
@@ -32,7 +32,15 @@
 	if(mysqli_query($db , $admin)){
 					global $table1;
 					$table1 = "\t* OK TABLA ADMIN.".PHP_EOL;
-				} else {
+	
+	$ad = "INSERT INTO `$db_name`.`gcb_admin` (`id`,`ref`,`Nivel`,`Nombre`,`Apellidos`,`myimg`,`doc`,`dni`,`ldni`,`Email`,`Usuario`,`Password`,`Pass`,`Direccion`,`Tlf1`,`Tlf2`,`lastin`,`lastout`,`visitadmin`) VALUES
+	('1', 'anonimo', 'close', 'Anonimo', 'Autor', 'untitled.png', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', '0', '0', '0', '0', '0')";
+		if(mysqli_query($db, $ad)){
+						$table1 = $table1."\t* OK INIT VALUES EN VISITAS ADMIN.".PHP_EOL;
+		} else { $table1 = $table1."\t* NO OK INIT VALUES EN VISITAS ADMIN. ".mysqli_error($db).PHP_EOL;
+						}
+
+			} else {
 					global $table1;
 					$table1 = "\t* NO OK TABLA ADMIN. ".mysqli_error($db).PHP_EOL;
 					

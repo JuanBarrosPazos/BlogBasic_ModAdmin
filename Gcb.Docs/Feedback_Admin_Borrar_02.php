@@ -30,6 +30,28 @@ if ($_SESSION['Nivel'] == 'admin'){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
+	function anonimo() {
+		require '../Gcb.Config/ayear.php';
+		foreach($dy as $key => $value){
+			//echo $key." => ".$value."<br>";
+			global $db;
+			global $db_name;
+			global $tablename;
+			if ($key != ""){ $tablename = "gcb_20".$key."_articulos";
+							 $tablename = "`".$tablename."`"; 
+			$sql =  "UPDATE `$db_name`.$tablename SET `refuser` = 'anonimo' WHERE $tablename.`refuser` = '$_POST[ref]' ";
+			$q = mysqli_query($db, $sql);
+				if(!$q){
+					print("<font color='#FF0000'>Consulte L.174: </font></br>".mysqli_error($db)."</br>");
+				} else { } // FIN ELSE
+			}
+		} // FIN FOREACH
+	} //FIN FUNCTION ANONIMO
+
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
+
 function limpiatemp(){
 	global $ctemp;
 	$ctemp = "../Gcb.Temp";
@@ -115,6 +137,7 @@ function process_form(){
 	if(mysqli_query($db, $sql)){
 			//print("* ");
 	
+	anonimo();
 	/*
 		global $ctemp;
 		$ctemp = "../Gcb.Temp";

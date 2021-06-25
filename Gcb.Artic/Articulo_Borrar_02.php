@@ -54,7 +54,7 @@ function process_form(){
 
 	if(mysqli_query($db, $sqla)){
 
-			global $new_name;
+		global $new_name;
 
 	print("<table align='center' style=\"margin-top:10px\">
 		<tr>
@@ -63,91 +63,51 @@ function process_form(){
 			</th>
 		</tr>
 		<tr>								
-				<td width=100px>
-						REF AUTOR
-				</td>
-				<td width=140px>
-					".$_SESSION['refuser']."
-				</td>
-				<td rowspan='5' align='right' width='120px'>
-					<img style='height:120px; width:90px;' src='../Gcb.Img.Art/".$_SESSION['myimg']."' />
-				</td>
+			<td width=100px>REF AUTOR </td>
+			<td width=140px>".$_SESSION['refuser']."</td>
+			<td rowspan='5' align='right' width='120px'>
+				<img style='height:120px; width:90px;' src='../Gcb.Img.Art/".$_SESSION['myimg']."' />
+			</td>
+		</tr>
+		<tr>
+			<td>TITULO </td>
+			<td>".$_SESSION['tit']."</td>
+		</tr>
+		<tr>
+			<td>SUBTITULO </td>
+			<td>".$_SESSION['titsub']."</td>
+		</tr>
+		<tr>
+			<td>REFERENCIA </td>
+			<td>".$_SESSION['refart']."</td>
+		</tr>
+		<tr>
+			<td>URL </td>
+			<td>".$_SESSION['myurl']."</td>
 			</tr>
-			<tr>
-				<td>
-					TITULO
-				</td>
-				<td>
-					".$_SESSION['tit']."
-				</td>
+		<tr>
+			<td>DATE IN </td>
+			<td>".$_SESSION['datein']."</td>
 			</tr>
-			<tr>
-				<td>						
-					SUBTITULO
-				</td>
-				<td>
-					".$_SESSION['titsub']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					REFERENCIA
-				</td>
-				<td>
-					".$_SESSION['refart']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					URL
-				</td>
-				<td>
-					".$_SESSION['myurl']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					DATE IN
-				</td>
-				<td>
-					".$_SESSION['datein']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					TIME IN
-				</td>
-				<td>
-					".$_SESSION['timein']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					DATE MOD
-				</td>
-				<td>
-					".$_SESSION['datemod']."
-				</td>
-			</tr>
-			<tr>
-				<td>						
-					TIME MOD
-				</td>
-				<td>
-					".$_SESSION['timemod']."
-				</td>
-			</tr>
-			<tr>
-				<td colspan=3  align='center'>
-					ARTICULO
-				</td>
-			</tr>
-			<tr>
-				<td colspan=3>
-					".$_SESSION['conte']."
-				</td>
-			</tr>
-		</table>"); 
+		<tr>
+			<td>TIME IN </td>
+			<td>".$_SESSION['timein']."</td>
+		</tr>
+		<tr>
+			<td>DATE MOD </td>
+			<td>".$_SESSION['datemod']."</td>
+		</tr>
+		<tr>
+			<td>TIME MOD </td>
+			<td>".$_SESSION['timemod']."</td>
+		</tr>
+		<tr>
+			<td colspan=3  align='center'>ARTICULO </td>
+		</tr>
+		<tr>
+			<td colspan=3>".$_SESSION['conte']."</td>
+		</tr>
+	</table>"); 
 			
 	} 	else {print("* MODIFIQUE LA ENTRADA L.70: ".mysqli_error($db));
 						show_form ();
@@ -160,7 +120,7 @@ function process_form(){
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 function show_form(){
-	
+
 	if(isset($_POST['oculto2'])){
 		//$defaults = $_POST;
 		
