@@ -24,7 +24,7 @@
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
+		echo "<div class='col-lg-12 text-center'><h7>** NO HAY DATOS EN ".$dyt1." **</h7></div>";
 		global $fil;
 		$fil = ($dyt1-1)."-%";	
 		global $vname;
@@ -32,9 +32,13 @@
 		$vname = "`".$vname."`";
 		$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
 		$q = mysqli_query($db, $result);
+		/* */
 		$row = mysqli_fetch_assoc($q);
 		global $num_total_rows;
 		$num_total_rows = mysqli_num_rows($q);
+		
+		$_SESSION['dy'] = date('y')-1;
+		
 	} else { }
 
 	global $page;

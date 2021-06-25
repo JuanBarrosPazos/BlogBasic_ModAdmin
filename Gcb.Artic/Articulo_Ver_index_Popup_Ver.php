@@ -67,8 +67,8 @@ function process_form(){
 	/////
 
 	if ($_POST['myurl'] != ""){
-			global $myurl;
-			$myurl = '<h6><a href="'.$_POST['myurl'].'" target="_blanck">LINK EXTERNO</a></h6>'; }
+		global $myurl;
+		$myurl = '<h7 style=\'display:inline-block;\'><a href="'.$_POST['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>'; }
 	else { global $myurl;
 		   $myurl = "";}
 	
@@ -81,8 +81,9 @@ function process_form(){
 		</form>
 			".$_sec."<h5>".$_POST['tit']."</h5>
 			
-			".$myurl.$visual."
+			".$visual."
 			<h6 style=\"text-align:left;\">".$_POST['conte']."</h6>
+			".$myurl."
 			<p>
 			<img src='../Gcb.Img.Art/".$_POST['myimg']."' style=\" width:98%; max-width:700px;\" />
 			</p>

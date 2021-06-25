@@ -29,8 +29,8 @@
 				}
 	
 	if ($rowb['myurl'] != ""){
-			global $myurl;
-			$myurl = '<h6><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h6>'; }
+		global $myurl;
+		$myurl = '<h7 style=\'display:inline-block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>'; }
 	else { global $myurl;
 		   $myurl = "";}
 	
@@ -52,7 +52,7 @@
 	$contep = $rowb['conte'];
 	if (!isset($autor)){ global $autor;
 						 $autor = "<h6>AUTOR ANONIMO</h6>";};
-	$contep = $autor.$myurl.$vdonw.$contep."
+	$contep = $autor.$vdonw.$contep.$myurl."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 			<form name='ver' name='ver' action=\"index.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />

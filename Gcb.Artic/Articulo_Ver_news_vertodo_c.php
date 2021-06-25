@@ -35,7 +35,7 @@
 	
 	if ($rowb['myurl'] != ""){
 			global $myurl;
-			$myurl = '<h6><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h6>'; }
+			$myurl = '<h7 style=\'display:inline-block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>'; }
 	else { global $myurl;
 		   $myurl = "";}
 	
@@ -57,7 +57,7 @@
     global $contep;
 	$contep = $rowb['conte'];
 	global $autor;
-	$contep = $autor.$myurl.$vdonw.$contep."
+	$contep = $autor.$vdonw.$contep.$myurl."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 	<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />

@@ -20,14 +20,17 @@
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
+		//echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
 		global $vname;
 		$vname = "gcb_".($dyt1-1)."_articulos";
 		$vname = "`".$vname."`";
 		$result =  "SELECT * FROM $vname ";
 		$q = mysqli_query($db, $result);
+		/*	*/
 		$row = mysqli_fetch_assoc($q);
 		global $num_total_rows;
 		$num_total_rows = mysqli_num_rows($q);
+		
 	} else { }
 
 	global $page;

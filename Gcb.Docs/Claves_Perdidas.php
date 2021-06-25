@@ -294,12 +294,12 @@ function process_form(){
 			</tr>
 			<tr>
 				<td colspan=2 align='center'>
-		<img style:height='60px; width:45px;' src='../Gcb.Img.User/".$rowc['myimg']."' />
+	<img style='height:60px; width:45px;' src='../Gcb.Img.User/".$rowc['myimg']."' />
 				</td>
 			</tr>
 			<tr>
 				<td colspan=2 align='center'>
-	<input name='Nombre' type='hidden' value='".$rowc['Nombre']."' />".$rowc['Nombre']." ".$rowc['Apellidos'].".
+<input name='Nombre' type='hidden' value='".$rowc['Nombre']."' />".$rowc['Nombre']." ".$rowc['Apellidos'].".
 			<input name='Apellidos' type='hidden' value='".$rowc['Apellidos']."' />
 				</td>
 			</tr>
@@ -503,17 +503,16 @@ function process_form(){
 									</td>
 								</tr>
 							<table>
-	<embed src='../Gcb.Audi/claves_lost_3.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
-		</embed>");
+	<embed src='../Gcb.Audi/claves_lost_3.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' ></embed>");
 						
 			}else{
 			print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
 						<tr>
 							<td align='center'>
 								<font color='#FF0000'>
-									EL MENSAJE NO HA PODIDO ENVIARSE,
+									EL MENSAJE NO HA PODIDO ENVIARSE,<br>
 									LO SENTIMOS MUCHO, ".$_POST['Nombre']." ".$_POST['Apellidos']."
-									MUCHAS GRACIAS.
+									<br>MUCHAS GRACIAS.
 								</font>
 							</td>
 						</tr>
@@ -531,9 +530,8 @@ function process_form(){
 								</a>
 							</td>
 						</tr>
-					<table>
-	<embed src='../Gcb.Audi/claves_lost_4.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
-		</embed>");
+	<embed src='../Gcb.Audi/claves_lost_4.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' ></embed>
+			</table>");
 														
 					} /*Fin del if del mail*/
 														
