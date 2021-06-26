@@ -198,7 +198,7 @@ function process_form(){
 					"</td>
 				</tr>".$headpop."</table>");
 			
-	} 	else {print("* MODIFIQUE LA ENTRADA L.152: ".mysqli_error($db));
+	} 	else {print("* MODIFIQUE LA ENTRADA L.147: ".mysqli_error($db));
 						show_form ();
 						//global $texerror;
 						//$texerror = "\n\t ".mysqli_error($db);

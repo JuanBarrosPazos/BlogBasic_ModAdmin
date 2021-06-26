@@ -2,7 +2,10 @@
 
 	if(isset($_POST['oculto'])){ $defaults = $_POST; }
         
-	elseif(isset($_POST['todo'])){
+	elseif((isset($_POST['visiblesi']))||(isset($_POST['visibleno']))){
+				$defaults = $_POST;
+				$defaults['dy'] =  substr($_POST['dy'], 2, 2);
+	}elseif(isset($_POST['todo'])){
 				$defaults = array ('titulo' => isset($_POST['titulo']),
 								   'autor' => isset($_POST['autor']),
 								   'Orden' => $_POST['Orden'],
@@ -164,7 +167,8 @@
                          &nbsp;AUTOR&nbsp;
 						</div>
 						<div style='float:left; text-align:left;'>
-            <select name='autor'>");
+            <select name='autor'>
+			<option value=''>SELECCIONE AUTOR</option>");
 						
 	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	
 			

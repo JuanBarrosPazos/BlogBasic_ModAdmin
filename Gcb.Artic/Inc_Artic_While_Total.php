@@ -75,6 +75,7 @@
 	print("<div style=\"text-align:center; display:block;\">
 
     <div class='botongrupo' >
+
     <form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Ver_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=520px,height=auto')\" class='whiletotala'>");
 
         require 'Inc_Artic_While_Total_Rows.php';
@@ -89,9 +90,43 @@
 
 	print(" <input type='submit' value='MODIFICA IMAGEN' class='botonnaranja' />
 			<input type='hidden' name='oculto2' value=1 />
-            </form></div>
+            </form></div>");
 
-        <div class='botongrupo' >
+    // INCIO MUESTRO ARTICULO
+
+    if ($rowb['visible'] == "n"){
+    print("<form name='visiblesi' action='$_SERVER[PHP_SELF]' method='POST' class='whiletotala'>");
+
+            require 'Inc_Artic_While_Total_Rows.php';
+            
+    print ("<input type='submit' value='MOSTRAR ARTICULO' class='botonverde' />
+            <input type='hidden' name='visiblesi' value=1 />
+			<input type='hidden' name='autor' value='".@$_POST['autor']."' />
+			<input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+            <input type='hidden' name='dy' value=".$dyt1." />
+			<input type='hidden' name='dm' value='".@$_POST['dm']."' />
+			<input type='hidden' name='dd' value='".@$_POST['dd']."' />
+        </form>");
+    }// FIN MUESTRO ARTICULO
+    elseif ($rowb['visible'] == "y"){
+    // INICIO OCULTO ARTICULO
+    print("<form name='ver' action='$_SERVER[PHP_SELF]' method='POST' class='whiletotala'>");
+
+            require 'Inc_Artic_While_Total_Rows.php';
+            
+    print ("<input type='submit' value='OCULTAR ARTICULO' class='botonrojo' />
+            <input type='hidden' name='visibleno' value=1 />
+            <input type='hidden' name='autor' value='".@$_POST['autor']."' />
+            <input type='hidden' name='Orden' value='".@$_POST['Orden']."' />
+            <input type='hidden' name='dy' value=".$dyt1." />
+            <input type='hidden' name='dm' value='".@$_POST['dm']."' />
+            <input type='hidden' name='dd' value='".@$_POST['dd']."' />
+        </form>");
+    // FIN OCULTO ARTICULO
+    } else { } // FIN MOSTRAR OCULTAR ARTICULO
+
+    print("
+    <div class='botongrupo' >
 		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Modificar_02.php' method='POST' target='popup' onsubmit=\"window.open('', 'popup', 'width=420px,height=850em')\" class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';

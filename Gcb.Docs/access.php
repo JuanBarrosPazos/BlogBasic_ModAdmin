@@ -49,6 +49,8 @@ session_start();
 									 //session_destroy();
 									}
 
+	elseif (isset($_POST['visibleno'])) { visibleno(); }
+
 	else{ if(@$_SESSION['showf'] == 69){table_desblock();}
 					else{show_form();
 						 show_visit();}
@@ -766,6 +768,34 @@ function suma_visit(){
 ////////////////////				////////////////////				////////////////////
 				 ////////////////////				  ///////////////////
 
+function visibleno(){
+
+		/* GRABAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
+
+	global $db;
+	global $db_name;
+	global $dyt1;
+	$dyt1 = trim($_SESSION['dyt1']);
+	global $tablename;
+	$tablename = "gcb_".$dyt1."_articulos";
+	$tablename = "`".$tablename."`";
+ 
+	$sqla = "UPDATE `$db_name`.$tablename SET `visible` = 'n' WHERE $tablename.`refart` = '$_POST[refart]' LIMIT 1 ";
+
+	if(mysqli_query($db, $sqla)){ master_index(); 
+								  ver_todo();
+					//echo "* ARTICULO:".$_POST['refart']." - ".$tablename;
+	} else { print("<h5>* MODIFIQUE LA ENTRADA L.147: ".mysqli_error($db)."</h5>");
+				master_index();
+				ver_todo();
+					}
+
+	}  // FIN FUNCTION visible();
+
+				   ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+				 ////////////////////				  ///////////////////
+
 function ver_todo(){
 		
 	global $db;
@@ -779,7 +809,7 @@ function ver_todo(){
 	
 	$_SESSION['dyt1'] = date('Y');
 
-	$result =  "SELECT * FROM $vname ";
+	$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -792,11 +822,14 @@ function ver_todo(){
 		$vname = "gcb_".(date('Y')-1)."_articulos";
 		$vname = "`".$vname."`";
 		$_SESSION['dyt1'] = (date('Y')-1);
-		$result =  "SELECT * FROM $vname ";
+		$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
 		$q = mysqli_query($db, $result);
 		@$row = mysqli_fetch_assoc($q);
 		global $num_total_rows;
 		@$num_total_rows = mysqli_num_rows($q);
+
+		$_SESSION['dy'] = date('y')-1;
+
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -830,7 +863,7 @@ function ver_todo(){
 	$limit = " LIMIT ".$start.", ".$nitem;
 
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname  ORDER BY `refart` ASC $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' ORDER BY `refart` ASC $limit";
 
 	if(isset($_POST['ocultoc'])){
 

@@ -65,7 +65,7 @@
 	$vname = "gcb_".$dyt1."_articulos";
 	//$vname = "`".$vname."`";
 
-	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor AND `visible` = 'y' ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -79,14 +79,14 @@
 		global $vname;
 		$vname = "gcb_".($dyt1-1)."_articulos";
 		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor AND `visible` = 'y' ";
 		$q = mysqli_query($db, $result);
 		/*	*/
 		@$row = mysqli_fetch_assoc($q);
 		global $num_total_rows;
 		@$num_total_rows = mysqli_num_rows($q);
 		
-		$_SESSION['dy'] = date('y')-1;
+		$_SESSION['dy'] = $_SESSION['dy']-1;
 		
 	} else { }
 
@@ -118,7 +118,7 @@
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor  ORDER BY $orden $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor AND `visible` = 'y'   ORDER BY $orden $limit";
 	$qb = mysqli_query($db, $sqlb);
 
 ?>

@@ -108,6 +108,7 @@
   `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
   `myvdo` varchar(30) collate utf8_spanish2_ci DEFAULT NULL,
   `myurl` varchar(50) collate utf8_spanish2_ci DEFAULT NULL,
+  `visible` varchar(1) collate utf8_spanish2_ci NOT NULL default 'n',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `refart` (`refart`)
@@ -147,6 +148,9 @@
   `timemod` varchar(20) collate utf8_spanish2_ci NOT NULL default '0',
   `conte` text(402) collate utf8_spanish2_ci NOT NULL,
   `myimg` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
+  `myvdo` varchar(30) collate utf8_spanish2_ci DEFAULT NULL,
+  `myurl` varchar(50) collate utf8_spanish2_ci DEFAULT NULL,
+  `visible` varchar(1) collate utf8_spanish2_ci NOT NULL default 'n',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `refart` (`refart`)
