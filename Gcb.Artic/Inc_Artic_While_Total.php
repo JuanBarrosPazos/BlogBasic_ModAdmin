@@ -136,8 +136,7 @@
 			<input type='hidden' name='headpop' value=1 />
 			</form>
 
-		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Borrar_02.php' method='POST' class='whiletotala'>
-			");
+		<form name='ver' action='".$rutaurl.$rutaurlart."Articulo_Borrar_02.php' method='POST' class='whiletotala'>");
 
             require 'Inc_Artic_While_Total_Rows.php';
 

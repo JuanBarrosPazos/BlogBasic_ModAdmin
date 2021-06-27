@@ -46,21 +46,25 @@ function validate_form(){
 	global $db;
 	global $db_name;
 
+	global $dyt1;
+	$dyt1 = trim($_SESSION['dyt1']);
+
 	$errors = array();
 
-/*
+/* */		
 	if(strlen(trim($_POST['refart'])) != 0){	
-			$secc1 = "gcb_".date('Y')."_articulos";
+			global $dyt1;	
+			$secc1 = "gcb_".$dyt1."_articulos";
 			$secc1 = "`".$secc1."`";
 			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `refart` = '$_POST[refart]'";
 			$qc = mysqli_query($db, $sqlc);
 			global $conutc;
 			$countc = mysqli_num_rows($qc);
-			if($countc > 0){
+			if($countc > 1){
 				$errors [] = "YA EXISTE EL ARTICULO.";
 				}
-		}
-*/
+		} 
+
 		///////////////////////////////////////////////////////////////////////////////////
 
 	if(strlen(trim($_POST['titulo'])) == 0){
@@ -78,7 +82,24 @@ function validate_form(){
 	elseif (!preg_match('/^[a-z A-Z,0-9\s]+$/',$_POST['titulo'])){
 		$errors [] = "TITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
 		}
-	
+	elseif(strlen(trim($_POST['titulo'])) != 0){
+			global $dyt1;	
+			$secc1 = "gcb_".$dyt1."_articulos";
+			$secc1 = "`".$secc1."`";
+			global $titulo;
+			$titulo = strtoupper($_POST['titulo']);
+			global $artid;
+			$artid = $_SESSION['idart'];
+			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `tit` = '$titulo' AND `id` <> '$artid' ";
+			$qc = mysqli_query($db, $sqlc);
+			global $conutc;
+			$countc = mysqli_num_rows($qc);
+			if($countc > 0){
+			$errors [] = "YA EXISTE ESTE TITULO";
+				}
+		}
+
+
 	if(strlen(trim($_POST['subtitul'])) == 0){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Campo es obligatorio.</font>";
 		}
@@ -93,6 +114,22 @@ function validate_form(){
 		
 	elseif (!preg_match('/^[a-z A-Z,0-9\s]+$/',$_POST['subtitul'])){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
+		}
+	elseif(strlen(trim($_POST['subtitul'])) != 0){	
+			global $dyt1;	
+			$secc1 = "gcb_".$dyt1."_articulos";
+			$secc1 = "`".$secc1."`";
+			global $subtitul;
+			$subtitul = strtoupper($_POST['subtitul']);
+			global $artid;
+			$artid = $_SESSION['idart'];
+			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `titsub` = '$subtitul' AND `id` <> '$artid'";
+			$qc = mysqli_query($db, $sqlc);
+			global $conutc;
+			$countc = mysqli_num_rows($qc);
+			if($countc > 0){
+			$errors [] = "YA EXISTE ESTE SUBTITULO ".$dyt1;
+				}
 		}
 	
 	
@@ -144,7 +181,12 @@ function process_form(){
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
 
-	$sqla = "UPDATE `$db_name`.$tablename SET `refuser` = '$_POST[autor]', `tit` = '$_POST[titulo]', `titsub` = '$_POST[subtitul]', `datemod` = '$_POST[datemod]', `timemod` = '$_POST[timemod]', `conte` = '$_POST[coment]', `myurl` = '$_POST[myurl]' WHERE $tablename.`refart` = '$_SESSION[refart]' LIMIT 1 ";
+	global $titulo;
+	$titulo = strtoupper($_POST['titulo']);
+	global $subtitul;
+	$subtitul = strtoupper($_POST['subtitul']);
+
+	$sqla = "UPDATE `$db_name`.$tablename SET `refuser` = '$_POST[autor]', `tit` = '$titulo', `titsub` = '$subtitul', `datemod` = '$_POST[datemod]', `timemod` = '$_POST[timemod]', `conte` = '$_POST[coment]', `myurl` = '$_POST[myurl]' WHERE $tablename.`refart` = '$_SESSION[refart]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqla)){
 
@@ -214,6 +256,7 @@ function show_form($errors=[]){
 		//$defaults = $_POST;
 		
 		//$_SESSION['dyt1'] = $_POST['dyt1'];
+		$_SESSION['idart'] = $_POST['id'];
 		$_SESSION['refuser'] = $_POST['refuser'];
 		$_SESSION['tit'] = $_POST['tit'];
 		$_SESSION['titsub'] = $_POST['titsub'];
@@ -245,8 +288,8 @@ function show_form($errors=[]){
 				$_SESSION['datemod'] = date('Y-m-d');
 				$_SESSION['timemod'] = date('H:i:s');
 				$defaults = array ( 'autor' => $_POST['autor'],  // ref autor
-									'titulo' => $_SESSION['tit'], // Titulo
-									'subtitul' => $_SESSION['titsub'], // Sub Titulo
+									'titulo' => strtoupper($_SESSION['tit']), // Titulo
+									'subtitul' => strtoupper($_SESSION['titsub']), // Sub Titulo
 									'refart' => $_SESSION['refart'], // Referencia articulo
 									'datein' => $_SESSION['datein'], // Sub Titulo
 									'timein' => $_SESSION['timein'], // Sub Titulo
@@ -257,19 +300,16 @@ function show_form($errors=[]){
 									'myurl' => $_SESSION['myurl'],	
 									);
 
-
-		} 
-	elseif(isset($_POST['oculto'])){
+	} elseif(isset($_POST['oculto'])){
 					$defaults = $_POST;
-		} else {
-				$defaults = array ( 'autor' => isset($_POST['autor']),  // ref autor
+
+		} else {$defaults = array ( 'autor' => isset($_POST['autor']),  // ref autor
 									'titulo' => '', // Titulo
 								   	'subtitul' => '', // Sub Titulo
 								   	//'refart' => @$_SESSION['refart'],  Referencia articulo
 								   	'coment' => '',
-									'myimg' => '',	
-												);
-								   					}
+									'myimg' => '',);
+					}
 	
 	if ($errors){
 		print("	<div  class='errors'>
@@ -366,14 +406,14 @@ function show_form($errors=[]){
 			<tr>
 				<td style='text-align:right;'>TITULO </td>
 				<td style='text-align:left;'>
-		<input type='text' name='titulo' size=20 maxlength=20 value='".$defaults['titulo']."' />
+		<input type='text' name='titulo' size=20 maxlength=20 value='".strtoupper($defaults['titulo'])."' />
 				</td>
 			</tr>
 									
 			<tr>
 				<td style='text-align:right;'>SUBTITULO </td>
 				<td style='text-align:left;'>
-		<input type='text' name='subtitul' size=20 maxlength=20 value='".$defaults['subtitul']."' />
+		<input type='text' name='subtitul' size=20 maxlength=20 value='".strtoupper($defaults['subtitul'])."' />
 				</td>
 			</tr>
 									
