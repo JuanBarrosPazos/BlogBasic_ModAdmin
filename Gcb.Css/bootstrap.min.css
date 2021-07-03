@@ -541,6 +541,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  text-align: center;
 }
 .no-gutters {
   margin-right: 0;

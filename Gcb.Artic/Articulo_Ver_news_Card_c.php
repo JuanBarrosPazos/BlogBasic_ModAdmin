@@ -55,7 +55,7 @@ function validate_form(){
 function process_form(){
 	
 	echo "<style> 
-			.jcard { margin-bottom: 6px !important; }
+			.jcard { margin: 1px auto 6px auto !important; text-align: left; }
 			video { background-color: #343434; }
 			.img-fluid { max-height: 190px !important;}
 		  </style>";
@@ -136,7 +136,7 @@ function show_form($errors=[]){
 function ver_todo(){
 		
 	echo "<style> 
-			.jcard { margin-bottom: 6px !important; }
+			.jcard { margin: 1px auto 6px auto !important; text-align: left; }
 			video { background-color: #343434; }
 			.img-fluid { max-height: 190px !important;}
 		  </style>";
