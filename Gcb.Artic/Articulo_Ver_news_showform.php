@@ -59,7 +59,7 @@
 			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
 				<tr>
 					<td align='right'>
-						<input type='submit' value='FILTRO NOTICIAS' />
+						<input type='submit' value='FILTRO NOTICIAS' class='botonleer' />
 						<input type='hidden' name='oculto' value=1 />
 		<!-- --> 
 	<input type='hidden' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />

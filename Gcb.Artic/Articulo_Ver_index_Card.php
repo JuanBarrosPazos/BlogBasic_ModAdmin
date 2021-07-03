@@ -28,7 +28,7 @@ function ver_todo(){
 							}
 				.card { display: inline-block;
 						max-width: 32.7%; 
-						margin: 1px 2px 12px 2px !important;
+						margin: 1px auto 12px auto !important;
 						border-radius: 12px !important;
 							}
 					}

@@ -5,7 +5,7 @@
                         <div class='col-md-12 col-lg-5'>
 							".$visual."
                         </div>
-                        <div class='col'>
+                        <div class='col' style='text-align:left !important;'>
                             <h3 class='name'>".$rowb['tit']."</h3>
 							<h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>
                            	<p class='description'>".$conte."</p>
