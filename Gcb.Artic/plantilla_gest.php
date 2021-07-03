@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_head_b.php';
-	require '../Gcb.Inclu/mydni.php';
-	require 'plantilla.php';
+  	require '../Gcb.Inclu/error_hidden.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
+
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
+
+	require '../Gcb.Inclu/mydni.php';
+	require 'plantilla.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -108,6 +110,7 @@ function show_form($errors=[]){
 	FIN ARRAY PARA EL SELECT */
 	
 	// ARRAY PARA RADIO BOTTOM
+	global $plantilla;
 	$plantilla = array ('Articulo_Ver_index.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
 						'Articulo_Ver_index_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
 						'Articulo_Ver_index_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
@@ -118,9 +121,9 @@ function show_form($errors=[]){
 /*******************************/
 
 		global $c;
-		$c=count($plantilla);
+		$c = count($plantilla);
 		global $a;
-		$a=0;
+		$a = 0;
 		echo "<div class='juancentra'>
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 
@@ -139,8 +142,8 @@ function show_form($errors=[]){
 			echo" required />
 			<label for='".$a."'>".$a." ".$value."</label><br>
 				<div style='text-align:center;'>
-					<img src='plantillas_img/p0".$a."a' />
-					<img src='plantillas_img/p0".$a."b' />
+					<img src='plantillas_img/p0".$a."a.png' />
+					<img src='plantillas_img/p0".$a."b.png' />
 				</div>
 			</div><hr>";
 		} // FIN FOREACH

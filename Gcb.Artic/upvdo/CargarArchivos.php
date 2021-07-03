@@ -1,9 +1,9 @@
 <?php
     @session_start();
 
-    require_once '../../Gcb.Inclu/error_hidden.php';
-    require_once '../../Gcb.Connet/conection.php';
-    require_once '../../Gcb.Connet/conect.php';
+    require '../../Gcb.Inclu/error_hidden.php';
+    require '../../Gcb.Connet/conection.php';
+    require '../../Gcb.Connet/conect.php';
     
     global $errora;
     $errora = "<script>$(\"#progressDivId\").hide();</script><div class=\"error\">";

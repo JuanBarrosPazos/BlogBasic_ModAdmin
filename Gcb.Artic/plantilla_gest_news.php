@@ -2,11 +2,13 @@
 session_start();
 
 	require '../Gcb.Inclu/error_hidden.php';
-	require '../Gcb.Inclu/Admin_Inclu_head_b.php';
-	require '../Gcb.Inclu/mydni.php';
-	require 'plantilla_news.php';
+	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
+
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
+
+	require '../Gcb.Inclu/mydni.php';
+	require 'plantilla.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,6 +100,7 @@ function show_form($errors=[]){
 		}
 	
 	// ARRAY PARA RADIO BOTTOM
+global $plantillanews;
 $plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES CARD EXTENDIDA ',
 						'Articulo_Ver_news_Popup.php' => 'PLANTILLA CASILLAS INVERTED & DETALLES POPUP',
 						'Articulo_Ver_news_Card.php' => 'PLANTILLA CARD VERTICAL 1 & DETALLES POPUP',
@@ -108,9 +111,9 @@ $plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED 
 /*******************************/
 
 		global $c;
-		$c=count($plantillanews );
+		$c = count($plantillanews);
 		global $a;
-		$a=0;
+		$a = 0;
 		echo "<div class='juancentra'>
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
 
@@ -127,10 +130,10 @@ $plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED 
 			if($defaults['plantillanews'] == $key) {print(" checked=\"checked\"");} else { }
 			
 			echo" required />
-			<label for='".$a."'>".$a." ".$value."</label><br>
+			<label for='".$a."'>* ".$a." ".$value."</label><br>
 				<div style='text-align:center;'>
-					<img src='plantillas_img_news/p0".$a."a' />
-					<img src='plantillas_img_news/p0".$a."b' />
+					<img src='plantillas_img_news/p0".$a."a.png' />
+					<img src='plantillas_img_news/p0".$a."b.png' />
 				</div>
 			</div><hr>";
 		} // FIN FOREACH

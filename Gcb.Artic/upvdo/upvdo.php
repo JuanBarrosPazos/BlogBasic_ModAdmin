@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-	//require_once '../../Gcb.Inclu/error_hidden.php';
-	require_once 'upvdo_head.php';
+	//require '../../Gcb.Inclu/error_hidden.php';
+	require 'upvdo_head.php';
 
-	require_once '../../Gcb.Connet/conection.php';
-	require_once '../../Gcb.Connet/conect.php';
+	require '../../Gcb.Connet/conection.php';
+	require '../../Gcb.Connet/conect.php';
 
 	///////////////////////////////////////////////////////////////////////////////////////
 

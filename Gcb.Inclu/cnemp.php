@@ -1,12 +1,16 @@
 <?php
 session_start();
 
-	require 'error_hidden.php';
-	require 'Admin_Inclu_head_b.php';
-	require 'mydni.php';
-	require 'nemp.php';
+  	require 'error_hidden.php';
+	require 'Admin_Inclu_Head_b.php';
+
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
+
+	require 'mydni.php';
+	require 'nemp.php';
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 

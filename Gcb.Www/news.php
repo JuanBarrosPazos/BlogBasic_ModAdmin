@@ -5,8 +5,8 @@
 ////////////////////				////////////////////				////////////////////
               ////////////////////				  ///////////////////
 
-  require_once '../Gcb.Connet/conection.php';
-	require_once '../Gcb.Connet/conect.php';
+  require '../Gcb.Connet/conection.php';
+	require '../Gcb.Connet/conect.php';
 
       ayear();
          

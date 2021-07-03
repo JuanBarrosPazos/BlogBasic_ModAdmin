@@ -26,7 +26,7 @@
 		global $title4;
 		$title4 = "oculto";
 		global $closewin;
-		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderSup BorderInf'>
+		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderSup'>
 						".$inciobajas.$inicioadmin."</td></tr>";
 	
 	 }
@@ -38,7 +38,7 @@
 					</th>
 				</tr>".$closewin."
 				
-		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]'>
+		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' enctype='multipart/form-data'>
 
 			<input name='id' type='hidden' value='".$defaults['id']."' />				
 			<input name='myimg' type='hidden' value='".$_POST['myimg']."' />					
