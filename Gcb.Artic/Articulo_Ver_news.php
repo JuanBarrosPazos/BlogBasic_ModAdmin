@@ -119,7 +119,7 @@ function process_form(){
 	$vname = "gcb_".$dyt1."_articulos";
 	//$vname = "`".$vname."`";
 
-	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' AND `visible` = 'y' $titulo $autor ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -127,17 +127,20 @@ function process_form(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		global $fil;
-		$fil = ($dy1-1).$dm1."%";
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
-		$q = mysqli_query($db, $result);
-		@$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		@$num_total_rows = mysqli_num_rows($q);
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
+		/*
+			global $fil;
+			$fil = ($dy1-1).$dm1."%";
+			echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
+			global $vname;
+			$vname = "gcb_".($dyt1-1)."_articulos";
+			$vname = "`".$vname."`";
+			$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+			$q = mysqli_query($db, $result);
+			@$row = mysqli_fetch_assoc($q);
+			global $num_total_rows;
+			@$num_total_rows = mysqli_num_rows($q);
+		*/
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -176,7 +179,7 @@ function process_form(){
 	$qb = mysqli_query($db, $sqlb);
 
 	if(!$qb){
-			print("<font color='#FF0000'>Consulte L.116: </font></br>".mysqli_error($db)."</br>");
+			print("<font color='#FF0000'>Consulte L.175 </font></br>".mysqli_error($db)."</br>");
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){
@@ -276,164 +279,8 @@ function process_form(){
 
 function show_form($errors=[]){
 
-	global $page;
-	global $defaults;
-
-	if(isset($_POST['oculto'])){$_SESSION['titulo'] = $_POST['titulo'];
-								$_SESSION['autor'] = $_POST['autor'];
-								$_SESSION['dy'] = $_POST['dy'];
-								$_SESSION['dm'] = $_POST['dm'];
-								$defaults = $_POST;
-		}
-	else {	$defaults = array ('titulo' => @$_SESSION['titulo'],
-								'autor' => @$_SESSION['autor'],
-								'dy' => @$_SESSION['dy'],
-								'dm' => @$_SESSION['dm']
-							);
-										}
-	
-	if ($errors){
-		print("	<div  class='errors'>
-					<table align='left' style='border:none'>
-					<th style='text-align:left'>
-					<font color='#FF0000'>* SOLUCIONE ESTOS ERRORES:</font><br/>
-					</th>
-					<tr>
-					<td style='text-align:left'>");
-			
-		for($a=0; $c=count($errors), $a<$c; $a++){
-			print("<font color='#FF0000'>**</font>  ".$errors [$a]."<br/>");
-			}
-		print("</td>
-				</tr>
-				</table>
-				</div>
-				<div style='clear:both'></div>");
-		}
-		
-		require "../Gcb.Config/ayear.php";
-			
-		$dm = array (	'' => 'MES TODOS',
-						'01' => 'ENERO',
-						'02' => 'FEBRERO',
-						'03' => 'MARZO',
-						'04' => 'ABRIL',
-						'05' => 'MAYO',
-						'06' => 'JUNIO',
-						'07' => 'JULIO',
-						'08' => 'AGOSTO',
-						'09' => 'SEPTIEMBRE',
-						'10' => 'OCTUBRE',
-						'11' => 'NOVIEMBRE',
-						'12' => 'DICIEMBRE',
-										);
-		
-		$dd = array (	'' => 'DÍA TODOS',
-						'01' => '01',
-						'02' => '02',
-						'03' => '03',
-						'04' => '04',
-						'05' => '05',
-						'06' => '06',
-						'07' => '07',
-						'08' => '08',
-						'09' => '09',
-						'10' => '10',
-						'11' => '11',
-						'12' => '12',
-						'13' => '13',
-						'14' => '14',
-						'15' => '15',
-						'16' => '16',
-						'17' => '17',
-						'18' => '18',
-						'19' => '19',
-						'20' => '20',
-						'21' => '21',
-						'22' => '22',
-						'23' => '23',
-						'24' => '24',
-						'25' => '25',
-						'26' => '26',
-						'27' => '27',
-						'28' => '28',
-						'29' => '29',
-						'30' => '30',
-						'31' => '31',
-						);
-											
-
-	print("<table align='center' style=\"border:0px;margin-top:4px;width:auto\">
-				
-			<form name='form_tabla' method='post' action='$_SERVER[PHP_SELF]'>
-						
-				<tr>
-					<td align='right'>
-						<input type='submit' value='FILTRO NOTICIAS' />
-						<input type='hidden' name='oculto' value=1 />
-		<!-- --> 
-	<input type='hidden' name='titulo' size=20 maxlenth=10 value='".$defaults['titulo']."' />
-		
-
-		<select name='autor'>
-			
-		<option value=''>SELECCIONE AUTOR</option>");
-						
-	/* RECORREMOS LOS VALORES DE LA TABLA PARA CONSTRUIR CON ELLOS UN SELECT */	
-			
-	global $db;
-	$sqlb =  "SELECT * FROM `gcb_admin` ORDER BY `Apellidos` ASC ";
-	$qb = mysqli_query($db, $sqlb);
-	if(!$qb){
-			print("* ".mysqli_error($db)."</br>");
-	} else {
-					
-		while($rows = mysqli_fetch_assoc($qb)){
-					
-					print ("<option value='".$rows['ref']."' ");
-					
-					if($rows['ref'] == $defaults['autor']){
-															print ("selected = 'selected'");
-																								}
-									print ("> ".$rows['Apellidos']." ".$rows['Nombre']."</option>");
-				}
-		
-			}  
-
-	print ("</select>
-
-				<select name='dy'>"
-				);
-							
-					foreach($dy as $optiondy => $labeldy){
-						
-						print ("<option value='".$optiondy."' ");
-						
-						if($optiondy == @$defaults['dy']){print ("selected = 'selected'");}
-														print ("> $labeldy </option>");
-													}	
-																	
-			print ("	</select>
-						<!--<select name='dm'>-->
-						<input type='hidden' name='dm' value='' />
-						");
-		/*
-				foreach($dm as $optiondm => $labeldm){
-					
-					print ("<option value='".$optiondm."' ");
-					
-					if($optiondm == @$defaults['dm']){
-															print ("selected = 'selected'");
-																								}
-													print ("> $labeldm </option>");
-												}	
-		*/														
-		print ("<!--</select>-->
-				</td>
-			</tr>
-		</form>	
-			</table>
-			");
+	// FORMULARIO FILTRO ARTICULOS AUTOR
+	require '../Gcb.Artic/Articulo_Ver_news_showform.php';
 	
 	}	
 
@@ -459,7 +306,7 @@ function ver_todo(){
 	$vname = "gcb_".$dyt1."_articulos";
 	$vname = "`".$vname."`";
 
-	$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
+	$result =  "SELECT * FROM $vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -467,17 +314,7 @@ function ver_todo(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
-		global $fil;
-		$fil = ($dyt1-1)."-%";	
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
-		$q = mysqli_query($db, $result);
-		$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		$num_total_rows = mysqli_num_rows($q);
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -512,7 +349,7 @@ function ver_todo(){
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
 
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";

@@ -31,7 +31,7 @@ session_start();
 <?php
 
   	require '../Gcb.Inclu/error_hidden.php';
-	//require '../Gcb.Inclu/Admin_Inclu_popup.php';
+	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Inclu/mydni.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';
@@ -112,6 +112,11 @@ function process_form(){
 					<td style='text-align:right;'>SUBTITULO</td>
 					<td style='text-align:left;'>".$_POST['titsub']."</td>
 					<td rowspan='5'>".$visual."</td>
+				</tr>				
+				
+				<tr>
+					<td style='text-align:right;'>URL</td>
+					<td style='text-align:left;'>".$_POST['myurl']."</td>
 				</tr>				
 				
 				<tr>

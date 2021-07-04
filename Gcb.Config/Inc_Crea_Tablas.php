@@ -123,13 +123,7 @@
 					$table2 = "\t* NO OK TABLA ".$articulos.". ".mysqli_error($db)."\n";
 				}
 
-  // PARA CUATRO IMAGENES;
-  //`myimg1` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg2` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg3` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg4` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-
-	/************** CREAMOS LA TABLA ARTICULOS AÑO PASADO ***************/
+	/************** CREAMOS LA TABLA ARTICULOS AÑO PASADO **************
 	
 	global $dy;
 	$dy = date('Y')-1;
@@ -164,12 +158,7 @@
 					global $table2b;
 					$table2b = "\t* NO OK TABLA ".$articulos2.". ".mysqli_error($db)."\n";
 				}
-
-  // PARA CUATRO IMAGENES;
-  //`myimg1` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg2` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg3` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
-  //`myimg4` varchar(30) collate utf8_spanish2_ci NOT NULL default 'untitled.png',
+*/
 					
 	/************* CREAMOS LA TABLA IP CONTROL****************/
 

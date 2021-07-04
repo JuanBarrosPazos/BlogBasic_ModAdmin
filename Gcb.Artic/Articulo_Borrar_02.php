@@ -197,7 +197,7 @@ function show_form(){
 
 				<tr>
 					<td colspan=3 class='BorderInf'>
-					<a href='Articulo_Ver.php' >CANCELAR Y VOLVER</a>
+					<a href='Articulo_Gestionar.php' >CANCELAR Y VOLVER</a>
 					</td>
 				</tr>	
 

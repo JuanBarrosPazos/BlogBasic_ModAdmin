@@ -10,7 +10,7 @@
 function ver_todo(){
 
 	echo "<style> 
-			.jcard { margin-bottom: 6px !important; }
+			.jcard { margin: auto auto 6px auto !important; text-align:left; }
 			video { background-color: #343434; }
 			.img-fluid { max-height: 190px !important;}
 		  </style>";
@@ -27,7 +27,7 @@ function ver_todo(){
 	$vname = "gcb_".$dyt1."_articulos";
 	$vname = "`".$vname."`";
 	
-	$result =  "SELECT * FROM $vname ";
+	$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -35,14 +35,7 @@ function ver_todo(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM $vname ";
-		$q = mysqli_query($db, $result);
-		$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		$num_total_rows = mysqli_num_rows($q);
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
 	} else { }
 
 
@@ -80,7 +73,7 @@ function ver_todo(){
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname ORDER BY `id` DESC $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' ORDER BY `id` DESC $limit";
 
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";

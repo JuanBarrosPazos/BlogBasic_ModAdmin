@@ -444,7 +444,7 @@ function process_form(){
 	global $tablepf;
 	$tablepf = "<table align='center'>
 				<tr>
-					<td colspan='2' align='center'>
+					<td colspan='2'>
 							SE HA CREADO EL ARCHIVO DE CONEXIONES.
 						</br>
 							CON LAS SIGUIENTES VARIABLES.
@@ -452,42 +452,26 @@ function process_form(){
 				</tr>
 
 				<tr>
-					<td>
-							VARIABLE HOST ADRESS
-					</td>
-					<td>
-							\$db_host = ".$host.";
-					</td>		
+					<td style='text-align:right;'>VARIABLE HOST ADRESS </td>
+					<td style='text-align:left;'>\$db_host = ".$host.";</td>		
 				</tr>								
 
 				<tr>
-					<td>
-							VARIABLE USER NAME
-					</td>
-					<td>
-							\$db_user = ".$user.";
-					</td>		
+					<td style='text-align:right;'>VARIABLE USER NAME </td>
+					<td style='text-align:left;'>\$db_user = ".$user.";</td>		
 				</tr>	
 												
 				<tr>
-					<td>
-							VARIABLE PASSWORD
-					</td>
-					<td>
-							\$db_pass = ".$pass.";
-					</td>		
+					<td style='text-align:right;'>VARIABLE PASSWORD </td>
+					<td style='text-align:left;'>\$db_pass = ".$pass.";</td>		
 				</tr>	
 												
 				<tr>
-					<td>
-							VARIABLE BBDD NAME
-					</td>
-					<td>
-							\$db_name = ".$name.";
-					</td>		
+					<td style='text-align:right;'>VARIABLE BBDD NAME </td>
+					<td style='text-align:left;'>\$db_name = ".$name.";</td>		
 				</tr>
 				<tr>
-		   			<td colspan=2 align='center'>
+		   			<td colspan=2>
 						<a href='Gcb.Config/config2.php'>
 		   					CREE EL USUARIO ADMINISTRADOR
 						</a>
@@ -525,7 +509,10 @@ function modif(){
 	fclose($fw1);
 	
 	$contenido = explode("\n",$contenido);
+	/*
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',\n'".(date('y')-1)."' => '".(date('Y')-1)."',";
+	*/
+	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";
 	$contenido = implode("\n",$contenido);
 	
 	//fseek($fw, 37);

@@ -38,7 +38,7 @@
 			</a>
 			<ul class='nav-flyout'>
 				<li>
-					<a href='".$rutaartic."Articulo_Ver.php' ".$topcat1.">
+					<a href='".$rutaartic."Articulo_Gestionar.php' ".$topcat1.">
 						<i class='ic ico20b'></i>GESTIONAR
 					</a>
 				</li>

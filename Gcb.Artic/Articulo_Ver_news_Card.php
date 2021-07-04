@@ -144,7 +144,7 @@ function process_form(){
 	$vname = "gcb_".$dyt1."_articulos";
 	//$vname = "`".$vname."`";
 
-	$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
+	$result =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' $titulo $autor ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -152,17 +152,7 @@ function process_form(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		global $fil;
-		$fil = ($dy1-1).$dm1."%";
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
-		$q = mysqli_query($db, $result);
-		@$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		@$num_total_rows = mysqli_num_rows($q);
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -197,7 +187,7 @@ function process_form(){
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor  ORDER BY $orden $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' $titulo $autor ORDER BY $orden $limit";
 	$qb = mysqli_query($db, $sqlb);
 
 	if(!$qb){
@@ -492,7 +482,7 @@ function ver_todo(){
 	$vname = "gcb_".$dyt1."_articulos";
 	$vname = "`".$vname."`";
 
-	$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
+	$result =  "SELECT * FROM $vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' ";
 	$q = mysqli_query($db, $result);
 	global $row;
 	@$row = mysqli_fetch_assoc($q);
@@ -500,17 +490,7 @@ function ver_todo(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
-		global $fil;
-		$fil = ($dyt1-1)."-%";	
-		global $vname;
-		$vname = "gcb_".($dyt1-1)."_articulos";
-		$vname = "`".$vname."`";
-		$result =  "SELECT * FROM $vname WHERE `datein` LIKE '$fil'";
-		$q = mysqli_query($db, $result);
-		$row = mysqli_fetch_assoc($q);
-		global $num_total_rows;
-		$num_total_rows = mysqli_num_rows($q);
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -545,7 +525,7 @@ function ver_todo(){
 	global $limit;
 	$limit = " LIMIT ".$start.", ".$nitem;
 
-	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
+	$sqlb =  "SELECT * FROM `$db_name`.$vname WHERE `visible` = 'y' AND `datein` LIKE '$fil' ORDER BY `id` DESC $limit";
 
 	/*
 	$sqlb =  "SELECT * FROM `gcb_admin` WHERE `gcb_admin`.`dni` <> '$_SESSION[mydni]' ORDER BY $orden ";
