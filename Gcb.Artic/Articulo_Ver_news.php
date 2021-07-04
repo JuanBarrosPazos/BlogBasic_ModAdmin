@@ -127,20 +127,7 @@ function process_form(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
-		/*
-			global $fil;
-			$fil = ($dy1-1).$dm1."%";
-			echo "<div class='col-lg-12 text-center'><h5>** NO HAY DATOS EN ".$dy1." **</h5></div>";
-			global $vname;
-			$vname = "gcb_".($dyt1-1)."_articulos";
-			$vname = "`".$vname."`";
-			$result =  "SELECT * FROM `$db_name`.$vname WHERE `datein` LIKE '$fil' $titulo $autor ";
-			$q = mysqli_query($db, $result);
-			@$row = mysqli_fetch_assoc($q);
-			global $num_total_rows;
-			@$num_total_rows = mysqli_num_rows($q);
-		*/
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
@@ -314,7 +301,7 @@ function ver_todo(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA

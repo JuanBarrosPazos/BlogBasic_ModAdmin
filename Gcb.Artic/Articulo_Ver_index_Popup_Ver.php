@@ -50,8 +50,8 @@ function process_form(){
 	$rowautor = mysqli_fetch_assoc($q);
 	$counta = mysqli_num_rows($q);
 	global $_sec;
-	if ($counta !== 1) { $_sec = "AUTOR ANONIMO";}
-	else { $_sec = $rowautor['Nombre']." ".$rowautor['Apellidos']; }
+	if ($counta !== 1) { $_sec = "<h6>AUTOR ANONIMO</h6>";;}
+	else {$_sec = "<h6>AUTOR: ".strtoupper($rowautor['Nombre'])." ".strtoupper($rowautor['Apellidos'])."</h6>"; }
 	
 	// HE DEFINIR EL VIDEO SI EXISTE
 
@@ -66,15 +66,24 @@ function process_form(){
 				}
 	/////
 
+	if ($_POST['myurl'] != ""){
+		global $myurl;
+		$myurl = '<h7 style=\'display:inline-block;\'><a href="'.$_POST['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>'; }
+	else { global $myurl;
+		   $myurl = "";}
+	
+
 	print("<div id=\"Conte\" style=\"border: 2px solid #CCC; border-radius:20px; width:98%; text-align:center; padding: 6px 6px 2px 6px; margin: 6px;\">
 		<form name='closewindow' action='$_SERVER[PHP_SELF]'  onsubmit=\"window.close()\">
 			<h6 style=\"text-align:right;\">
 				<input style=\"margin-right:12px;\" type='submit' value='CERRAR VENTANA' class='botonrojo' />
 			</h6>
 		</form>
-			<h5>".$_POST['tit']."</h5>
+			".$_sec."<h5>".$_POST['tit']."</h5>
+			
 			".$visual."
 			<h6 style=\"text-align:left;\">".$_POST['conte']."</h6>
+			".$myurl."
 			<p>
 			<img src='../Gcb.Img.Art/".$_POST['myimg']."' style=\" width:98%; max-width:700px;\" />
 			</p>

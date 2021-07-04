@@ -54,7 +54,7 @@ function ver_todo(){
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
-		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
+		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
 	} else { }
 
 

@@ -818,19 +818,6 @@ function ver_todo(){
 
 	if(!$q || ($num_total_rows < 1)){
 		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$_SESSION['dyt1']." **</h5></div>";
-		/* 
-			global $vname;
-			$vname = "gcb_".(date('Y')-1)."_articulos";
-			$vname = "`".$vname."`";
-			$_SESSION['dyt1'] = (date('Y')-1);
-			$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
-			$q = mysqli_query($db, $result);
-			@$row = mysqli_fetch_assoc($q);
-			global $num_total_rows;
-			@$num_total_rows = mysqli_num_rows($q);
-
-			$_SESSION['dy'] = date('y')-1;
-		*/
 	} else { }
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
