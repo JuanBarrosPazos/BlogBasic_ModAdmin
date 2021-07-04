@@ -1,13 +1,17 @@
 <?php
 
-print ("<table align='center' style='border:none;'>
-            <tr>
-                <td style='text-align:center'>
-                    <h4>
-                    NO HAY ENTRADAS EN ".$dyt1."
-                    </h4>
-                </td>
-            </tr>
-        </table>");
+    print ("<table align='center' style='border:none;'>
+                <tr>
+                    <td style='text-align:center'>
+                        <h4>
+                            <a href='Gcb.Www/news.php'>
+                        NO HAY ENTRADAS EN ".$dyt1."
+                            <br>
+                        CONSULTAR NEWS
+                            </a>
+                        </h4>
+                    </td>
+                </tr>
+            </table>");
 
 ?>
