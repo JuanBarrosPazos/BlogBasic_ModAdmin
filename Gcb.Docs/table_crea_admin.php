@@ -1,6 +1,6 @@
 <?php
 
-	 require 'Admin_Botonera.php';
+	require 'Admin_Botonera.php';
 
 	if (isset($modifadmin)){ 
 		global $title;
@@ -33,31 +33,21 @@
 
 	 print("<table style=\"margin-top:6px\">
 				<tr>
-					<th colspan=2 class='BorderInf'>
-							".$title."
-					</th>
+					<th colspan=2 class='BorderInf'>".$title."</th>
 				</tr>".$closewin."
-				
-		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' enctype='multipart/form-data'>
-
+	<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' enctype='multipart/form-data'>
 			<input name='id' type='hidden' value='".$defaults['id']."' />				
 			<input name='myimg' type='hidden' value='".$_POST['myimg']."' />					
 						
 				<tr>
 					<td style='text-align:right; width:140px;' >	
-						<font color='#FF0000'>*</font>
-						Ref User:
-					</td>
-					<td style='text-align:left; width:290px;'>
-						".$title2." 
-					</td>
+						<font color='#FF0000'>*</font> REF USER </td>
+					<td style='text-align:left; width:290px;'>".$title2."</td>
 				</tr>
 					
 				<tr>
 					<td style='text-align:right;'>	
-						<font color='#FF0000'>*</font>
-						Nombre:
-					</td>
+						<font color='#FF0000'>*</font> NOMBRE </td>
 					<td style='text-align:left;'>
 		<input type='text' name='Nombre' size=28 maxlength=25 value='".$defaults['Nombre']."' />
 					</td>
@@ -65,9 +55,7 @@
 					
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Apellidos:
-					</td>
+						<font color='#FF0000'>*</font> APELLIDOS </td>
 					<td style='text-align:left;'>
 	<input type='text' name='Apellidos' size=28 maxlength=25 value='".$defaults['Apellidos']."' />
 					</td>
@@ -75,19 +63,13 @@
 
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Tipo Documento:
-					</td>
+						<font color='#FF0000'>*</font> DOCUMENTO </td>
 					<td style='text-align:left;'>");
 	
 	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
 	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
-
 		print("	<input type='hidden' name='doc' value='".$defaults['doc']."' />".$defaults['doc']);
-
-		}
-
-	else { print("<select name='doc'>");
+	}else { print("<select name='doc'>");
 					foreach($doctype as $option => $label){
 						print ("<option value='".$option."' ");
 						if($option == $defaults['doc']){print ("selected = 'selected'");}
@@ -97,75 +79,50 @@
 		}
 	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
 
-			print("</td>
-				</tr>
-
+	print("</td></tr>
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						N&uacute;mero:
-					</td>
+						<font color='#FF0000'>*</font> NUMERO </td>
 					<td style='text-align:left;'>");
 
 		// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-		if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
-
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 		print("<input type='hidden' name='dni' value='".$defaults['dni']."' />".$defaults['dni']);
 
-		} else {
-		
-		print("<input type='text' name='dni' size=12 maxlength=8 value='".$defaults['dni']."' />");
-
+	} else {print("<input type='text' name='dni' size=12 maxlength=8 value='".$defaults['dni']."' />");
 		}
 		// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-
-			print("</td>
-				</tr>
-				
+		print("</td></tr>
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Control:
-					</td>
+						<font color='#FF0000'>*</font> CONTROL </td>
 					<td style='text-align:left;'>");
 
 		// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-		if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
-
+	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){
 		print("<input type='hidden' name='ldni' value='".$defaults['ldni']."' />".$defaults['ldni']);
-
-		} else {
-		
-		print("<input type='text' name='ldni' size=4 maxlength=1 value='".$defaults['ldni']."' />");
-
+	} else {print("<input type='text' name='ldni' size=4 maxlength=1 value='".$defaults['ldni']."' />");
 		}
 		// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-
-		print("		</td>
-				</tr>
+		print("</td></tr>
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Mail:
-					</td>
+						<font color='#FF0000'>*</font> MAIL </td>
 					<td style='text-align:left;'>
-		<input type='text' name='Email' size=52 maxlength=50 value='".$defaults['Email']."' />
+	<input type='text' name='Email' size=52 maxlength=50 value='".$defaults['Email']."' placeholder=\"&nbsp;EMAIL MINUSCULAS\" />
 					</td>
 				</tr>	
 				
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Nivel Usuario:
-					</td>
+						<font color='#FF0000'>*</font> NIVEL </td>
 					<td style='text-align:left;'>");
 
 	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
 	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
-
 		print("<input type='hidden' name='Nivel' value='".$defaults['Nivel']."' />".$defaults['Nivel']);
 
-		} else { print("<select name='Nivel'>");
+	} else { print("<select name='Nivel'>");
 						foreach($Nivel as $optionnv => $labelnv){
 							print ("<option value='".$optionnv."' ");
 							if($optionnv == $defaults['Nivel']){print ("selected = 'selected'");}
@@ -174,15 +131,10 @@
 				print ("</select>");
 		}
 	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-
-			print("</td>
-				</tr>
-					
+		print("</td></tr>
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Nombre Usuario:
-					</td>
+						<font color='#FF0000'>*</font> USER NAME </td>
 					<td style='text-align:left;'>");
 
 	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
@@ -191,7 +143,6 @@
 	print("	<input type='hidden' name='Usuario' value='".$defaults['Usuario']."' />".$defaults['Usuario']."
 				</td></tr>
 			<input type='hidden' name='Usuario2' value='".$defaults['Usuario2']."' />");
-
 	} else {
 	print("<input type='text' name='Usuario' size=12 maxlength=10 value='".$defaults['Usuario']."' />
 				</td></tr>
@@ -202,18 +153,13 @@
 				</td></tr>");
 		}
 	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-
-		print("<tr>
-					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Password:
-					</td>
+		print("<tr><td style='text-align:right;'>
+						<font color='#FF0000'>*</font> PASSWORD </td>
 					<td style='text-align:left;'>");
 
 	// INICIO SI ES USER O PLUS SE LIMITA EL FORMULARIO 
 
 	if(($_SESSION['Nivel'] == 'user') || ($_SESSION['Nivel'] == 'plus')){ 
-
 		print("<input type='hidden' name='Password' value='".$defaults['Password']."' />".$defaults['Password']."
 				</td></tr>
 			<input type='hidden' name='Password2' value='".$defaults['Password2']."' />");
@@ -227,12 +173,8 @@
 				</td></tr>");
 		}
 	// FIN SI ES USER O PLUS SE LIMITA EL FORMULARIO 
-
-		print("	<tr>
-					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Dirección:
-					</td>
+		print("	<tr><td style='text-align:right;'>
+						<font color='#FF0000'>*</font> DIRECCION </td>
 					<td style='text-align:left;'>
 	<input type='text' name='Direccion' size=52 maxlength=60 value='".$defaults['Direccion']."' />
 					</td>
@@ -240,9 +182,7 @@
 				
 				<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Teléfono 1:
-					</td>
+						<font color='#FF0000'>*</font> TLF 1</td>
 					<td style='text-align:left;'>
 		<input type='text' name='Tlf1' size=12 maxlength=9 value='".$defaults['Tlf1']."' />
 					</td>
@@ -250,9 +190,7 @@
 				
 				<tr>
 					<tr>
-					<td style='text-align:right;'>
-						Teléfono 2:
-					</td>
+					<td style='text-align:right;'> TLF 2</td>
 					<td style='text-align:left;'>
 		<input type='text' name='Tlf2' size=12 maxlength=9 value='".$defaults['Tlf2']."' />
 					</td>
@@ -263,9 +201,7 @@
 
 		print("	<tr>
 					<td style='text-align:right;'>
-						<font color='#FF0000'>*</font>
-						Fotografía:
-					</td>
+						<font color='#FF0000'>*</font> FOTOGRAFIA </td>
 					<td style='text-align:left;'>
 		<input type='file' name='myimg' value='".@$defaults['myimg']."' />						
 					</td>

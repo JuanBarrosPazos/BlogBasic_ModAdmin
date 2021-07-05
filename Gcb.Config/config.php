@@ -10,7 +10,7 @@
 	if(isset($_POST['limpia'])){
 						deltables();
 						deldir();
-						deltablesb();
+						//deltablesb();
 						rewrite();
 						config_one();
 						//inittot();
@@ -181,19 +181,27 @@ function config_one(){
 	if(!file_exists('../Gcb.Img.Art/untitled.png')){
 			if(file_exists('../Gcb.Img.Sys/untitled.png')){
 				copy("../Gcb.Img.Sys/untitled.png", "../Gcb.Img.Art/untitled.png");
-				$data5 = PHP_EOL."\tRENAME ayear_Init_System.php TO ayear.php";
-			} else {print("DON'T CCOPY ../Gcb.Img.Art/untitled.png </br>");
+				$data5 = PHP_EOL."\tCOPY ../Gcb.Img.Art/untitled.png";
+			} else {print("DON'T COPY ../Gcb.Img.Art/untitled.png </br>");
 				$data5 = PHP_EOL."\tDON'T CCOPY ../Gcb.Img.Art/untitled.png";}
 			}
 			
 	if(!file_exists('../Gcb.Img.User/untitled.png')){
 			if(file_exists('../Gcb.Img.Sys/untitled.png')){
 				copy("../Gcb.Img.Sys/untitled.png", "../Gcb.Img.User/untitled.png");
-				$data6 = PHP_EOL."\tRENAME ayear_Init_System.php TO ayear.php";
-			} else {print("DON'T CCOPY ../Gcb.Img.User/untitled.png </br>");
+				$data6 = PHP_EOL."\tCOPY ../Gcb.Img.User/untitled.png";
+			} else {print("DON'T COPY ../Gcb.Img.User/untitled.png </br>");
 				$data6 = PHP_EOL."\tDON'T CCOPY ../Gcb.Img.User/untitled.png";}
 			}
-			
+
+	if(!file_exists('../Gcb.Vdo.Art/untitled.png')){
+			if(file_exists('../Gcb.Img.Sys/untitled.png')){
+				copy("../Gcb.Img.Sys/untitled.png", "../Gcb.Vdo.Art/untitled.png");
+				$data6 = $data6.PHP_EOL."\tCCOPY ../Gcb.Vdo.Art/untitled.png";
+			} else {print("DON'T COPY ../Gcb.Vdo.Art/untitled.png </br>");
+				$data6 = $data6.PHP_EOL."\tDON'T CCOPY ../Gcb.Vdo.Art/untitled.png";}
+			}
+
 	global $cfone;
 	$cfone = PHP_EOL."SUSTITUCION DE ARCHIVOS:".isset($data1).isset($data2).isset($data3).isset($data4).isset($data5).isset($data6);
 
@@ -229,6 +237,26 @@ function deldir(){
 									{unlink($dir2.$file2);}
 									}
 							//rmdir ($carpeta2);
+								} else {}
+
+	$carpeta3 = "../Gcb.Log";
+	if(file_exists($carpeta3)){ $dir3 = $carpeta3."/";
+								$handle3 = opendir($dir3);
+					while ($file3 = readdir($handle3))
+							{if (is_file($dir3.$file3))
+									{unlink($dir3.$file3);}
+									}
+							//rmdir ($carpeta3);
+								} else {}
+
+	$carpeta4 = "../Gcb.Vdo.Art";
+	if(file_exists($carpeta4)){ $dir4 = $carpeta4."/";
+								$handle4 = opendir($dir4);
+					while ($file4 = readdir($handle4))
+							{if (is_file($dir4.$file4))
+									{unlink($dir4.$file4);}
+									}
+							//rmdir ($carpeta4);
 								} else {}
 
 } // FIN FUNCTION
@@ -281,12 +309,13 @@ print("<font color='#FF0000'>L.246 Se ha producido un error: </font></br>".mysql
 
 }
 
+/*
 function deltablesb(){
 
 	require '../Gcb.Connet/conection.php';
 	$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
 
-	/*************	BORRAMOS LAS TABLAS DEL SISTEMA 	***************/
+	************	BORRAMOS LAS TABLAS DEL SISTEMA 	**************
 
 	global $sqlt1;
 	$sqlt1 = "DROP TABLE `$db_name`.`gcb_admin` ";
@@ -309,7 +338,8 @@ function deltablesb(){
 			print ("<font color='#FF0000'>*** </font></br> ".mysqli_error($db).".</br>");
 					}
 		
-}
+		}
+	*/
 
 function rewrite(){
 
@@ -510,6 +540,7 @@ function modif(){
 	
 	$contenido = explode("\n",$contenido);
 	/*
+	Y EL AÑO ANTERIOR: 
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',\n'".(date('y')-1)."' => '".(date('Y')-1)."',";
 	*/
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";

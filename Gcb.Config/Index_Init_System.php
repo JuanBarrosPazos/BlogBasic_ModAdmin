@@ -10,12 +10,12 @@
 	if(isset($_POST['limpia'])){
 						deltables();
 						deldir();
-						deltablesb();
+						//deltablesb();
 						rewrite();
 						config_one();
 						//inittot();
 			 			show_form();
-	}
+					}
 
 	elseif(isset($_POST['config'])){$_SESSION['inst'] = "noinst";						
 	if($form_errors = validate_form()){show_form($form_errors);} 
@@ -149,7 +149,7 @@ function inittot(){
 function config_one(){
 
 	unset($_SESSION['showf']);
-
+	
 	$_SESSION['inst'] = "noinst";
 
 	if(file_exists('Gcb.Config/year.txt')){unlink("Gcb.Config/year.txt");
@@ -181,25 +181,33 @@ function config_one(){
 	if(!file_exists('Gcb.Img.Art/untitled.png')){
 			if(file_exists('Gcb.Img.Sys/untitled.png')){
 				copy("Gcb.Img.Sys/untitled.png", "Gcb.Img.Art/untitled.png");
-				$data5 = PHP_EOL."\tRENAME Gcb.Img.Art/ayear_Init_System.php TO Gcb.Img.Art/ayear.php";
-			} else {print("DON'T CCOPY Gcb.Img.Art/untitled.png </br>");
+				$data5 = PHP_EOL."\tCOPY Gcb.Img.Art/untitled.png";
+			} else {print("DON'T COPY Gcb.Img.Art/untitled.png </br>");
 				$data5 = PHP_EOL."\tDON'T CCOPY Gcb.Img.Art/untitled.png";}
 			}
 			
 	if(!file_exists('Gcb.Img.User/untitled.png')){
 			if(file_exists('Gcb.Img.Sys/untitled.png')){
 				copy("Gcb.Img.Sys/untitled.png", "Gcb.Img.User/untitled.png");
-				$data6 = PHP_EOL."\tRENAME ayear_Init_System.php TO ayear.php";
-			} else {print("DON'T CCOPY Gcb.Img.User/untitled.png </br>");
+				$data6 = PHP_EOL."\tCOPY Gcb.Img.User/untitled.png";
+			} else {print("DON'T COPY Gcb.Img.User/untitled.png </br>");
 				$data6 = PHP_EOL."\tDON'T CCOPY Gcb.Img.User/untitled.png";}
 			}
 			
+	if(!file_exists('Gcb.Vdo.Art/untitled.png')){
+			if(file_exists('Gcb.Img.Sys/untitled.png')){
+				copy("Gcb.Img.Sys/untitled.png", "Gcb.Vdo.Art/untitled.png");
+				$data6 = $data6.PHP_EOL."\tCCOPY Gcb.Vdo.Art/untitled.png";
+			} else {print("DON'T CCOPY Gcb.Vdo.Art/untitled.png </br>");
+				$data6 = $data6.PHP_EOL."\tDON'T CCOPY Gcb.Vdo.Art/untitled.png";}
+			}
+
 	global $cfone;
-	$cfone = PHP_EOL."SUSTITUCION DE ARCHIVOS:".isset($data1).isset($data2).isset($data3).isset($data4).isset($data5).isset($data6);
+	$cfone = PHP_EOL."SUSTITUCION DE ARCHIVOS:".@$data1.@$data2.@$data3.@$data4.@$data5.@$data6;
 
 	//modif();
 	//modif2();
-
+	
 	}
 
 				   ////////////////////				   ////////////////////
@@ -230,6 +238,27 @@ function deldir(){
 									}
 							//rmdir ($carpeta2);
 								} else {}
+
+	$carpeta3 = "Gcb.Log";
+	if(file_exists($carpeta3)){ $dir3 = $carpeta3."/";
+								$handle3 = opendir($dir3);
+					while ($file3 = readdir($handle3))
+							{if (is_file($dir3.$file3))
+									{unlink($dir3.$file3);}
+									}
+							//rmdir ($carpeta3);
+								} else {}
+
+	$carpeta4 = "Gcb.Vdo.Art";
+	if(file_exists($carpeta4)){ $dir4 = $carpeta4."/";
+								$handle4 = opendir($dir4);
+					while ($file4 = readdir($handle4))
+							{if (is_file($dir4.$file4))
+									{unlink($dir4.$file4);}
+									}
+							//rmdir ($carpeta4);
+								} else {}
+
 
 } // FIN FUNCTION
 
@@ -281,12 +310,13 @@ print("<font color='#FF0000'>L.246 Se ha producido un error: </font></br>".mysql
 
 }
 
+/*
 function deltablesb(){
 
 	require 'Gcb.Connet/conection.php';
 	$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
 
-	/*************	BORRAMOS LAS TABLAS DEL SISTEMA 	***************/
+	************	BORRAMOS LAS TABLAS DEL SISTEMA 	**************
 
 	global $sqlt1;
 	$sqlt1 = "DROP TABLE `$db_name`.`gcb_admin` ";
@@ -309,7 +339,8 @@ function deltablesb(){
 			print ("<font color='#FF0000'>*** </font></br> ".mysqli_error($db).".</br>");
 					}
 		
-}
+		}
+	*/
 
 function rewrite(){
 
@@ -349,11 +380,11 @@ function validate_form(){
 		$errors [] = "HOST: <font color='#FF0000'>Más de 3 carácteres.</font>";
 		}
 		
-	elseif (!preg_match('/^[^@´`\'áéíóú#$&%<>:"·\(\)=\[\]\{\};,:\*\s]+$/',$_POST['host'])){
+	elseif (!preg_match('/^[^@´`\'áéíóú#$&%<>"·\(\)=\[\]\{\};,\*\s]+$/',$_POST['host'])){
 		$errors [] = "HOST: <font color='#FF0000'>caracteres no validos.</font>";
 		}
 		
-	elseif (!preg_match('/^[a-z A-Z 0-9 \-!¡?¿\._]+$/',$_POST['host'])){
+	elseif (!preg_match('/^[a-z A-Z 0-9 \-:!¡?¿\._]*$/',$_POST['host'])){
 		$errors [] = "HOST: <font color='#FF0000'>NO VALIDOS</font>";
 		}
 
@@ -442,7 +473,7 @@ function process_form(){
 	fclose($config);
 	
 	global $tablepf;
-	$tablepf = "<table align='center'>
+	$tablepf = "<table>
 				<tr>
 					<td colspan='2'>
 							SE HA CREADO EL ARCHIVO DE CONEXIONES.
@@ -493,7 +524,8 @@ function process_form(){
 	global $db_name;
 	global $dbconecterror;
 	
-	require 'Gcb.Config/Inc_Crea_Tablas.php';
+		require 'Gcb.Config/Inc_Crea_Tablas.php';
+
 
 	}	
 
@@ -510,11 +542,11 @@ function modif(){
 	
 	$contenido = explode("\n",$contenido);
 	/*
+	Y EL AÑO ANTERIOR: 
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',\n'".(date('y')-1)."' => '".(date('Y')-1)."',";
 	*/
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";
 	$contenido = implode("\n",$contenido);
-	
 	//fseek($fw, 37);
 	$fw = fopen($filename, 'w+');
 	fwrite($fw, $contenido);
@@ -567,7 +599,7 @@ function show_form($errors=[]){
 						</th>
 					</tr>
 					<tr>
-						<td style='text-align:left'>");
+						<td style='text-align:left;'>");
 			
 		for($a=0; $c=count($errors), $a<$c; $a++){
 			print("<font color='#FF0000'>**</font>  ".$errors [$a]."<br/>");
