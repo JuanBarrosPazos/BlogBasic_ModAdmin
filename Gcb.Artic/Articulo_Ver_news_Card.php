@@ -153,7 +153,7 @@ function process_form(){
 				".$pg."
 			</form>";
 
-            print ("<div class='card col-sm-6 col-md-4'>
+     print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
             <div class='card-body'>
                 <h4>".$rowb['tit']."</h4>
                 <h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>
@@ -407,7 +407,7 @@ function ver_todo(){
 				".$pg."
 			</form>";
 
-	print ("<div class='card col-sm-6 col-md-4'>
+	print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
                 <div class='card-body'>
                     <h4>".$rowb['tit']."</h4>
                     <h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>

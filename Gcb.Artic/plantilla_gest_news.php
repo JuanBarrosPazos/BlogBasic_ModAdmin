@@ -58,18 +58,11 @@ function process_form(){
 
 	print( "<table align='center' style='margin-top:10px'>
 				<tr>
-					<th colspan=2 class='BorderInf'>
-						SE HA GRABADO CORRETAMENTE
-					</th>
+			<th colspan=2 class='BorderInf'>SE HA GRABADO CORRETAMENTE</th>
 				</tr>
-								
 				<tr>
-					<td  align='center'>
-						INDEX PLANTILLA WEB NEWS<BR> "
-						.$_POST['plantillanews'].
-					"</td>
+			<td  align='center'>INDEX PLANTILLA WEB NEWS<BR> ".$_POST['plantillanews']."</td>
 				</tr>
-				
 			</table>");
 
 		}
@@ -123,13 +116,12 @@ $plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED 
 
 		foreach ($plantillanews  as $key => $value){
 				if ($a<$c){ $a++;}else { }
-			echo"
-			<div class='gestplantillas'>
-			<input id='".$a."' name='plantillanews' type='radio' value='".$key."'";
+		echo"<div class='gestplantillas'>
+				<input id='".$a."' name='plantillanews' type='radio' value='".$key."'";
 			
 			if($defaults['plantillanews'] == $key) {print(" checked=\"checked\"");} else { }
 			
-			echo" required />
+		echo" required />
 			<label for='".$a."'>* ".$a." ".$value."</label><br>
 				<div style='text-align:center;'>
 					<img src='plantillas_img_news/p0".$a."a.png' />
@@ -138,7 +130,16 @@ $plantillanews = array ('Articulo_Ver_news.php' => 'PLANTILLA CASILLAS INVERTED 
 			</div><hr>";
 		} // FIN FOREACH
 
-		echo "<div style='text-align:center;'>
+		echo "<div class='gestplantillas'>
+		<input id='aleanews' name='plantillanews' type='radio' value='aleanews'";
+		
+		if($defaults['plantillanews'] == 'aleanews') {print(" checked=\"checked\"");} else { }
+		
+		echo "required />
+			<label for='aleanews'>* ".($c+1)." SELECCION AUTOMATICA ALEATORIA DE PLANTILLA</label><br>
+				</div><hr>
+
+				<div style='text-align:center;'>
 				<input type='submit' value='NEWS FRONT GRABAR NUEVA PLANTILLA' class='botonverde' />
 			  <input type='hidden' name='oculto' value=1 />
 				</div></form></fieldset></div>";

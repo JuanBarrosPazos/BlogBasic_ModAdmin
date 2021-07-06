@@ -126,21 +126,20 @@ function show_form($errors=[]){
 		$a = 0;
 		echo "<div class='juancentra'>
 		<form name='form_datos' method='post' action='$_SERVER[PHP_SELF]' >
-
+						
 		<legend style='text-align:center !important' >
-		PLANTILLAS WEB PARA INDEX<br>INDEX PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."
+			PLANTILLAS WEB PARA INDEX<br>INDEX PLANTILLA ACTUAL<br>".$_SESSION['plantilla']."
 		</legend><hr>";
 
 		foreach ($plantilla as $key => $value){
 				if ($a<$c){ $a++;}else { }
-			echo"
-			<div class='gestplantillas'>
-			<input id='".$a."' name='plantilla' type='radio' value='".$key."'";
+		echo"<div class='gestplantillas'>
+				<input id='".$a."' name='plantilla' type='radio' value='".$key."'";
 			
 			if($defaults['plantilla'] == $key) {print(" checked=\"checked\"");} else { }
 			
-			echo" required />
-			<label for='".$a."'>".$a." ".$value."</label><br>
+		echo" required />
+			<label for='".$a."'>* ".$a." ".$value."</label><br>
 				<div style='text-align:center;'>
 					<img src='plantillas_img/p0".$a."a.png' />
 					<img src='plantillas_img/p0".$a."b.png' />
@@ -148,7 +147,16 @@ function show_form($errors=[]){
 			</div><hr>";
 		} // FIN FOREACH
 
-		echo "<div style='text-align:center;'>
+		echo"<div class='gestplantillas'>
+				<input id='aleaindex' name='plantilla' type='radio' value='aleaindex'";
+		
+		if($defaults['plantilla'] == 'aleaindex') {print(" checked=\"checked\"");} else { }
+
+		echo " required />
+			<label for='aleaindex'> * ".($c+1)." SELECCION AUTOMATICA ALEATORIA DE PLANTILLA </label><br>
+				</div><hr>
+
+				<div style='text-align:center;'>
 				<input type='submit' value='INDEX FRONT GRABAR NUEVA PLANTILLA' class='botonverde' />
 			  <input type='hidden' name='oculto' value=1 />
 				</div></form></fieldset></div>";

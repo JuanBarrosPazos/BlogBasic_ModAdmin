@@ -137,7 +137,7 @@ function process_form(){
 				".$pg."
 			</form>";
 
-	print ("<div class='col-sm-6 item'>
+	print ("<div class='col-sm-6 item' style='margin:auto;'>
 				<div class='row' style='text-align:left !important;'>
                         <div class='col-md-12 col-lg-5'>
 							".$visual."
@@ -377,7 +377,7 @@ function ver_todo(){
 				".$pg."
 			</form>";
 
-	print ("<div class='col-sm-6 item'>
+	print ("<div class='col-sm-6 item' style='margin:auto;'>
 				<div class='row' style='text-align:left !important;'>
                         <div class='col-md-12 col-lg-5'>
 							".$visual."
