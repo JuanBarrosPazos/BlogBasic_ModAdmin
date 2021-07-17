@@ -18,7 +18,7 @@
 					}
 
 	elseif(isset($_POST['config'])){$_SESSION['inst'] = "noinst";						
-	if($form_errors = validate_form()){show_form($form_errors);} 
+		if($form_errors = validate_form()){show_form($form_errors);} 
 	else {	process_form();
 			require 'Gcb.Connet/conection.php';
 			$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);

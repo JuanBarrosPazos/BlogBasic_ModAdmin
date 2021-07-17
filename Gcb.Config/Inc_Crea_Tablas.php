@@ -34,7 +34,7 @@
 					$table1 = "\t* OK TABLA ADMIN.".PHP_EOL;
 	
 	$ad = "INSERT INTO `$db_name`.`gcb_admin` (`id`,`ref`,`Nivel`,`Nombre`,`Apellidos`,`myimg`,`doc`,`dni`,`ldni`,`Email`,`Usuario`,`Password`,`Pass`,`Direccion`,`Tlf1`,`Tlf2`,`lastin`,`lastout`,`visitadmin`) VALUES
-	('1', 'anonimo', 'close', 'Anonimo', 'Autor', 'untitled.png', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', '0', '0', '0', '0', '0')";
+	(1, 'anonimo', 'close', 'Anonimo', 'Autor', 'untitled.png', 'anonimo', 'anonimo', 'a', 'anonimo', 'anonimo', 'anonimo', 'anonimo', 'anonimo', '0', '0', '0', '0', '0')";
 		if(mysqli_query($db, $ad)){
 						$table1 = $table1."\t* OK INIT VALUES EN VISITAS ADMIN.".PHP_EOL;
 		} else { $table1 = $table1."\t* NO OK INIT VALUES EN VISITAS ADMIN. ".mysqli_error($db).PHP_EOL;
