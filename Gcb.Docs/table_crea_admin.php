@@ -26,7 +26,7 @@
 		global $title4;
 		$title4 = "oculto";
 		global $closewin;
-		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderSup'>
+		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderInf'>
 						".$inciobajas.$inicioadmin."</td></tr>";
 	
 	 }
@@ -209,7 +209,7 @@
 			} else { }	
 
 	print("	<tr>
-				<td colspan='2'  align='right' valign='middle'  class='BorderSup'>
+				<td colspan='2'  align='right' valign='middle'  class='BorderSup BorderInf'>
 					<input type='submit' value='".$title3."' class='botonverde' />
 					<input type='hidden' name='".$title4."' value=1 />
 				</td>
