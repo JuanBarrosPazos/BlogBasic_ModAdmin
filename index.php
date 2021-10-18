@@ -8,10 +8,10 @@
 				 ////////////////////				  ///////////////////
 
 	if(isset($_POST['limpia'])){
-						deltables();
 						deldir();
-						//deltablesb();
 						rewrite();
+						deltables();
+						//deltablesb();
 						config_one();
 						//inittot();
 			 			show_form();
