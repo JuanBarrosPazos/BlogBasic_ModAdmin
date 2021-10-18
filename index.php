@@ -540,11 +540,12 @@ function modif(){
 	fclose($fw1);
 	
 	$contenido = explode("\n",$contenido);
-	/*
-	Y EL AÑO ANTERIOR: 
+	/* SOLO EL AÑO CORRIENTE */
+	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";
+	/* Y EL AÑO ANTERIOR: 
 	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',\n'".(date('y')-1)."' => '".(date('Y')-1)."',";
 	*/
-	$contenido[2] = "'' => 'YEAR',\n'".date('y')."' => '".date('Y')."',";
+	
 	$contenido = implode("\n",$contenido);
 	//fseek($fw, 37);
 	$fw = fopen($filename, 'w+');

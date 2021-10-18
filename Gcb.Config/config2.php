@@ -15,9 +15,7 @@
 		print("<table align='center' style=\"margin-top:12px;\">
 					<tr>
 						<td>
-							<a href='../index.php'>
-								ACCEDA AL SISTEMA
-							</a>
+							<a href='../index.php'>ACCEDA AL SISTEMA</a>
 						</td>
 					</tr>
 				</table>");
@@ -291,6 +289,8 @@ function show_form($errors=[]){
 	
 	/*******************************/
 		
+		global $config2;
+		$config2 = 1;
 		global $imgform;
 		$imgform = "config2";
 		require '../Gcb.Docs/table_crea_admin.php';

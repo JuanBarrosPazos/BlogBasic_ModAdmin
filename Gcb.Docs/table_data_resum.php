@@ -71,16 +71,19 @@
 					<td style='text-align:right !important;'>TLF 2 </td>
 					<td style='text-align:left !important;' colspan='2'>".$_POST['Tlf2']."</td>
 				</tr>
-
-				<tr>
-					<td style='text-align:right !important;'>LAST IN </td>
-					<td style='text-align:left !important;' colspan='2'>".$_POST['lastin']."</td>
-				</tr>
-				<tr>
-					<td style='text-align:right !important;'>LAST OUT </td>
-					<td style='text-align:left !important;' colspan='2'>".$_POST['lastout']."</td>
-				</tr>
-				
 				");
+
+		if(isset($_POST['lastin'])){
+			print("<tr>
+						<td style='text-align:right !important;'>LAST IN </td>
+						<td style='text-align:left !important;' colspan='2'>".$_POST['lastin']."</td>
+					</tr>");
+				} else { }
+		if(isset($_POST['lastout'])){
+			print("<tr>
+						<td style='text-align:right !important;'>LAST OUT </td>
+						<td style='text-align:left !important;' colspan='2'>".$_POST['lastout']."</td>
+					</tr>");
+				} else { }
 			}
 ?>

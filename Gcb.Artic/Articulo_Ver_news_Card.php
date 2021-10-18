@@ -340,7 +340,7 @@ function ver_todo(){
 
 	$qb = mysqli_query($db, $sqlb);
 	if(!$qb){
-			print("<font color='#FF0000'>Consulte L.496: </font></br>".mysqli_error($db)."</br>");
+		print("</br><font color='#FF0000'>Consulte L.343 Gcb.Artic/Articulo_Ver_news_Card.php: </font></br>".mysqli_error($db)."</br>");
 			
 		} else {
 			if(mysqli_num_rows($qb)== 0){

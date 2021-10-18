@@ -20,14 +20,39 @@
 	@$num_total_rows = mysqli_num_rows($q);
 
 	if(!$q || ($num_total_rows < 1)){
+		/*
 		echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".$dyt1." **</h5></div>";
-	} else { }
+		 */
+					/*
+			DEFINO LOS VALORES PARA LA CONSULTA DEL AÑO ANTERIOR
+			EN CASO DE NO EXISTIR DATOS EN EL ACTUAL
+			MODIFICANDO LA VARIABLE $dyt1 = date('Y'); A $dyt1 = $dyt1 - 1;
+			*/
+			global $dyt1;
+			$dyt1 = (date('Y')) - 1; /* */
+			global $fil;
+			$fil = $dyt1."-%";
+			global $vname;
+			$vname = "`gcb_".$dyt1."_articulos`";
+			
+			$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
+			$q = mysqli_query($db, $result);
+			global $row;
+			@$row = mysqli_fetch_assoc($q);
+			global $num_total_rows;
+			@$num_total_rows = mysqli_num_rows($q);
+		
+			if(!$q || ($num_total_rows < 1)){
+				echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".($dyt1 + 1)." & ".$dyt1." **</h5></div>";
+			} else { }
+		// FIN MODIFICACION UN AÑO MENOS EN CASO DE NO EXISTIR DATOS.
+	} else { } // FIN ELSE NO SE CUMPLE ORIGINAL
 
 
 	// DEFINO EL NUMERO DE ARTICULOS POR PÁGINA
 	//global $nitem;
 	//$nitem = 4;
-	
+
 	global $page;
 
     if (isset($_POST["page"])) {

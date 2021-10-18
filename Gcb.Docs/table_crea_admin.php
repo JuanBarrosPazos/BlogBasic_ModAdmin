@@ -26,10 +26,12 @@
 		global $title4;
 		$title4 = "oculto";
 		global $closewin;
-		$closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderInf'>
+		if(isset($config2)){
+			$closewin = "";
+		}else{ $closewin = "<tr><td colspan=3 style='text-align:center;' class='BorderInf'>
 						".$inciobajas.$inicioadmin."</td></tr>";
-	
-	 }
+			}
+		}
 
 	 print("<table style=\"margin-top:6px\">
 				<tr>

@@ -16,7 +16,7 @@ function ver_todo(){
 	require 'Gcb.Artic/Inc_Artic_Index_Pagina_Ini.php';
 
 	if(!$qb){
-			print("<font color='#FF0000'>Consulte L.496: </font></br>".mysqli_error($db)."</br>");
+			print("</br><font color='#FF0000'>Consulte L.19 Articulo_Ver_index_Popup.php: </font></br>".mysqli_error($db)."</br>");
 			
 	} else {
 		if(mysqli_num_rows($qb)== 0){

@@ -125,6 +125,10 @@
             }
         } // FIN FUNCTION function ayear()
 
+                ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+              ////////////////////				  ///////////////////
+            
     // SELECCION DE LA PLANTILLA EN INDEX
     require 'Gcb.Artic/plantilla.php';
     if ($_SESSION['plantilla'] == 'aleaindex'){ 
@@ -142,6 +146,11 @@
     else { $_SESSION['plantilla'] = 'Articulo_Ver_index.php'; }      
   } 
   elseif (!isset($_SESSION['plantilla'])) { $_SESSION['plantilla'] = 'Articulo_Ver_index.php'; }
+
+                ////////////////////				   ////////////////////
+////////////////////				////////////////////				////////////////////
+              ////////////////////				  ///////////////////
+
           
   /* Creado por Juan Manuel Barros Pazos 2020/21 */
 
