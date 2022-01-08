@@ -136,29 +136,38 @@ function process_form(){
 	$conte = substr($rowb['conte'],0,100);
 	$conte = $conte." ...&nbsp;
         <form name='ver' method='POST' action='../Gcb.Artic/Articulo_Ver_index_Popup_Ver.php' target='popup' onsubmit=\"window.open('', 'popup', 'width=500px, height=650px')\">
-				<input name='id' type='hidden' value='".$rowb['id']."' />
-				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
-				<input name='refart' type='hidden' value='".$rowb['refart']."' />
-				<input name='tit' type='hidden' value='".$rowb['tit']."' />
-				<input name='titsub' type='hidden' value='".$rowb['titsub']."' />
-				<input name='datein' type='hidden' value='".$rowb['datein']."' />
-				<input name='timein' type='hidden' value='".$rowb['timein']."' />
-				<input name='datemod' type='hidden' value='".$rowb['datemod']."' />
-				<input name='timemod' type='hidden' value='".$rowb['timemod']."' />
-				<input name='conte' type='hidden' value='".$rowb['conte']."' />
-				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
-				<input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='id' value='".$rowb['id']."' />
+				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
+				<input type='hidden' name='refart' value='".$rowb['refart']."' />
+				<input type='hidden' name='tit' value='".$rowb['tit']."' />
+				<input type='hidden' name='titsub' value='".$rowb['titsub']."' />
+				<input type='hidden' name='datein' value='".$rowb['datein']."' />
+				<input type='hidden' name='timein' value='".$rowb['timein']."' />
+				<input type='hidden' name='datemod' value='".$rowb['datemod']."' />
+				<input type='hidden' name='timemod' value='".$rowb['timemod']."' />
+				<input type='hidden' name='conte' value='".$rowb['conte']."' />
+				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
+				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='oculto2' value=1 />
 				".$pg."
 			</form>";
 
+	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
+		global $myurl;
+		$myurl = "";
+	} else {
+		global $myurl;
+		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
+	}
+
      print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
             <div class='card-body'>
                 <h4>".$rowb['tit']."</h4>
                 <h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>
-                    ".$visual."
-            <h7 class='description'>".$conte."</h7>
+                    ".$myurl.$visual."
+            	<h7 class='description'>".$conte."</h7>
          </div>
      </div>");
 
@@ -390,28 +399,37 @@ function ver_todo(){
 	$conte = substr($rowb['conte'],0,100);
 	$conte = $conte." ...&nbsp;
 	<form name='ver' method='POST' action='../Gcb.Artic/Articulo_Ver_index_Popup_Ver.php' target='popup' onsubmit=\"window.open('', 'popup', 'width=500px, height=650px')\">
-				<input name='id' type='hidden' value='".$rowb['id']."' />
-				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
-				<input name='refart' type='hidden' value='".$rowb['refart']."' />
-				<input name='tit' type='hidden' value='".$rowb['tit']."' />
-				<input name='titsub' type='hidden' value='".$rowb['titsub']."' />
-				<input name='datein' type='hidden' value='".$rowb['datein']."' />
-				<input name='timein' type='hidden' value='".$rowb['timein']."' />
-				<input name='datemod' type='hidden' value='".$rowb['datemod']."' />
-				<input name='timemod' type='hidden' value='".$rowb['timemod']."' />
-				<input name='conte' type='hidden' value='".$rowb['conte']."' />
-				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
-				<input name='myvdo' type='hidden' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='id' value='".$rowb['id']."' />
+				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
+				<input type='hidden' name='refart' value='".$rowb['refart']."' />
+				<input type='hidden' name='tit' value='".$rowb['tit']."' />
+				<input type='hidden' name='titsub' value='".$rowb['titsub']."' />
+				<input type='hidden' name='datein' value='".$rowb['datein']."' />
+				<input type='hidden' name='timein' value='".$rowb['timein']."' />
+				<input type='hidden' name='datemod' value='".$rowb['datemod']."' />
+				<input type='hidden' name='timemod' value='".$rowb['timemod']."' />
+				<input type='hidden' name='conte' value='".$rowb['conte']."' />
+				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
+				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='oculto2' value=1 />
 				".$pg."
 			</form>";
 
+	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
+		global $myurl;
+		$myurl = "";
+	} else {
+		global $myurl;
+		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
+	}
+
 	print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
                 <div class='card-body'>
                     <h4>".$rowb['tit']."</h4>
                     <h7>".$rowb['titsub']."<br>".$rowb['datein']."</h7>
-                        ".$visual."
+                        ".$myurl.$visual."
 				<h7 class='description'>".$conte."</h7>
              </div>
 		 </div>");

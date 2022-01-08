@@ -37,14 +37,23 @@
 				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
 				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
 				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='leermas' id=\"".$rowb['refart']."\" value=1 />
 				".$pg."
 			</form>";
 
+	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
+		global $myurl;
+		$myurl = "";
+	} else {
+		global $myurl;
+		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
+	}
+
     global $contep;
 	$contep = $rowb['conte'];
-	$contep = $autor.$vdonw.$contep."
+	$contep = $autor.$vdonw.$myurl.$contep."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 			<form name='ver' name='ver' action=\"index.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />
@@ -52,6 +61,7 @@
 				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
 				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
 				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='hidden' name='leermenos' id=\"".$rowb['refart']."\" value=1 />
 				<input type='submit' value='LEER MENOS' class='botonleer' />
 				".$pg."

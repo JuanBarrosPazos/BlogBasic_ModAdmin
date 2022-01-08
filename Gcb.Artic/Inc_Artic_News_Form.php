@@ -32,26 +32,36 @@
 	$contem = substr($rowb['conte'],0,100);
 	$contem = $contem." ...&nbsp;
 			<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
-				<input name='id' type='hidden' value='".$rowb['id']."' />
-				<input name='refart' type='hidden' value='".$rowb['refart']."' />
-				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
-				<input name='myimg' type='hidden' value='".$rowb['myimg']."' />
+				<input type='hidden' name='id' value='".$rowb['id']."' />
+				<input type='hidden' name='refart' value='".$rowb['refart']."' />
+				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
+				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
 				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='submit' value='LEER MÁS...' class='botonleer' />
 				<input type='hidden' name='leermas' id=\"".$rowb['refart']."\" value=1 />
 				".$pg."
 			</form>";
 
-    global $contep;
+	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
+		global $myurl;
+		$myurl = "";
+	} else {
+		global $myurl;
+		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
+	}
+	
+	global $contep;
 	$contep = $rowb['conte'];
-	$contep = $autor.$vdonw.$contep."
+	$contep = $autor.$vdonw.$myurl.$contep."
 	<img class='imgarticulo' src='".$rut."Gcb.Img.Art/".@$_POST['myimg']."' />
 	<form name='ver' name='ver' action=\"news.php#".$rowb['refart']."\" method='post' >
 				<input type='hidden' name='id' value='".$rowb['id']."' />
 				<input type='hidden' name='refart' value='".$rowb['refart']."' />
-				<input name='refuser' type='hidden' value='".$rowb['refuser']."' />
+				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
 				<input type='hidden' name='myimg' value='".$rowb['myimg']."' />
 				<input type='hidden' name='myvdo' value='".$rowb['myvdo']."' />
+				<input type='hidden' name='myurl' value='".$rowb['myurl']."' />
 				<input type='hidden' name='leermenos' id=\"".$rowb['refart']."\" value=1 />
 				<input type='submit' value='LEER MENOS' class='botonleer' />
 				".$pg."

@@ -35,16 +35,18 @@
 			global $vname;
 			$vname = "`gcb_".$dyt1."_articulos`";
 			
+			global $result;
 			$result =  "SELECT * FROM $vname WHERE `visible` = 'y' ";
+			global $q;
 			$q = mysqli_query($db, $result);
+		if($q) {
 			global $row;
 			@$row = mysqli_fetch_assoc($q);
 			global $num_total_rows;
 			@$num_total_rows = mysqli_num_rows($q);
-		
-			if(!$q || ($num_total_rows < 1)){
-				echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".($dyt1 + 1)." & ".$dyt1." **</h5></div>";
-			} else { }
+		} elseif(!$q || ($num_total_rows < 1)) {
+			echo "<div class='juancentra' style=\"margin-bottom:0.4em !important;\"><h5>** NO HAY DATOS EN ".($dyt1 + 1)." & ".$dyt1." **</h5></div>";
+		} else { }
 		// FIN MODIFICACION UN AÑO MENOS EN CASO DE NO EXISTIR DATOS.
 	} else { } // FIN ELSE NO SE CUMPLE ORIGINAL
 
