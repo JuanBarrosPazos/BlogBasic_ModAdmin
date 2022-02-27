@@ -154,13 +154,7 @@ function process_form(){
 				".$pg."
 			</form>";
 
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 
      print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
             <div class='card-body'>
@@ -417,13 +411,7 @@ function ver_todo(){
 				".$pg."
 			</form>";
 
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 
 	print ("<div class='card col-sm-6 col-md-4' style='margin-left: auto !important; margin-right:auto !important;'>
                 <div class='card-body'>

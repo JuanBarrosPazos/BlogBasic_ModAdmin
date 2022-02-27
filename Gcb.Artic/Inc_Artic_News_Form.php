@@ -43,13 +43,7 @@
 				".$pg."
 			</form>";
 
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 	
 	global $contep;
 	$contep = $rowb['conte'];

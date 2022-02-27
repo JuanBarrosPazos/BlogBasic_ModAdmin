@@ -138,13 +138,7 @@ function process_form(){
 				".$pg."
 			</form>";
 
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 
 	print ("<div class='col-sm-6 item' style='margin:auto;'>
 				<div class='row' style='text-align:left !important;'>
@@ -387,13 +381,7 @@ function ver_todo(){
 				".$pg."
 			</form>";
 
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 
 	print ("<div class='col-sm-6 item' style='margin:auto;'>
 				<div class='row' style='text-align:left !important;'>

@@ -1,7 +1,7 @@
 <?php
 
-	require_once 'Gcb.Connet/conection.php';
-	require_once 'Gcb.Connet/conect.php';
+	require 'Gcb.Connet/conection.php';
+	require 'Gcb.Connet/conect.php';
 
 				   ////////////////////				   ////////////////////
 ////////////////////				////////////////////				////////////////////
@@ -57,10 +57,9 @@ function ver_todo(){
                  //$visual = "";
                     }
     
-				global $conte;
-				$conte = substr($rowb['conte'],0,160);
-				$conte = $conte." ...&nbsp;
-				
+	global $conte;
+	$conte = substr($rowb['conte'],0,160);
+	$conte = $conte." ...&nbsp;
 	<form name='ver' method='POST' action='Gcb.Artic/Articulo_Ver_index_Popup_Ver.php' target='popup' onsubmit=\"window.open('', 'popup', 'width=500px, height=650px')\">
 				<input type='hidden'  name='id'value='".$rowb['id']."' />
 				<input type='hidden' name='refuser' value='".$rowb['refuser']."' />
@@ -79,13 +78,7 @@ function ver_todo(){
 				<input type='hidden' name='oculto2' value=1 />
 			</form>";	
 			
-	if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
-		global $myurl;
-		$myurl = "";
-	} else {
-		global $myurl;
-		$myurl = '<h7 style=\'display:block;\'><a href="'.$rowb['myurl'].'" target="_blanck">LINK EXTERNO</a></h7>';
-	}
+	require 'url_logica.php';
 
 	print ("<div class='col-sm-6 item' style='margin:auto;' >
 				<div class='row' style='text-align:left !important;'>
