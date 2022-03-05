@@ -54,25 +54,25 @@ function process_form(){
 /*	REFERENCIA DE USUARIO	*/
 
 if (preg_match('/^(\w{1})/',$_POST['Nombre'],$ref1)){	$rf1 = $ref1[1];
-														$rf1 = trim($rf1);
+														$rf1 = @trim($rf1);
 														/*print($ref1[1]."</br>");*/
 																					}
 if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Nombre'],$ref2)){	$rf2 = $ref2[2];
-																$rf2 = trim($rf2);
+																$rf2 = @trim($rf2);
 																/*print($ref2[2]."</br>");*/
 																						}
 if (preg_match('/^(\w{1})/',$_POST['Apellidos'],$ref3)){	$rf3 = $ref3[1];
-															$rf3 = trim($rf3);
+															$rf3 = @trim($rf3);
 																/*print($ref3[1]."</br>");*/
 																						}
 if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[2];
-																	$rf4 = trim($rf4);
+																	$rf4 = @trim($rf4);
 																/*print($ref4[2]."</br>");*/
 																						}
 
 	global $rf;
 	$rf = $rf1.$rf2.$rf3.$rf4.$_POST['dni'].$_POST['ldni'];
-	$rf = trim($rf);
+	$rf = @trim($rf);
 	$rf = strtolower($rf);
 
 	$_SESSION['iniref'] = $rf;
@@ -109,7 +109,7 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 		$rowpimg = mysqli_fetch_assoc($qpimg);
 		$_SESSION['dudas'] = $rowpimg['myimg'];
 		global $dudas;
-		$dudas = trim($_SESSION['dudas']);
+		$dudas = @trim($_SESSION['dudas']);
 		print("** ".$rowpimg['myimg']);
 	*/
 	print( "<table align='center' style='margin-top:10px'>

@@ -37,7 +37,7 @@ function validate_form(){
 	
 	$errors = array();
 	
-	if (strlen(trim($_POST['titulo'])) > 0) {
+	if (strlen(@trim($_POST['titulo'])) > 0) {
 		
 		if (!preg_match('/^[^@#$&%<>:"·\(\)=¿?!¡\[\]\{\};,:\.\*]+$/',$_POST['titulo'])){
 			$errors [] = "<font color='#FF0000'>CARACTERES NO VALIDOS</font>";

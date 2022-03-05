@@ -55,7 +55,7 @@ function process_form(){
 	
 	// HE DEFINIR EL VIDEO SI EXISTE
 
-	if(strlen(trim($_POST['myvdo'])) > 0){
+	if(strlen(@trim($_POST['myvdo'])) > 0){
 		global $visual;
 		$visual = "<p><video controls width='90%' height='auto'>
 						<source src='../Gcb.Vdo.Art/".$_POST['myvdo']."' />

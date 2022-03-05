@@ -1,6 +1,6 @@
 <?php
 
-    if(($rowb['myurl']=="NULL")||(strlen(trim($rowb['myurl'])) == 0)){
+    if(($rowb['myurl']=="NULL")||(strlen(@trim($rowb['myurl'])) == 0)){
         global $myurl;
         $myurl = '<h7 style=\'display:block;\'><a href="#">SIN URL...</a></h7>';
     } else {

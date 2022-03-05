@@ -36,7 +36,7 @@ function validate_form(){
 
 	$errors = array();
 
-	if(strlen(trim($_POST['refart'])) != 0){	
+	if(strlen(@trim($_POST['refart'])) != 0){	
 			$secc1 = "gcb_".date('Y')."_articulos";
 			$secc1 = "`".$secc1."`";
 			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `refart` = '$_POST[refart]'";
@@ -50,11 +50,11 @@ function validate_form(){
 
 		///////////////////////////////////////////////////////////////////////////////////
 
-	if(strlen(trim($_POST['titulo'])) == 0){
+	if(strlen(@trim($_POST['titulo'])) == 0){
 		$errors [] = "TITULO <font color='#FF0000'>Campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['titulo'])) < 6){
+	elseif (strlen(@trim($_POST['titulo'])) < 6){
 		$errors [] = "TITULO <font color='#FF0000'>Más de 5 carácteres.</font>";
 		}
 		
@@ -66,7 +66,7 @@ function validate_form(){
 		$errors [] = "TITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
 		}
 	
-	elseif(strlen(trim($_POST['titulo'])) != 0){	
+	elseif(strlen(@trim($_POST['titulo'])) != 0){	
 			$secc1 = "gcb_".date('Y')."_articulos";
 			$secc1 = "`".$secc1."`";
 			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `tit` = '$_POST[titulo]'";
@@ -78,11 +78,11 @@ function validate_form(){
 				}
 		}
 
-	if(strlen(trim($_POST['subtitul'])) == 0){
+	if(strlen(@trim($_POST['subtitul'])) == 0){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['subtitul'])) < 5){
+	elseif (strlen(@trim($_POST['subtitul'])) < 5){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Más de 4 carácteres.</font>";
 		}
 		
@@ -94,7 +94,7 @@ function validate_form(){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
 		}
 	
-	elseif(strlen(trim($_POST['subtitul'])) != 0){	
+	elseif(strlen(@trim($_POST['subtitul'])) != 0){	
 			$secc1 = "gcb_".date('Y')."_articulos";
 			$secc1 = "`".$secc1."`";
 			$sqlc =  "SELECT * FROM `$db_name`.$secc1 WHERE `titsub` = '$_POST[subtitul]'";
@@ -106,15 +106,15 @@ function validate_form(){
 				}
 		}
 	
-	if(strlen(trim($_POST['coment'])) == 0){
+	if(strlen(@trim($_POST['coment'])) == 0){
 		$errors [] = "ARTICULO <font color='#FF0000'>Campo obligatorio.</font>";
 		}
 
-	elseif(strlen(trim($_POST['coment'])) <= 50){
+	elseif(strlen(@trim($_POST['coment'])) <= 50){
 		$errors [] = "ARTICULO <font color='#FF0000'>Mas de 50 carácteres.</font>";
 		}
 
-	elseif(strlen(trim($_POST['coment'])) >= 402){
+	elseif(strlen(@trim($_POST['coment'])) >= 402){
 		$errors [] = "ARTICULO <font color='#FF0000'>Excedió más de 400 carácteres.</font>";
 		}
 		
@@ -553,8 +553,8 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 		$logname = $_SESSION['Nombre'];	
 		$logape = $_SESSION['Apellidos'];	
-		$logname = trim($logname);	
-		$logape = trim($logape);	
+		$logname = @trim($logname);	
+		$logape = @trim($logape);	
 		$logdocu = $logname."_".$logape;
 		$logdate = date('Y_m_d');
 		$logtext = $text."\n";

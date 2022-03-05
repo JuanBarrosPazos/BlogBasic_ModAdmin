@@ -26,10 +26,10 @@
 		/* TABLAS DE LOS USUARIOS */
 
 		global $tcuf;
-		$tcuf = trim($_POST['tabla']);
+		$tcuf = @trim($_POST['tabla']);
 		$ctuf = strtolower($tcuf);
 		global $tcufs;
-		$tcufs = trim($_SESSION['tablas']);
+		$tcufs = @trim($_SESSION['tablas']);
 		$tcufs = strtolower($tcufs);
 
 				   ////////////////////				   ////////////////////
@@ -38,7 +38,7 @@
 
 // EXPORTA LA TABLA ADMIN DEL SISTEMA //
 
-if (trim($_POST['tabla']) == "gcb_admin" ){
+if (@trim($_POST['tabla']) == "gcb_admin" ){
 $campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Pass,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
 $texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
 $id = "`id`";
@@ -80,7 +80,7 @@ $c4 = "\nENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCRE
 
 // EXPORTA LA TABLA ADMIN FEEDBACK DEL SISTEMA //
 
-if (trim($_POST['tabla']) == "gcb_admin" ){
+if (@trim($_POST['tabla']) == "gcb_admin" ){
 $campo = 'id,ref,Nivel,Nombre,Apellidos,myimg,doc,dni,ldni,Email,Usuario,Password,Pass,Direccion,Tlf1,Tlf2,lastin,lastout,visitadmin';
 $texc = '`id`, `ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`, `lastin`, `lastout`, `visitadmin`';
 $id = "`id`";

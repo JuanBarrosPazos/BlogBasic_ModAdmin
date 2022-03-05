@@ -139,11 +139,11 @@ function MM_validateForm() {
 		
 	/* Validamos el campo Nombre. */
 	
-		if(strlen(trim($_POST['nombre'])) == 0){
+		if(strlen(@trim($_POST['nombre'])) == 0){
 		$errors [] = "Nombre: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['nombre'])) < 3 ){
+	elseif (strlen(@trim($_POST['nombre'])) < 3 ){
 		$errors [] = "Nombre: <font color='#FF0000'>Escriba más de tres carácteres.</font>";
 		}
 		
@@ -153,11 +153,11 @@ function MM_validateForm() {
 		
 	/* Validamos el campo Apellidos. */
 	
-		if(strlen(trim($_POST['apellidos'])) == 0){
+		if(strlen(@trim($_POST['apellidos'])) == 0){
 		$errors [] = "Apellidos: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['apellidos'])) < 3 ){
+	elseif (strlen(@trim($_POST['apellidos'])) < 3 ){
 		$errors [] = "Apellidos: <font color='#FF0000'>Escriba más de tres carácteres.</font>";
 		}
 		
@@ -168,11 +168,11 @@ function MM_validateForm() {
 
 	/* Validamos el campo mail. */
 	
-		if(strlen(trim($_POST['Email'])) == 0){
+		if(strlen(@trim($_POST['Email'])) == 0){
 		$errors [] = "Mail: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Email'])) < 5 ){
+	elseif (strlen(@trim($_POST['Email'])) < 5 ){
 		$errors [] = "Mail: <font color='#FF0000'>Escriba más de cinco carácteres.</font>";
 		}
 		
@@ -182,11 +182,11 @@ function MM_validateForm() {
 		
 	/* Validamos el campo Asunto. */
 	
-		if(strlen(trim($_POST['asunto'])) == 0){
+		if(strlen(@trim($_POST['asunto'])) == 0){
 		$errors [] = "Asunto: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['asunto'])) < 3 ){
+	elseif (strlen(@trim($_POST['asunto'])) < 3 ){
 		$errors [] = "Asunto: <font color='#FF0000'>Escriba más de tres carácteres.</font>";
 		}
 		
@@ -196,11 +196,11 @@ function MM_validateForm() {
 
 	/* Validamos el campo Mensaje. */
 	
-		if(strlen(trim($_POST['mensaje'])) == 0){
+		if(strlen(@trim($_POST['mensaje'])) == 0){
 		$errors [] = "Mensaje: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['mensaje'])) < 3 ){
+	elseif (strlen(@trim($_POST['mensaje'])) < 3 ){
 		$errors [] = "Mensaje: <font color='#FF0000'>Escriba más de tres carácteres.</font>";
 		}
 		

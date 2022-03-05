@@ -47,7 +47,7 @@ function validate_form(){
 	
 	$errors = array();
 	
-	if ( (strlen(trim($_POST['Nombre'])) == 0) && (strlen(trim($_POST['Apellidos'])) == 0) ){
+	if ( (strlen(@trim($_POST['Nombre'])) == 0) && (strlen(@trim($_POST['Apellidos'])) == 0) ){
 		$errors [] = " <font color='#FF0000'>UNO DE LOS DOS CAMPOS OBLIGATORIO</font>";
 		}
 	
@@ -75,8 +75,8 @@ function process_form(){
 	global $orden;
 	$orden = @$_POST['Orden'];
 		
-	if (strlen(trim($_POST['Apellidos'])) == 0){$ape = $nom;}
-	if (strlen(trim($_POST['Nombre'])) == 0){ $nom = $ape;}
+	if (strlen(@trim($_POST['Apellidos'])) == 0){$ape = $nom;}
+	if (strlen(@trim($_POST['Nombre'])) == 0){ $nom = $ape;}
 
 	global $table_name_a;
 	$table_name_a = "`".$_SESSION['clave']."feedback`";

@@ -213,12 +213,12 @@ function validate_form(){
 
 	$errors = array();
 	
-		if (strlen(trim($_POST['Usuario'])) == 0){
+		if (strlen(@trim($_POST['Usuario'])) == 0){
 			//$errors [] = "Usuario: Campo obligatorio.";
 			$errors [] = "USER ACCES ERROR";
 			}
 
-		elseif (strlen(trim($_POST['Password'])) == 0){
+		elseif (strlen(@trim($_POST['Password'])) == 0){
 			//$errors [] = "Password: Campo Obligatorio:";
 			$errors [] = "USER ACCES ERROR";
 			}
@@ -229,7 +229,7 @@ function validate_form(){
 			}
 
 		elseif(!password_verify($_POST['Password'], $hash)){
-			if(trim($_POST['Password'] != $rn['Pass'])){
+			if(@trim($_POST['Password'] != $rn['Pass'])){
 				//$errors [] = "Password incorrecto.";
 				$errors [] = "USER ACCES ERROR";
 				} else {}
@@ -321,7 +321,7 @@ function desbloqueo(){
 	if($cx >= 1){
 	// VERIFICO IP BLOQUEO DE LA IP
 	if(($cx >= 1)&&($rowx['error'] > $timex)){ $_SESSION['showf'] = 69;}
-	elseif((($cx >= 1)&&($rowx['error'] <= $timex))||((strlen(trim($rowx['error'] >= 3)))&&($rowx['error'] <= $timex))){ 
+	elseif((($cx >= 1)&&($rowx['error'] <= $timex))||((strlen(@trim($rowx['error'] >= 3)))&&($rowx['error'] <= $timex))){ 
 	// DESBLOQUEO TODAS LAS IPs IGUALES A LA MIA
 	$desb = "UPDATE `$db_name`.`gcb_ipcontrol` SET `error` = 'des', `acceso` = 'des' WHERE `gcb_ipcontrol`.`ipn` = '$uip' ";
 	$_SESSION['showf'] = 0;	
@@ -330,7 +330,7 @@ function desbloqueo(){
 
 	global $blocker;
 	$blocker = $rowx['error'];
-	if(strlen(trim($rowx['error'])) < 4){ $rowx['error'] = "0".$rowx['error'];}
+	if(strlen(@trim($rowx['error'])) < 4){ $rowx['error'] = "0".$rowx['error'];}
 	$dbloqh = substr($rowx['error'],0,2);
 	$dbloqm = substr($rowx['error'],2,2);
 	$_SESSION['desbloqh'] = $dbloqh.":".$dbloqm.":00";
@@ -414,7 +414,7 @@ function bloqueo(){
 			global $bloqh;
 			global $bloqm;
 			if($_SESSION['bloqh'] >= 2300){$_SESSION['desbloqh'] = "23:59:00"; } 
-			elseif(strlen(trim($_SESSION['bloqh'] <= 3))){  $_SESSION['desbloqh'] = "0".$bloqh.":".$bloqm.":00";}
+			elseif(strlen(@trim($_SESSION['bloqh'] <= 3))){  $_SESSION['desbloqh'] = "0".$bloqh.":".$bloqm.":00";}
 			else{ $_SESSION['desbloqh'] = $bloqh.":".$bloqm.":00";}
 		print("	
 		<embed src='../Gcb.Audi/ip_block.mp3' autostart='true' loop='false' width='0' height='0' hidden='true' >
@@ -775,7 +775,7 @@ function visibleno(){
 	global $db;
 	global $db_name;
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";

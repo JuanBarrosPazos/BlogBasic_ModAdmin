@@ -9,8 +9,8 @@ global $ruta;
 $ruta = "../Gcb.Img.Art/";
 $_SESSION['ruta'] = $ruta;
 
-$safe_filename = trim(str_replace('/', '', $_FILES['myimg']['name']));
-$safe_filename = trim(str_replace('..', '', $safe_filename));
+$safe_filename = @trim(str_replace('/', '', $_FILES['myimg']['name']));
+$safe_filename = @trim(str_replace('..', '', $safe_filename));
 global $nombre;
 $nombre = $_FILES['myimg']['name'];
 global $destination_file;

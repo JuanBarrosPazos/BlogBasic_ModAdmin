@@ -151,7 +151,7 @@ function process_form(){
 	global $db_name;
 	
 	global $dyt1;
-	$dyt1 = trim($_POST['dyt1']);
+	$dyt1 = @trim($_POST['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -254,8 +254,8 @@ function show_form($errors=[]){
 	$_SESSION['srefart'] = $_POST['refart'];
 	$_SESSION['refuser'] = $_POST['refuser'];
 	
-	if (isset($_POST['dyt1'])){$defaults['dyt1'] = trim($_POST['dyt1']);}
-	else {$defaults['dyt1'] = trim($_SESSION['dyt1']);}
+	if (isset($_POST['dyt1'])){$defaults['dyt1'] = @trim($_POST['dyt1']);}
+	else {$defaults['dyt1'] = @trim($_SESSION['dyt1']);}
 
 				$defaults = array ( 'id' => $_POST['id'],
 									'dyt1' => $defaults['dyt1'],

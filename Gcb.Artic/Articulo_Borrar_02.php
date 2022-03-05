@@ -45,7 +45,7 @@ function process_form(){
 	/* BORRAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -352,8 +352,8 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 		$logname = $_SESSION['Nombre'];	
 		$logape = $_SESSION['Apellidos'];	
-		$logname = trim($logname);	
-		$logape = trim($logape);	
+		$logname = @trim($logname);	
+		$logape = @trim($logape);	
 		$logdocu = $logname."_".$logape;
 		$logdate = date('Y_m_d');
 		$logtext = $text."\n";

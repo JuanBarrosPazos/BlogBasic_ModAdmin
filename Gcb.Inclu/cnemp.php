@@ -39,7 +39,7 @@ function validate_form(){
 	
 	/* VALIDAMOS EL CAMPO NIVEL. */
 	
-	if(strlen(trim($_POST['nemp'])) == 0){
+	if(strlen(@trim($_POST['nemp'])) == 0){
 		$errors [] = "<font color='#FF0000'>SELECCIONE NUMERO EMPLEADOS</font>";
 		}
 	

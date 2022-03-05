@@ -33,7 +33,7 @@ function validate_form(){
 	
 	$errors = array();
 	
-	if(strlen(trim($_POST['plantillanews'])) == 0){
+	if(strlen(@trim($_POST['plantillanews'])) == 0){
 		$errors [] = "<font color='#FF0000'>SELECCIONE PLANTILLA WEB NEWS</font>";
 		}
 	

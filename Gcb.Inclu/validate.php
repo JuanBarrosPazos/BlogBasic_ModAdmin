@@ -31,11 +31,11 @@ $errors = array();
 
 	/* VALIDAMOS EL CAMPO NOMBRE. */
 	
-	if(strlen(trim($_POST['Nombre'])) == 0){
+	if(strlen(@trim($_POST['Nombre'])) == 0){
 		$errors [] = "Nombre: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Nombre'])) < 3){
+	elseif (strlen(@trim($_POST['Nombre'])) < 3){
 		$errors [] = "Nombre: <font color='#FF0000'>Escriba más de dos carácteres.</font>";
 		}
 		
@@ -45,11 +45,11 @@ $errors = array();
 
 		/* VALIDAMOS EL CAMPO APELLIDOS. */
 	
-		if(strlen(trim($_POST['Apellidos'])) == 0){
+		if(strlen(@trim($_POST['Apellidos'])) == 0){
 		$errors [] = "Apellidos: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Apellidos'])) < 4){
+	elseif (strlen(@trim($_POST['Apellidos'])) < 4){
 		$errors [] = "Apellidos: <font color='#FF0000'>Escriba más de 3 carácteres.</font>";
 		}
 		
@@ -83,7 +83,7 @@ $errors = array();
 		
 	if ($_POST['doc'] == 'DNI') {
 
-		if(strlen(trim($_POST['dni'])) == 0){
+		if(strlen(@trim($_POST['dni'])) == 0){
 		$errors [] = "N&uacute;mero DNI/NIF: <font color='#FF0000'>Campo Obligatorio.</font>";
 		}
 
@@ -91,7 +91,7 @@ $errors = array();
 		$errors [] = "N&uacute;mero DNI/NIF: <font color='#FF0000'>Sólo Números.</font>";
 		}
 
-	elseif (strlen(trim($_POST['dni'])) < 8){
+	elseif (strlen(@trim($_POST['dni'])) < 8){
 		$errors [] = "N&uacute;mero DNI/NIF: <font color='#FF0000'>Más de 7 Carácteres.</font>";
 		}
 	}
@@ -106,11 +106,11 @@ $errors = array();
 	
 	if (($_POST['doc'] == 'NIE') || ($_POST['doc'] == 'NIFespecial') || ($_POST['doc'] == 'NIFsa') || ($_POST['doc'] == 'NIFsrl') || ($_POST['doc'] == 'NIFscol') || ($_POST['doc'] == 'NIFscom') || ($_POST['doc'] == 'NIFcbhy') || ($_POST['doc'] == 'NIFscoop') || ($_POST['doc'] == 'NIFasoc') || ($_POST['doc'] == 'NIFcpph') || ($_POST['doc'] == 'NIFsccspj') || ($_POST['doc'] == 'NIFee') || ($_POST['doc'] == 'NIFcl') || ($_POST['doc'] == 'NIFop') || ($_POST['doc'] == 'NIFcir') || ($_POST['doc'] == 'NIFoaeca') || ($_POST['doc'] == 'NIFute') || ($_POST['doc'] == 'NIFotnd') || ($_POST['doc'] == 'NIFepenr')) {
 
-		if(strlen(trim($_POST['dni'])) == 0){
+		if(strlen(@trim($_POST['dni'])) == 0){
 		$errors [] = "N&uacute;mero NIE/NIF: <font color='#FF0000'>Campo obligatorio.</font>";
 		}
 
-	elseif (strlen(trim($_POST['dni'])) < 8){
+	elseif (strlen(@trim($_POST['dni'])) < 8){
 		$errors [] = "N&uacute;mero NIE/NIF: <font color='#FF0000'>Más de 7 carácteres.</font>";
 		}
 		
@@ -282,7 +282,7 @@ $errors = array();
 	
 	if ($_POST['doc'] == 'DNI') {
 		
-		if(strlen(trim($_POST['ldni'])) == 0){
+		if(strlen(@trim($_POST['ldni'])) == 0){
 		$errors [] = "Letra DNI: <font color='#FF0000'>Campo obligatorio.</font>";
 		}
 
@@ -294,7 +294,7 @@ $errors = array();
 		$errors [] = "Letra Control DNI: <font color='#FF0000'>Solo mayusculas</font>";
 		}
 
-	elseif (trim($_POST['ldni'] != $letra)){
+	elseif (@trim($_POST['ldni'] != $letra)){
 	$errors [] = "Letra Control DNI: <font color='#FF0000'>Letra no correcta. $letra is ok.</font>";
 		}
 	}
@@ -406,7 +406,7 @@ $errors = array();
 	if (($_POST['doc'] == 'NIE') || ($_POST['doc'] == 'NIFespecial') || ($_POST['doc'] == 'NIFsa') || ($_POST['doc'] == 'NIFsrl') || ($_POST['doc'] == 'NIFscol') || ($_POST['doc'] == 'NIFscom') || ($_POST['doc'] == 'NIFcbhy') || ($_POST['doc'] == 'NIFscoop') || ($_POST['doc'] == 'NIFasoc') || ($_POST['doc'] == 'NIFcpph') || ($_POST['doc'] == 'NIFsccspj') || ($_POST['doc'] == 'NIFee') || ($_POST['doc'] == 'NIFcl') || ($_POST['doc'] == 'NIFop') || ($_POST['doc'] == 'NIFcir') || ($_POST['doc'] == 'NIFoaeca') || ($_POST['doc'] == 'NIFute') || ($_POST['doc'] == 'NIFotnd') || ($_POST['doc'] == 'NIFepenr')) 
 	
 	{
-		if(strlen(trim($_POST['ldni'])) == 0){
+		if(strlen(@trim($_POST['ldni'])) == 0){
 		$errors [] = "Letra Control NIE/NIF: <font color='#FF0000'>Campo obligatorio.</font>";
 		}
 		
@@ -427,7 +427,7 @@ $errors = array();
 		
 	elseif ($_POST['doc'] == 'NIE') {
 		
-		if (trim($_POST['ldni'] != $letra2)){
+		if (@trim($_POST['ldni'] != $letra2)){
 	$errors [] = "Letra Control NIE Extranjeros: <font color='#FF0000'>Letra no correcta.</font>";
 		}
 
@@ -437,7 +437,7 @@ $errors = array();
 		
 	elseif (($_POST['doc'] == 'NIFespecial') || ($_POST['doc'] == 'NIFee') || ($_POST['doc'] == 'NIFcl') || ($_POST['doc'] == 'NIFop') || ($_POST['doc'] == 'NIFcir') || ($_POST['doc'] == 'NIFoaeca') || ($_POST['doc'] == 'NIFepenr')) {
 		
-		if (trim($_POST['ldni'] != $nifletra)){
+		if (@trim($_POST['ldni'] != $nifletra)){
 	$errors [] = "Letra Control NIF Especial: <font color='#FF0000'>Letra no correcta.</font>";
 		}
 
@@ -457,7 +457,7 @@ $errors = array();
 		
 	else {
 		
-		if (trim($_POST['ldni'] != $nifnumero)){
+		if (@trim($_POST['ldni'] != $nifnumero)){
 	$errors [] = "Numero Control NIF Especial: <font color='#FF0000'>Numero incorrecto.</font>";
 		}
 
@@ -491,11 +491,11 @@ $errors = array();
 		$errors [] = "Mail: <font color='#FF0000'>Ya Existe.</font>";
 		}
 		
-	if(strlen(trim($_POST['Email'])) == 0){
+	if(strlen(@trim($_POST['Email'])) == 0){
 		$errors [] = "Mail: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Email'])) < 5 ){
+	elseif (strlen(@trim($_POST['Email'])) < 5 ){
 		$errors [] = "Mail: <font color='#FF0000'>Escriba más de cinco carácteres.</font>";
 		}
 		
@@ -507,7 +507,7 @@ $errors = array();
 		$errors [] = "Mail: <font color='#FF0000'>Esta dirección no es válida.</font>";
 		}
 		
-/* if(trim($_POST['id'] == $rowd['id'])&&(!strcasecmp($_POST['Email'] , $rowd['Email']))){}
+/* if(@trim($_POST['id'] == $rowd['id'])&&(!strcasecmp($_POST['Email'] , $rowd['Email']))){}
 			elseif(!strcasecmp($_POST['Email'] , $rowd['Email'])){
 				$errors [] = "Mail: <font color='#FF0000'>No se puede registrar con este Mail.</font>";
 				}	
@@ -522,7 +522,7 @@ $errors = array();
 
 	/* VALIDAMOS EL CAMPO NIVEL. */
 	
-	if(strlen(trim($_POST['Nivel'])) == 0){
+	if(strlen(@trim($_POST['Nivel'])) == 0){
 		$errors [] = "Nivel: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
@@ -542,11 +542,11 @@ $errors = array();
 		$errors [] = "Usuario: <font color='#FF0000'>Ya Existe.</font>";
 		}
 
-	if(strlen(trim($_POST['Usuario'])) == 0){
+	if(strlen(@trim($_POST['Usuario'])) == 0){
 		$errors [] = "Usuario: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Usuario'])) < 3){
+	elseif (strlen(@trim($_POST['Usuario'])) < 3){
 		$errors [] = "Usuario: <font color='#FF0000'>Escriba más de tres caracteres.</font>";
 		}
 			
@@ -554,12 +554,12 @@ $errors = array();
 		$errors [] = "Usuario: <font color='#FF0000'>No se admiten carácteres especiales.</font>";
 		}
 
-	elseif(trim($_POST['Usuario'] != $_POST['Usuario2'])){
+	elseif(@trim($_POST['Usuario'] != $_POST['Usuario2'])){
 		$errors [] = "Usuario: <font color='#FF0000'>No son iguales los dos campos usuario.</font>";
 		}
 		
 		
-/*	if(trim($_POST['id'] == $rowd['id'])&&(!strcasecmp($_POST['Usuario'] , $rowd['Usuario']))){}
+/*	if(@trim($_POST['id'] == $rowd['id'])&&(!strcasecmp($_POST['Usuario'] , $rowd['Usuario']))){}
 			elseif(!strcasecmp($_POST['Usuario'] , $rowd['Usuario'])){
 				$errors [] = "Usuario: <font color='#FF0000'>No se puede registrar con este nombre de usuario.</font>";
 				}
@@ -574,11 +574,11 @@ $errors = array();
 
 	/* Validamos el campo password. */
 	
-		if(strlen(trim($_POST['Password'])) == 0){
+		if(strlen(@trim($_POST['Password'])) == 0){
 		$errors [] = "Password: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Password'])) < 3){
+	elseif (strlen(@trim($_POST['Password'])) < 3){
 		$errors [] = "Password: <font color='#FF0000'>Escriba más de tres caracteres.</font>";
 		}
 			
@@ -586,7 +586,7 @@ $errors = array();
 		$errors [] = "Password: <font color='#FF0000'>No se admiten carácteres especiales.</font>";
 		}
 
-	elseif(trim($_POST['Password'] != $_POST['Password2'])){
+	elseif(@trim($_POST['Password'] != $_POST['Password2'])){
 		$errors [] = "Password: <font color='#FF0000'>No son iguales los dos campos password.</font>";
 		}
 	
@@ -597,7 +597,7 @@ $errors = array();
 
 	/* Validamos el campo Dirección. */
 	
-		if(strlen(trim($_POST['Direccion'])) == 0){
+		if(strlen(@trim($_POST['Direccion'])) == 0){
 		$errors [] = "Dirección: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
@@ -624,11 +624,11 @@ $errors = array();
 		$errors [] = "Teléfono 1: <font color='#FF0000'>YA EXISTE.</font>";
 		}
 
-	if(strlen(trim($_POST['Tlf1'])) == 0){
+	if(strlen(@trim($_POST['Tlf1'])) == 0){
 		$errors [] = "Teléfono 1: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif ((trim($_POST['Tlf1'])) == (trim($_POST['Tlf2']))){
+	elseif ((@trim($_POST['Tlf1'])) == (@trim($_POST['Tlf2']))){
 					$errors [] = "Teléfono 1 y 2: <font color='#FF0000'>SON IGUALES</font>";
 		}
 
@@ -636,7 +636,7 @@ $errors = array();
 		$errors [] = "Teléfono 1: <font color='#FF0000'>Sólo se admiten números.</font>";
 		}
 
-	elseif (strlen(trim($_POST['Tlf1'])) < 9){
+	elseif (strlen(@trim($_POST['Tlf1'])) < 9){
 		$errors [] = "Teléfono 1: <font color='#FF0000'>No menos de nueve números</font>";
 		}
 		
@@ -646,7 +646,7 @@ $errors = array();
 
 	/* Validamos el campo Tlf2 */
 	
-	if(strlen(trim($_POST['Tlf2'])) > 0){
+	if(strlen(@trim($_POST['Tlf2'])) > 0){
 
 			$sqltlf2 =  "SELECT * FROM `$db_name`.`gcb_admin` WHERE `gcb_admin`.`Tlf1` = '$_POST[Tlf2]' OR `gcb_admin`.`Tlf2` = '$_POST[Tlf2]'";
 			$qtlf2 = mysqli_query($db, $sqltlf2);
@@ -662,7 +662,7 @@ $errors = array();
 				$errors [] = "Teléfono 2: <font color='#FF0000'>Sólo se admiten números.</font>";
 				}
 		
-			elseif (strlen(trim($_POST['Tlf2'])) < 9){
+			elseif (strlen(@trim($_POST['Tlf2'])) < 9){
 				$errors [] = "Teléfono 2: <font color='#FF0000'>No menos de nueve números</font>";
 				}
 

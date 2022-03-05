@@ -20,7 +20,7 @@
             $rutaurlvdo = "upvdo/";
     }
 
-	if(strlen(trim($rowb['myvdo'])) > 0){
+	if(strlen(@trim($rowb['myvdo'])) > 0){
 		global $visual;
 		$visual = "<div class='whiletotala'>
                     <video controls width='140px' height='auto'>

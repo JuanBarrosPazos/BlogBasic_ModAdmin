@@ -37,7 +37,7 @@ function validate_form(){
 	
 	$errors = array();
 	
-	if (strlen(trim($_POST['titulo'])) > 0) {
+	if (strlen(@trim($_POST['titulo'])) > 0) {
 		
 		if (!preg_match('/^[^@#$&%<>:"·\(\)=¿?!¡\[\]\{\};,:\.\*]+$/',$_POST['titulo'])){
 			$errors [] = "<font color='#FF0000'>CARACTERES NO VALIDOS</font>";
@@ -122,7 +122,7 @@ function process_form(){
 				}
 			}
 
-        if(strlen(trim($rowb ['myvdo'])) > 0){
+        if(strlen(@trim($rowb ['myvdo'])) > 0){
             global $visual;
             $visual = "<p>
 						<video controls>
@@ -378,7 +378,7 @@ function ver_todo(){
 				}
 			}
 
-        if(strlen(trim($rowb ['myvdo'])) > 0){
+        if(strlen(@trim($rowb ['myvdo'])) > 0){
             global $visual;
             $visual = "<p>
 						<video controls>

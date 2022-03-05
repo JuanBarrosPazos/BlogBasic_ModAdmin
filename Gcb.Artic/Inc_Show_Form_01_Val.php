@@ -2,7 +2,7 @@
 
 $errors = array();
 	
-if (strlen(trim($_POST['titulo'])) < 0) {
+if (strlen(@trim($_POST['titulo'])) < 0) {
     $errors [] = " <font color='#FF0000'>UNO DE LOS DOS CAMPOS OBLIGATORIO</font>";
     }
 

@@ -9,19 +9,19 @@
 	global $g;
 	global $titulo;
 
-	if (strlen(trim(@$_SESSION['titulo'])) == 0){
+	if (strlen(@@trim(@$_SESSION['titulo'])) == 0){
 		$titulo = '';
 		$g = 'AND';
 	}else{
-		$titulo = trim($_SESSION['titulo']);
+		$titulo = @trim($_SESSION['titulo']);
 		$titulo = "AND `tit` LIKE '%".$titulo."%' ";
 		$g = 'OR';
 	}
 
-	if (strlen(trim(@$_SESSION['autor'])) == 0){
+	if (strlen(@@trim(@$_SESSION['autor'])) == 0){
 		$autor = '';
 	}else{
-		$autor = trim($_SESSION['autor']);
+		$autor = @trim($_SESSION['autor']);
 		$autor = "$g `refuser` LIKE '%".$autor."%' ";
 	}
 

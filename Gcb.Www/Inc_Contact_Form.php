@@ -21,11 +21,11 @@
 		
 	/* Validamos el campo Asunto. */
 	
-	if(strlen(trim($_POST['asunto'])) == 0){
+	if(strlen(@trim($_POST['asunto'])) == 0){
 		$errors [] = "Asunto: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['asunto'])) < 3 ){
+	elseif (strlen(@trim($_POST['asunto'])) < 3 ){
 		$errors [] = "Asunto: <font color='#FF0000'>Escriba más de tres carácteres.</font>";
 		}
 		
@@ -35,11 +35,11 @@
 
 	/* Validamos el campo Nombre. */
 	
-	if(strlen(trim($_POST['nombre'])) == 0){
+	if(strlen(@trim($_POST['nombre'])) == 0){
 		$errors [] = "NOMBRE: <font color='#FF0000'>CAMPO OBLIGATORIO</font>";
 		}
 	
-	elseif (strlen(trim($_POST['nombre'])) < 3 ){
+	elseif (strlen(@trim($_POST['nombre'])) < 3 ){
 		$errors [] = "NOMBRE: <font color='#FF0000'>MÁS DE 2 CARACTÉRES</font>";
 		}
 		
@@ -49,11 +49,11 @@
 		
 	/* Validamos el campo Apellidos. */
 	
-		if(strlen(trim($_POST['apellidos'])) == 0){
+		if(strlen(@trim($_POST['apellidos'])) == 0){
 		$errors [] = "APELLIDOS: <font color='#FF0000'>CAMPO OBLIGATORIO</font>";
 		}
 	
-	elseif (strlen(trim($_POST['apellidos'])) < 3 ){
+	elseif (strlen(@trim($_POST['apellidos'])) < 3 ){
 		$errors [] = "APELLIDOS: <font color='#FF0000'>MÁS DE 2 CARACTÉRES</font>";
 		}
 		
@@ -63,7 +63,7 @@
 
     /* Validamos el campo telefono. */
 
-	if(strlen(trim($_POST['tlf'])) == 0){
+	if(strlen(@trim($_POST['tlf'])) == 0){
 		$errors [] = "TLF: <font color='#FF0000'>CAMPO OBLIGATORIO</font>";
         }
         
@@ -71,17 +71,17 @@
 		$errors [] = "TLF: <font color='#FF0000'>SÓLO NÚMEROS</font>";
 		}
 
-	elseif (strlen(trim($_POST['tlf'])) < 9){
+	elseif (strlen(@trim($_POST['tlf'])) < 9){
 		$errors [] = "TLF: <font color='#FF0000'>MÍNIMO 9 NÚMEROS</font>";
 		}
 
         /* Validamos el campo mail. */
 	
-	if(strlen(trim($_POST['Email'])) == 0){
+	if(strlen(@trim($_POST['Email'])) == 0){
 		$errors [] = "EMAIL: <font color='#FF0000'>CAMPO OBLIGATORIO</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Email'])) < 5 ){
+	elseif (strlen(@trim($_POST['Email'])) < 5 ){
 		$errors [] = "EMAIL: <font color='#FF0000'>MÁS DE 5 CARACTÉRES</font>";
 		}
 		
@@ -91,11 +91,11 @@
 
 	/* Validamos el campo Mensaje. */
 	
-		if(strlen(trim($_POST['mensaje'])) == 0){
+		if(strlen(@trim($_POST['mensaje'])) == 0){
 		$errors [] = "COMENT. <font color='#FF0000'>CAMPO OBLIGATORIO</font>";
 		}
 	
-	elseif (strlen(trim($_POST['mensaje'])) < 30 ){
+	elseif (strlen(@trim($_POST['mensaje'])) < 30 ){
 		$errors [] = "COMENT. <font color='#FF0000'>MÁS DE 30 CARACTÉRES</font>";
 		}
 		

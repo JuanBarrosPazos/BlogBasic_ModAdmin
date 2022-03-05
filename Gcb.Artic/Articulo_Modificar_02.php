@@ -47,12 +47,12 @@ function validate_form(){
 	global $db_name;
 
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 
 	$errors = array();
 
 /* */		
-	if(strlen(trim($_POST['refart'])) != 0){	
+	if(strlen(@trim($_POST['refart'])) != 0){	
 			global $dyt1;	
 			$secc1 = "gcb_".$dyt1."_articulos";
 			$secc1 = "`".$secc1."`";
@@ -67,11 +67,11 @@ function validate_form(){
 
 		///////////////////////////////////////////////////////////////////////////////////
 
-	if(strlen(trim($_POST['titulo'])) == 0){
+	if(strlen(@trim($_POST['titulo'])) == 0){
 		$errors [] = "TITULO <font color='#FF0000'>Campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['titulo'])) < 6){
+	elseif (strlen(@trim($_POST['titulo'])) < 6){
 		$errors [] = "TITULO <font color='#FF0000'>Más de 5 carácteres.</font>";
 		}
 		
@@ -82,7 +82,7 @@ function validate_form(){
 	elseif (!preg_match('/^[a-z A-Z,0-9\s]+$/',$_POST['titulo'])){
 		$errors [] = "TITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
 		}
-	elseif(strlen(trim($_POST['titulo'])) != 0){
+	elseif(strlen(@trim($_POST['titulo'])) != 0){
 			global $dyt1;	
 			$secc1 = "gcb_".$dyt1."_articulos";
 			$secc1 = "`".$secc1."`";
@@ -100,11 +100,11 @@ function validate_form(){
 		}
 
 
-	if(strlen(trim($_POST['subtitul'])) == 0){
+	if(strlen(@trim($_POST['subtitul'])) == 0){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['subtitul'])) < 5){
+	elseif (strlen(@trim($_POST['subtitul'])) < 5){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Más de 4 carácteres.</font>";
 		}
 		
@@ -115,7 +115,7 @@ function validate_form(){
 	elseif (!preg_match('/^[a-z A-Z,0-9\s]+$/',$_POST['subtitul'])){
 		$errors [] = "SUBTITULO  <font color='#FF0000'>Solo mayusculas o números sin acentos.</font>";
 		}
-	elseif(strlen(trim($_POST['subtitul'])) != 0){	
+	elseif(strlen(@trim($_POST['subtitul'])) != 0){	
 			global $dyt1;	
 			$secc1 = "gcb_".$dyt1."_articulos";
 			$secc1 = "`".$secc1."`";
@@ -133,15 +133,15 @@ function validate_form(){
 		}
 	
 	
-	if(strlen(trim($_POST['coment'])) == 0){
+	if(strlen(@trim($_POST['coment'])) == 0){
 		$errors [] = "ARTICULO <font color='#FF0000'>Campo obligatorio.</font>";
 		}
 
-	elseif(strlen(trim($_POST['coment'])) <= 50){
+	elseif(strlen(@trim($_POST['coment'])) <= 50){
 		$errors [] = "ARTICULO <font color='#FF0000'>Mas de 50 carácteres.</font>";
 		}
 
-	elseif(strlen(trim($_POST['coment'])) >= 402){
+	elseif(strlen(@trim($_POST['coment'])) >= 402){
 		$errors [] = "ARTICULO <font color='#FF0000'>Excedió más de 400 carácteres.</font>";
 		}
 		
@@ -176,7 +176,7 @@ function process_form(){
 	/* GRABAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -378,7 +378,7 @@ function show_form($errors=[]){
 	
 		</form></table>");
 				
-	if ((strlen(trim(@$_POST['autor'])) == 0) && (strlen(trim($_SESSION['refuser']))) == 0) { 
+	if ((strlen(@trim(@$_POST['autor'])) == 0) && (strlen(@trim($_SESSION['refuser']))) == 0) { 
 			print("<table align='center' style=\"margin-top:20px;margin-bottom:20px\">
 						<tr align='center'><td>
 								<font color='red'>
@@ -505,8 +505,8 @@ $text = "- PRODUCTO CREAR ".$ActionTime.". ".$secc.".\n\t Pro Name: ".$_POST['su
 
 		$logname = $_SESSION['Nombre'];	
 		$logape = $_SESSION['Apellidos'];	
-		$logname = trim($logname);	
-		$logape = trim($logape);	
+		$logname = @trim($logname);	
+		$logape = @trim($logape);	
 		$logdocu = $logname."_".$logape;
 		$logdate = date('Y_m_d');
 		$logtext = $text."\n";

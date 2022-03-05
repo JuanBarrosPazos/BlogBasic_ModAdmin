@@ -47,7 +47,7 @@ function ver_todo(){
 
 	while($rowb = mysqli_fetch_assoc($qb)){
 
-        if(strlen(trim($rowb ['myvdo'])) > 0){
+        if(strlen(@trim($rowb ['myvdo'])) > 0){
             global $visual;
             $visual = "<video controls>
                             <source src='Gcb.Vdo.Art/".$rowb['myvdo']."' />

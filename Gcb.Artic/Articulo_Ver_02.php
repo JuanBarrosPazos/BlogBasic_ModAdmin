@@ -66,7 +66,7 @@ function process_form(){
 	if ($counta !== 1) { $_sec = "AUTOR ANONIMO";}
 	else { $_sec = $rowautor['Nombre']." ".$rowautor['Apellidos']; }
 	
-	if(strlen(trim($_POST['myvdo'])) > 0){
+	if(strlen(@trim($_POST['myvdo'])) > 0){
 		global $visual;
 		$visual = "<video controls width='90%' height='auto'>
 						<source src='../Gcb.Vdo.Art/".$_POST['myvdo']."' />

@@ -78,11 +78,11 @@
 		
 	/* Validamos el campo mail. */
 	
-		if(strlen(trim($_POST['Email'])) == 0){
+		if(strlen(@trim($_POST['Email'])) == 0){
 		$errors [] = "Mail: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
-	elseif (strlen(trim($_POST['Email'])) < 5 ){
+	elseif (strlen(@trim($_POST['Email'])) < 5 ){
 		$errors [] = "Mail: <font color='#FF0000'>Escriba más de cinco carácteres.</font>";
 		}
 		
@@ -92,7 +92,7 @@
 		
 	/* Validamos el campo dni */
 	
-		if(strlen(trim($_POST['dni'])) == 0){
+		if(strlen(@trim($_POST['dni'])) == 0){
 		$errors [] = "Nº DNI: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
@@ -100,13 +100,13 @@
 		$errors [] = "Nº DNI: <font color='#FF0000'>Sólo se admiten números.</font>";
 		}
 
-	elseif (strlen(trim($_POST['dni'])) < 8){
+	elseif (strlen(@trim($_POST['dni'])) < 8){
 		$errors [] = "Nº DNI: <font color='#FF0000'>Más de 7 digitos.</font>";
 		}
 
 	/* Validamos el campo ldni */
 	
-	if(strlen(trim($_POST['ldni'])) == 0){
+	if(strlen(@trim($_POST['ldni'])) == 0){
 		$errors [] = "Letra DNI: <font color='#FF0000'>Este campo es obligatorio.</font>";
 		}
 	
@@ -131,15 +131,15 @@ $sql =  "SELECT * FROM `$db_name`.$table_name_a WHERE `Email` = '$_POST[Email]' 
 	$_SESSION['L_dni'] = $row['dni'];
 	$_SESSION['L_ldni'] = $row['ldni'];
 
-	if(trim($_POST['Email'] != $_SESSION['L_Email'])){
+	if(@trim($_POST['Email'] != $_SESSION['L_Email'])){
 		$errors [] = "Email, Nº DNI o Letra.";
 		}
 		
-	elseif(trim($_POST['dni'] != $_SESSION['L_dni'])){
+	elseif(@trim($_POST['dni'] != $_SESSION['L_dni'])){
 		$errors [] = "Email, Nº DNI o Letra.";
 		} 
 		
-	elseif(trim($_POST['ldni'] != $_SESSION['L_ldni'])){
+	elseif(@trim($_POST['ldni'] != $_SESSION['L_ldni'])){
 		$errors [] = "Email, Nº DNI o Letra.";
 		} 
 	 

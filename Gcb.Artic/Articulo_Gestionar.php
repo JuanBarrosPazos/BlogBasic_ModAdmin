@@ -58,10 +58,10 @@ function process_form(){
 	show_form();
 		
 	global $autor;
-	$autor = trim($_POST['autor']);
+	$autor = @trim($_POST['autor']);
 	
 	global $titulo;
-	$titulo = trim($_POST['titulo']);
+	$titulo = @trim($_POST['titulo']);
 	$titulo = "%".$titulo."%";
 	
 	$orden = @$_POST['Orden'];
@@ -112,7 +112,7 @@ $refrescaimg = "<form name='refresimg' action='$_SERVER[PHP_SELF]' method='POST'
 	$vname = "gcb_".$dyt1."_articulos";
 	$vname = "`".$vname."`";
 
-	if (strlen(trim($_POST['titulo'])) == 0){ 
+	if (strlen(@trim($_POST['titulo'])) == 0){ 
 		$sqlc =  "SELECT * FROM `$db_name`.$vname WHERE `refuser` = '$autor' AND `datein` LIKE '$fil' ORDER BY $orden ";
 	}
 	else{
@@ -167,7 +167,7 @@ function visibleno(){
 	global $db;
 	global $db_name;
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -198,7 +198,7 @@ function visiblesi(){
 	global $db;
 	global $db_name;
 	global $dyt1;
-	$dyt1 = trim($_SESSION['dyt1']);
+	$dyt1 = @trim($_SESSION['dyt1']);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";

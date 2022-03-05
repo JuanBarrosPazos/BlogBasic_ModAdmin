@@ -14,8 +14,8 @@ if($_FILES['myimg']['size'] == 0){
     copy("untitled.png", $rename_filename);
                       }
                       
-else{	$safe_filename = trim(str_replace('/', '', $_FILES['myimg']['name']));
-    $safe_filename = trim(str_replace('..', '', $safe_filename));
+else{	$safe_filename = @trim(str_replace('/', '', $_FILES['myimg']['name']));
+    $safe_filename = @trim(str_replace('..', '', $safe_filename));
 
      $nombre = $_FILES['myimg']['name'];
       $nombre_tmp = $_FILES['myimg']['tmp_name'];

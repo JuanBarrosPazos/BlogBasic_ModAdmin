@@ -103,8 +103,8 @@ function process_form(){
 	global $db;
 	global $safe_filename;
 	
-	$safe_filename = trim(str_replace('/', '', $_FILES['myimg']['name']));
-	$safe_filename = trim(str_replace('..', '', $safe_filename));
+	$safe_filename = @trim(str_replace('/', '', $_FILES['myimg']['name']));
+	$safe_filename = @trim(str_replace('..', '', $safe_filename));
 
 	$nombre = $_FILES['myimg']['name'];
 	//$nombre_tmp = $_FILES['myimg']['tmp_name'];

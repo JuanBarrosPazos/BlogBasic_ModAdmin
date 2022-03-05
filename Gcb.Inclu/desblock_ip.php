@@ -67,12 +67,12 @@ $sql =  "SELECT * FROM `$db_name`.$table_name_a WHERE `Email` = '$_POST[Email]' 
 	 
 	 /* Validamos el campo mail. */
 	
-	elseif(strlen(trim($_POST['Email'])) == 0){
+	elseif(strlen(@trim($_POST['Email'])) == 0){
 		/*$errors [] = "Mail: <font color='#FF0000'>CAMPO OBLIGATORIO.</font>";*/
 		$errors [] = "@ / Nº / LETRA";
 		}
 	
-	elseif (strlen(trim($_POST['Email'])) < 5 ){
+	elseif (strlen(@trim($_POST['Email'])) < 5 ){
 		/*$errors [] = "Mail: <font color='#FF0000'>MÁS DE 5 CARÁCTERES.</font>";*/
 		$errors [] = "@ / Nº / LETRA";
 		}
@@ -84,7 +84,7 @@ $sql =  "SELECT * FROM `$db_name`.$table_name_a WHERE `Email` = '$_POST[Email]' 
 		
 	/* Validamos el campo dni */
 	
-	elseif(strlen(trim($_POST['dni'])) == 0){
+	elseif(strlen(@trim($_POST['dni'])) == 0){
 		/*$errors [] = "Nº DNI: <font color='#FF0000'>CAMPO OBLIGATORIO.</font>";*/
 		$errors [] = "@ / Nº / LETRA";
 		}
@@ -94,14 +94,14 @@ $sql =  "SELECT * FROM `$db_name`.$table_name_a WHERE `Email` = '$_POST[Email]' 
 		$errors [] = "@ / Nº / LETRA";
 		}
 
-	elseif (strlen(trim($_POST['dni'])) < 8){
+	elseif (strlen(@trim($_POST['dni'])) < 8){
 		/*$errors [] = "Nº DNI: <font color='#FF0000'>MAS DE 7 DÍGITOS</font>";*/
 		$errors [] = "@ / Nº / LETRA";
 		}
 
 	/* Validamos el campo ldni */
 	
-	elseif(strlen(trim($_POST['ldni'])) == 0){
+	elseif(strlen(@trim($_POST['ldni'])) == 0){
 		/*$errors [] = "Letra DNI: <font color='#FF0000'>CAMPO OBLIGATORIO</font>";*/
 		$errors [] = "@ / Nº / LETRA";
 		}
@@ -118,15 +118,15 @@ $sql =  "SELECT * FROM `$db_name`.$table_name_a WHERE `Email` = '$_POST[Email]' 
 
 	/* Realizamos un condicional de validacion de campos Nombre y dni.*/
 		
-	elseif(trim($_POST['Email'] != $_SESSION['L_Email'])){
+	elseif(@trim($_POST['Email'] != $_SESSION['L_Email'])){
 		$errors [] = "@ / Nº / LETRA";
 		}
 		
-	elseif(trim($_POST['dni'] != $_SESSION['L_dni'])){
+	elseif(@trim($_POST['dni'] != $_SESSION['L_dni'])){
 		$errors [] = "@ / Nº / LETRA";
 		} 
 		
-	elseif(trim($_POST['ldni'] != $_SESSION['L_ldni'])){
+	elseif(@trim($_POST['ldni'] != $_SESSION['L_ldni'])){
 		$errors [] = "@ / Nº / LETRA";
 		} 
 	 
