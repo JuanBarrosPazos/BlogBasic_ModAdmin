@@ -1,6 +1,6 @@
 <?php
 
-	require 'Gcb.Inclu/error_hidden.php';
+	//require 'Gcb.Inclu/error_hidden.php';
 	require 'Gcb.Inclu/Admin_Inclu_Head_a.php';
 
 				   ////////////////////				   ////////////////////
@@ -9,11 +9,11 @@
 
 	if(isset($_POST['limpia'])){
 						deldir();
-						rewrite();
 						deltables();
 						//deltablesb();
 						config_one();
 						//inittot();
+						rewrite();
 			 			show_form();
 					}
 
@@ -21,7 +21,7 @@
 		if($form_errors = validate_form()){show_form($form_errors);} 
 	else {	process_form();
 			require 'Gcb.Connet/conection.php';
-			$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+			require 'Gcb.Connet/conect.php';
 	
 			if (!$db){ 	global $dbconecterror;
 						$dbconecterror = $db_name." * ".mysqli_connect_error().PHP_EOL;
@@ -44,7 +44,7 @@
 
 function inittot(){
 	@include 'Gcb.Connet/conection.php';
-	$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+	require 'Gcb.Connet/conect.php';
 	if (!$db){ //print ("Es imposible conectar con la bbdd ".$db_name."</br>".mysqli_connect_error());
 				$_SESSION['inst'] = "noinst";
 				global $inst;
@@ -268,7 +268,7 @@ function deldir(){
 function deltables(){
 
 	require 'Gcb.Connet/conection.php';
-	$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+	require 'Gcb.Connet/conect.php';
 
 	/*************	BORRAMOS TODAS LAS TABLAS DE ARTICULOS 	***************/
 
@@ -313,7 +313,7 @@ print("<font color='#FF0000'>L.246 Se ha producido un error: </font></br>".mysql
 function deltablesb(){
 
 	require 'Gcb.Connet/conection.php';
-	$db = @mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+	require 'Gcb.Connet/conect.php';
 
 	************	BORRAMOS LAS TABLAS DEL SISTEMA 	**************
 

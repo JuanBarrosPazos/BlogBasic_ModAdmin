@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-  	require '../Gcb.Inclu/error_hidden.php';
+  	//require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_Head_b.php';
 
 	require '../Gcb.Connet/conection.php';
@@ -227,7 +227,6 @@ function process_form(){
 	global $new_name;
 	$new_name = $_POST['refart'].".".$extension;
 
-
 		/* GRABAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 
 		global $db;
@@ -251,6 +250,7 @@ function process_form(){
 			global $redir;
 			$redir = "";
 	
+		
 			require 'Inc_Modificar_Img.php';
 
 	print("<table style='margin-top:10px; width: min-content;'>

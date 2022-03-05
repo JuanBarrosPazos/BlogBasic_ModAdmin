@@ -4,7 +4,7 @@ session_start();
 	global $docs;
 	$docs = 1;
 
-	require '../Gcb.Inclu/error_hidden.php';
+	//require '../Gcb.Inclu/error_hidden.php';
 	require '../Gcb.Inclu/Admin_Inclu_popup.php';
 	require '../Gcb.Connet/conection.php';
 	require '../Gcb.Connet/conect.php';

@@ -109,10 +109,10 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 	/**************************************/
 	
 	global $vni;
-	global $carpetaimg;
 	
 	$trf = $_SESSION['iniref'];
 	
+	global $carpetaimg;
 	$carpetaimg = "../Gcb.Img.User";
 
 	if($_FILES['myimg']['size'] == 0){
