@@ -176,7 +176,8 @@ function process_form(){
 	/* GRABAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 
 	global $dyt1;
-	$dyt1 = @trim($_SESSION['dyt1']);
+	$dyt1 = substr($_SESSION['refart'],0,4);
+	echo $dyt1;
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -186,6 +187,7 @@ function process_form(){
 	global $subtitul;
 	$subtitul = strtoupper($_POST['subtitul']);
 
+	global $sqla;
 	$sqla = "UPDATE `$db_name`.$tablename SET `refuser` = '$_POST[autor]', `tit` = '$titulo', `titsub` = '$subtitul', `datemod` = '$_POST[datemod]', `timemod` = '$_POST[timemod]', `conte` = '$_POST[coment]', `myurl` = '$_POST[myurl]' WHERE $tablename.`refart` = '$_SESSION[refart]' LIMIT 1 ";
 
 	if(mysqli_query($db, $sqla)){

@@ -146,12 +146,13 @@ function process_form(){
 		$dt = date('is');
 		global $new_name;
 		$new_name = $_SESSION['srefart']."_".$dt.".".$extension;
+		$_SESSION['new_name'] = $new_name;
 
 	global $db;
 	global $db_name;
 	
 	global $dyt1;
-	$dyt1 = @trim($_POST['dyt1']);
+	$dyt1 = substr($_SESSION['refart'],0,4);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";

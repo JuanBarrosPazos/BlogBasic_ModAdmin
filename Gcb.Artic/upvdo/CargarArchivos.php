@@ -118,8 +118,10 @@ if (isset($_POST['btnSubmit'])) {
 
         global $db;
         global $db_name;
+        global $dyt1;
+        $dyt1 = substr($_SESSION['refart'],0,4);
         global $tablename;
-        $tablename = "gcb_".$_SESSION['dyt1']."_articulos";
+        $tablename = "gcb_".$dyt1."_articulos";
         $tablename = "`".$tablename."`";
         $sqlc = "UPDATE `$db_name`.$tablename SET `myvdo` = '$new_name' WHERE $tablename.`refart` = '$_SESSION[myvdo]' LIMIT 1 ";
         if(mysqli_query($db, $sqlc)){
@@ -165,6 +167,8 @@ if (isset($_POST['btnSubmit'])) {
         
         global $db;
         global $db_name;
+        global $dyt1;
+        $dyt1 = substr($_SESSION['refart'],0,4);
         global $tablename;
         $tablename = "gcb_".$_SESSION['dyt1']."_articulos";
         $tablename = "`".$tablename."`";

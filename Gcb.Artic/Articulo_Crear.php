@@ -226,6 +226,7 @@ function process_form(){
 // print($extension);
 	global $new_name;
 	$new_name = $_POST['refart'].".".$extension;
+	$_SESSION['new_name'] = $new_name;
 
 		/* GRABAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 

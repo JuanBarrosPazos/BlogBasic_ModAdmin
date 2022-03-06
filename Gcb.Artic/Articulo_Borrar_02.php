@@ -21,6 +21,7 @@ if (($_SESSION['Nivel'] == 'admin') || ($_SESSION['Nivel'] == 'plus')){
 											process_form();
 											accion_Log();
 											deleteimg();
+											deletevdo();
 							} else {
 										show_form();
 								}
@@ -45,7 +46,7 @@ function process_form(){
 	/* BORRAMOS LOS DATOS EN LA TABLA DE ARTICULOS DE ESTE AÑO */
 
 	global $dyt1;
-	$dyt1 = @trim($_SESSION['dyt1']);
+	$dyt1 = substr($_SESSION['refart'],0,4);
 	global $tablename;
 	$tablename = "gcb_".$dyt1."_articulos";
 	$tablename = "`".$tablename."`";
@@ -124,7 +125,7 @@ function show_form(){
 	if(isset($_POST['oculto2'])){
 		//$defaults = $_POST;
 		
-		$_SESSION['dyt1'] = $_POST['dyt1'];
+		//$_SESSION['dyt1'] = $_POST['dyt1'];
 		$_SESSION['refuser'] = $_POST['refuser'];
 		$_SESSION['tit'] = $_POST['tit'];
 		$_SESSION['titsub'] = $_POST['titsub'];
@@ -135,6 +136,7 @@ function show_form(){
 		$_SESSION['timemod'] = date('H:i:s');
 		$_SESSION['conte'] = $_POST['conte'];
 		$_SESSION['myimg'] = $_POST['myimg'];
+		$_SESSION['myvdo'] = $_POST['myvdo'];
 		$_SESSION['myurl'] = $_POST['myurl'];
 		
 		$defaults = array ( 'autor' => $_SESSION['refuser'],  // ref autor
@@ -147,6 +149,7 @@ function show_form(){
 							'timemod' => $_SESSION['timemod'], // Sub Titulo
 							'coment' => $_SESSION['conte'],
 							'myimg' => $_SESSION['myimg'],	
+							'myvdo' => $_SESSION['myvdo'],	
 							'myurl' => $_SESSION['myurl'],	
 									);
 
@@ -163,6 +166,7 @@ function show_form(){
 							'timemod' => $_SESSION['timemod'], // Sub Titulo
 							'coment' => $_SESSION['conte'],
 							'myimg' => $_SESSION['myimg'],	
+							'myvdo' => $_SESSION['myvdo'],	
 							'myurl' => $_SESSION['myurl'],	
 									);
 								   					}
@@ -300,6 +304,7 @@ function show_form(){
 				</tr>
 								
 			<input name='myimg' type='hidden' value='".$_SESSION['myimg']."' />
+			<input name='myvdo' type='hidden' value='".$_SESSION['myvdo']."' />
 
 				<tr>
 					<td colspan=3 align='right' valign='middle'  class='BorderSup'>
@@ -319,6 +324,20 @@ function deleteimg(){
 	
 	global $ruta;
 	$ruta = "../Gcb.Img.Art/".$_SESSION['myimg'];
+
+	if(file_exists($ruta)){unlink($ruta);
+		$data1 = "\n \t UNLINK ".$ruta;}
+			else {print("ERROR UNLINK ".$ruta."</br>");
+					$data1 = "\n \t ERROR UNLINK ".$ruta;}
+					
+	global $ddr;
+	$ddr = "\t* ".$data1." \n";
+}
+
+function deletevdo(){
+	
+	global $ruta;
+	$ruta = "../Gcb.Vdo.Art/".$_SESSION['myvdo'];
 
 	if(file_exists($ruta)){unlink($ruta);
 		$data1 = "\n \t UNLINK ".$ruta;}

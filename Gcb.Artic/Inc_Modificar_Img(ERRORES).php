@@ -90,8 +90,9 @@ if( file_exists($ruta.$nombre)){
                 $_SESSION['myimg'] = $_SESSION['smyimg'];
                 //print (@$redir);
           }else{ }
+          // FIN RECORTA EL ANCHO
   
-      } // FIN RECORTA EL ANCHO
+      } // FIN SI ANCHO > ANCHOMAX
 
       elseif($alto > $altomax){ 
 
@@ -136,8 +137,9 @@ if( file_exists($ruta.$nombre)){
             $_SESSION['myimg'] = $_SESSION['smyimg'];
             print ($redir);
         }else{ }
-      }
-      // FIN SI NO SE REDUCE LA IMAGEN
+        // FIN SE RECORTA EL ALTO
+      } // FIN SI ALTO > ALTOMAX
+      // SI NO SE REDUCE LA IMAGEN
       else {  global $destination_file;
               move_uploaded_file($_FILES['myimg']['tmp_name'], $destination_file);
               global $ruta;
