@@ -29,6 +29,8 @@ if (isset($_POST['btnSubmit'])) {
     LIMITE SERVIDOR KB
     global $limit_serv;
     $limit_serv = 70000 * 1000;
+    APACHE en php.ini en: wamp64\bin\apache\apache2.4.51\bin\ && C:\wamp64\bin\php\php8.1.0\.
+    upload_max_filesize = xxM && post_max_size = xxM && [connect_timeout (in seocnds) = xx]
     */
 
     // SIZE DEL ARCHIVO EN KB

@@ -26,17 +26,19 @@ session_start();
 
 function show_form(){
 	
-	$_SESSION['refuser'] = $_POST['refuser'];
-	$_SESSION['tit'] = $_POST['tit'];
-	$_SESSION['titsub'] = $_POST['titsub'];
-	$_SESSION['refart'] = $_POST['refart'];
-	$_SESSION['datein'] = $_POST['datein'];
-	$_SESSION['timein'] = $_POST['datein'];
-	$_SESSION['datemod'] = date('Y-m-d');
-	$_SESSION['timemod'] = date('H:i:s');
-	$_SESSION['conte'] = $_POST['conte'];
-	$_SESSION['myimg'] = $_POST['myimg'];
-	$_SESSION['myurl'] = $_POST['myurl'];
+	if(isset($_POST['oculto2'])){
+		$_SESSION['refuser'] = $_POST['refuser'];
+		$_SESSION['tit'] = $_POST['tit'];
+		$_SESSION['titsub'] = $_POST['titsub'];
+		$_SESSION['refart'] = $_POST['refart'];
+		$_SESSION['datein'] = $_POST['datein'];
+		$_SESSION['timein'] = $_POST['datein'];
+		$_SESSION['datemod'] = date('Y-m-d');
+		$_SESSION['timemod'] = date('H:i:s');
+		$_SESSION['conte'] = $_POST['conte'];
+		$_SESSION['myimg'] = $_POST['myimg'];
+		$_SESSION['myurl'] = $_POST['myurl'];
+	} else { }
 
 	print("<!-- Begin page content -->
 
