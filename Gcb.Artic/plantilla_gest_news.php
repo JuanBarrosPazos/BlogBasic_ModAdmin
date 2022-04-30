@@ -8,7 +8,7 @@ session_start();
 	require '../Gcb.Connet/conect.php';
 
 	require '../Gcb.Inclu/mydni.php';
-	require 'plantilla.php';
+	require 'plantilla_news.php';
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,6 +70,8 @@ function process_form(){
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 function show_form($errors=[]){
+
+	//require 'plantilla_news.php';
 	
 	if(isset($_POST['oculto'])){
 		$defaults = array ( 'plantillanews' => $_POST['plantillanews']);

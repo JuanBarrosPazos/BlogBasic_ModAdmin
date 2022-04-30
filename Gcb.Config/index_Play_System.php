@@ -132,13 +132,13 @@
             
     // SELECCION DE LA PLANTILLA EN INDEX
     require 'Gcb.Artic/plantilla.php';
-    if ($_SESSION['plantilla'] == 'aleaindex'){ 
+    //echo "* ".$_SESSION['plantilla']."<br>";
+    if ($_SESSION['plantilla'] == 'aleaindex'){
     global $ad; $ad = date('d');
-    global $ad1; $ad1 = array('01','06','11','16','21','26','31');
-    global $ad2; $ad2 = array('02','07','12','17','22','27');
-    global $ad3; $ad3 = array('03','08','13','18','23','28');
-    global $ad4; $ad4 = array('04','09','14','19','24','29');
-    global $ad5; $ad5 = array('05','10','15','20','25','30');
+    global $ad1; $ad1 = array('01','05','09','13','17','21','25','29');
+    global $ad2; $ad2 = array('02','06','10','14','18','22','26','30');
+    global $ad3; $ad3 = array('03','07','11','15','18','23','27','31');
+    global $ad4; $ad4 = array('04','08','12','16','20','24','28');
     if (in_array($ad, $ad1)){ $_SESSION['plantilla'] = 'Articulo_Ver_index_Card_b.php'; }
     elseif (in_array($ad, $ad1)){ $_SESSION['plantilla'] = 'Articulo_Ver_index.php'; }
     elseif (in_array($ad, $ad2)){ $_SESSION['plantilla'] = 'Articulo_Ver_index_Card.php'; }

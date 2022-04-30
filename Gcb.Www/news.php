@@ -128,14 +128,14 @@
 
     // SELECCION DE LA PLANTILLA EN NEWS
     require '../Gcb.Artic/plantilla_news.php';
+    //echo "* ".$_SESSION['plantillanews']."<br>";
     if ($_SESSION['plantillanews'] == 'aleanews'){ 
       global $ad; $ad = date('d');
-      global $ad1; $ad1 = array('01','06','11','16','21','26','31');
-      global $ad2; $ad2 = array('02','07','12','17','22','27');
-      global $ad3; $ad3 = array('03','08','13','18','23','28');
-      global $ad4; $ad4 = array('04','09','14','19','24','29');
-      global $ad5; $ad5 = array('05','10','15','20','25','30');
-      if (in_array($ad, $ad1)){ $_SESSION['plantillanews'] = 'Articulo_Ver_news.php'; }
+      global $ad1; $ad1 = array('01','05','09','13','17','21','25','29');
+      global $ad2; $ad2 = array('02','06','10','14','18','22','26','30');
+      global $ad3; $ad3 = array('03','07','11','15','18','23','27','31');
+      global $ad4; $ad4 = array('04','08','12','16','20','24','28');
+        if (in_array($ad, $ad1)){ $_SESSION['plantillanews'] = 'Articulo_Ver_news.php'; }
       elseif (in_array($ad, $ad1)){ $_SESSION['plantillanews'] = 'Articulo_Ver_news_Card.php'; }
       elseif (in_array($ad, $ad2)){ $_SESSION['plantillanews'] = 'Articulo_Ver_news_Popup.php'; }
       elseif (in_array($ad, $ad3)){ $_SESSION['plantillanews'] = 'Articulo_Ver_news_Card_b.php'; }

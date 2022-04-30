@@ -78,6 +78,8 @@ function process_form(){
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 function show_form($errors=[]){
+
+	//require 'plantilla.php';
 	
 	if(isset($_POST['oculto'])){
 		$defaults = array ( 'plantilla' => $_POST['plantilla']);
