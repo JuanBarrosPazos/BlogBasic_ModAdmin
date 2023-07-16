@@ -20,25 +20,25 @@
 
   <title>Juan Barros Pazos</title>
 
-  <link href="Mod_Contenidos/Gcb.Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
+  <link href="Mod_Contenidos/Img.Sys/favicon.png" type='image/ico' rel='shortcut icon' />
   
-  <link href="Mod_Contenidos/Gcb.Css/html.css" rel="stylesheet" type="text/css" />
-  <link href="Mod_Contenidos/Gcb.Css/conta.css" rel="stylesheet" type="text/css">
+  <link href="Mod_Contenidos/Css/html.css" rel="stylesheet" type="text/css" />
+  <link href="Mod_Contenidos/Css/conta.css" rel="stylesheet" type="text/css">
 
   <!-- Bootstrap core CSS -->
-  <link href="Mod_Contenidos/Gcb.Css/bootstrap.min.css" rel="stylesheet">
+  <link href="Mod_Contenidos/Css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="Mod_Contenidos/Gcb.Css/agency.min.css" rel="stylesheet">
+  <link href="Mod_Contenidos/Css/agency.min.css" rel="stylesheet">
 
-  <link href="Mod_Contenidos/Gcb.Css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="Mod_Contenidos/Css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body id="page-top">
 
   <h5></h5>
-    <a href="Mod_Admin/index.php"> ALGO NO HA IDO BIEN PULSA AQUÍ</a>
+    <a href="Mod_Admin/index.php"> ALGO NO HA IDO BIEN PULSA AQUÍ...</a>
   </h5>
   
 <!-- Footer -->
