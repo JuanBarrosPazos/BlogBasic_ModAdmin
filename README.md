@@ -14,16 +14,19 @@
 ----
 ## BlogBasic_ModAdmin V23.1.4
   - SE AÑANDEN PLANTILLAS PARA SITEMAP Y ROBOTS.
-  - SE VERIFICA LA CORRECTA INSTALACIÓN EN BBDD.
+  - CORRECTA INSTALACIÓN EN BBDD.
+  - CREACIÓN CORRECTA DE TABLAS DEL SISTEMA.
+  - CORRECTA CREACIÓN DIRECTORIOS USUARIOS.
+  - REPARACIÓN DE REGISTRO DE ENTRADA USUARIO.
+  - 
 ## BlogBasic_ModAdmin V23.1.1
   - SE INTEGRA EL MODULO ADMIN BASICO, SIN COMPROBAR LA FUNCIONALIDAD.
   - CREACIÓN DEL REPOSITORIO EN GITHUB.
 ----
 
 ## Tareas pendientes:
-  - Comprobación de la funcionalidad de la instalación básica.
   - Reconfiguración del index raiz.
   - Articulos Gestionar todos?? filtro paginación??
-  - Fusional u optimizar: bbdd_export_tot.php & bbdd_My_export_tot.php (en contenidos y admin)
+  - Fusionar u optimizar: bbdd_export_tot.php & bbdd_My_export_tot.php (en contenidos y admin)
   - 
 
