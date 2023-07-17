@@ -172,7 +172,7 @@
 				$data1 = $data1."\t* NO OK USER SYSTEM FILES".$carpeta."\n";
 				}
 
-	/************** CREAMOS LA TABLA CONTROL USUARIO ***************/
+	/************** CREAMOS LA TABLA CONTROL USUARIO ANONIMO **************
 
 			$vname1 = "`".$_SESSION['clave'].$trf."_".date('Y')."`";
 				
@@ -190,12 +190,13 @@
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ";
 					
 			if(mysqli_query($db , $tcl)){
-				global $data5; 		$data5 = "\t* OK TABLA FICHAR ".$vname1.".\n";
+				global $data5; 		$data5 = "\t* OK TABLA FICHAR ANONIMO ".$vname1.".\n";
 			} else {
-				global $data5; 		$data5 = "\t* NO OK TABLA FICHAR. ".mysqli_error($db)." \n";
+				global $data5; 		$data5 = "\t* NO OK TABLA FICHAR ANONIMO ".mysqli_error($db)." \n";
 				}
+	*/
 
-	/************** CREAMOS LA TABLA FEEDBACK CONTROL USUARIO ***************/
+	/************** CREAMOS LA TABLA FEEDBACK CONTROL USUARIO ANONIMO **************
 
 			$vname2 = "`".$_SESSION['clave'].$trf."_feed`";
 				
@@ -215,12 +216,12 @@
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ";
 					
 			if(mysqli_query($db , $tcl)){
-				global $data6; 		$data6 = "\t* OK TABLA FEED FICHAR ".$vname1.".\n";
+				global $data6; 		$data6 = "\t* OK TABLA FEED ANONIMO FICHAR ".$vname1.".\n";
 			} else {
-				global $data6; 		$data6 = "\t* NO OK TABLA FEED FICHAR. ".mysqli_error($db)." \n";
+				global $data6; 		$data6 = "\t* NO OK TABLA FEED ANONIMO FICHAR. ".mysqli_error($db)." \n";
 			}
-
-		// CREA EL DIRECTORIO DE IMAGEN DE USUARIO.
+	*/
+		// CREA EL DIRECTORIO DE IMAGEN DE USUARIO ANONIMO.
 
 			$vn1 = "img_admin";
 			$carpetaimg = "Users/".$trf."/".$vn1;
@@ -233,7 +234,7 @@
 				$data2 = "\t* NO OK DIRECTORIO ".$carpetaimg."\n";
 				}
 
-			// CREA EL DIRECTORIO DE LOG DE USUARIO.
+			// CREA EL DIRECTORIO DE LOG DE USUARIO ANONIMO.
 
 			$vn1 = "log";
 			$carpetalog = "Users/".$trf."/".$vn1;
@@ -245,7 +246,7 @@
 				$data3 = "\t* NO OK DIRECTORIO ".$carpetalog."\n";
 				}
 
-			// CREA EL DIRECTORIO RESUMEN FICHAR MES.
+			/* CREA EL DIRECTORIO RESUMEN FICHAR MES ANONIMO.
 
 			$vn1 = "mrficha";
 			$carpetamrf = "Users/".$trf."/".$vn1;
@@ -256,13 +257,14 @@
 			else{print("* NO OK DIRECTORIO ".$carpetamrf."\n");
 				$data4= "\t* NO OK DIRECTORIO ".$carpetamrf."\n";
 				}
+			*/
 
 		/************	PASAMOS LOS PARAMETROS A .LOG	*****************/
 
 		$datein = date('Y-m-d/H:i:s');
 
 		global $text;
-		$text = PHP_EOL."- USUARIO ANONIMO: CREADAS BBDD TABLAS Y DIRECTORIOS. ".$datein.PHP_EOL." ".$data1.$data2.$data3.$data4.$data5.$data6.PHP_EOL;
+		$text = PHP_EOL."- USUARIO ANONIMO: CREADAS BBDD TABLAS Y DIRECTORIOS. ".$datein.PHP_EOL." ".$data1.$data2.$data3/*.$data4.$data5.$data6*/.PHP_EOL;
 
 		ini_log();
 

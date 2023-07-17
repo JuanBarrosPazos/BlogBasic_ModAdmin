@@ -27,7 +27,7 @@ session_start();
 	
 		if(isset($_POST['oculto'])){
 			if($form_errors = validate_form()){
-					suma_denegado();
+						suma_denegado();
 					if($_SESSION['showf'] == 69){table_desblock();}
 					else{show_form($form_errors);
 						 show_visit();}
@@ -62,28 +62,20 @@ session_start();
 
 function bbdd_backup(){
 	
-	global $db;
-	global $db_name;
+	global $db; 		global $db_name;
 	
-	global $dated;
-	$dated = date('d');
-	global $datem;
-	$datem = date('m');
-	global $datey;
-	$datey = date('Y');
-	global $datebbddx;
-	$datebbddx = date("Ymd");
+	global $dated; 		$dated = date('d');
+	global $datem; 		$datem = date('m');
+	global $datey; 		$datey = date('Y');
+	global $datebbddx; 	$datebbddx = date("Ymd");
 	
 	// SI HAY MAS DE OCHO COPIAS DE SEGURIDAD BORRARLAS.
-	global $ruta;
-	$ruta ="upbbdd/bbdd_export_tot";
+	global $ruta; 		$ruta ="upbbdd/bbdd_export_tot";
 	//print("RUTA: ".$ruta.".</br>");
-	global $rutag;
-	$rutag = "upbbdd/bbdd_export_tot/{*}";
+	global $rutag; 		$rutag = "upbbdd/bbdd_export_tot/{*}";
 	//print("RUTA G: ".$rutag.".</br>");
 	$directorio = opendir($ruta);
-	global $num;
-	$num=count(glob($rutag,GLOB_BRACE));
+	global $num; 		$num=count(glob($rutag,GLOB_BRACE));
 	
 	if($num > 8){	if(file_exists($ruta)){ $dir = $ruta."/";
 			$handle = opendir($dir);
@@ -267,20 +259,15 @@ function ayear(){
 
 function admin_entrada(){
 
-	global $db;
-	global $db_name;
-	global $userid;
-	$userid = $_SESSION['id'];
+	global $db; 			global $db_name;
+	global $userid; 		$userid = $_SESSION['id'];
 	
-	global $uservisita;
-	$uservisita = $_SESSION['visitadmin'];
+	global $uservisita; 	$uservisita = $_SESSION['visitadmin'];
 	$total = $uservisita + 1;
 	
-	global $datein;
-	$datein = date('Y-m-d H:i:s');
+	global $datein; 		$datein = date('Y-m-d H:i:s');
 
-	global $table_name_a;
-	$table_name_a = "`".$_SESSION['clave']."admin`";
+	global $table_name_a; 	$table_name_a = "`".$_SESSION['clave']."admin`";
 
 	$sqladin = "UPDATE `$db_name`.$table_name_a SET `lastin` = '$datein', `visitadmin` = '$total' WHERE $table_name_a.`id` = '$userid' LIMIT 1 ";
 		
@@ -604,6 +591,7 @@ function process_form(){
 					master_index();
 					ver_todo();
 					ayear();
+					admin_entrada();
 					suma_acces();
 					bbdd_backup();
 			} else { }
