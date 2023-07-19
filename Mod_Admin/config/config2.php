@@ -118,13 +118,10 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 
 	global $carpetaimg;
 	
-	global $trf;
-	$trf = $_SESSION['iniref'];
+	global $trf; 			$trf = $_SESSION['iniref'];
 	
-	global $vn1;
-	$vn1 = "img_admin";
-	global $carpetaimg;
-	$carpetaimg = "../Users/".$trf."/".$vn1;
+	global $vn1; 			$vn1 = "img_admin";
+	global $carpetaimg; 	$carpetaimg = "../Users/".$trf."/".$vn1;
 
 	if($_FILES['myimg']['size'] == 0){
 			global $new_name;
@@ -137,22 +134,18 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 		$new_name = $rf.".".$extension;
 	}
 
-	global $nombre;
-	global $apellido;
-	$nombre = $_POST['Nombre'];
-	$apellido = $_POST['Apellidos'];
+	global $nombre;		$nombre = $_POST['Nombre'];
 
+	global $apellido;	$apellido = $_POST['Apellidos'];
+	
 	// ENCRIPTO EL PASSWOR ANTES DE GUARDARLO EN LA BBDD
-	global $password;
-	$password = $_POST['Password'] ;
-	global $passwordhash;
-	$passwordhash = password_hash($password, PASSWORD_DEFAULT, array ("cost"=>10));
+	global $password; 		$password = $_POST['Password'] ;
+	global $passwordhash; 	$passwordhash = password_hash($password, PASSWORD_DEFAULT, array ("cost"=>10));
 	//$passwordhash = password_hash($password, PASSWORD_DEFAULT, ['cost'=>10]);
 
 	global $db_name;
 
-	global $table_name_a;
-	$table_name_a = "`".$_SESSION['clave']."admin`";
+	global $table_name_a; 	$table_name_a = "`".$_SESSION['clave']."admin`";
 	//echo "<br>*** ".$table_name_a."<br>";
 
 	$sql = "INSERT INTO `$db_name`.$table_name_a (`ref`, `Nivel`, `Nombre`, `Apellidos`, `myimg`, `doc`, `dni`, `ldni`, `Email`, `Usuario`, `Password`, `Pass`, `Direccion`, `Tlf1`, `Tlf2`) VALUES ('$rf', '$_POST[Nivel]', '$_POST[Nombre]', '$_POST[Apellidos]', '$new_name', '$_POST[doc]', '$_POST[dni]', '$_POST[ldni]', '$_POST[Email]', '$_POST[Usuario]', '$passwordhash', '$password', '$_POST[Direccion]', '$_POST[Tlf1]', '$_POST[Tlf2]')";
@@ -164,7 +157,6 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 										fwrite($fw2, $mydni);
 										fclose($fw2);
 
-
 	print( "<table align='center' style='margin-top:10px'>
 				<tr>
 					<th colspan=3 class='BorderInf'>
@@ -172,9 +164,8 @@ if (preg_match('/^(\w{1})*(\s\w{1})/',$_POST['Apellidos'],$ref4)){	$rf4 = $ref4[
 					</th>
 				</tr>");
 								
-				global $rutaimg;
-				$rutaimg = "src='".$carpetaimg."/".$new_name."'";
-				require '../Admin/table_data_resum.php';
+		global $rutaimg; 	$rutaimg = "src='".$carpetaimg."/".$new_name."'";
+		require '../Admin/table_data_resum.php';
 				
 	print("	<tr>
 				<td colspan=3 align='right' class='BorderSup'>
@@ -237,22 +228,16 @@ function modif(){
 
 function crear_tablas(){
 	
-	global $db;	
-	global $db_name;
-	global $db;	
-	global $db_host;
-	global $db_user;
-	global $db_pass;
-	global $db_name;
+	global $db;	 		global $db_name;
+	global $db_host;	global $db_user;
+	global $db_pass;	global $db_name;
 	global $dbconecterror;
 	
-	global $trf;
-	$trf = $_SESSION['iniref'];
+	global $trf;		$trf = $_SESSION['iniref'];
 	
 // CREA EL DIRECTORIO DE USUARIO.
 
-	global $carpeta;
-	$carpeta = "../Users/".$trf;
+	global $carpeta;	$carpeta = "../Users/".$trf;
 
 	if (!file_exists($carpeta)) {
 		mkdir($carpeta, 0777, true);
