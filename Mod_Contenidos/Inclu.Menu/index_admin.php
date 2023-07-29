@@ -48,43 +48,44 @@
 				</li>
 			</ul>
 		</li>
-		");
-
-	}else{	print(" "); }
-
-	print("
 		<li>
-			<a href='#' target='_blank'>
-				<i class='ic ico16'></i>####
+			<a href='".$rutaindex."../Mod_Agenda/index.php'>
+				<i class='ic ico10'></i><span>AGENDA</span>
 			</a>
-		</li>
-	
-	<li style='text-align:center;'>
-		<a href='#'>
-			<form name='cerrar' action='".$rutaadmin."../../Mod_Admin/Admin/mcgexit.php' method='post'>
-		<input type='submit' value='CLOSE SESSION' style='margin-top:-2px; margin-left:6px;' class='botonverde'/>
-		<input type='hidden' name='cerrar' value=1 />
-			</form>
-		</a>
-	</li>
-				</ul>
-			</nav>
-		</aside>
-	</section>
-</div>
+		</li>");
 
-<!--
-						////////////////////
-		////////////////////			////////////////////
-						////////////////////
+	}else{	
+		print("<li>
+				<a href='#' target='_blank'>
+					<i class='ic ico16'></i>OTRO LINK
+				</a>
+			</li>"); 
+		}
 
-						  FIN NIVEL ADMIN
-							
-						////////////////////
-		////////////////////			////////////////////
-						////////////////////
--->
+		/*
+							////////////////////
+			////////////////////			////////////////////
+							////////////////////
 
-");
+							FIN NIVEL ADMIN
+								
+							////////////////////
+			////////////////////			////////////////////
+							////////////////////
+		*/
+
+	print("<li style='text-align:center;'>
+				<a href='#'>
+					<form name='cerrar' action='".$rutaadmin."../../Mod_Admin/Admin/mcgexit.php' method='post'>
+				<input type='submit' value='CLOSE SESSION' style='margin-top:-2px; margin-left:6px;' class='botonverde'/>
+				<input type='hidden' name='cerrar' value=1 />
+					</form>
+				</a>
+			</li>
+						</ul>
+					</nav>
+				</aside>
+			</section>
+		</div>");
 
 ?>

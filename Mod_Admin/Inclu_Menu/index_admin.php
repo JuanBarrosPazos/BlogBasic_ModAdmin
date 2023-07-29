@@ -82,10 +82,10 @@
 		</li>
 	-->
 		<li>
-			<!-- -->
-			<a href='#'>
-				<i class='ic ico10'></i><span>CATEGORIA 3</span>
+			<a href='".$rutaindex."../Mod_Agenda/index.php'>
+				<i class='ic ico10'></i><span>AGENDA</span>
 			</a>
+			<!--
 			<ul class='nav-flyout'>
 				<li>
 					<a href='#' ".$topcat3.">
@@ -98,7 +98,7 @@
 					</a>
 				</li>
 			</ul>
-			
+			 -->
 		</li>
 	
 		<li>

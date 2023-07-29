@@ -188,7 +188,8 @@ $text = PHP_EOL."** CREADO MASTER ADMIN 1. ".$datein.PHP_EOL."\t USER REF: ".$rf
 				
 	} else {	print("</br>
 				<font color='#FF0000'>
-		* DATOS NO VALIDOS, MODIFIQUE ENTRADA L187: </font></br> ".mysqli_error($db))."
+		* DATOS NO VALIDOS, MODIFIQUE ENTRADA L151: </font></br> ".mysqli_error($db))."
+		<br>* ".$_POST['Tlf2']."
 				</br>";
 				show_form();
 				global $text;
