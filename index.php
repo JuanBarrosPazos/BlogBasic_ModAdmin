@@ -37,7 +37,7 @@
 
 <body id="page-top">
 
-  <h5></h5>
+  <h5>
     <a href="Mod_Admin/index.php"> ALGO NO HA IDO BIEN PULSA AQUÍ...</a>
   </h5>
   

@@ -3,22 +3,18 @@
 	global $db;         global $cero_conection;
     global $keyIndex;   global $keyBlog;
 
-    if($cero_conection == 1){
+    if(($cero_conection == 1)||($keyBlog == 1)){
         echo ("ES IMPOSIBLE CONECTAR CON LA BBDD...</br>");
         header('Location: Mod_Admin/index.php');
-        if($keyBlog == 1){
-            global $redir;
-            $redir = "<script type='text/javascript'>
-                        function redir(){
-                            window.location.href='Mod_Admin/index.php';
-                        }
-                        setTimeout('redir()',500);
-                    </script>";
-            print ($redir);
-            }else{ }
-
+        global $redir;
+        $redir = "<script type='text/javascript'>
+                    function redir(){
+                        window.location.href='Mod_Admin/index.php';
+                    }
+                    setTimeout('redir()',50);
+                </script>";
+        print ($redir);
     }else{
-
         mysqli_report(MYSQLI_REPORT_OFF);
         $db = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
         if (!$db){ 
