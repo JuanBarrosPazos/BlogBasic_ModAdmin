@@ -400,13 +400,13 @@ function ver_todo(){
 
 function info(){
 
-	global $db;
-	global $rowout;
-	global $nombre;
-	global $apellido;
-	global $orden;
+	global $db;			global $rowout;
+	global $nombre; 	global $apellido;
 	
-	$orden = isset($_POST['Orden']);
+	global $orden;
+	if((isset($_POST['Orden']))&&($_POST['Orden']|= '')){
+		$orden = $_POST['Orden'];
+	}else { $orden = '`id` ASC'; }
 	
 	if (isset($_POST['todo'])){$nombre = "TODOS LOS USUARIOS ".$orden;};	
 
