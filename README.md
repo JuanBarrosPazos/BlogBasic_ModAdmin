@@ -1,4 +1,4 @@
-# BlogBasic_ModAdmin V23.1.7
+# BlogBasic_ModAdmin V24.06.04
 
 ### 2023/07/29
 
@@ -11,6 +11,10 @@
   - SE INTEGRA EL MÓDULO ADMIN BÁSICO.
   - DE NO DETECTAR LA CONEXIÓN A BBDD REDIRECCIONA AL FORMULARIO DE CONEXIONES.
   - ADMINTE IMAGEN Y VIDEO EN LOS ARTICULOS.
+----
+## BlogBasic_ModAdmin V24.06.04
+  - 2024/05/31
+  - Solucionado error en la creación de imagenes en el nuevo año. Funtion articulos().
 ----
 ## BlogBasic_ModAdmin V23.1.7
   - 2023/08/28

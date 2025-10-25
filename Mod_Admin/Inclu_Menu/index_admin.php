@@ -6,7 +6,7 @@
 
 	/************	SI EXISTE EL CONSTRUCTOR DE TABLAS ARTICULOS	*****************/
 	
-	if(file_exists("../../Mod_Contenidos/index.php")){
+	if(file_exists($rutaindex."../Mod_Contenidos/index.php")){
 		$menuArticulos = "<a href='".$rutaindex."../Mod_Contenidos/index.php'>
 								<i class='ic ico19'></i><span>CONTENIDOS</span>
 							</a>";
@@ -30,7 +30,7 @@
 
 	/************	COMPROBAMOS QUE EXISTE CONTA BASIC	*****************/
 
-	if(file_exists("../../Mod_Conta/index.php")){
+	if(file_exists($rutaindex."../Mod_Conta/index.php")){
 		$menuContaBasic = "<a href='".$rutaindex."../Mod_Conta/index.php'>
 								<i class='ic ico20'></i><span>CONTA BASIC</span>
 							</a>";
@@ -54,7 +54,7 @@
 
 	/************	COMPROBAMOS LAS TABLAS AGENDA	*****************/
 
-	if(file_exists("../Mod_Agenda/index.php")){
+	if(file_exists($rutaindex."../Mod_Agenda/index.php")){
 		$menuAgenda = "<a href='".$rutaindex."../Mod_Agenda/index.php'>
 							<i class='ic ico19'></i><span>AGENDA</span>
 						</a>";
@@ -79,7 +79,7 @@
 
 	/************	COMPROBAMOS LAS TABLAS CONTACTO	*****************/
 
-	if(file_exists("../../Mod_Contacto/index.php")){
+	if(file_exists($rutaindex."../Mod_Contacto/index.php")){
 		$menuContacto = "<a href='".$rutaindex."../Mod_Contacto/index.php'>
 								<i class='ic ico10'></i><span>CONTACTOS</span>
 							</a>";
@@ -115,9 +115,7 @@
 					<a href='".$rutaadmin."Admin_Ver.php' ".$topcat0.">
 						<i class='ic ico15b'></i>GESTION ADMIN
 					</a>
-				</li>
-				");
-
+				</li>");
 
 	if ($_SESSION['Nivel'] == 'admin') {
 	print("		<li>
